@@ -1,0 +1,790 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="js"><head>
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE9">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- LiveJournal ExpressLane: You received this page before 0 free users! -->
+<!--[if IE]><link rel="shortcut icon" type="image/vnd.microsoft.icon" href="http://l-stat.livejournal.com/img/userinfo.ico?v=103"><![endif]-->
+<link rel="icon" type="image/gif" href="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/userinfo.gif">
+<link rel="stylesheet" href="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/ad_base.css" type="text/css">
+<link rel="meta" type="application/rdf+xml" title="FOAF" href="http://ammosov.livejournal.com/data/foaf">
+<link rel="stylesheet" type="text/css" href="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/a.css">
+<!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="http://l-stat.livejournal.com/??interstitial_banner_us.css?v=1365059817" /><![endif]-->
+<!--[if lte IE 8]><link rel="stylesheet" type="text/css" href="http://l-stat.livejournal.com/??ie.css?v=1365059817" /><![endif]-->
+            <script async="" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/cbgapi.loaded_0"></script><script type="text/javascript" async="" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/quant.js"></script><script src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/ga.js" async="" type="text/javascript"></script><script src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/prum.js" charset="UTF-8" async="" type="text/javascript"></script><script async="" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/widgets.js"></script><script async="" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/share.js"></script><script gapi_processed="true" async="" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/plusone.js">{lang: 'ru'}</script><script type="text/javascript">
+                Site = window.Site || {};
+                Site.ml_text = {"date.month.september.short":"сен","date.day.thursday.short":"Чт","comment.ban.user":"Заблокировать возможность комментирования","comment.delete.all":"Удалить все комментарии %username%  в этой записи","comment.mark.spam2.button":"OK","date.month.july.short":"июл","date.month.may.short":"май","date.month.march.short":"мар","date.month.december.long":"декабрь","comment.mark.spam2.subject":"Вы уверены, что хотите отметить этот комментарий как спам?","comment.cancel":"Delete","date.format.offset":"1","entry.reference.label.reposted":"Репост сделан","date.month.august.long":"август","date.month.february.long":"февраль","date.format.long":"%B %D, %Y","date.month.january.long":"январь","comment.mark.spam.subject":"Все комментарии этого автора будут удалены, автор будет забанен. Вы уверены?","date.month.june.long":"июнь","date.month.may.long":"май","comment.mark.spam.button":"Да","date.day.friday.short":"Пт","repost.confirm.delete":"Вы уверены, что хотите удалить этот репост?","date.day.wednesday.short":"Ср","date.month.october.long":"октябрь","date.day.sunday.short":"Вс","date.month.september.long":"сентябрь","comment.mark.spam.title":"Отметить как спам","comment.mark.spam2":"Отметить этот комментарий как спам","date.day.tuesday.short":"Вт","comment.delete.q":"Удалить этот комментарий","confirm.bubble.no/":"","comment.delete.all.sub":"Удалить ветвь (все ответы на этот комментарий)","date.month.february.short":"фев","date.month.april.short":"апр","comment.delete":"Применить","entry.reference.label.title":"Удалить репост","confirm.bubble.yes":"Да","date.month.july.long":"июль","date.month.november.short":"ноя","date.month.november.long":"ноябрь","date.month.december.short":"дек","date.month.june.short":"июн","date.day.monday.short":"Пн","date.month.january.short":"янв","date.format.short":"%M/%D/%Y","comment.mark.spam2.title":"Отметить комментарий как спам","date.month.october.short":"окт","confirm.bubble.no":"Нет","date.month.april.long":"апрель","date.month.august.short":"авг","comment.delete.all.my":"Удалить все мои комментарии к этой записи","comment.mark.spam":"Отметить этот комментарий как спам","comment.delete.no.options":"Shift+клик для быстрого удаления","date.month.march.long":"март","date.day.saturday.short":"Сб"};
+                Site.page = {"D":{},"remote":{"userpic":{"alt":"Юзерпик","src":"http://l-userpic.livejournal.com/116559315/47039533","title":"Юзерпики"},"is_logged_in":1,"sessid":"150","status":"<span  class=\"ljuser  i-ljuser     \"  lj:user=\"ammosov\"><a href=\"http://ammosov.livejournal.com/profile\" ><img width=\"16\" height=\"16\"  class=\"i-ljuser-userhead\"  src=\"http://l-stat.livejournal.com/img/userinfo.gif?v=103\" /></a><a href=\"http://ammosov.livejournal.com/\" class=\"i-ljuser-username\"   ><b>ammosov</b></a></span> &mdash; ваш взаимный друг","is_personal":1,"is_sup":1,"is_subscribedon":0,"inbox":{"unread_count":"682"},"is_friend":1,"display":"<span  class=\"ljuser  i-ljuser     \"  lj:user=\"1i7\"><a href=\"http://1i7.livejournal.com/profile\" ><img width=\"16\" height=\"16\"  class=\"i-ljuser-userhead\"  src=\"http://l-stat.livejournal.com/img/userinfo.gif?v=103\" /></a><a href=\"http://1i7.livejournal.com/\" class=\"i-ljuser-username\"   ><b>1i7</b></a></span>","url":{"edit_pics":"http://www.livejournal.com/editpics.bml","base":"http://1i7.livejournal.com","tokens":"http://www.livejournal.com/shop/tokens.bml","community_catalogue":"http://www.livejournal.com/community/directory.bml","edit_profile":"http://1i7.livejournal.com/profile/","custom_groups":"http://www.livejournal.com/friends/editgroups.bml","inbox":"http://www.livejournal.com/inbox/","manage_tags":"http://www.livejournal.com/manage/tags.bml","send_message":"http://www.livejournal.com/inbox/compose.bml"},"user":"1i7","is_friendof":1,"is_paid":1,"style_always_mine":"<div class='appwidget appwidget-stylealwaysmine  ' id='LJWidget_1' data-cid=''>\n<form method='POST' name=\"setstyle_form\" action=\"http://www.livejournal.com/tools/setstylemine.bml\"><input type='hidden' name=\"lj_form_auth\" value=\"c0:1365469200:852:86400:d8dIXEVjuz-47039533-150:9e3d9907be0195f12d2a5fcdf366cee9\" /><input type='hidden' name=\"Widget[StyleAlwaysMine]_feature\" value=\"on\" /><input type='hidden' name=\"Widget[StyleAlwaysMine]_user\" value=\"1i7\" /><div class=\"w-cs-view-style\"><label for=\"view-own\"><input type=\"checkbox\" id=\"view-own\" class=\"w-cs-checkbox\" onchange='document.setstyle_form.submit();'/>В моем стиле</label></div></form></div><!-- end .appwidget-stylealwaysmine -->\n","is_identity":0,"is_subscriber":0,"is_mutualfriend":1,"wallet":{"balance":1750}},"calendar":{"month":{"short":["date.month.january.short","date.month.february.short","date.month.march.short","date.month.april.short","date.month.may.short","date.month.june.short","date.month.july.short","date.month.august.short","date.month.september.short","date.month.october.short","date.month.november.short","date.month.december.short"],"long":["date.month.january.long","date.month.february.long","date.month.march.long","date.month.april.long","date.month.may.long","date.month.june.long","date.month.july.long","date.month.august.long","date.month.september.long","date.month.october.long","date.month.november.long","date.month.december.long"]},"week":["date.day.sunday.short","date.day.monday.short","date.day.tuesday.short","date.day.wednesday.short","date.day.thursday.short","date.day.friday.short","date.day.saturday.short"]}};
+                Site.timer = +(new Date());
+                (function(){
+                    var p = {"remote_is_identity":"","remote_is_maintainer":0,"auth_token":"ajax:1365469200:47039533:150:/__api/::98330e39be20e614910724dc7da1ac82859812a6","locale":"ru_RU","remoteUser":"1i7","remote_is_sup":1,"remoteJournalBase":"http://1i7.livejournal.com","statprefix":"http://l-stat.livejournal.com","ctx_popup":1,"inbox_unread_count":"682","jsonrpcprefix":"http://l-api.livejournal.com","siteroot":"http://www.livejournal.com","country":"RU","templates_update_time":900,"media_embed_enabled":1,"inbox_update_poll":0,"rpc":{"public":["sitemessage.get_message","comment.get_thread"]},"v":1365059817,"has_remote":1,"currentEntryRecommendations":0,"remoteLocale":"ru_RU","server_time":1365470052,"picsUploadDomain":"up.pics.livejournal.com","remote_is_suspended":0,"logprefix":"","imgprefix":"http://l-stat.livejournal.com/img","esn_async":1,"currentJournal":"ammosov","remote_can_track_threads":1,"pics_production":"","currentEntry":"http://ammosov.livejournal.com/958456.html","currentJournalBase":"http://ammosov.livejournal.com"}, i;
+                    for (i in p) Site[i] = p[i];
+                })();
+                Site.current_journal = {"url_profile":"http://ammosov.livejournal.com/profile","url_journal":"http://ammosov.livejournal.com","is_identity":"","userid":1520615,"is_shared":"","display_name":"ammosov","is_comm":"","username":"ammosov","is_syndicated":"","userpic_w":100,"userpic_h":96,"can_receive_vgifts":0,"url_allpics":"http://www.livejournal.com/allpics.bml?user=ammosov","is_person":"1","url_message":"http://www.livejournal.com/inbox/compose.bml?user=ammosov","url_userpic":"http://l-userpic.livejournal.com/83379888/1520615","display_username":"ammosov"};
+                Site.version = '103';
+           </script>
+<script type="text/javascript" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/a_004.js"></script>
+<script type="text/javascript" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/a.js"></script>
+<!--[if lte IE 9]><script type="text/javascript" src="http://l-stat.livejournal.com/js/??ie9pinned.js?v=1365059817"></script><![endif]-->
+<script type="text/javascript">
+LJShare.init({"ml":{"close":"Close","title":"Поделиться"},"services":{"stumbleupon":{"bindLink":"http://www.livejournal.com/redirect/SHARING_stumbleupon?url=http%3A%2F%2Fwww.stumbleupon.com%2Fsubmit%3Furl%3D{url}","title":"StumbleUpon"},"moimir":{"bindLink":"http://www.livejournal.com/redirect/SHARING_moimir?url=http%3A%2F%2Fconnect.mail.ru%2Fshare%3Furl%3D{url}","title":"Мой Мир"},"twitter":{"bindLink":"http://www.livejournal.com/redirect/SHARING_twitter?url=http%3A%2F%2Ftwitter.com%2Fshare%3Furl%3D{url}%26text%3D{title}","title":"Twitter"},"digg":{"bindLink":"http://www.livejournal.com/redirect/SHARING_digg?url=http%3A%2F%2Fdigg.com%2Fsubmit%3Furl%3D{url}","title":"Digg"},"email":{"bindLink":"http://www.livejournal.com/redirect/SHARING_email?url=http%3A%2F%2Fapi.addthis.com%2Foexchange%2F0.8%2Fforward%2Femail%2Foffer%3Fusername%3Dinternal%26url%3D{url}%26title%3D{title}","title":"E-mail"},"livejournal":{"bindLink":"http://www.livejournal.com/redirect/SHARING_livejournal?url=http%3A%2F%2Fwww.livejournal.com%2Fupdate.bml%3Frepost_type%3Dc%26repost%3D{url}","title":"LiveJournal"},"vkontakte":{"bindLink":"http://www.livejournal.com/redirect/SHARING_vkontakte?url=http%3A%2F%2Fvkontakte.ru%2Fshare.php%3Furl%3D{url}","title":"ВКонтакте"},"facebook":{"bindLink":"http://www.livejournal.com/redirect/SHARING_facebook?url=http%3A%2F%2Fwww.facebook.com%2Fsharer.php%3Fu%3D{url}","title":"Facebook"},"odnoklassniki":{"bindLink":"http://www.livejournal.com/redirect/SHARING_odnoklassniki?url=http%3A%2F%2Fwww.odnoklassniki.ru%2Fdk%3Fst.cmd%3DaddShare%26st.s%3D1%26st._surl%3D{url}","title":"Одноклассники"},"tumblr":{"bindLink":"http://www.livejournal.com/redirect/SHARING_tumblr?url=http%3A%2F%2Fwww.tumblr.com%2Fshare%3Fv%3D3%26u%3D{url}","title":"Tumblr"}},"links":["livejournal","facebook","vkontakte","odnoklassniki","moimir","twitter","tumblr","email"]})</script>
+<script type="text/javascript">if (jQuery.VK) { jQuery.VK.init({apiId: 2244371, onlyWidgets: true})} </script> <script type="text/javascript" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/a_002.js"></script>
+<script type="text/javascript" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/a_003.js"></script>
+<script>
+// don't crawl this.  read http://www.livejournal.com/developer/exporting.bml
+var LJ_cmtinfo = {"22575864":{"parent":null,"u":"alextr98","rc":["22576120"],"has_link":0,"depth":0,"full":1,"username":"alextr98"},"22576632":{"parent":null,"u":"slavae","rc":[],"has_link":0,"depth":0,"full":1,"username":"slavae"},"remote":"1i7","22577912":{"parent":22577656,"u":"porco_ross0","rc":[],"has_link":0,"depth":2,"full":1,"username":"porco_ross0"},"22575608":{"parent":22575352,"u":"ammosov","rc":[],"has_link":0,"depth":1,"full":1,"username":"ammosov"},"22576120":{"parent":22575864,"u":"ammosov","rc":["22576376","22578168"],"has_link":0,"depth":1,"full":1,"username":"ammosov"},"22576888":{"parent":22576376,"u":"ammosov","rc":[],"has_link":0,"depth":3,"full":1,"username":"ammosov"},"22576376":{"parent":22576120,"u":"swinks","rc":["22576888"],"has_link":0,"depth":2,"full":1,"username":"swinks"},"22577400":{"parent":null,"u":"porco_ross0","rc":["22577656"],"has_link":0,"depth":0,"full":1,"username":"porco_ross0"},"22578168":{"parent":22576120,"u":"alextr98","rc":["22578424"],"has_link":0,"depth":2,"full":1,"username":"alextr98"},"journal":"ammosov","canAdmin":0,"22575352":{"parent":null,"u":"ramlamyammambam","rc":["22575608"],"has_link":0,"depth":0,"full":1,"username":"ramlamyammambam"},"22578424":{"parent":22578168,"u":"ammosov","rc":[],"has_link":0,"depth":3,"full":1,"username":"ammosov"},"form_auth":"c0%3A1365469200%3A852%3A86400%3Ad8dIXEVjuz-47039533-150%3A9e3d9907be0195f12d2a5fcdf366cee9","22577144":{"parent":null,"u":"golos_dobra","rc":[],"has_link":0,"depth":0,"full":1,"username":"golos_dobra"},"22577656":{"parent":22577400,"u":"ammosov","rc":["22577912"],"has_link":0,"depth":1,"full":1,"username":"ammosov"},"22578680":{"parent":null,"u":"rv_alymov","rc":[],"has_link":0,"depth":0,"full":1,"username":"rv_alymov"}}
+</script><meta property="og:description" content="В эту среду 10 апреля 2013 г. с 10-00 до 14-00 я провожу у себя в Аналитическом центре при Правительстве Российской Федерации круглый стол для экспертов &quot;Проблемы перехода…"><meta property="og:image" content="http://l-userpic.livejournal.com/38726748/1520615"><meta property="og:title" content="Круглый стол в АЦ ПРФ по переходу от бумаги к цифре"><meta property="og:type" content="website"><meta property="og:url" content="http://ammosov.livejournal.com/958456.html"><meta property="twitter:card" content="summary"><meta property="twitter:site" content="@livejournal"><link title="Smooth Sailing Default" rel="stylesheet" href="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/stylesheet.css" type="text/css">
+<title>Hier stehe ich und kann nicht anders -- Martin Luther - Круглый стол в АЦ ПРФ по переходу от бумаги к цифре</title>
+<style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}
+.fb_invisible{display:none}
+.fb_reset{background:none;border-spacing:0;border:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}
+.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}
+.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}
+.fb_dialog_content{background:#fff;color:#333}
+.fb_dialog_close_icon{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px;top:8px\9;right:7px\9}
+.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}
+.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}
+.fb_dialog_close_icon:hover{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}
+.fb_dialog_close_icon:active{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}
+.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}
+.fb_dialog_top_left,
+.fb_dialog_top_right,
+.fb_dialog_bottom_left,
+.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}
+/* @noflip */
+.fb_dialog_top_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}
+/* @noflip */
+.fb_dialog_top_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}
+/* @noflip */
+.fb_dialog_bottom_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}
+/* @noflip */
+.fb_dialog_bottom_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}
+.fb_dialog_vert_left,
+.fb_dialog_vert_right,
+.fb_dialog_horiz_top,
+.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}
+.fb_dialog_vert_left,
+.fb_dialog_vert_right{width:10px;height:100%}
+.fb_dialog_vert_left{margin-left:-10px}
+.fb_dialog_vert_right{right:0;margin-right:-10px}
+.fb_dialog_horiz_top,
+.fb_dialog_horiz_bottom{width:100%;height:10px}
+.fb_dialog_horiz_top{margin-top:-10px}
+.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}
+.fb_dialog_iframe{line-height:0}
+.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}
+.fb_dialog_content .dialog_title > span{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif)
+no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}
+body.fb_hidden{-webkit-transform:none;height:100%;margin:0;left:-10000px;overflow:visible;position:absolute;top:-10000px;width:100%
+}
+.fb_dialog.fb_dialog_mobile.loading{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif)
+white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}
+.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}
+#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}
+#fb-root #fb_dialog_ipad_overlay.hidden{display:none}
+.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}
+.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0 0, 0 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}
+.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%
+}
+.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px
+}
+.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px
+}
+.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0 0, 0 100%, from(#4966A6),
+color-stop(0.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset,
+rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}
+.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}
+.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}
+.fb_dialog_content .dialog_content{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}
+.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}
+#fb_dialog_loader_close{float:left}
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
+.fb_iframe_widget{position:relative;display:-moz-inline-block;display:inline-block}
+.fb_iframe_widget iframe{position:absolute}
+.fb_iframe_widget_lift{z-index:1}
+.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify;vertical-align:text-bottom}
+.fb_hide_iframes iframe{position:relative;left:-10000px}
+.fb_iframe_widget_loader{position:relative;display:inline-block}
+.fb_iframe_widget_fluid{display:inline}
+.fb_iframe_widget_fluid span{width:100%}
+.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}
+.fb_iframe_widget_loader .FB_Loader{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fb_button_simple,
+.fb_button_simple_rtl{background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yH/r/eIpbnVKI9lR.png);background-repeat:no-repeat;cursor:pointer;outline:none;text-decoration:none}
+.fb_button_simple_rtl{background-position:right 0}
+.fb_button_simple .fb_button_text{margin:0 0 0 20px;padding-bottom:1px}
+.fb_button_simple_rtl .fb_button_text{margin:0 10px 0 0}
+a.fb_button_simple:hover .fb_button_text,
+a.fb_button_simple_rtl:hover .fb_button_text,
+.fb_button_simple:hover .fb_button_text,
+.fb_button_simple_rtl:hover .fb_button_text{text-decoration:underline}
+.fb_button,
+.fb_button_rtl{background:#29447e url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/FGFbc80dUKj.png);background-repeat:no-repeat;cursor:pointer;display:inline-block;padding:0 0 0 1px;text-decoration:none;outline:none}
+.fb_button .fb_button_text,
+.fb_button_rtl .fb_button_text{background:#5f78ab url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/FGFbc80dUKj.png);border-top:solid 1px #879ac0;border-bottom:solid 1px #1a356e;color:#fff;display:block;font-family:"lucida grande",tahoma,verdana,arial,sans-serif;font-weight:bold;padding:2px 6px 3px 6px;margin:1px 1px 0 21px;text-shadow:none}
+a.fb_button,
+a.fb_button_rtl,
+.fb_button,
+.fb_button_rtl{text-decoration:none}
+a.fb_button:active .fb_button_text,
+a.fb_button_rtl:active .fb_button_text,
+.fb_button:active .fb_button_text,
+.fb_button_rtl:active .fb_button_text{border-bottom:solid 1px #29447e;border-top:solid 1px #45619d;background:#4f6aa3;text-shadow:none}
+.fb_button_xlarge,
+.fb_button_xlarge_rtl{background-position:left -60px;font-size:24px;line-height:30px}
+.fb_button_xlarge .fb_button_text{padding:3px 8px 3px 12px;margin-left:38px}
+a.fb_button_xlarge:active{background-position:left -99px}
+.fb_button_xlarge_rtl{background-position:right -268px}
+.fb_button_xlarge_rtl .fb_button_text{padding:3px 8px 3px 12px;margin-right:39px}
+a.fb_button_xlarge_rtl:active{background-position:right -307px}
+.fb_button_large,
+.fb_button_large_rtl{background-position:left -138px;font-size:13px;line-height:16px}
+.fb_button_large .fb_button_text{margin-left:24px;padding:2px 6px 4px 6px}
+a.fb_button_large:active{background-position:left -163px}
+.fb_button_large_rtl{background-position:right -346px}
+.fb_button_large_rtl .fb_button_text{margin-right:25px}
+a.fb_button_large_rtl:active{background-position:right -371px}
+.fb_button_medium,
+.fb_button_medium_rtl{background-position:left -188px;font-size:11px;line-height:14px}
+a.fb_button_medium:active{background-position:left -210px}
+.fb_button_medium_rtl{background-position:right -396px}
+.fb_button_text_rtl,
+.fb_button_medium_rtl .fb_button_text{padding:2px 6px 3px 6px;margin-right:22px}
+a.fb_button_medium_rtl:active{background-position:right -418px}
+.fb_button_small,
+.fb_button_small_rtl{background-position:left -232px;font-size:10px;line-height:10px}
+.fb_button_small .fb_button_text{padding:2px 6px 3px;margin-left:17px}
+a.fb_button_small:active,
+.fb_button_small:active{background-position:left -250px}
+.fb_button_small_rtl{background-position:right -440px}
+.fb_button_small_rtl .fb_button_text{padding:2px 6px;margin-right:18px}
+a.fb_button_small_rtl:active{background-position:right -458px}
+.fb_share_count_wrapper{position:relative;float:left}
+.fb_share_count{background:#b0b9ec none repeat scroll 0 0;color:#333;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;text-align:center}
+.fb_share_count_inner{background:#e8ebf2;display:block}
+.fb_share_count_right{margin-left:-1px;display:inline-block}
+.fb_share_count_right .fb_share_count_inner{border-top:solid 1px #e8ebf2;border-bottom:solid 1px #b0b9ec;margin:1px 1px 0 1px;font-size:10px;line-height:10px;padding:2px 6px 3px;font-weight:bold}
+.fb_share_count_top{display:block;letter-spacing:-1px;line-height:34px;margin-bottom:7px;font-size:22px;border:solid 1px #b0b9ec}
+.fb_share_count_nub_top{border:none;display:block;position:absolute;left:7px;top:35px;margin:0;padding:0;width:6px;height:7px;background-repeat:no-repeat;background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yU/r/bSOHtKbCGYI.png)}
+.fb_share_count_nub_right{border:none;display:inline-block;padding:0;width:5px;height:10px;background-repeat:no-repeat;background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yX/r/i_oIVTKMYsL.png);vertical-align:top;background-position:right 5px;z-index:10;left:2px;margin:0 2px 0 0;position:relative}
+.fb_share_no_count{display:none}
+.fb_share_size_Small .fb_share_count_right .fb_share_count_inner{font-size:10px}
+.fb_share_size_Medium .fb_share_count_right .fb_share_count_inner{font-size:11px;padding:2px 6px 3px;letter-spacing:-1px;line-height:14px}
+.fb_share_size_Large .fb_share_count_right .fb_share_count_inner{font-size:13px;line-height:16px;padding:2px 6px 4px;font-weight:normal;letter-spacing:-1px}
+.fb_share_count_hidden .fb_share_count_nub_top,
+.fb_share_count_hidden .fb_share_count_top,
+.fb_share_count_hidden .fb_share_count_nub_right,
+.fb_share_count_hidden .fb_share_count_right{visibility:hidden}
+.fb_connect_bar_container div,
+.fb_connect_bar_container span,
+.fb_connect_bar_container a,
+.fb_connect_bar_container img,
+.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}
+.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}
+.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode=="CSS1Compat"? document.documentElement.scrollTop+"px":body.scrollTop+"px")}
+.fb_connect_bar{position:relative;margin:auto;height:100%;width:100%;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:"lucida grande", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}
+.fb_connect_bar a:hover{color:#fff}
+.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}
+.fb_connect_bar div a,
+.fb_connect_bar span,
+.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}
+.fb_connect_bar .fb_buttons{float:right;margin-top:7px}
+.fb_edge_widget_with_comment{position:relative;*z-index:1000}
+.fb_edge_widget_with_comment span.fb_edge_comment_widget{position:absolute}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget{z-index:1}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget .FB_Loader{left:0;top:1px;margin-top:6px;margin-left:0;background-position:50% 50%;background-color:#fff;height:150px;width:394px;border:1px #666 solid;border-bottom:2px solid #283e6c;z-index:1}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget.dark .FB_Loader{background-color:#000;border-bottom:2px solid #ccc}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget.siderender
+.FB_Loader{margin-top:0}
+.fbpluginrecommendationsbarleft,
+.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}
+/* @noflip */
+.fbpluginrecommendationsbarleft{left:10px}
+/* @noflip */
+.fbpluginrecommendationsbarright{right:10px}</style></head>
+<body data-twttr-rendered="true"><div class="b-popup bubble-node b-popup-contextual b-popup-noclosecontrol" style="visibility: visible; left: 117px; top: 891px;"> <div class="b-popup-outer"> <div class="b-popup-inner"><div style="display: block;" class="b-contextualhover"><div class="b-contextualhover-section"> <div class="b-contextualhover-title"> <h3><strong>ammosov </strong>ваш взаимный друг</h3>  <p><a href="http://www.livejournal.com/manage/notes.bml">Добавить памятку</a> </p>  <p><a href="http://www.livejournal.com/friends/add.bml?user=ammosov">Удалить из друзей</a> </p>  <p><a href="http://www.livejournal.com/friends/add.bml?user=ammosov">Внести в группу</a> </p>  </div>       <ul class="b-contextualhover-options"> <li> <a href="http://www.livejournal.com/inbox/compose.bml?user=ammosov">Личное сообщение</a>  </li><li> <a href="http://www.livejournal.com/chat/">LJ Talk</a> Offline </li> </ul>    <ul class="b-contextualhover-options"> <li><a href="http://www.livejournal.com/abuse/bots.bml?user=ammosov">Пожаловаться на пользователя</a></li> <li class="b-contextualhover-options-ban"> <p>Заблокировать:</p> <div class="b-contextualhover-options-wrap">  <p><label><input class="input-checkbox ban_user" type="checkbox"> в моем журнале</label></p>  <p><label><input class="input-checkbox ban_everywhere" type="checkbox"> в моих сообществах</label></p>  </div> </li> </ul>   </div></div>  <i class="i-popup-arr i-popup-arrtl"><i class="i-popup-arr-brdr-outer"><i class="i-popup-arr-brdr-inner"><i class="i-popup-arr-bg"></i></i></i></i>  <i class="i-popup-close"></i> </div> </div> </div><div style="display: none;" id="qrdiv"><div id="qrformdiv"><form id="qrform" name="qrform" method="POST" action="http://www.livejournal.com/talkpost_do.bml"><input name="lj_form_auth" value="c0:1365469200:852:86400:d8dIXEVjuz-47039533-150:9e3d9907be0195f12d2a5fcdf366cee9" type="hidden"><input name="replyto" value="" id="replyto" type="hidden"><input name="parenttalkid" value="" id="parenttalkid" type="hidden"><input name="journal" value="ammosov" id="journal" type="hidden"><input name="itemid" value="958456" id="itemid" type="hidden"><input name="usertype" value="cookieuser" id="usertype" type="hidden"><input name="qr" value="1" id="qr" type="hidden"><input name="cookieuser" value="1i7" id="cookieuser" type="hidden"><input name="dtid" value="" id="dtid" type="hidden"><input name="basepath" value="http://ammosov.livejournal.com/958456.html?" id="basepath" type="hidden"><input name="stylemine" value="0" id="stylemine" type="hidden"><input name="viewing_thread" value="" id="viewing_thread" type="hidden"><input name="chrp1" value="958456-1520615-1365469200-my8pca7CEH7WeeVzFDAX-2786527f42cbad734d56bc7660ba005a" type="hidden"><table style="border: 1px solid black"><tbody><tr valign="center"><td align="right"><b>Как:</b></td><td align="left"><span class="ljuser  i-ljuser     " lj:user="1i7"><a href="http://1i7.livejournal.com/profile"><img class="i-ljuser-userhead ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/userinfo.gif" width="16" height="16"></a><a href="http://1i7.livejournal.com/" class="i-ljuser-username"><b>1i7</b></a></span></td><td align="center">Использовать <a href="http://www.livejournal.com/allpics.bml?user=1i7">картинку</a>:&nbsp;<select tabindex="8" name="prop_picture_keyword" id="prop_picture_keyword">
+<option value="" selected="selected">(по умолчанию)</option>
+<option value="pic#116559315">pic#116559315</option>
+</select>
+                <input id="lj_userpicselect" value="Browse" onclick="QuickReply.userpicSelect()" tabindex="9" type="button">
+                 <a href="http://www.livejournal.com/support/faqbrowse.bml?faqid=46" class="helplink" target="_blank"><img src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/help.gif" alt="Help" title="Help" border="0" width="14" height="14"></a></td></tr><tr><td valign="top" align="right"><b>Тема:</b></td><td colspan="2" align="left"><input class="textbox" size="50" maxlength="100" name="subject" id="subject" tabindex="10" type="text"></td></tr><tr valign="top"><td align="right"><b>Сообщение:</b></td><td colspan="3" style="width: 90%"><textarea class="textbox" rows="10" cols="50" wrap="soft" name="body" id="body" style="width: 99%" tabindex="20"></textarea></td></tr><tr><td>&nbsp;</td><td colspan="3" align="left"><input name="submitpost" value="Добавить комментарий" id="submitpost" onclick="if (QuickReply.check()){ QuickReply.submit() }" tabindex="30" type="submit">&nbsp;<input name="submitmoreopts" value="Больше возможностей..." tabindex="31" id="submitmoreopts" onclick="if (QuickReply.more()){ QuickReply.submit() }" type="submit">&nbsp;<input name="do_spellcheck" value="1" id="do_spellcheck" tabindex="32" type="checkbox"> <label for="do_spellcheck">Правописание и проверка вида</label><br><span class="de"><b>Внимание!</b> Этот пользователь включил сохранение адресов IP тех, кто оставляет комментарии к его журналу.</span> <a href="http://www.livejournal.com/support/faqbrowse.bml?faqid=66" class="helplink" target="_blank"><img src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/help.gif" alt="Help" title="Help" border="0" width="14" height="14"></a></td></tr></tbody></table></form></div></div><div class="b-popup bubble-node b-popup-noclosecontrol" style="display: none; visibility: visible; left: 0px; top: 0px;"> <div class="b-popup-outer"> <div class="b-popup-inner"><div class="popup-inner calendar w-cs-calendar" style="display: block;">       <h5>Календарь</h5>       <p class="cal-nav">        <span class="cal-nav-month">         <i class="cal-nav-prev"></i>         <span class="cal-month">апр</span>         <i class="cal-nav-next cal-nav-next-dis"></i>        </span>        <span class="cal-nav-year">         <i class="cal-nav-prev cal-nav-prev"></i>         <span class="cal-year">2013</span>         <i class="cal-nav-next cal-nav-next-dis"></i>        </span>       </p>       <table cellpadding="0" cellspacing="0">        <thead>         <tr>                     <th class=" first">Пн</th>                     <th class="">Вт</th>                     <th class="">Ср</th>                     <th class="">Чт</th>                     <th class="">Пт</th>                     <th class=" weekend">Сб</th>                     <th class=" weekend last">Вс</th>                   </tr>        </thead>               <tbody>                  <tr>         <td><span>1</span></td>                                    <td><span>2</span></td>                                    <td><span>3</span></td>                                    <td><span>4</span></td>                                    <td><span>5</span></td>                                    <td class="weekend"><span>6</span></td>                                    <td class="weekend"><span>7</span></td>         </tr>                  <tr>         <td><span>8</span></td>                                    <td class="current"><span>9</span></td>                                    <td><span>10</span></td>                                    <td><span>11</span></td>                                    <td><span>12</span></td>                                    <td class="weekend"><span>13</span></td>                                    <td class="weekend"><span>14</span></td>         </tr>                  <tr>         <td><span>15</span></td>                                    <td><span>16</span></td>                                    <td><span>17</span></td>                                    <td><span>18</span></td>                                    <td><span>19</span></td>                                    <td class="weekend"><span>20</span></td>                                    <td class="weekend"><span>21</span></td>         </tr>                  <tr>         <td><span>22</span></td>                                    <td><span>23</span></td>                                    <td><span>24</span></td>                                    <td><span>25</span></td>                                    <td><span>26</span></td>                                    <td class="weekend"><span>27</span></td>                                    <td class="weekend"><span>28</span></td>         </tr>                  <tr>         <td><span>29</span></td>                                    <td><span>30</span></td>                                    <td class="other"><span>1</span></td>                                    <td class="other"><span>2</span></td>                                    <td class="other"><span>3</span></td>                                    <td class="weekend other"><span>4</span></td>                                    <td class="weekend other"><span>5</span></td>         </tr>                  <tr style="display: none;">         <td class="other"><span>6</span></td>                                    <td class="other"><span>7</span></td>                                    <td class="other"><span>8</span></td>                                    <td class="other"><span>9</span></td>                                    <td class="other"><span>10</span></td>                                    <td class="weekend other"><span>11</span></td>                                    <td class="weekend other"><span>12</span></td>         </tr>                 </tbody></table></div>  <i class="i-popup-arr i-popup-arrtl"><i class="i-popup-arr-brdr-outer"><i class="i-popup-arr-brdr-inner"><i class="i-popup-arr-bg"></i></i></i></i>  <i class="i-popup-close"></i> </div> </div> </div>
+<a name="top"></a>
+
+
+
+<div class="w-cs w-cs-logged" id="lj_controlstrip_new">
+	<div class="w-cs-userinfo">
+		<div class="w-cs-options">
+            <div class="w-cs-userpic">
+                <a href="http://www.livejournal.com/editpics.bml"><!--
+                    --><img class=" ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/47039533.png" alt="Юзерпик" title="Юзерпики"><!--
+                --></a>
+            </div><!-- w-cs-userpic -->
+
+          	<form id="Greeting" class="w-cs-login" action="http://www.livejournal.com/logout.bml?ret=1" method="post">
+                <input name="user" value="1i7" type="hidden">
+
+                
+                    <input name="sessid" value="150" type="hidden">
+                
+
+                <fieldset>
+
+                    <div class="w-cs-group w-cs-group-first">
+
+                        <span class="ljuser  i-ljuser     " lj:user="1i7"><a href="http://1i7.livejournal.com/profile"><img class="i-ljuser-userhead ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/userinfo.gif" width="16" height="16"></a><a href="http://1i7.livejournal.com/" class="i-ljuser-username"><b>1i7</b></a></span>
+
+                        <span class="submit-wrap">
+                            <input id="Logout" class="w-cs-submit" value="Выйти" type="submit">
+                        </span>
+
+                        <ul class="w-cs-summary">
+                            <li class="
+                                w-cs-i-tokens
+                                
+                                    w-cs-i-tokens-have
+                                
+                                ">
+                                <a href="http://www.livejournal.com/shop/tokens.bml" id="LJ_Wallet_Balance_Controlstrip"><!--
+                                    -->1750<!--
+                                --></a>
+                            </li>
+                            <li class="
+                                w-cs-i-inbox
+                                
+                                    w-cs-i-inbox-have
+                                
+                                ">
+                                <a href="http://www.livejournal.com/inbox/" id="LJ_Inbox_Unread_Count_Controlstrip"><!--
+                                    -->682<!--
+                                --></a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <div class="w-cs-group w-cs-group-second">
+
+                        <ul class="w-cs-menu">
+                            <li class="w-cs-i-home">
+                                <a href="http://www.livejournal.com/"><!--
+                                    -->На главную<!--
+                                --></a>
+                            </li>
+                            
+                                <li class="w-cs-i-post">
+                                    <a href="http://www.livejournal.com/update.bml"><!--
+                                        -->Новая запись<!--
+                                    --></a>
+                                </li>
+                            
+                            <li class="w-cs-i-friends">
+                                <a href="http://1i7.livejournal.com/friends"><!--
+                                    -->Лента друзей<!--
+                                --></a>
+                            </li>
+                            <li class="w-cs-i-account">
+                                <a href="http://www.livejournal.com/manage/settings/"><!--
+                                    -->Аккаунт<!--
+                                --></a>
+                            </li>
+                            <li class="w-cs-i-faq">
+                                <a href="http://www.livejournal.com/support/"><!--
+                                    -->Справка<!--
+                                --></a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </fieldset>
+
+            </form>
+
+        </div><!-- w-cs-options -->
+
+    </div><!-- w-cs-userinfo -->
+
+    <div class="w-cs-user-controls">
+
+        <div class="w-cs-group w-cs-group-first">
+
+            <div class="w-cs-status">
+                <p><span class="ljuser  i-ljuser     " lj:user="ammosov"><a href="http://ammosov.livejournal.com/profile"><img class="i-ljuser-userhead ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/userinfo.gif" width="16" height="16"></a><a href="http://ammosov.livejournal.com/" class="i-ljuser-username"><b>ammosov</b></a></span> — ваш взаимный друг</p>
+            </div>
+
+            
+
+            
+
+            
+                <div class="appwidget appwidget-stylealwaysmine  " id="LJWidget_1" data-cid="">
+<form method="POST" name="setstyle_form" action="http://www.livejournal.com/tools/setstylemine.bml"><input name="lj_form_auth" value="c0:1365469200:852:86400:d8dIXEVjuz-47039533-150:9e3d9907be0195f12d2a5fcdf366cee9" type="hidden"><input name="Widget[StyleAlwaysMine]_feature" value="on" type="hidden"><input name="Widget[StyleAlwaysMine]_user" value="1i7" type="hidden"><div class="w-cs-view-style"><label for="view-own"><input id="view-own" class="w-cs-checkbox" onchange="document.setstyle_form.submit();" type="checkbox">В моем стиле</label></div></form></div><!-- end .appwidget-stylealwaysmine -->
+
+            
+
+            <form class="w-cs-search" action="http://www.livejournal.com/search/">
+                
+                    <input name="journal" value="ammosov" type="hidden">
+                
+
+                <fieldset>
+                    <input name="q" class="w-cs-text" tabindex="8" placeholder="Search at ammosov" type="text">
+                </fieldset>
+
+
+                <button type="submit" title="Найти" class="w-cs-search-submit" tabindex="9">
+                    <span class="w-cs-search-inner"><!--
+                        -->Find<!--
+                    --></span>
+                </button>
+
+            </form>
+
+        </div>
+
+        <div class="w-cs-group w-cs-group-second">
+            <ul class="w-cs-menu
+                
+                ">
+
+                <!-- Own menu for control strip -->
+                    
+                <!-- END Own menu for control strip -->
+
+                <!-- Personal menu for control strip -->
+                    
+                        
+                            
+                                <li class="w-cs-i-manage">
+                                    <a href="http://www.livejournal.com/friends/edit.bml"><!--
+                                        -->Список друзей<!--
+                                    --></a>
+                                </li>
+                            
+                        
+
+                        
+
+                        <li class="w-cs-i-gift">
+                            <a href="http://www.livejournal.com/shop/vgift.bml?to=ammosov"><!--
+                                -->Отправить подарок<!--
+                            --></a>
+                        </li>
+
+                        <li class="w-cs-i-message">
+                            <a href="http://www.livejournal.com/inbox/compose.bml?user=ammosov"><!--
+                                -->Личное сообщение<!--
+                            --></a>
+                        </li>
+                    
+                <!-- END Personal menu for control strip -->
+
+                <!-- Community menu for control strip -->
+                    
+                <!-- END Community menu for control strip -->
+
+                <!-- Syndicated menu for control strip -->
+                    
+                <!-- END Syndicated menu for control strip -->
+
+                <!-- News menu for control strip -->
+                    
+                <!-- END News menu for control strip -->
+
+                <!-- Other menu for control strip -->
+                    
+                <!-- END Other menu for control strip -->
+
+                <!-- Special hell menu for control strip -->
+                    
+                        <li class="w-cs-i-calendar">
+                            <a href="http://ammosov.livejournal.com/calendar"><!--
+                                -->Календарь<!--
+                            --></a>
+                            
+                        </li>
+                        <script type="text/javascript">
+                            jQuery('#lj_controlstrip_new .w-cs-i-calendar a')
+                                .calendar({
+                                    showOn: 'click',
+                                    
+                                    dayRef: 'http://ammosov.livejournal.com/' + '%Y/%M/%D',
+                                    closeControl: false,
+                                    startMonth: new Date(2004,8,6),
+                                    endMonth: new Date(2013,3,9),
+                                    classNames: {
+                                        container: 'w-cs-calendar'
+                                    },
+                                    ml: {
+                                        caption: 'Календарь'
+                                    }
+                                }).bind('daySelected', function (event) {
+                                    event.preventDefault();
+                                }).calendarEvents( { fetchOnFirstDisplay: true } );
+                        </script>
+                    
+
+                    
+                        <li class="w-cs-i-share">
+                            <a href="#" class="w-cs-share-icon"><!--
+                                -->Поделиться<!--
+                            --></a>
+                            <script>
+                                LJShare.link({ url: location.href, showOn: 'click' });
+                            </script>
+                        </li>
+                    
+                <!-- END Special hell menu for control strip -->
+            </ul>
+        </div>
+
+    </div><!-- w-cs-user-controls -->
+	
+</div>
+
+
+
+
+
+
+
+<div class="pageblock">
+  <div class="pageheaderblock">
+      <div class="header-title">Hier stehe ich und kann nicht anders -- Martin Luther</div><div class="header-subtitle">Tomorrow belongs to me</div><div class="header-menu"><ul><li><a href="http://ammosov.livejournal.com/958013.html">Previous Entry</a></li><li><a href="http://ammosov.livejournal.com/">Свежие записи</a></li><li><a href="http://ammosov.livejournal.com/calendar">Архив</a></li><li><a href="http://ammosov.livejournal.com/friends">Friends' Entries</a></li><li><a href="http://ammosov.livejournal.com/profile">Личная информация</a></li><li><a href="">жрать захочешь - не так раскорячишься</a></li></ul></div>
+  </div> <!--pageheaderblock-->
+  
+    <div class="bodyheaderblock">
+        <div class="body-title">Круглый стол в АЦ ПРФ по переходу от бумаги к цифре&nbsp;</div>
+    </div>
+  <div class="bodyblock"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td valign="top" width="100%">
+    <a name="ammosov958456"></a>
+    <div class="entryHolder">
+        <div class="entryHeader"><span class="entryHeaderDate">8-апр-2013 08:42 am</span><span class="entryHeaderSubject"></span></div><table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr valign="top"><td><table class="entryUserinfo" align="left" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td><div class="entryUserinfo-usericon"><a href="http://www.livejournal.com/allpics.bml?user=ammosov"><img class=" ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/1520615.gif" alt="boss" width="100" height="100"></a></div></td></tr></tbody></table></td><td width="100%"><div class="entryText">В
+ эту среду 10 апреля 2013 г. с 10-00 до 14-00 я провожу у себя в 
+Аналитическом центре при Правительстве Российской Федерации круглый стол
+ для экспертов "Проблемы перехода от бумажного к цифровому изданию: 
+кризис или революция" Издания имеются в виду любые: газеты, журналы, 
+книги и все прочее, что раньше было бумажным, а теперь становится 
+онлайновым, мобильным и планшетным. По итогам напишем для Правительства 
+доклад, что по мнению экспертов, произойдет в следующие 3-5-10 лет и что
+ нужно и что не нужно делать.  <br><br>Круглый стол открытый - в 
+пределах количества мест в зале, которых не так много. У меня есть еще 
+места для экспертов - то есть специалистов по теме - и для прессы и 
+блоггеров. Экспертами я считаю издателей, редакторов, юристов, 
+журналистов, писателей, и, конечно, читателей. Если вы считаете себя или
+ кого-то из тех, кого вы знаете, экспертом, которому надо дать слово, 
+или хотите побывать на круглом столе как репортер, обозреватель, 
+ругатель и так далее - то запишитесь мне в комменты, а я оформлю вам 
+приглашение. <br><br>Из анонса стола. <br><br>Круглый стол пройдет в формате свободной дискуссии. Для начала обсуждения мы хотим предложить экспертам следующие вопросы:<br>- В чем преимущества и недостатки цифрового издания перед бумажным?<br>- Что считают своими неотъемлемыми правами читатели, писатели и журналисты, и издатели газет, журналов и книг?<br>- Как периодические СМИ могут конкурировать с онлацновыми, в чем они превосхдят их, а в чем никогда не превзойдут?<br>-
+ Что произойдет с предложением высококачественных текстов, возможно ли, 
+что через 10 лет основной массив вновь создаваемых текстов станет 
+любительским и откровенно коммерческим?<br>- Как изменится деятельность литераторов и журналистов, что произойдет с рабочими местами специалистов по созданию текстов?<br>-
+ Как изменится издательская отрасль, ждет ли нас массовое разорение 
+издательств, и в чем состоит добавленная стоимость издательства?<br>- 
+Следует ли России ждать повышения роли зарубежных издательских систем 
+(Amazon Kindle и др.), повлияет ли на издательское дело присоединение к 
+ВТО?<br>- Как повлияет распространение цифрового издания на права 
+правообладателей текстов, как должно измениться законодательство об 
+авторском праве так, чтобы права издателей, авторов и читателей не были 
+ущемлены?</div><div class="entryMetadata"><ul><li><span class="entryMetadata-label">Tags:</span><span class="entryMetadata-content"><a href="http://ammosov.livejournal.com/tag/%D0%B0%D0%B2%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B0%D0%B2%D0%BE">авторское право</a>, <a href="http://ammosov.livejournal.com/tag/%D0%B8%D0%BD%D0%BD%D0%BE%D0%B2%D0%B0%D1%86%D0%B8%D0%B8">инновации</a></span></li></ul></div></td></tr><tr><td colspan="2">
+          <div class="entryLinkbar"><ul>
+          <li><a href="http://ammosov.livejournal.com/958456.html">Read 14</a></li><li><a onclick="return QuickReply.reply('qrammosov958456',0,'')" href="http://ammosov.livejournal.com/958456.html?mode=reply" rel="nofollow">Speak</a></li><li><a href="http://ammosov.livejournal.com/958456.html">Ссылка</a></li><li><a href="http://www.livejournal.com/edittags.bml?journal=ammosov&amp;itemid=958456">Edit Tags</a></li><li><a href="http://www.livejournal.com/tools/memadd.bml?journal=ammosov&amp;itemid=958456">Remember</a></li><li><a href="#">Поделиться</a></li><script type="text/javascript">LJShare.link({"url":"http://ammosov.livejournal.com/958456.html","title":"Круглый стол в АЦ ПРФ по переходу от бумаги к цифре"});</script><li><a href="http://www.livejournal.com/manage/subscriptions/entry.bml?journal=ammosov&amp;itemid=958456">Track Comments</a></li><li><a href="http://www.livejournal.com/tools/content_flag.bml?user=ammosov&amp;itemid=958456">Пожаловаться</a></li>
+          </ul></div> <!-- entryLinkbar -->
+          <div class="quickreply_entry" id="ljqrtqrammosov958456" style="display: none;"></div><script type="text/javascript">
+
+               var userpicmap = {"pic#116559315":"http://l-userpic.livejournal.com/116559315/47039533"};
+               var defaultpicurl = "http://l-userpic.livejournal.com/116559315/47039533";
+               document.write("<input type=\'hidden\' name=\"saved_subject\" id=\"saved_subject\" /><input type=\'hidden\' name=\"saved_body\" id=\"saved_body\" /><input type=\'hidden\' name=\"saved_spell\" id=\"saved_spell\" /><input type=\'hidden\' name=\"saved_upic\" id=\"saved_upic\" /><input type=\'hidden\' name=\"saved_dtid\" id=\"saved_dtid\" /><input type=\'hidden\' name=\"saved_ptid\" id=\"saved_ptid\" />");
+               var de = document.createElement('div');
+               de.id = 'qrdiv';
+               de.innerHTML = "<div id=\'qrformdiv\'><form id=\'qrform\' name=\'qrform\' method=\'POST\' action=\'http://www.livejournal.com/talkpost_do.bml\'><input type=\'hidden\' name=\"lj_form_auth\" value=\"c0:1365469200:852:86400:d8dIXEVjuz-47039533-150:9e3d9907be0195f12d2a5fcdf366cee9\" /><input type=\'hidden\' name=\"replyto\" value=\"\" id=\"replyto\" /><input type=\'hidden\' name=\"parenttalkid\" value=\"\" id=\"parenttalkid\" /><input type=\'hidden\' name=\"journal\" value=\"ammosov\" id=\"journal\" /><input type=\'hidden\' name=\"itemid\" value=\"958456\" id=\"itemid\" /><input type=\'hidden\' name=\"usertype\" value=\"cookieuser\" id=\"usertype\" /><input type=\'hidden\' name=\"qr\" value=\"1\" id=\"qr\" /><input type=\'hidden\' name=\"cookieuser\" value=\"1i7\" id=\"cookieuser\" /><input type=\'hidden\' name=\"dtid\" value=\"\" id=\"dtid\" /><input type=\'hidden\' name=\"basepath\" value=\"http://ammosov.livejournal.com/958456.html?\" id=\"basepath\" /><input type=\'hidden\' name=\"stylemine\" value=\"0\" id=\"stylemine\" /><input type=\'hidden\' name=\"viewing_thread\" value=\"\" id=\"viewing_thread\" /><input type=\'hidden\' name=\"chrp1\" value=\"958456-1520615-1365469200-my8pca7CEH7WeeVzFDAX-2786527f42cbad734d56bc7660ba005a\" /><table style=\'border: 1px solid black\'><tr valign=\'center\'><td align=\'right\'><b>Как:</b></td><td align=\'left\'><span  class=\"ljuser  i-ljuser     \"  lj:user=\"1i7\"><a href=\"http://1i7.livejournal.com/profile\" ><img width=\"16\" height=\"16\"  class=\"i-ljuser-userhead\"  src=\"http://l-stat.livejournal.com/img/userinfo.gif?v=103\" /></a><a href=\"http://1i7.livejournal.com/\" class=\"i-ljuser-username\"   ><b>1i7</b></a></span></td><td align=\'center\'>Использовать <a href=\'http://www.livejournal.com/allpics.bml?user=1i7\'>картинку</a>:&nbsp;<select tabindex=\"8\" name=\"prop_picture_keyword\" id=\"prop_picture_keyword\">\n<option value=\"\" selected=\'selected\' >(по умолчанию)</option>\n<option value=\"pic#116559315\" >pic#116559315</option>\n</select>\n                <input type=\"button\" id=\"lj_userpicselect\" value=\"Browse\" onclick=\"QuickReply.userpicSelect()\" tabindex=\"9\" />\n                 <a href=\"http://www.livejournal.com/support/faqbrowse.bml?faqid=46\" class=\"helplink\" target=\"_blank\"><img src=\"http://l-stat.livejournal.com/img/help.gif?v=6803\" alt=\"Help\" title=\"Help\" width=\"14\" height=\"14\" border=\"0\" /></a></td></tr><tr><td align=\'right\' valign=\'top\'><b>Тема:</b></td><td colspan=\'2\' align=\'left\'><input class=\'textbox\' type=\'text\' size=\'50\' maxlength=\'100\' name=\'subject\' id=\'subject\' value=\'\' tabindex=\'10\' /></td></tr><tr valign=\'top\'><td align=\'right\'><b>Сообщение:</b></td><td colspan=\'3\' style=\'width: 90%\'><textarea class=\'textbox\' rows=\'10\' cols=\'50\' wrap=\'soft\' name=\'body\' id=\'body\' style=\'width: 99%\' tabindex=\'20\'></textarea></td></tr><tr><td>&nbsp;</td><td colspan=\'3\' align=\'left\'><input type=\'submit\' name=\"submitpost\" value=\"Добавить комментарий\" id=\"submitpost\" onclick=\"if (QuickReply.check()){ QuickReply.submit() }\" tabindex=\'30\'  />&nbsp;<input type=\'submit\' name=\"submitmoreopts\" value=\"Больше возможностей...\" tabindex=\"31\" id=\"submitmoreopts\" onclick=\"if (QuickReply.more()){ QuickReply.submit() }\" />&nbsp;<input type=\'checkbox\' name=\'do_spellcheck\' value=\'1\' id=\'do_spellcheck\' tabindex=\'32\' /> <label for=\'do_spellcheck\'>Правописание и проверка вида</label><br /><span class=\'de\'><b>Внимание!</b> Этот пользователь включил сохранение адресов IP тех, кто оставляет комментарии к его журналу.</span> <a href=\"http://www.livejournal.com/support/faqbrowse.bml?faqid=66\" class=\"helplink\" target=\"_blank\"><img src=\"http://l-stat.livejournal.com/img/help.gif?v=6803\" alt=\"Help\" title=\"Help\" width=\"14\" height=\"14\" border=\"0\" /></a></td></tr></table></form></div>";
+               de.style.display = 'none';
+               document.body.insertBefore(de, document.body.firstChild);
+           </script><input name="saved_subject" id="saved_subject" type="hidden"><input name="saved_body" id="saved_body" type="hidden"><input name="saved_spell" id="saved_spell" type="hidden"><input name="saved_upic" id="saved_upic" type="hidden"><input name="saved_dtid" id="saved_dtid" type="hidden"><input name="saved_ptid" id="saved_ptid" type="hidden"></td></tr></tbody></table>
+    </div> <!-- entryHolder -->
+    
+    <div class="bodyheaderblock" id="comments">
+        <div class="body-midtitle">Comments&nbsp;</div>
+    </div>
+  <div style="margin-left: 0px;" id="ljcmt22575352" class="ljcmt_full">
+<a name="t22575352"></a>
+    <div class="commentHolder"><div class="commentHeader"><span title="32 minutes с момента записи, 7-апр-2013 10:15 pm none (по времени ramlamyammambam)">8-апр-2013 05:15 am none (UTC)</span></div><table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr valign="top"><td>
+          <table class="commentUserinfo" align="left" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td>
+          <div class="commentUserinfo-usericon"><a href="http://www.livejournal.com/allpics.bml?user=ramlamyammambam"><img class=" ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/4839059.jpg" alt="" width="50" height="47"></a></div><div class="commentUserinfo-username"><span class="ljuser" style="white-space:nowrap;"><span class="ljuser  i-ljuser     " lj:user="ramlamyammambam"><a href="http://ramlamyammambam.livejournal.com/profile"><img class="i-ljuser-userhead ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/userinfo.gif" width="16" height="16"></a><a href="http://ramlamyammambam.livejournal.com/" class="i-ljuser-username"><b>ramlamyammambam</b></a></span></span></div>
+          </td></tr></tbody></table>
+          </td><td width="100%"><div class="commentText">Я бы еще добавил вопрос.<br>Как и чем можно помочь российским правообладателям интегрироваться в зарубежные издательские системы?</div></td></tr><tr><td colspan="2">
+          <div class="commentLinkbar"><ul>
+          <li><a onclick="return QuickReply.reply('22575352',88184,'')" href="http://ammosov.livejournal.com/958456.html?replyto=22575352" rel="nofollow">Ответить</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22575352#t22575352">Ветвь дискуссии</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22575352#t22575352">Link</a></li><li><a href="http://www.livejournal.com/manage/subscriptions/comments.bml?journal=ammosov&amp;talkid=22575352">Отслеживать</a></li>
+          </ul></div>
+          <div class="quickreply_comment" id="ljqrt22575352" style="display: none;"></div></td></tr></tbody></table>
+    </div>
+    </div><div style="margin-left: 25px;" id="ljcmt22575608" class="ljcmt_full">
+<a name="t22575608"></a>
+    <div class="commentHolder"><div class="commentHeader"><span title="37 minutes с момента записи, 8-апр-2013 09:20 am none (по времени ammosov)">8-апр-2013 05:20 am none (UTC)</span></div><table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr valign="top"><td>
+          <table class="commentUserinfo" align="left" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td>
+          <div class="commentUserinfo-usericon"><a href="http://www.livejournal.com/allpics.bml?user=ammosov"><img class=" ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/1520615.jpg" alt="" width="100" height="96"></a></div><div class="commentUserinfo-username"><span class="ljuser" style="white-space:nowrap;"><span class="ljuser  i-ljuser     " lj:user="ammosov"><a href="http://ammosov.livejournal.com/profile"><img class="i-ljuser-userhead ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/userinfo.gif" width="16" height="16"></a><a href="http://ammosov.livejournal.com/" class="i-ljuser-username"><b>ammosov</b></a></span></span></div>
+          </td></tr></tbody></table>
+          </td><td width="100%"><div class="commentText">Законный вопрос. Напиши мне мылом, как твои дела подвигаются. </div></td></tr><tr><td colspan="2">
+          <div class="commentLinkbar"><ul>
+          <li><a onclick="return QuickReply.reply('22575608',88185,'')" href="http://ammosov.livejournal.com/958456.html?replyto=22575608" rel="nofollow">Ответить</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22575352#t22575352">Уровень выше</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22575608#t22575608">Ветвь дискуссии</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22575608#t22575608">Link</a></li><li><a href="http://www.livejournal.com/manage/subscriptions/comments.bml?journal=ammosov&amp;talkid=22575608">Отслеживать</a></li>
+          </ul></div>
+          <div class="quickreply_comment" id="ljqrt22575608" style="display: none;"></div></td></tr></tbody></table>
+    </div>
+    </div><div style="margin-left: 0px;" id="ljcmt22575864" class="ljcmt_full">
+<a name="t22575864"></a>
+    <div class="commentHolder"><div class="commentHeader"><span title="52 minutes с момента записи, 8-апр-2013 01:35 am none (по времени alextr98)">8-апр-2013 05:35 am none (UTC)</span></div><table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr valign="top"><td>
+          <table class="commentUserinfo" align="left" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td>
+          <div class="commentUserinfo-usericon"><a href="http://www.livejournal.com/allpics.bml?user=alextr98"><img class=" ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/6107747.gif" alt="" width="75" height="100"></a></div><div class="commentUserinfo-username"><span class="ljuser" style="white-space:nowrap;"><span class="ljuser  i-ljuser     " lj:user="alextr98"><a href="http://alextr98.livejournal.com/profile"><img class="i-ljuser-userhead ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/userinfo.gif" width="16" height="16"></a><a href="http://alextr98.livejournal.com/" class="i-ljuser-username"><b>alextr98</b></a></span></span></div>
+          </td></tr></tbody></table>
+          </td><td width="100%"><div class="commentText">Заинтересовался.<br>Протокольчики круглого стола выложите, я так понимаю?</div></td></tr><tr><td colspan="2">
+          <div class="commentLinkbar"><ul>
+          <li><a onclick="return QuickReply.reply('22575864',88186,'')" href="http://ammosov.livejournal.com/958456.html?replyto=22575864" rel="nofollow">Ответить</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22575864#t22575864">Ветвь дискуссии</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22575864#t22575864">Link</a></li><li><a href="http://www.livejournal.com/manage/subscriptions/comments.bml?journal=ammosov&amp;talkid=22575864">Отслеживать</a></li>
+          </ul></div>
+          <div class="quickreply_comment" id="ljqrt22575864" style="display: none;"></div></td></tr></tbody></table>
+    </div>
+    </div><div style="margin-left: 25px;" id="ljcmt22576120" class="ljcmt_full">
+<a name="t22576120"></a>
+    <div class="commentHolder"><div class="commentHeader"><span title="55 minutes с момента записи, 8-апр-2013 09:38 am none (по времени ammosov)">8-апр-2013 05:38 am none (UTC)</span></div><table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr valign="top"><td>
+          <table class="commentUserinfo" align="left" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td>
+          <div class="commentUserinfo-usericon"><a href="http://www.livejournal.com/allpics.bml?user=ammosov"><img class=" ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/1520615.jpg" alt="" width="100" height="96"></a></div><div class="commentUserinfo-username"><span class="ljuser" style="white-space:nowrap;"><span class="ljuser  i-ljuser     " lj:user="ammosov"><a href="http://ammosov.livejournal.com/profile"><img class="i-ljuser-userhead ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/userinfo.gif" width="16" height="16"></a><a href="http://ammosov.livejournal.com/" class="i-ljuser-username"><b>ammosov</b></a></span></span></div>
+          </td></tr></tbody></table>
+          </td><td width="100%"><div class="commentText">Протокол не 
+обещаю, 4 часа с диктофона пока расшифруют... А отчет будет, опять же 
+глядишь и пресса что напишет. Может и видеозапись будет, хотя пока такой
+ возможностью не обзавелись. </div></td></tr><tr><td colspan="2">
+          <div class="commentLinkbar"><ul>
+          <li><a onclick="return QuickReply.reply('22576120',88187,'')" href="http://ammosov.livejournal.com/958456.html?replyto=22576120" rel="nofollow">Ответить</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22575864#t22575864">Уровень выше</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22576120#t22576120">Ветвь дискуссии</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22576120#t22576120">Link</a></li><li><a href="http://www.livejournal.com/manage/subscriptions/comments.bml?journal=ammosov&amp;talkid=22576120">Отслеживать</a></li>
+          </ul></div>
+          <div class="quickreply_comment" id="ljqrt22576120" style="display: none;"></div></td></tr></tbody></table>
+    </div>
+    </div><div style="margin-left: 50px;" id="ljcmt22576376" class="ljcmt_full">
+<a name="t22576376"></a>
+    <div class="commentHolder"><div class="commentHeader"><span title="2 hours с момента записи, 8-апр-2013 11:27 am none (по времени swinks)">8-апр-2013 07:27 am none (UTC)</span></div><table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr valign="top"><td>
+          <table class="commentUserinfo" align="left" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td>
+          <div class="commentUserinfo-usericon"><a href="http://www.livejournal.com/allpics.bml?user=swinks"><img class=" ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/1111197.gif" alt="" width="100" height="100"></a></div><div class="commentUserinfo-username"><span class="ljuser" style="white-space:nowrap;"><span class="ljuser  i-ljuser     " lj:user="swinks"><a href="http://swinks.livejournal.com/profile"><img class="i-ljuser-userhead ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/userinfo.gif" width="16" height="16"></a><a href="http://swinks.livejournal.com/" class="i-ljuser-username"><b>swinks</b></a></span></span></div>
+          </td></tr></tbody></table>
+          </td><td width="100%"><div class="commentText">хорошенький переход к цифре получается</div></td></tr><tr><td colspan="2">
+          <div class="commentLinkbar"><ul>
+          <li><a onclick="return QuickReply.reply('22576376',88188,'')" href="http://ammosov.livejournal.com/958456.html?replyto=22576376" rel="nofollow">Ответить</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22576120#t22576120">Уровень выше</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22576376#t22576376">Ветвь дискуссии</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22576376#t22576376">Link</a></li><li><a href="http://www.livejournal.com/manage/subscriptions/comments.bml?journal=ammosov&amp;talkid=22576376">Отслеживать</a></li>
+          </ul></div>
+          <div class="quickreply_comment" id="ljqrt22576376" style="display: none;"></div></td></tr></tbody></table>
+    </div>
+    </div><div style="margin-left: 75px;" id="ljcmt22576888" class="ljcmt_full">
+<a name="t22576888"></a>
+    <div class="commentHolder"><div class="commentHeader"><span title="4 hours с момента записи, 8-апр-2013 01:04 pm none (по времени ammosov)">8-апр-2013 09:04 am none (UTC)</span></div><table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr valign="top"><td>
+          <table class="commentUserinfo" align="left" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td>
+          <div class="commentUserinfo-usericon"><a href="http://www.livejournal.com/allpics.bml?user=ammosov"><img class=" ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/1520615.jpg" alt="" width="100" height="96"></a></div><div class="commentUserinfo-username"><span class="ljuser" style="white-space:nowrap;"><span class="ljuser  i-ljuser     " lj:user="ammosov"><a href="http://ammosov.livejournal.com/profile"><img class="i-ljuser-userhead ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/userinfo.gif" width="16" height="16"></a><a href="http://ammosov.livejournal.com/" class="i-ljuser-username"><b>ammosov</b></a></span></span></div>
+          </td></tr></tbody></table>
+          </td><td width="100%"><div class="commentText">Это от голоса к
+ цифре, а не от бумаги к цифре. От голоса труднее. Вот будет 
+распознавание на уровне студентки журфака налажено, тогда жизнь пойдет. </div></td></tr><tr><td colspan="2">
+          <div class="commentLinkbar"><ul>
+          <li><a onclick="return QuickReply.reply('22576888',88190,'')" href="http://ammosov.livejournal.com/958456.html?replyto=22576888" rel="nofollow">Ответить</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22576376#t22576376">Уровень выше</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22576888#t22576888">Ветвь дискуссии</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22576888#t22576888">Link</a></li><li><a href="http://www.livejournal.com/manage/subscriptions/comments.bml?journal=ammosov&amp;talkid=22576888">Отслеживать</a></li>
+          </ul></div>
+          <div class="quickreply_comment" id="ljqrt22576888" style="display: none;"></div></td></tr></tbody></table>
+    </div>
+    </div><div style="margin-left: 50px;" id="ljcmt22578168" class="ljcmt_full">
+<a name="t22578168"></a>
+    <div class="commentHolder"><div class="commentHeader"><span title="8 hours с момента записи, 8-апр-2013 09:08 am none (по времени alextr98)">8-апр-2013 01:08 pm none (UTC)</span> - <span class="commentHeaderSubject">Может и видеозапись будет, хотя пока такой возможность</span></div><table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr valign="top"><td>
+          <table class="commentUserinfo" align="left" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td>
+          <div class="commentUserinfo-usericon"><a href="http://www.livejournal.com/allpics.bml?user=alextr98"><img class=" ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/6107747.gif" alt="" width="75" height="100"></a></div><div class="commentUserinfo-username"><span class="ljuser" style="white-space:nowrap;"><span class="ljuser  i-ljuser     " lj:user="alextr98"><a href="http://alextr98.livejournal.com/profile"><img class="i-ljuser-userhead ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/userinfo.gif" width="16" height="16"></a><a href="http://alextr98.livejournal.com/" class="i-ljuser-username"><b>alextr98</b></a></span></span></div>
+          </td></tr></tbody></table>
+          </td><td width="100%"><div class="commentText">Что, в 21 веке нет видеозаписи?</div></td></tr><tr><td colspan="2">
+          <div class="commentLinkbar"><ul>
+          <li><a onclick="return QuickReply.reply('22578168',88195,'Re: Может и видеозапись будет, хотя пока такой возможность')" href="http://ammosov.livejournal.com/958456.html?replyto=22578168" rel="nofollow">Ответить</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22576120#t22576120">Уровень выше</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22578168#t22578168">Ветвь дискуссии</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22578168#t22578168">Link</a></li><li><a href="http://www.livejournal.com/manage/subscriptions/comments.bml?journal=ammosov&amp;talkid=22578168">Отслеживать</a></li>
+          </ul></div>
+          <div class="quickreply_comment" id="ljqrt22578168" style="display: none;"></div></td></tr></tbody></table>
+    </div>
+    </div><div style="margin-left: 75px;" id="ljcmt22578424" class="ljcmt_full">
+<a name="t22578424"></a>
+    <div class="commentHolder"><div class="commentHeader"><span title="14 hours с момента записи, 8-апр-2013 11:23 pm none (по времени ammosov)">8-апр-2013 07:23 pm none (UTC)</span> - <span class="commentHeaderSubject">Re: Может и видеозапись будет, хотя пока такой возможнос</span></div><table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr valign="top"><td>
+          <table class="commentUserinfo" align="left" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td>
+          <div class="commentUserinfo-usericon"><a href="http://www.livejournal.com/allpics.bml?user=ammosov"><img class=" ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/1520615.jpg" alt="" width="100" height="96"></a></div><div class="commentUserinfo-username"><span class="ljuser" style="white-space:nowrap;"><span class="ljuser  i-ljuser     " lj:user="ammosov"><a href="http://ammosov.livejournal.com/profile"><img class="i-ljuser-userhead ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/userinfo.gif" width="16" height="16"></a><a href="http://ammosov.livejournal.com/" class="i-ljuser-username"><b>ammosov</b></a></span></span></div>
+          </td></tr></tbody></table>
+          </td><td width="100%"><div class="commentText">есть, когда аппаратура и оператор есть. не на айфон же мне стол писать.</div></td></tr><tr><td colspan="2">
+          <div class="commentLinkbar"><ul>
+          <li><a onclick="return QuickReply.reply('22578424',88196,'Re: Может и видеозапись будет, хотя пока такой возможнос')" href="http://ammosov.livejournal.com/958456.html?replyto=22578424" rel="nofollow">Ответить</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22578168#t22578168">Уровень выше</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22578424#t22578424">Ветвь дискуссии</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22578424#t22578424">Link</a></li><li><a href="http://www.livejournal.com/manage/subscriptions/comments.bml?journal=ammosov&amp;talkid=22578424">Отслеживать</a></li>
+          </ul></div>
+          <div class="quickreply_comment" id="ljqrt22578424" style="display: none;"></div></td></tr></tbody></table>
+    </div>
+    </div><div style="margin-left: 0px;" id="ljcmt22576632" class="ljcmt_full">
+<a name="t22576632"></a>
+    <div class="commentHolder"><div class="commentHeader"><span title="4 hours с момента записи, 8-апр-2013 01:03 pm none (по времени slavae)">8-апр-2013 09:03 am none (UTC)</span></div><table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr valign="top"><td>
+          <table class="commentUserinfo" align="left" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td>
+          <div class="commentUserinfo-usericon"><a href="http://www.livejournal.com/allpics.bml?user=slavae"><img class=" ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/10873840.jpg" alt="" width="83" height="100"></a></div><div class="commentUserinfo-username"><span class="ljuser" style="white-space:nowrap;"><span class="ljuser  i-ljuser     " lj:user="slavae"><a href="http://slavae.livejournal.com/profile"><img class="i-ljuser-userhead ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/userinfo.gif" width="16" height="16"></a><a href="http://slavae.livejournal.com/" class="i-ljuser-username"><b>slavae</b></a></span></span></div>
+          </td></tr></tbody></table>
+          </td><td width="100%"><div class="commentText">Ну хоть кто-то начал эту проблему поднимать.</div></td></tr><tr><td colspan="2">
+          <div class="commentLinkbar"><ul>
+          <li><a onclick="return QuickReply.reply('22576632',88189,'')" href="http://ammosov.livejournal.com/958456.html?replyto=22576632" rel="nofollow">Ответить</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22576632#t22576632">Ветвь дискуссии</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22576632#t22576632">Link</a></li><li><a href="http://www.livejournal.com/manage/subscriptions/comments.bml?journal=ammosov&amp;talkid=22576632">Отслеживать</a></li>
+          </ul></div>
+          <div class="quickreply_comment" id="ljqrt22576632" style="display: none;"></div></td></tr></tbody></table>
+    </div>
+    </div><div style="margin-left: 0px;" id="ljcmt22577144" class="ljcmt_full">
+<a name="t22577144"></a>
+    <div class="commentHolder"><div class="commentHeader"><span title="5 hours с момента записи">8-апр-2013 10:07 am none (UTC)</span></div><table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr valign="top"><td>
+          <table class="commentUserinfo" align="left" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td>
+          <div class="commentUserinfo-usericon"><a href="http://www.livejournal.com/allpics.bml?user=golos_dobra"><img class=" ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/51779831.jpg" alt="" width="100" height="100"></a></div><div class="commentUserinfo-username"><span class="ljuser" style="white-space:nowrap;"><span class="ljuser  i-ljuser     " lj:user="golos_dobra"><a href="http://golos-dobra.livejournal.com/profile"><img class="i-ljuser-userhead ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/userinfo.gif" width="16" height="16"></a><a href="http://golos-dobra.livejournal.com/" class="i-ljuser-username"><b>golos_dobra</b></a></span></span></div>
+          </td></tr></tbody></table>
+          </td><td width="100%"><div class="commentText">За что понизили гугль пиар ранг ЖЖ-юзерам?<br><br>Где раньше было пять, теперь четыре, где было четыре, стало три, <br>а кое-кого вообще обнулили...<br><br>Как жить?<br><br>Никакой онлай не представляет ничего ценного без ценного оффлайна.<br>Бумага пусть и не приносит профита, зато она якорь для крепкого стояния в онлайне.</div></td></tr><tr><td colspan="2">
+          <div class="commentLinkbar"><ul>
+          <li><a onclick="return QuickReply.reply('22577144',88191,'')" href="http://ammosov.livejournal.com/958456.html?replyto=22577144" rel="nofollow">Ответить</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22577144#t22577144">Ветвь дискуссии</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22577144#t22577144">Link</a></li><li><a href="http://www.livejournal.com/manage/subscriptions/comments.bml?journal=ammosov&amp;talkid=22577144">Отслеживать</a></li>
+          </ul></div>
+          <div class="quickreply_comment" id="ljqrt22577144" style="display: none;"></div></td></tr></tbody></table>
+    </div>
+    </div><div style="margin-left: 0px;" id="ljcmt22577400" class="ljcmt_full">
+<a name="t22577400"></a>
+    <div class="commentHolder"><div class="commentHeader"><span title="7 hours с момента записи, 8-апр-2013 04:12 pm none (по времени porco_ross0)">8-апр-2013 12:12 pm none (UTC)</span></div><table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr valign="top"><td>
+          <table class="commentUserinfo" align="left" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td>
+          <div class="commentUserinfo-usericon"><a href="http://www.livejournal.com/allpics.bml?user=porco_ross0"><img class=" ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/19325444.jpg" alt="" width="100" height="100"></a></div><div class="commentUserinfo-username"><span class="ljuser" style="white-space:nowrap;"><span class="ljuser  i-ljuser     " lj:user="porco_ross0"><a href="http://porco-ross0.livejournal.com/profile"><img class="i-ljuser-userhead ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/userinfo.gif" width="16" height="16"></a><a href="http://porco-ross0.livejournal.com/" class="i-ljuser-username"><b>porco_ross0</b></a></span></span></div>
+          </td></tr></tbody></table>
+          </td><td width="100%"><div class="commentText">Какой драный боянище.<br>Смысл дискутировать, когда в америках это все уже случилось?</div></td></tr><tr><td colspan="2">
+          <div class="commentLinkbar"><ul>
+          <li><a onclick="return QuickReply.reply('22577400',88192,'')" href="http://ammosov.livejournal.com/958456.html?replyto=22577400" rel="nofollow">Ответить</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22577400#t22577400">Ветвь дискуссии</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22577400#t22577400">Link</a></li><li><a href="http://www.livejournal.com/manage/subscriptions/comments.bml?journal=ammosov&amp;talkid=22577400">Отслеживать</a></li>
+          </ul></div>
+          <div class="quickreply_comment" id="ljqrt22577400" style="display: none;"></div></td></tr></tbody></table>
+    </div>
+    </div><div style="margin-left: 25px;" id="ljcmt22577656" class="ljcmt_full">
+<a name="t22577656"></a>
+    <div class="commentHolder"><div class="commentHeader"><span title="7 hours с момента записи, 8-апр-2013 04:14 pm none (по времени ammosov)">8-апр-2013 12:14 pm none (UTC)</span></div><table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr valign="top"><td>
+          <table class="commentUserinfo" align="left" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td>
+          <div class="commentUserinfo-usericon"><a href="http://www.livejournal.com/allpics.bml?user=ammosov"><img class=" ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/1520615.jpg" alt="" width="100" height="96"></a></div><div class="commentUserinfo-username"><span class="ljuser" style="white-space:nowrap;"><span class="ljuser  i-ljuser     " lj:user="ammosov"><a href="http://ammosov.livejournal.com/profile"><img class="i-ljuser-userhead ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/userinfo.gif" width="16" height="16"></a><a href="http://ammosov.livejournal.com/" class="i-ljuser-username"><b>ammosov</b></a></span></span></div>
+          </td></tr></tbody></table>
+          </td><td width="100%"><div class="commentText">Пока не случилось, а случается, и у нас тоже случается. </div></td></tr><tr><td colspan="2">
+          <div class="commentLinkbar"><ul>
+          <li><a onclick="return QuickReply.reply('22577656',88193,'')" href="http://ammosov.livejournal.com/958456.html?replyto=22577656" rel="nofollow">Ответить</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22577400#t22577400">Уровень выше</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22577656#t22577656">Ветвь дискуссии</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22577656#t22577656">Link</a></li><li><a href="http://www.livejournal.com/manage/subscriptions/comments.bml?journal=ammosov&amp;talkid=22577656">Отслеживать</a></li>
+          </ul></div>
+          <div class="quickreply_comment" id="ljqrt22577656" style="display: none;"></div></td></tr></tbody></table>
+    </div>
+    </div><div style="margin-left: 50px;" id="ljcmt22577912" class="ljcmt_full">
+<a name="t22577912"></a>
+    <div class="commentHolder"><div class="commentHeader"><span title="7 hours с момента записи, 8-апр-2013 04:18 pm none (по времени porco_ross0)">8-апр-2013 12:18 pm none (UTC)</span></div><table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr valign="top"><td>
+          <table class="commentUserinfo" align="left" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td>
+          <div class="commentUserinfo-usericon"><a href="http://www.livejournal.com/allpics.bml?user=porco_ross0"><img class=" ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/19325444.jpg" alt="" width="100" height="100"></a></div><div class="commentUserinfo-username"><span class="ljuser" style="white-space:nowrap;"><span class="ljuser  i-ljuser     " lj:user="porco_ross0"><a href="http://porco-ross0.livejournal.com/profile"><img class="i-ljuser-userhead ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/userinfo.gif" width="16" height="16"></a><a href="http://porco-ross0.livejournal.com/" class="i-ljuser-username"><b>porco_ross0</b></a></span></span></div>
+          </td></tr></tbody></table>
+          </td><td width="100%"><div class="commentText">Изволите шутить? <br>В
+ Штатах цифра уже по продажам не только превысила бумагу, но прошла пик 
+вышла на плато. Это теория. Формат .folio уже устаканился в 25ой версии и
+ месяца четыре не обнавлялся. Это практика.</div></td></tr><tr><td colspan="2">
+          <div class="commentLinkbar"><ul>
+          <li><a onclick="return QuickReply.reply('22577912',88194,'')" href="http://ammosov.livejournal.com/958456.html?replyto=22577912" rel="nofollow">Ответить</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22577656#t22577656">Уровень выше</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22577912#t22577912">Ветвь дискуссии</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22577912#t22577912">Link</a></li><li><a href="http://www.livejournal.com/manage/subscriptions/comments.bml?journal=ammosov&amp;talkid=22577912">Отслеживать</a></li>
+          </ul></div>
+          <div class="quickreply_comment" id="ljqrt22577912" style="display: none;"></div></td></tr></tbody></table>
+    </div>
+    </div><div style="margin-left: 0px;" id="ljcmt22578680" class="ljcmt_full">
+<a name="t22578680"></a>
+    <div class="commentHolder"><div class="commentHeader"><span title="16 hours с момента записи">8-апр-2013 09:20 pm none (UTC)</span></div><table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr valign="top"><td>
+          <table class="commentUserinfo" align="left" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td>
+          <div class="commentUserinfo-usericon"><a href="http://www.livejournal.com/allpics.bml?user=rv_alymov"><img class=" ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/50766757.png" alt="" width="80" height="80"></a></div><div class="commentUserinfo-username"><span class="ljuser" style="white-space:nowrap;"><span class="ljuser  i-ljuser     " lj:user="rv_alymov"><a href="http://rv-alymov.livejournal.com/profile"><img class="i-ljuser-userhead ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/userinfo.gif" width="16" height="16"></a><a href="http://rv-alymov.livejournal.com/" class="i-ljuser-username"><b>rv_alymov</b></a></span></span></div>
+          </td></tr></tbody></table>
+          </td><td width="100%"><div class="commentText">Хочу принять участие в круглом столе. Алымов Роман Викторович.<br><br><span class="ljedittime"><em>Edited at <span title="">2013-04-08 21:21 (UTC)</span></em></span></div></td></tr><tr><td colspan="2">
+          <div class="commentLinkbar"><ul>
+          <li><a onclick="return QuickReply.reply('22578680',88197,'')" href="http://ammosov.livejournal.com/958456.html?replyto=22578680" rel="nofollow">Ответить</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22578680#t22578680">Ветвь дискуссии</a></li><li><a href="http://ammosov.livejournal.com/958456.html?thread=22578680#t22578680">Link</a></li><li><a href="http://www.livejournal.com/manage/subscriptions/comments.bml?journal=ammosov&amp;talkid=22578680">Отслеживать</a></li>
+          </ul></div>
+          <div class="quickreply_comment" id="ljqrt22578680" style="display: none;"></div></td></tr></tbody></table>
+    </div>
+    </div><div class="bodynavblock"><b><a href="http://ammosov.livejournal.com/958456.html?mode=reply">Leave a Comment to the Entry</a></b></div></td><td valign="top" width="200px"><div class="sidebar">
+    <div class="sidebox">
+    
+      <div class="sideboxTitle">Entry Tags</div>
+      <div class="sideboxContent" id="tags_sidebox"><a href="http://ammosov.livejournal.com/tag/acta%20europeorum">acta europeorum</a>, <a href="http://ammosov.livejournal.com/tag/android">android</a>, <a href="http://ammosov.livejournal.com/tag/anticredit">anticredit</a>, <a href="http://ammosov.livejournal.com/tag/excel">excel</a>, <a href="http://ammosov.livejournal.com/tag/finmodel">finmodel</a>, <a href="http://ammosov.livejournal.com/tag/intellectual%20property">intellectual property</a>, <a href="http://ammosov.livejournal.com/tag/links">links</a>, <a href="http://ammosov.livejournal.com/tag/mobile">mobile</a>, <a href="http://ammosov.livejournal.com/tag/%D0%B0%D0%B2%D1%82%D0%BE%D0%BB%D1%83%D0%BD%D1%8C%D1%8E%D0%B9">автолуньюй</a>, <a href="http://ammosov.livejournal.com/tag/%D0%B0%D0%B2%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BF%D1%80%D0%B0%D0%B2%D0%BE">авторское право</a>, <a href="http://ammosov.livejournal.com/tag/%D0%B2%D0%B5%D0%BD%D1%87%D1%83%D1%80%D0%BD%D1%8B%D0%B9">венчурный</a>, <a href="http://ammosov.livejournal.com/tag/%D0%B2%D1%8B%D1%81%D0%BE%D0%BA%D0%B8%D0%B5%20%D0%BE%D1%82%D0%BD%D0%BE%D1%88%D0%B5%D0%BD%D0%B8%D1%8F">высокие отношения</a>, <a href="http://ammosov.livejournal.com/tag/%D0%B7%D0%BB%D1%8B%D0%B5%20%D1%82%D0%B5%D0%BA%D1%81%D1%82%D1%8B">злые тексты</a>, <a href="http://ammosov.livejournal.com/tag/%D0%B7%D0%BE%D0%B3%D0%B0%D1%82%D0%BA%D0%BE">зогатко</a>, <a href="http://ammosov.livejournal.com/tag/%D0%B8%D0%BD%D0%BD%D0%BE%D0%B2%D0%B0%D1%86%D0%B8%D0%B8">инновации</a>, <a href="http://ammosov.livejournal.com/tag/%D0%B9%D0%BE%D0%B4%D0%B0">йода</a>, <a href="http://ammosov.livejournal.com/tag/%D0%BA%D0%B0%D1%82%D0%B0%D1%81%D1%82%D1%80%D0%BE%D1%84%D1%8B">катастрофы</a>, <a href="http://ammosov.livejournal.com/tag/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0">музыка</a>, <a href="http://ammosov.livejournal.com/tag/%D0%BD%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7%D0%BC">национализм</a>, <a href="http://ammosov.livejournal.com/tag/%D0%BD%D0%B5%D0%BD%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5">ненаписанное</a>, <a href="http://ammosov.livejournal.com/tag/%D0%BE%D0%BF%D1%8B%D1%82%D0%BD%D1%8B%D0%B9%20%D0%B3%D0%BE%D1%81%D1%87%D0%B8%D0%BD%D0%BE%D0%B2%D0%BD%D0%B8%D0%BA%20%D0%BA%D1%83%D0%B2%D1%88%D0%B8%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D1%8B%D0%BB%D0%BE">опытный госчиновник кувшинное рыло</a>, <a href="http://ammosov.livejournal.com/tag/%D0%BE%D1%80%D1%83%D0%B6%D0%B8%D0%B5">оружие</a>, <a href="http://ammosov.livejournal.com/tag/%D0%BF%D1%80%D0%B5%D0%B7%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D0%B8">презентации</a>, <a href="http://ammosov.livejournal.com/tag/%D0%BF%D1%80%D0%BE%D1%82%D0%B8%D0%B2%20%D0%B3%D0%BE%D0%BC%D0%BE%D1%84%D0%BE%D0%B1%D0%B8%D0%B8">против гомофобии</a>, <a href="http://ammosov.livejournal.com/tag/%D0%BF%D1%83%D0%B7%D1%8B%D1%80%D1%8C">пузырь</a>, <a href="http://ammosov.livejournal.com/tag/%D1%80%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D0%BA%D0%B0">риторика</a>, <a href="http://ammosov.livejournal.com/tag/%D1%81%D0%BA%D0%B5%D0%BF%D1%82%D0%B8%D0%BA">скептик</a>, <a href="http://ammosov.livejournal.com/tag/%D1%81%D0%BC%D1%83%D1%82%D0%BD%D0%BE%D0%B5%20%D0%B2%D1%80%D0%B5%D0%BC%D1%8F">смутное время</a>, <a href="http://ammosov.livejournal.com/tag/%D1%81%D1%82%D0%B0%D1%80%D1%82%D0%B0%D0%BF">стартап</a>, <a href="http://ammosov.livejournal.com/tag/%D1%81%D1%82%D0%B8%D1%85%D0%B8">стихи</a>, <a href="http://ammosov.livejournal.com/tag/%D1%82%D0%B2%D0%B8%D1%82">твит</a>, <a href="http://ammosov.livejournal.com/tag/%D1%83%D1%87%D0%BE%D0%BD%D1%8B%D0%B8">учоныи</a>, <a href="http://ammosov.livejournal.com/tag/%D1%86%D0%B8%D0%BD%D0%B8%D0%BA">циник</a>, <a href="http://ammosov.livejournal.com/tag/%D1%88%D0%B0%D0%BE%D0%BB%D0%B8%D0%BD%D1%8C">шаолинь</a>, <a href="http://ammosov.livejournal.com/tag/%D1%8D%D1%82%D0%BE%D1%82%20%D0%BE%D0%BF%D1%80%D0%BE%D1%81%20%D1%81%D0%BE%D1%81%D0%B5%D1%82">этот опрос сосет</a>, <a href="http://ammosov.livejournal.com/tag/%D1%8D%D1%82%D0%BE%D1%82%20%D0%BF%D0%BE%D1%81%D1%82%20%D0%BF%D1%80%D0%BE%D0%BF%D0%BB%D0%B0%D1%87%D0%B5%D0%BD">этот пост проплачен</a></div>
+    </div> <!-- sidebox -->
+    
+    <div class="sidebox">
+    
+      <div class="sideboxTitle">Page Summary</div>
+      <div class="sideboxContent" id="summary"><div class="summaryList"><b>·&nbsp;</b><a href="#ammosov958456">Круглый стол в АЦ ПРФ по переходу от бумаги к цифре</a> <a href="http://ammosov.livejournal.com/958456.html">[+14]</a></div>
+      <div class="summaryList"><b>·&nbsp;</b><span class="ljuser  i-ljuser     " lj:user="ramlamyammambam"><a href="http://ramlamyammambam.livejournal.com/profile"><img class="i-ljuser-userhead ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/userinfo.gif" width="16" height="16"></a><a href="http://ramlamyammambam.livejournal.com/" class="i-ljuser-username"><b>ramlamyammambam</b></a></span> - <a href="#t22575352"><i>Вах, бэз заголовки!</i></a> [+1]</div><div class="summaryList"><b>·&nbsp;</b><span class="ljuser  i-ljuser     " lj:user="alextr98"><a href="http://alextr98.livejournal.com/profile"><img class="i-ljuser-userhead ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/userinfo.gif" width="16" height="16"></a><a href="http://alextr98.livejournal.com/" class="i-ljuser-username"><b>alextr98</b></a></span> - <a href="#t22575864"><i>Вах, бэз заголовки!</i></a> [+5]</div><div class="summaryList"><b>·&nbsp;</b><span class="ljuser  i-ljuser     " lj:user="slavae"><a href="http://slavae.livejournal.com/profile"><img class="i-ljuser-userhead ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/userinfo.gif" width="16" height="16"></a><a href="http://slavae.livejournal.com/" class="i-ljuser-username"><b>slavae</b></a></span> - <a href="#t22576632"><i>Вах, бэз заголовки!</i></a></div><div class="summaryList"><b>·&nbsp;</b><span class="ljuser  i-ljuser     " lj:user="golos_dobra"><a href="http://golos-dobra.livejournal.com/profile"><img class="i-ljuser-userhead ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/userinfo.gif" width="16" height="16"></a><a href="http://golos-dobra.livejournal.com/" class="i-ljuser-username"><b>golos_dobra</b></a></span> - <a href="#t22577144"><i>Вах, бэз заголовки!</i></a></div><div class="summaryList"><b>·&nbsp;</b><span class="ljuser  i-ljuser     " lj:user="porco_ross0"><a href="http://porco-ross0.livejournal.com/profile"><img class="i-ljuser-userhead ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/userinfo.gif" width="16" height="16"></a><a href="http://porco-ross0.livejournal.com/" class="i-ljuser-username"><b>porco_ross0</b></a></span> - <a href="#t22577400"><i>Вах, бэз заголовки!</i></a> [+2]</div><div class="summaryList"><b>·&nbsp;</b><span class="ljuser  i-ljuser     " lj:user="rv_alymov"><a href="http://rv-alymov.livejournal.com/profile"><img class="i-ljuser-userhead ContextualPopup" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/userinfo.gif" width="16" height="16"></a><a href="http://rv-alymov.livejournal.com/" class="i-ljuser-username"><b>rv_alymov</b></a></span> - <a href="#t22578680"><i>Вах, бэз заголовки!</i></a></div></div> <!--sidebox-summary -->
+    </div> <!-- sidebox -->
+    </div> <!--sidebar--></td></tr></tbody></table></div> <!--bodyblock--><div class="pagefooterblock">This page was loaded апр 9 2013, 1:14 am GMT.</div></div> <!--pageblock-->
+<script type="text/javascript">LiveJournal.injectScript('http://apis.google.com/js/plusone.js',{text:"{lang: 'ru'}"});</script><div class=" fb_reset" id="fb-root"><script async="" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/all.js"></script><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/xd_arbiter.htm" style="border: medium none;" tab-index="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_http" allowtransparency="true" name="fb_xdm_frame_http" scrolling="no" frameborder="0"></iframe><iframe src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/xd_arbiter_002.htm" style="border: medium none;" tab-index="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_https" allowtransparency="true" name="fb_xdm_frame_https" scrolling="no" frameborder="0"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/oauth.htm" style="display: none;" allowtransparency="true" name="f38242423d765be" scrolling="no" frameborder="0"></iframe></div></div></div>
+        <script type="text/javascript">
+          window.fbAsyncInit = function() {
+            FB.init({appId: '214181831945836', xfbml: true});
+          };
+
+          LiveJournal.injectScript(document.location.protocol + '//connect.facebook.net/ru_RU/all.js', null, document.getElementById('fb-root'))
+        </script>
+    <script type="text/javascript">LiveJournal.injectScript('http://surfingbird.ru/share/share.min.js');</script> <script type="text/javascript">LiveJournal.injectScript('http://platform.twitter.com/widgets.js');</script><script type="application/javascript">var _prum={id:"50e69c3994fe9c2c10000003"};var PRUM_EPISODES=PRUM_EPISODES||{};PRUM_EPISODES.q=[];PRUM_EPISODES.mark=function(b,a){PRUM_EPISODES.q.push(["mark",b,a||new Date().getTime()])};PRUM_EPISODES.measure=function(b,a,b){PRUM_EPISODES.q.push(["measure",b,a,b||new Date().getTime()])};PRUM_EPISODES.done=function(a){PRUM_EPISODES.q.push(["done",a])};PRUM_EPISODES.mark("firstbyte");(function(){var b=document.getElementsByTagName("script")[0];var a=document.createElement("script");a.type="text/javascript";a.async=true;a.charset="UTF-8";a.src="//rum-static.pingdom.net/prum.min.js";b.parentNode.insertBefore(a,b)})();</script>
+<script type="text/javascript">
+                    LJLive.ml_click_to_expand = 'Кликни или потяни';
+                    LJLive.ml_click_to_close = 'Нажми чтобы закрыть';
+                    document.write(LJLive.getStateCode());
+                </script><div class="b-ljtimes-wrapper" id="ljtime"><i class="i-ljtimes-border"></i><span class="i-ljtimes-btn" title="Кликни или потяни" onmousedown="return LJLive.tagMousedown(event)"><i class="i-ljtimes-drag"></i><i class="i-ljtimes-click"></i></span><iframe src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/__rpc_lj_times_string.htm" id="ljtime_iframe" width="100%" frameborder="0" height="24"></iframe></div><div id="ljtime_bottom" style="height:45px"></div><div id="hello-world" style="text-align: left; font-size:0; line-height:0; height:0; overflow:hidden;"><!-- tns-counter.ru -->
+<script type="text/javascript">
+var img = new Image();
+img.src = 'http://www.tns-counter.ru/V13a***' + document.referrer.replace(/\*/g,'%2a') + '*sup_ru/ru/UTF-8/tmsec=lj_blogs-us-nonad/';
+</script>
+<noscript>
+<img src="http://www.tns-counter.ru/V13a****sup_ru/ru/UTF-8/tmsec=lj_blogs-us-nonad/" alt="" />
+</noscript>
+<!--/ tns-counter.ru -->
+<!-- begin of Top100 code --> 
+
+<script id="top100Counter" type="text/javascript" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/top100.js"></script> 
+<noscript> 
+<img src="http://counter.rambler.ru/top100.cnt?1111412" alt="" width="1" height="1" border="0" /> 
+
+</noscript> 
+<!-- end of Top100 code -->
+
+        <!-- AdsSupCom -->
+        <iframe src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/adv.htm" id="adframe" style="width: 1px; height: 1px" scrolling="no" frameborder="0"></iframe>
+        <!-- /AdsSupCom --> 
+    
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24823174-1']);
+  _gaq.push(['_setDomainName', '.livejournal.com']);
+  _gaq.push(['_trackPageview']);
+  _gaq.push(['_trackPageLoadTime']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<!-- Begin comScore Tag 1.1111.15 -->
+<script type="text/javascript">
+// <![CDATA[
+function udm_(a){var b="comScore=",c=document,d=c.cookie,e="",f="indexOf",g="substring",h="length",i=2048,j,k="&ns_",l="&",m,n,o,p,q=window,r=q.encodeURIComponent||escape;if(d[f](b)+1)for(o=0,n=d.split(";"),p=n[h];o<p;o++)m=n[o][f](b),m+1&&(e=l+unescape(n[o][g](m+b[h])));a+=k+"_t="+ +(new Date)+k+"c="+(c.characterSet||c.defaultCharset||"")+"&c8="+r(c.title)+e+"&c7="+r(c.URL)+"&c9="+r(c.referrer),a[h]>i&&a[f](l)>0&&(j=a[g](0,i-8).lastIndexOf(l),a=(a[g](0,j)+k+"cut="+r(a[g](j+1)))[g](0,i)),c.images?(m=new Image,q.ns_p||(ns_p=m),m.src=a):c.write("<","p","><",'img src="',a,'" height="1" width="1" alt="*"',"><","/p",">")}
+udm_('http'+(document.location.href.charAt(4)=='s'?'s://sb':'://b')+'.scorecardresearch.com/b?c1=2&c2=7602110&sm_vd_cyrillic_status=Cyr&sm_vd_view_own_journal=no&sm_vd_id=2a2Ep1M+wbEc2Ml2C12fyA&sm_vd_login_status=login&sm_vd_account_level=paid&sm_vd_premium_package=paid&sm_vd_early_adopter=no&sm_vd_log_in_service=lj&sm_vd_viewing_scheme=horizon&sm_vd_view_in_my_style=no&sm_pd_visited_journal_account_type=personal&sm_pd_visited_journal_log_in_service=lj&sm_pd_ads_onpage=0&sm_pd_ad_eligible=no&sm_pd_adult_content=none&sm_pd_comments_style=undef&sm_pd_error_pages=undef&sm_pd_visited_journal_name=ammosov&sm_pd_page_type=journal&sm_pd_style_layout=undef&sm_pd_style_design=undef&sm_pd_style_system=undef&sm_pd_visited_journal_account_level=paid&sm_pd_early_adopter=no&sm_pd_visited_journal_premium_package=paid&sm_pd_page_group=PostMainPage');
+// ]]>
+</script>
+<noscript><p><img src="http://b.scorecardresearch.com/p?c1=2&c2=7602110&sm_vd_cyrillic_status=Cyr&sm_vd_view_own_journal=no&sm_vd_id=2a2Ep1M+wbEc2Ml2C12fyA&sm_vd_login_status=login&sm_vd_account_level=paid&sm_vd_premium_package=paid&sm_vd_early_adopter=no&sm_vd_log_in_service=lj&sm_vd_viewing_scheme=horizon&sm_vd_view_in_my_style=no&sm_pd_visited_journal_account_type=personal&sm_pd_visited_journal_log_in_service=lj&sm_pd_ads_onpage=0&sm_pd_ad_eligible=no&sm_pd_adult_content=none&sm_pd_comments_style=undef&sm_pd_error_pages=undef&sm_pd_visited_journal_name=ammosov&sm_pd_page_type=journal&sm_pd_style_layout=undef&sm_pd_style_design=undef&sm_pd_style_system=undef&sm_pd_visited_journal_account_level=paid&sm_pd_early_adopter=no&sm_pd_visited_journal_premium_package=paid&sm_pd_page_group=PostMainPage" height="1" width="1" alt="*"></p></noscript>
+<script type="text/javascript" language="JavaScript1.3" src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/cs.js"></script>
+<!-- End comScore Tag --><!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+
+_qevents.push({
+qacct:"p-2945K0QbJw0BA"
+});
+</script>
+
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-2945K0QbJw0BA.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+<!-- LiveJournal COUNTER -->
+<img src="Hier%20stehe%20ich%20und%20kann%20nicht%20anders%20--%20Martin%20Luther%20-%20%D0%9A%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20%D0%90%D0%A6%20%D0%9F%D0%A0%D0%A4%20%D0%BF%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D1%83%20%D0%BE%D1%82%20%D0%B1%D1%83%D0%BC%D0%B0%D0%B3%D0%B8%20%D0%BA%20%D1%86%D0%B8%D1%84%D1%80%D0%B5_files/ljcounter.gif" alt="">
+<!-- /COUNTER -->
+</div>
+
+</body></html>

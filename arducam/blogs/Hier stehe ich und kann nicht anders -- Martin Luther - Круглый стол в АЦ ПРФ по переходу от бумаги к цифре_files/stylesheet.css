@@ -1,0 +1,431 @@
+/* Cleaned CSS: */
+
+  body {
+     font-family: Arial, sans-serif;
+     font-size: 12px;
+     margin: 0px;
+     background-color: #f8f8f8;
+     color: #000000;
+  
+     }
+  a {
+     color: #000000;
+     }
+  a:visited {
+     color: #314667;
+     }
+  .entryHeaderDate a {
+     color : #000000;
+     text-decoration : none;
+     }
+  .entryHeaderDate a:hover {
+     color : #000000;
+     text-decoration : underline;
+     }
+  .header-title {
+     background-color: #6b7da6;
+     font-family: ;
+     font-size: 30px;
+     color: #ffffff;
+     padding: 0px 20px 0px 20px;
+     }
+  .header-subtitle {
+     background-color: #6b7da6;
+     color: #d4ddee;
+     font-family: ;
+     font-size: 24px;
+     padding: 0px 24px 0px 24px;
+     }
+  .header-icon {
+     top: 0px;
+     right: 0px;
+     position: absolute;
+     z-index: 1;
+     border-left: 2px solid #ffffff;
+     border-bottom: 2px solid #ffffff;
+     }
+  .pageheaderblock {
+     text-align: left;
+     }
+  .pagefooterblock {
+     border-top: 2px solid #ffffff;
+     background-color: #aabbdd;
+     color: #000000;
+     padding: 4px 4px 4px 24px;
+     margin-top: 4px;
+     }
+  .pagefooterblock a, .pagefooterblock a:visited {
+     color: #000000;
+     }
+  .bodyblock {
+     padding: 10px 20px 0px 60px;
+     }
+  .bodyheaderblock {
+     border-top: 2px solid #ffffff;
+     background-color: #d4ddee;
+     padding: 4px 0px 4px 0px;
+     }
+  .bodynavblock {
+     border-top: 2px solid #ffffff;
+     background-color: #d4ddee;
+     color: #000000;
+     margin: 10px 0px 4px 0px;
+     padding: 8px;
+     }
+  .bodynavblock a, .bodynavblock a:visited {
+     color: #000000;
+     }
+  .body-title {
+     font-family: ;
+     font-size: 18px;
+     color: #000000;
+     text-align: left;
+     padding-left: 24px;
+     }
+  .body-midtitle {
+     font-family: ;
+     font-size: 18px;
+     color: #000000;
+     text-align: left;
+     padding-left: 8px;
+     }
+  .entryHolder {
+     color: #000000;
+     background-color: #f8f8f8;
+     font-family: ;
+     font-size: 12px;
+     border-top: 2px solid #ffffff;
+     margin: 4px 0px 4px 0px;
+     }
+  .entryUserinfo {
+     text-align: center;
+       margin: 0px 8px 8px 0px;
+     
+     background-color: #f8f8f8;
+     }
+  .entryUserinfo-usericon img {
+
+
+
+
+
+     border: 0;
+     }
+  .entryText {
+     padding: 6px;
+     }
+  .entryHeader {
+     background-color: #aabbdd;
+     color: #000000;
+     font-family: ;
+     font-size: 12px;
+     padding: 4px 0px 4px 8px;
+     }
+  .entryHeader a{
+     color: #000000;
+     }
+  .entryHeaderSubject {
+     font-weight: bold;
+     }
+  .entryHeaderSubject A, .entryHeaderSubject A:hover, .entryHeaderSubject A:visited {
+     text-decoration: none;
+     color: #000000;
+     }
+  .entryMetadata {
+     padding-left: 6px;
+     }
+  .entryMetadata ul {
+     margin: 0px;
+     padding: 0px;
+     }
+  .entryMetadata li {
+     list-style: none;
+     display: inline;
+     padding-right: 10px;
+     }
+  .entryMetadata-label {
+     font-weight: bold;
+     padding-right: 4px;
+     }
+  .entryLinkbar {
+     font-family: ;
+     font-size: 11px;
+     color: #000000;
+     text-align: right;
+     padding: 4px 0px 4px 0px;
+     }
+  .entryLinkbar ul {
+     margin: 0px;
+     padding: 0px;
+     }
+  .entryLinkbar li {
+     padding: 0px 5px 0px 5px;
+     margin: 0px;
+     display: inline;
+     }
+  .commentHolder {
+     color: #000000;
+     background-color: #f8f8f8;
+     border-top: 2px solid #ffffff;
+     font-family: ;
+     font-size: 12px;
+     margin: 4px 0px 4px 0px;
+     }
+  .commentUserinfo {
+     text-align: center; 
+       margin: 0px 8px 8px 0px;
+     
+     background-color: #f8f8f8;
+     }
+  .commentUserinfo-usericon img {
+     border: 0;
+     }
+  .commentText {
+     padding: 6px;
+     }
+  .commentHeader {
+     background-color: #aabbdd;
+     color: #000000;
+     font-family: ;
+     font-size: 12px;
+     padding: 4px 0px 4px 8px;
+     }
+  .commentHeader a{
+     color: #000000;
+     }
+  .commentHeaderScreened {
+     font-family: ;
+     font-size: 12px;
+     background-color: #d4ddee;
+     padding: 4px 0px 4px 8px;
+     }
+  .commentHeaderSubject {
+     font-weight: bold;
+     }
+  .commentLinkbar {
+     font-family: ;
+     font-size: 11px;
+     color: #000000;
+     text-align: right;
+     padding-top: 4px;
+     padding-bottom: 4px;
+     }
+  .commentLinkbar ul {
+     margin: 0px;
+     padding: 0px;
+     }
+  .commentLinkbar li {
+     padding: 0px 5px 0px 5px;
+     margin: 0px;
+     display: inline;
+     }
+  .replyform {
+     background-color: #f8f8f8;
+     color: #000000;
+     padding-left: 10px;
+     }
+  .yearlinks{
+     text-align: right;
+     }
+  .yearlink{
+     padding-left:4px;
+     padding-right: 4px;
+     }
+  .month {
+     width: 500px;
+     border: 1px solid #dddddd;
+     margin: 8px 8px 8px 40px;
+     }
+  .daysubjects {
+     color: #000000;
+     padding: 8px 8px 8px 40px;
+     }
+  .daytitles {
+     text-align: center;
+     border: 1px solid #dddddd;
+     background: #eeeeee;
+     color: #000000;
+     }
+  .day-blank {
+     border: 1px solid #dddddd;
+    }
+  .day {
+     border: 1px solid #dddddd;
+     }
+  .day-date {
+     border-right: 1px solid #dddddd;
+     border-bottom: 1px solid #dddddd;
+     color: #000000;
+     width: 50%;
+     text-align: center;
+     }
+  .day-count {
+     width: 50%;
+     text-align: center;
+     float: right;
+     font-size: 20px;
+     }
+  .day-count a {
+     text-decoration: none;
+     color: #000000;
+     }
+  
+  .sidebar {
+     font-family: ;
+     font-size: 11px;
+     margin-left: 20px;
+     width: 200px;
+     }
+  .sidebox {
+     color: #000000;
+     background-color: #f8f8f8;
+     margin: 4px 0px 4px 0px;
+     }
+  .sideboxTitle {
+     background-color: #aabbdd;
+     color: #000000;
+     border-top: 2px solid #ffffff;
+     font-family: ;
+     font-size: 12px;
+     padding: 4px 0px 4px 8px;
+     text-align: left;
+     }
+  .sideboxContent {
+     text-align: left;
+     padding: 2px 4px 2px 4px;
+     }
+  .sidebox #profile, .sidebox #latestmonth, .sidebox #search {
+     text-align: center;
+     }
+  .sidebox #tags_sidebox {
+     text-align: center;
+     }
+  .sidebox #systemlinks {
+     text-align: center;
+     }
+  .sidebox #latestmonth table{
+     width: 90%;
+     margin-left: auto;
+     margin-right: auto;
+     margin-top: 4px;
+     }
+  .listtitle {
+     font-weight: bold;
+     }
+  .profile-label {
+     font-weight: bold;
+     }
+  
+  .header-menu {
+     padding: 0px;
+     background-color: #aabbdd;
+     border-top: 2px solid #ffffff;
+     padding-left: 19px;
+     font-family: ;
+     font-size: 12px;
+     line-height: 20px;
+     }
+  .header-menu a, .header-menu a:visited {
+     white-space: nowrap;
+     text-align: left;
+     padding: 2px 6px 2px 6px;
+     color: #000000;
+     text-decoration: none;
+     }
+  .header-menu a:hover {
+     background-color: #6b7da6;
+     color: #000000;
+     }
+  #footer-menu {
+     font-size: 11px;
+     }
+  #footer-menu a, .footer-menu a:visited {
+     color: #000000;
+     white-space: nowrap;
+     padding: 6px;
+     text-align: left;
+     }
+  .header-menu ul, #footer-menu ul {
+     margin: 0px;
+     padding: 0px;
+     }
+  .header-menu li, #footer-menu li {
+     display: inline;
+     }
+  .tagstable, .tagstable td {
+     border: 1px solid #dddddd;
+     }
+  .tagstable { width: 500px; }
+  
+  /* LJSUP-13769 */
+  .appwidget-journalpromo {
+    margin: 12px 0 10px;
+    }
+  
+
+#lj_controlstrip {
+    background-color: #f8f8f8;
+    background-image: url(http://l-stat.livejournal.com/palimg/controlstrip/bg.gif/ptf8f8f8bababa);
+}
+
+#lj_controlstrip td {
+    color: #000000;
+    border-bottom: 1px solid #ffffff;
+}
+
+#lj_controlstrip_statustext {
+    color: #000000;
+}
+
+#lj_controlstrip a {
+    color: #000000;
+}
+
+#lj_controlstrip_user,
+#lj_controlstrip_actionlinks,
+#lj_controlstrip_search,
+#lj_controlstrip_login,
+#lj_controlstrip_loggedout_userpic {
+    border-right: 1px solid #ffffff;
+}
+
+#lj_controlstrip_login td {
+    border-bottom: 0;
+}
+
+#lj_controlstrip td td {
+    border-bottom: 0;
+}
+
+#lj_controlstrip_userpic {
+    background-image: url(http://l-stat.livejournal.com/palimg/controlstrip/ljlogo.gif/ptf8f8f8000000);
+}
+
+#lj_controlstrip_loggedout_userpic {
+    background-image: url(http://l-stat.livejournal.com/palimg/controlstrip/ljlogo-loggedout.gif/ptf8f8f8000000);
+}/* Cleaned CSS for new ControlStrip */
+.w-cs {
+    background: #f8f8f8;
+    color: #000000;
+    background-image: url(http://l-stat.livejournal.com/palimg/controlstrip/bg.gif/ptf8f8f8bababa);
+}
+.w-cs A:link,
+.w-cs A:visited,
+.w-cs A:hover,
+.w-cs A:active {
+    color: #000000 !important;
+}
+/* User info */
+.w-cs .w-cs-userinfo {
+    background: #f8f8f8;
+    border-color: #ffffff;
+    background-image: url(http://l-stat.livejournal.com/palimg/controlstrip/bg.gif/ptf8f8f8bababa);
+}
+/* Summary */
+.w-cs .w-cs-summary {
+    background: #f8f8f8;
+}
+.w-cs .w-cs-summary LI.w-cs-i-tokens {
+    border-color: #ffffff;
+}
+

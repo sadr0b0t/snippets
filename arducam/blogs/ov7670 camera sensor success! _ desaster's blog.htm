@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html lang="en-US"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>ov7670 camera sensor success!   | desaster's blog</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="http://www.rpg.fi/desaster/blog/xmlrpc.php">
+<!--[if lt IE 9]>
+<script src="http://www.rpg.fi/desaster/blog/wp-content/themes/twentytwelve/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+<link rel="alternate" type="application/rss+xml" title="desaster's blog » Feed" href="http://www.rpg.fi/desaster/blog/feed/">
+<link rel="alternate" type="application/rss+xml" title="desaster's blog » Comments Feed" href="http://www.rpg.fi/desaster/blog/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="desaster's blog » ov7670 camera sensor success! Comments Feed" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/feed/">
+<link rel="stylesheet" id="twentytwelve-fonts-css" href="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/css.css" type="text/css" media="all">
+<link rel="stylesheet" id="twentytwelve-style-css" href="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/style.css" type="text/css" media="all">
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentytwelve-ie-css'  href='http://www.rpg.fi/desaster/blog/wp-content/themes/twentytwelve/css/ie.css?ver=20121010' type='text/css' media='all' />
+<![endif]-->
+<script async="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/cbgapi.loaded_0"></script><script src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/widgets.js" id="twitter-wjs"></script><script src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/all.js" id="facebook-jssdk"></script><script gapi_processed="true" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/plusone.js" async="" type="text/javascript"></script><script src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/ga.js" async="" type="text/javascript"></script><script type="text/javascript" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/comment-reply.js"></script>
+<script type="text/javascript" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/jquery.js"></script>
+<script type="text/javascript" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/external-tracking.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.rpg.fi/desaster/blog/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.rpg.fi/desaster/blog/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Playing around with shift registers &amp; led displays" href="http://www.rpg.fi/desaster/blog/2012/04/08/playing-around-with-shift-registers-led-displays/">
+<link rel="next" title="OV7670-FIFO + MSP430 Launchpad" href="http://www.rpg.fi/desaster/blog/2012/10/20/ov7670-fifo-msp430-launchpad/">
+<meta name="generator" content="WordPress 3.5.1">
+<link rel="canonical" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/">
+<link rel="shortlink" href="http://www.rpg.fi/desaster/blog/?p=40">
+
+<!-- Simple Social Buttons style sheet -->
+<style type="text/css">
+   div.simplesocialbuttons { height: 20px; margin: 10px auto 10px 0; text-align: center; clear: left; }
+   div.simplesocialbutton { float: left; text-align: center;}
+</style>
+<!-- End of Simple Social Buttons -->
+
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+	<style type="text/css">
+			.site-title a,
+		.site-description {
+			color: #3f6865 !important;
+		}
+		</style>
+	<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #3f6865; }
+</style>
+<!-- Google Analytics Tracking by Google Analyticator 6.4.3: http://www.videousermanuals.com/google-analyticator/ -->
+<script type="text/javascript">
+	var analyticsFileTypes = [''];
+	var analyticsEventTracking = 'enabled';
+</script>
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-11757156-2']);
+        _gaq.push(['_addDevId', 'i9k95']); // Google Analyticator App ID with Google 
+        
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+<style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}
+.fb_invisible{display:none}
+.fb_reset{background:none;border-spacing:0;border:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}
+.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}
+.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}
+.fb_dialog_content{background:#fff;color:#333}
+.fb_dialog_close_icon{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px;top:8px\9;right:7px\9}
+.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}
+.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}
+.fb_dialog_close_icon:hover{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}
+.fb_dialog_close_icon:active{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}
+.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}
+.fb_dialog_top_left,
+.fb_dialog_top_right,
+.fb_dialog_bottom_left,
+.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}
+/* @noflip */
+.fb_dialog_top_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}
+/* @noflip */
+.fb_dialog_top_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}
+/* @noflip */
+.fb_dialog_bottom_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}
+/* @noflip */
+.fb_dialog_bottom_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}
+.fb_dialog_vert_left,
+.fb_dialog_vert_right,
+.fb_dialog_horiz_top,
+.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}
+.fb_dialog_vert_left,
+.fb_dialog_vert_right{width:10px;height:100%}
+.fb_dialog_vert_left{margin-left:-10px}
+.fb_dialog_vert_right{right:0;margin-right:-10px}
+.fb_dialog_horiz_top,
+.fb_dialog_horiz_bottom{width:100%;height:10px}
+.fb_dialog_horiz_top{margin-top:-10px}
+.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}
+.fb_dialog_iframe{line-height:0}
+.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}
+.fb_dialog_content .dialog_title > span{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif)
+no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}
+body.fb_hidden{-webkit-transform:none;height:100%;margin:0;left:-10000px;overflow:visible;position:absolute;top:-10000px;width:100%
+}
+.fb_dialog.fb_dialog_mobile.loading{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif)
+white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}
+.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}
+#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}
+#fb-root #fb_dialog_ipad_overlay.hidden{display:none}
+.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}
+.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0 0, 0 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}
+.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%
+}
+.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px
+}
+.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px
+}
+.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0 0, 0 100%, from(#4966A6),
+color-stop(0.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset,
+rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}
+.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}
+.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}
+.fb_dialog_content .dialog_content{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}
+.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}
+#fb_dialog_loader_close{float:left}
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
+.fb_iframe_widget{position:relative;display:-moz-inline-block;display:inline-block}
+.fb_iframe_widget iframe{position:absolute}
+.fb_iframe_widget_lift{z-index:1}
+.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify;vertical-align:text-bottom}
+.fb_hide_iframes iframe{position:relative;left:-10000px}
+.fb_iframe_widget_loader{position:relative;display:inline-block}
+.fb_iframe_widget_fluid{display:inline}
+.fb_iframe_widget_fluid span{width:100%}
+.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}
+.fb_iframe_widget_loader .FB_Loader{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fb_button_simple,
+.fb_button_simple_rtl{background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yH/r/eIpbnVKI9lR.png);background-repeat:no-repeat;cursor:pointer;outline:none;text-decoration:none}
+.fb_button_simple_rtl{background-position:right 0}
+.fb_button_simple .fb_button_text{margin:0 0 0 20px;padding-bottom:1px}
+.fb_button_simple_rtl .fb_button_text{margin:0 10px 0 0}
+a.fb_button_simple:hover .fb_button_text,
+a.fb_button_simple_rtl:hover .fb_button_text,
+.fb_button_simple:hover .fb_button_text,
+.fb_button_simple_rtl:hover .fb_button_text{text-decoration:underline}
+.fb_button,
+.fb_button_rtl{background:#29447e url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/FGFbc80dUKj.png);background-repeat:no-repeat;cursor:pointer;display:inline-block;padding:0 0 0 1px;text-decoration:none;outline:none}
+.fb_button .fb_button_text,
+.fb_button_rtl .fb_button_text{background:#5f78ab url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/FGFbc80dUKj.png);border-top:solid 1px #879ac0;border-bottom:solid 1px #1a356e;color:#fff;display:block;font-family:"lucida grande",tahoma,verdana,arial,sans-serif;font-weight:bold;padding:2px 6px 3px 6px;margin:1px 1px 0 21px;text-shadow:none}
+a.fb_button,
+a.fb_button_rtl,
+.fb_button,
+.fb_button_rtl{text-decoration:none}
+a.fb_button:active .fb_button_text,
+a.fb_button_rtl:active .fb_button_text,
+.fb_button:active .fb_button_text,
+.fb_button_rtl:active .fb_button_text{border-bottom:solid 1px #29447e;border-top:solid 1px #45619d;background:#4f6aa3;text-shadow:none}
+.fb_button_xlarge,
+.fb_button_xlarge_rtl{background-position:left -60px;font-size:24px;line-height:30px}
+.fb_button_xlarge .fb_button_text{padding:3px 8px 3px 12px;margin-left:38px}
+a.fb_button_xlarge:active{background-position:left -99px}
+.fb_button_xlarge_rtl{background-position:right -268px}
+.fb_button_xlarge_rtl .fb_button_text{padding:3px 8px 3px 12px;margin-right:39px}
+a.fb_button_xlarge_rtl:active{background-position:right -307px}
+.fb_button_large,
+.fb_button_large_rtl{background-position:left -138px;font-size:13px;line-height:16px}
+.fb_button_large .fb_button_text{margin-left:24px;padding:2px 6px 4px 6px}
+a.fb_button_large:active{background-position:left -163px}
+.fb_button_large_rtl{background-position:right -346px}
+.fb_button_large_rtl .fb_button_text{margin-right:25px}
+a.fb_button_large_rtl:active{background-position:right -371px}
+.fb_button_medium,
+.fb_button_medium_rtl{background-position:left -188px;font-size:11px;line-height:14px}
+a.fb_button_medium:active{background-position:left -210px}
+.fb_button_medium_rtl{background-position:right -396px}
+.fb_button_text_rtl,
+.fb_button_medium_rtl .fb_button_text{padding:2px 6px 3px 6px;margin-right:22px}
+a.fb_button_medium_rtl:active{background-position:right -418px}
+.fb_button_small,
+.fb_button_small_rtl{background-position:left -232px;font-size:10px;line-height:10px}
+.fb_button_small .fb_button_text{padding:2px 6px 3px;margin-left:17px}
+a.fb_button_small:active,
+.fb_button_small:active{background-position:left -250px}
+.fb_button_small_rtl{background-position:right -440px}
+.fb_button_small_rtl .fb_button_text{padding:2px 6px;margin-right:18px}
+a.fb_button_small_rtl:active{background-position:right -458px}
+.fb_share_count_wrapper{position:relative;float:left}
+.fb_share_count{background:#b0b9ec none repeat scroll 0 0;color:#333;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;text-align:center}
+.fb_share_count_inner{background:#e8ebf2;display:block}
+.fb_share_count_right{margin-left:-1px;display:inline-block}
+.fb_share_count_right .fb_share_count_inner{border-top:solid 1px #e8ebf2;border-bottom:solid 1px #b0b9ec;margin:1px 1px 0 1px;font-size:10px;line-height:10px;padding:2px 6px 3px;font-weight:bold}
+.fb_share_count_top{display:block;letter-spacing:-1px;line-height:34px;margin-bottom:7px;font-size:22px;border:solid 1px #b0b9ec}
+.fb_share_count_nub_top{border:none;display:block;position:absolute;left:7px;top:35px;margin:0;padding:0;width:6px;height:7px;background-repeat:no-repeat;background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yU/r/bSOHtKbCGYI.png)}
+.fb_share_count_nub_right{border:none;display:inline-block;padding:0;width:5px;height:10px;background-repeat:no-repeat;background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yX/r/i_oIVTKMYsL.png);vertical-align:top;background-position:right 5px;z-index:10;left:2px;margin:0 2px 0 0;position:relative}
+.fb_share_no_count{display:none}
+.fb_share_size_Small .fb_share_count_right .fb_share_count_inner{font-size:10px}
+.fb_share_size_Medium .fb_share_count_right .fb_share_count_inner{font-size:11px;padding:2px 6px 3px;letter-spacing:-1px;line-height:14px}
+.fb_share_size_Large .fb_share_count_right .fb_share_count_inner{font-size:13px;line-height:16px;padding:2px 6px 4px;font-weight:normal;letter-spacing:-1px}
+.fb_share_count_hidden .fb_share_count_nub_top,
+.fb_share_count_hidden .fb_share_count_top,
+.fb_share_count_hidden .fb_share_count_nub_right,
+.fb_share_count_hidden .fb_share_count_right{visibility:hidden}
+.fb_connect_bar_container div,
+.fb_connect_bar_container span,
+.fb_connect_bar_container a,
+.fb_connect_bar_container img,
+.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}
+.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}
+.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode=="CSS1Compat"? document.documentElement.scrollTop+"px":body.scrollTop+"px")}
+.fb_connect_bar{position:relative;margin:auto;height:100%;width:100%;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:"lucida grande", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}
+.fb_connect_bar a:hover{color:#fff}
+.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}
+.fb_connect_bar div a,
+.fb_connect_bar span,
+.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}
+.fb_connect_bar .fb_buttons{float:right;margin-top:7px}
+.fb_edge_widget_with_comment{position:relative;*z-index:1000}
+.fb_edge_widget_with_comment span.fb_edge_comment_widget{position:absolute}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget{z-index:1}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget .FB_Loader{left:0;top:1px;margin-top:6px;margin-left:0;background-position:50% 50%;background-color:#fff;height:150px;width:394px;border:1px #666 solid;border-bottom:2px solid #283e6c;z-index:1}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget.dark .FB_Loader{background-color:#000;border-bottom:2px solid #ccc}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget.siderender
+.FB_Loader{margin-top:0}
+.fbpluginrecommendationsbarleft,
+.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}
+/* @noflip */
+.fbpluginrecommendationsbarleft{left:10px}
+/* @noflip */
+.fbpluginrecommendationsbarright{right:10px}</style></head>
+
+<body data-twttr-rendered="true" class="single single-post postid-40 single-format-standard custom-background custom-font-enabled single-author">
+<div id="page" class="hfeed site">
+	<header id="masthead" class="site-header" role="banner">
+		<hgroup>
+			<h1 class="site-title"><a href="http://www.rpg.fi/desaster/blog/" title="desaster's blog" rel="home">desaster's blog</a></h1>
+			<h2 class="site-description">(may contain text)</h2>
+		</hgroup>
+
+		<nav id="site-navigation" class="main-navigation" role="navigation">
+			<h3 class="menu-toggle">Menu</h3>
+			<a class="assistive-text" href="#content" title="Skip to content">Skip to content</a>
+			<div class="nav-menu"><ul><li><a href="http://www.rpg.fi/desaster/blog/" title="Home">Home</a></li><li class="page_item page-item-5"><a href="http://www.rpg.fi/desaster/blog/about/">About</a></li></ul></div>
+		</nav><!-- #site-navigation -->
+
+			</header><!-- #masthead -->
+
+	<div id="main" class="wrapper">
+	<div id="primary" class="site-content">
+		<div id="content" role="main">
+
+			
+				
+	<article id="post-40" class="post-40 post type-post status-publish format-standard hentry category-electronics tag-arm tag-camera tag-cortex tag-lpc1768 tag-lpc1769 tag-lpcxpresso tag-m0 tag-mcu tag-microcontroller tag-nxp tag-ov7670">
+				<header class="entry-header">
+									<h1 class="entry-title">ov7670 camera sensor success!</h1>
+										<div class="comments-link">
+					<a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comments" title="Comment on ov7670 camera sensor success!">55 Replies</a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p><a href="http://www.rpg.fi/desaster/blog/wp-content/uploads/2012/05/campic.png"><img class="alignright size-medium wp-image-52" title="ov7670 camera module" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/campic.png" alt="" width="300" height="225"></a>The
+ ov7670 camera sensor, cheaply available from ebay, has been the bane of
+ my existence during my short electronics hobby career. I bought my 
+first ov7670 sensor maybe a year ago, and have been tearing my hair out 
+trying to get it to respond. It seemed completely dead. It didn’t 
+respond to any form of i2c communication, and showed no signs of life in
+ the oscilloscope.</p>
+<p>Every now and then, I tried to get it to work using various 
+approaches, but to no avail, and was ready to completely give up. 
+However, now after seeing some recent success stories with the ov7670 <a href="http://mbed.org/users/ms523/notebook/ov7670-camera/">here</a> and <a href="http://www.gadgetfactory.net/gadgetforum/index.php?topic=404">here</a>, I decided to give it one more go.</p>
+<p>I’m pretty new to electronics, and I’m learning new stuff every day. 
+On my most recent attempt at breathing life into the wretched thing, my 
+attention got directed towards a feature I had not even considered 
+before – the <strong>XCLK</strong> pin. This pin labeled “external 
+clock”, always seemed to me like it was something optional, as I’ve 
+gotten used to all my other toys having internal RC oscillators, or no 
+need for oscillators. But no, in this case it’s not optional, and my 
+oversight seems so obvious now!</p>
+<p>I’ve read pretty much every document available on the internet about 
+the ov7670 sensor, but to this day, I’m not sure it’s clearly stated 
+anywhere that feeding the XCLK is an important step &nbsp;to getting the
+ ov7670 up and running. It’s probably listed in every schematic out 
+there, but my newbie mind ignored it.</p>
+<p>So, to feed the camera some clockage, I used the CLKOUT feature of 
+the LPCXpresso &nbsp;to generate a frequency of ~10Mhz, and lo and 
+behold, it’s alive!<strong> Alive!</strong></p>
+<p><a href="http://www.rpg.fi/desaster/blog/wp-content/uploads/2012/05/camscope.png"><img class="size-full wp-image-50 alignright" title="Camera clocks on the scope" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/camscope.png" alt="" width="320" height="234"></a></p>
+<p>From this point on, working with the camera was pretty 
+straightforward. Analyzing the sync signals and reading the digital 
+color signals with the aid of the provided pixel clock was easy as a 
+pie. Some minor headaches with the clock running so fast, but that was 
+possible to tune down to more workable levels.</p>
+<p>The smallest resolution the camera supports is QQVGA (160×120), and 
+with rgb565 color space, that fits quite neatly in the 64K of memory 
+that LPC1769 has.</p>
+<p>To pump out the image to my computer for viewing, I initially used 
+the semihosting feature of LPCXpresso – &nbsp;just for testing. Printing
+ out the full image with printf’s took nearly an hour! But after a few 
+attempts I managed to conjure a sensible image out of the data, crowning
+ my success with a picture of my stupid face.</p>
+<div id="attachment_49" class="wp-caption alignright" style="width: 332px"><a href="http://www.rpg.fi/desaster/blog/wp-content/uploads/2012/05/camoona.png"><img class="size-full wp-image-49" title="Oona" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/camoona.png" alt="" width="322" height="242"></a><p class="wp-caption-text">My good friend Oona. The colors could use some tuning, but I quite like the result already.</p></div>
+<p>Next step was to output the data via UART at more convenient speeds. 
+Initially I didn’t seem to be able to pump the data to my computer at 
+speeds more than ~57600. Somewhere the data got buffered, and when it 
+buffered enough, it went nuts. So I adjusted the serial protocol a 
+little, so the client sends commands to request lines one at a time, and
+ the lpcxpresso responds with data. This keeps both parties happy about 
+the rate of data flowing, and I was able to increase the baudrate to 
+921600.</p>
+<p>Now I was able to view a new image from the camera every 1-2 seconds.
+ This almost feels like watching a video instead of a slideshow :) I 
+could do some tricks to get faster framerates, but actually I won’t 
+bother. My initial thoughts with the camera were to use it for still 
+images taken on request, and to transfer them wirelessly via XBee, so in
+ future I’ll use the camera at a much slower pace.</p>
+<p>In case someone reads this page one day, looking for advise with the ov7670, I’ll list some notes here that might be useful:</p>
+<ul>
+<li>Needs a clock source</li>
+<li>i2c is dodgy, I had to add some delay to read routines</li>
+<li>different versions exist on ebay, some take 2.8V instead of 3.3V, and some have FIFO</li>
+</ul>
+<p>I’ve dumped the project source to github at&nbsp;<a href="https://github.com/desaster/ov7670test">https://github.com/desaster/ov7670test</a>. At the time of writing, the pygame + pyserial client isn’t there, but I might add it later after I work on it a bit.</p>
+<div class="simplesocialbuttons">
+<div class="simplesocialbutton ssb-button-googleplus"><!-- Google Plus One--><div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: none repeat scroll 0% 0% transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px;"><iframe title="+1" data-gapiattached="true" allowtransparency="true" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/fastbutton.htm" name="I0_1365470071987" id="I0_1365470071987" vspace="0" tabindex="0" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" marginwidth="0" marginheight="0" hspace="0" scrolling="no" width="100%" frameborder="0"></iframe></div></div>
+<div class="simplesocialbutton ssb-button-fblike"><!-- Facebook like--><div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/xd_arbiter.htm" style="border: medium none;" tab-index="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_http" allowtransparency="true" name="fb_xdm_frame_http" scrolling="no" frameborder="0"></iframe><iframe src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/xd_arbiter_002.htm" style="border: medium none;" tab-index="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_https" allowtransparency="true" name="fb_xdm_frame_https" scrolling="no" frameborder="0"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div><div fb-xfbml-state="rendered" class="fb-like fb_edge_widget_with_comment fb_iframe_widget" data-href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false"><span style="height: 20px; width: 71px;"><iframe src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/like.htm" class="fb_ltr" title="Like this content on Facebook." style="border: medium none; overflow: hidden; height: 20px; width: 71px;" name="fe5bb86e0ad59e" id="f1c4b75e5ed10f2" scrolling="no"></iframe></span></div></div>
+<div class="simplesocialbutton ssb-buttom-twitter"><!-- Twitter--><iframe data-twttr-rendered="true" title="Twitter Tweet Button" style="width: 109px; height: 20px;" class="twitter-share-button twitter-count-horizontal" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/tweet_button.htm" allowtransparency="true" scrolling="no" frameborder="0"></iframe></div>
+</div>
+					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="http://www.rpg.fi/desaster/blog/category/electronics/" title="View all posts in electronics" rel="category tag">electronics</a> and tagged <a href="http://www.rpg.fi/desaster/blog/tag/arm/" rel="tag">arm</a>, <a href="http://www.rpg.fi/desaster/blog/tag/camera/" rel="tag">camera</a>, <a href="http://www.rpg.fi/desaster/blog/tag/cortex/" rel="tag">cortex</a>, <a href="http://www.rpg.fi/desaster/blog/tag/lpc1768/" rel="tag">lpc1768</a>, <a href="http://www.rpg.fi/desaster/blog/tag/lpc1769/" rel="tag">lpc1769</a>, <a href="http://www.rpg.fi/desaster/blog/tag/lpcxpresso/" rel="tag">lpcxpresso</a>, <a href="http://www.rpg.fi/desaster/blog/tag/m0/" rel="tag">m0</a>, <a href="http://www.rpg.fi/desaster/blog/tag/mcu/" rel="tag">mcu</a>, <a href="http://www.rpg.fi/desaster/blog/tag/microcontroller/" rel="tag">microcontroller</a>, <a href="http://www.rpg.fi/desaster/blog/tag/nxp/" rel="tag">nxp</a>, <a href="http://www.rpg.fi/desaster/blog/tag/ov7670/" rel="tag">ov7670</a> on <a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/" title="17:07" rel="bookmark"><time class="entry-date" datetime="2012-05-07T17:07:51+00:00">May 7, 2012</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="http://www.rpg.fi/desaster/blog/author/desaster/" title="View all posts by desaster" rel="author">desaster</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+
+				<nav class="nav-single">
+					<h3 class="assistive-text">Post navigation</h3>
+					<span class="nav-previous"><a href="http://www.rpg.fi/desaster/blog/2012/04/08/playing-around-with-shift-registers-led-displays/" rel="prev"><span class="meta-nav">←</span> Playing around with shift registers &amp; led displays</a></span>
+					<span class="nav-next"><a href="http://www.rpg.fi/desaster/blog/2012/10/20/ov7670-fifo-msp430-launchpad/" rel="next">OV7670-FIFO + MSP430 Launchpad <span class="meta-nav">→</span></a></span>
+				</nav><!-- .nav-single -->
+
+				
+<div id="comments" class="comments-area">
+
+	
+			<h2 class="comments-title">
+			55 thoughts on “<span>ov7670 camera sensor success!</span>”		</h2>
+
+		<ol class="commentlist">
+				<li class="comment even thread-even depth-1" id="li-comment-4">
+		<article id="comment-4" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/836d0745de29ed4c0bbcf1a4589986fa.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn"><a href="http://www.facebook.com/ad.se.16" rel="external nofollow" class="url">Ad Se</a> </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-4"><time datetime="2012-07-25T11:13:11+00:00">July 25, 2012 at 11:13</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Can you post the wiring diagram wit voltages and IO names both sides?</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=4#respond" onclick='return addComment.moveForm("comment-4", "4", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment odd alt depth-2" id="li-comment-5">
+		<article id="comment-5" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/5f5ee9ad5e4fce4f4e495c5b657db91c.jpg" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn"><a href="http://qrfnfgre.wordpress.com/" rel="external nofollow" class="url">desaster</a> </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-5"><time datetime="2012-07-29T13:15:08+00:00">July 29, 2012 at 13:15</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Well I’ve taken apart the stuff long time ago already.. but I 
+think the connections should be pretty self explanatory at least on the 
+camera side. And on on the MCU side, it’s really up to you.</p>
+<p>I think the source code also has most of the pins explained.</p>
+<p>If you’re working on the camera yourself, I’d be very interested in hearing about your experiences with it! :)</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=5#respond" onclick='return addComment.moveForm("comment-5", "5", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li>
+</ol>
+</li>
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-6">
+		<article id="comment-6" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/514289b9bb6ebc3d8e2edb2659f892f1.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">diego </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-6"><time datetime="2012-08-08T15:04:29+00:00">August 8, 2012 at 15:04</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>hello, good information. But indon know how i will can see the captures images in pc, sended with uart, can you help me?</p>
+<p>Regards</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=6#respond" onclick='return addComment.moveForm("comment-6", "6", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment odd alt depth-2" id="li-comment-7">
+		<article id="comment-7" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/5f5ee9ad5e4fce4f4e495c5b657db91c.jpg" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn"><a href="http://qrfnfgre.wordpress.com/" rel="external nofollow" class="url">desaster</a> </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-7"><time datetime="2012-08-10T18:54:29+00:00">August 10, 2012 at 18:54</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>For my application, I wrote a python app using pyserial that 
+reads the raw data by using a simple command/response protocol, and then
+ displays the data by using pygame. You can see an example of how I did 
+it in my github repository.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=7#respond" onclick='return addComment.moveForm("comment-7", "7", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment even depth-3" id="li-comment-8">
+		<article id="comment-8" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/514289b9bb6ebc3d8e2edb2659f892f1.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">diego </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-8"><time datetime="2012-08-10T22:22:58+00:00">August 10, 2012 at 22:22</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Thank you,<br>
+Pytom it,s a stranger for me:) i will seach about this in google..</p>
+<p>In a week i will receibe my camera, :) </p>
+<p>Thanks, and regards from spain</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=8#respond" onclick='return addComment.moveForm("comment-8", "8", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li>
+</ol>
+</li>
+</ol>
+</li>
+	<li class="comment odd alt thread-even depth-1" id="li-comment-9">
+		<article id="comment-9" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/514289b9bb6ebc3d8e2edb2659f892f1.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">diego </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-9"><time datetime="2012-08-21T22:40:46+00:00">August 21, 2012 at 22:40</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Hello,<br>
+the last friday receibed the camera and today i,m test comonication with sccb bus, with any dificults, but work i think…</p>
+<p>Can you help me any more with how to use your aplication for pythom?</p>
+<p>Best regards</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=9#respond" onclick='return addComment.moveForm("comment-9", "9", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li>
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-10">
+		<article id="comment-10" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/9b76b1227bced2d856847afb44f33252.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">JS </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-10"><time datetime="2012-09-29T14:12:54+00:00">September 29, 2012 at 14:12</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Hello! I am new to lpc1769 and i have been trying to get the 
+ov7670 camera working. I followed your instructions and used your 
+project source from github.  However, when i debug and run the code, I 
+realised that the code doesnt run beyond “while (I2CEngine() == 
+I2CSTATE_SLA_NACK);” under the ov7670_get function. Would appreciate it 
+if you can assist me with the troubleshooting.<br>
+Thanks!<br>
+Best Regards</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=10#respond" onclick='return addComment.moveForm("comment-10", "10", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment odd alt depth-2" id="li-comment-11">
+		<article id="comment-11" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/5f5ee9ad5e4fce4f4e495c5b657db91c.jpg" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn"><a href="http://qrfnfgre.wordpress.com/" rel="external nofollow" class="url">desaster</a> </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-11"><time datetime="2012-09-29T14:44:03+00:00">September 29, 2012 at 14:44</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>I spent a *lot* of time trying to get the i2c working using 
+various microcontrollers, timings, etc. In the end however it wasn’t 
+really the fault of the i2c code, but the way the camera was connected 
+and powered.</p>
+<p>Like I wrote in the blog, my biggest obstacle was that I wasn’t 
+providing a clock to the camera (non-FIFO verison that is). Without it, 
+even i2c will not work. However there could be many more reasons, like 
+the i2c connections themselves (pullup resistors).</p>
+<p>Maybe if you provided a schematic of your setup, I could see if there’s some obvious fault.</p>
+<p>Also, for me, it was very important to have a simpler i2c device to 
+verify that my i2c code and the bus was working properly. I used a 
+simple foolproof i2c eeprom for that.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=11#respond" onclick='return addComment.moveForm("comment-11", "11", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment even depth-3" id="li-comment-12">
+		<article id="comment-12" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/9b76b1227bced2d856847afb44f33252.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">JS </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-12"><time datetime="2012-10-02T16:36:31+00:00">October 2, 2012 at 16:36</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Thank you for your prompt reply! I have tried figuring out for the past few days but to no avail. </p>
+<p>This is the link to the schematic of my setup: <a href="https://docs.google.com/document/d/1htmgQO7R7Ofnz7y8e_Dm-VtTWBKdlKjJUCyPvKx6RB8/edit?pli=1" rel="nofollow">https://docs.google.com/document/d/1htmgQO7R7Ofnz7y8e_Dm-VtTWBKdlKjJUCyPvKx6RB8/edit?pli=1</a></p>
+<p>This is the eeprom I am using (24lc512) :<br>
+<a href="http://sg.element14.com/microchip/24lc512-i-p/eeprom-serial-512k-24lc512-dip8/dp/9758020" rel="nofollow">http://sg.element14.com/microchip/24lc512-i-p/eeprom-serial-512k-24lc512-dip8/dp/9758020</a></p>
+<p>This is the camera which I am using(VGA OV7670):<br>
+<a href="http://www.ebay.com/itm/-/230684824130?item=230684824130&amp;ViewItem=#ht_6726wt_1053" rel="nofollow">http://www.ebay.com/itm/-/230684824130?item=230684824130&amp;ViewItem=#ht_6726wt_1053</a></p>
+<p>Thank you again for assisting with my troubleshooting. Look forward to your reply soon.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=12#respond" onclick='return addComment.moveForm("comment-12", "12", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment odd alt depth-4" id="li-comment-13">
+		<article id="comment-13" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/5f5ee9ad5e4fce4f4e495c5b657db91c.jpg" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn"><a href="http://qrfnfgre.wordpress.com/" rel="external nofollow" class="url">desaster</a> </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-13"><time datetime="2012-10-02T17:09:29+00:00">October 2, 2012 at 17:09</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Hey,</p>
+<p>I don’t see SIOC and SIOD from the camera connected to the lpc1769. 
+They are the i2c bus that you were having problems with. Or did I 
+misinterpret the drawing?</p>
+<p>Your eeprom seems to be connected, but is lacking pullup resistors? 
+Also seems the SCL and SDA should be swapped around (but check this from
+ the lpc1769 datasheet). Did you have your EEPROM working, though?</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=13#respond" onclick='return addComment.moveForm("comment-13", "13", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+	<li class="comment even thread-even depth-1" id="li-comment-14">
+		<article id="comment-14" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/9b76b1227bced2d856847afb44f33252.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">JS </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-14"><time datetime="2012-10-02T17:35:41+00:00">October 2, 2012 at 17:35</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Thanks! you didnt misinterpret. I forgot to connect those pins! May I know where should SIOC and SIOD be connected to?  </p>
+<p>What values should I put for my pull-up resistors? I would need to 
+place pull up resistors for both SDA and SCL pins of the eeprom right?</p>
+<p>I think I connected the SCL and SDA properly but I drew it wrongly. 
+Sorry about that! I am new to lpc1769, hence thank you for the patience.</p>
+<p>Thanks!</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=14#respond" onclick='return addComment.moveForm("comment-14", "14", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment odd alt depth-2" id="li-comment-15">
+		<article id="comment-15" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/5f5ee9ad5e4fce4f4e495c5b657db91c.jpg" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn"><a href="http://qrfnfgre.wordpress.com/" rel="external nofollow" class="url">desaster</a> </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-15"><time datetime="2012-10-02T17:59:54+00:00">October 2, 2012 at 17:59</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>I suggest you look up i2c bus on wikipedia for example to learn 
+some basics about what it is about. In ov7670 you use it to modify 
+settings of the camera, an on eeprom you use it to write and read data.</p>
+<p>Ov7670 calls the i2c bus “SCCB”.</p>
+<p>Your i2c bus should have a pull-up on both wires, and they can be something like 2.2k. I used 10k myself.</p>
+<p>i2c bus has two wires: clock and data.</p>
+<p>on eeprom: SCL = clock, SDA = data.<br>
+on ov7670: SIOC = clock, SIOD = data.</p>
+<p>You can connect both these devices to the same i2c bus, and to the same connections in your lpc1769.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=15#respond" onclick='return addComment.moveForm("comment-15", "15", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment even depth-3" id="li-comment-23">
+		<article id="comment-23" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/9b76b1227bced2d856847afb44f33252.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">JS </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-23"><time datetime="2012-10-07T08:49:43+00:00">October 7, 2012 at 08:49</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Heyy. Thanks for assisting me with the camera! Cam test is working fine now.</p>
+<p>For the python code, I installed python 2.7.3 and the dependencies as
+ required. When I run the code, i was shown with this error.</p>
+<p>—————————————————————————————————————</p>
+<p>Traceback (most recent call last):<br>
+  File “C:UsersacerDesktopdesaster-ov7670test-14756aautilscamview.py”, line 148, in<br>
+    Application()<br>
+  File “C:UsersacerDesktopdesaster-ov7670test-14756aautilscamview.py”, line 108, in __init__<br>
+    self.serial = SerialPort(self.ov7670, 5, reactor, baudrate=921600)<br>
+  File “C:Python27libsite-packagestwistedinternet_win32serialport.py”, line 35, in __init__<br>
+    xonxoff=xonxoff, rtscts=rtscts)<br>
+  File “C:Python27libsite-packagesserialserialwin32.py”, line 30, in __init__<br>
+    SerialBase.__init__(self, *args, **kwargs)<br>
+  File “C:Python27libsite-packagesserialserialutil.py”, line 260, in __init__<br>
+    self.open()<br>
+  File “C:Python27libsite-packagesserialserialwin32.py”, line 56, in open<br>
+    raise SerialException(“could not open port %s: %s” % (self.portstr, ctypes.WinError()))<br>
+SerialException: could not open port COM6: [Error 2] The system cannot find the file specified.<br>
+&gt;&gt;&gt; </p>
+<p>————————————————————————————————————–</p>
+<p>Would appreciate if you can assist me with this error, perhaps 
+letting me know where I have gone wrong. Appreciate your help so far! 
+Thanks alot!!</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=23#respond" onclick='return addComment.moveForm("comment-23", "23", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment odd alt depth-4" id="li-comment-24">
+		<article id="comment-24" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/5f5ee9ad5e4fce4f4e495c5b657db91c.jpg" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn"><a href="http://qrfnfgre.wordpress.com/" rel="external nofollow" class="url">desaster</a> </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-24"><time datetime="2012-10-09T13:59:02+00:00">October 9, 2012 at 13:59</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>The error is that it can’t open COM6.. is that the correct com port you want to use?</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=24#respond" onclick='return addComment.moveForm("comment-24", "24", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-16">
+		<article id="comment-16" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/8dc5674c1859c2fb6984e52fd28eb19d.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">geo </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-16"><time datetime="2012-10-04T10:11:54+00:00">October 4, 2012 at 10:11</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Hi!</p>
+<p>I have followed the above entries and your correspondence with JS to 
+fix up my camera. I have installed python and the various dependencies 
+needed in your source code. However, I have experienced this even after 
+reinstalling twisted and pyserial. Did you encounter any of this during 
+your troubleshooting? The link has the image of the error after running 
+the python code.</p>
+<p><a href="https://docs.google.com/document/d/1Po1i0hg2q1ypGkwjbADxnX3686LGtpxnF9uCBeDVALk/edit" rel="nofollow">https://docs.google.com/document/d/1Po1i0hg2q1ypGkwjbADxnX3686LGtpxnF9uCBeDVALk/edit</a></p>
+<p>I have installed the .egg and other packages from .exe files smoothly
+ but just can’t get the python code that you’ve supplied to run. It 
+would be good if you could shed some light on the error.</p>
+<p>Thanks for the help!</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=16#respond" onclick='return addComment.moveForm("comment-16", "16", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment odd alt depth-2" id="li-comment-17">
+		<article id="comment-17" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/5f5ee9ad5e4fce4f4e495c5b657db91c.jpg" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn"><a href="http://qrfnfgre.wordpress.com/" rel="external nofollow" class="url">desaster</a> </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-17"><time datetime="2012-10-04T10:20:37+00:00">October 4, 2012 at 10:20</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>I’m not sure, but maybe make sure your python2.x and all the dependencies are 32bit versions.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=17#respond" onclick='return addComment.moveForm("comment-17", "17", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment even depth-3" id="li-comment-18">
+		<article id="comment-18" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/8dc5674c1859c2fb6984e52fd28eb19d.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">geo </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-18"><time datetime="2012-10-04T11:01:29+00:00">October 4, 2012 at 11:01</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Hi there! Thanks alot for the help. Does it matter if I am using 
+Windows 7 64bit version? Could that be the source of the problem?</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=18#respond" onclick='return addComment.moveForm("comment-18", "18", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment odd alt depth-4" id="li-comment-19">
+		<article id="comment-19" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/5f5ee9ad5e4fce4f4e495c5b657db91c.jpg" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn"><a href="http://qrfnfgre.wordpress.com/" rel="external nofollow" class="url">desaster</a> </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-19"><time datetime="2012-10-04T11:10:28+00:00">October 4, 2012 at 11:10</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>The problem could be that you are mixing 64bit python with 32bit libraries. I would just use 32bit version of everything.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=19#respond" onclick='return addComment.moveForm("comment-19", "19", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+	<li class="comment even thread-even depth-1" id="li-comment-20">
+		<article id="comment-20" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/83a541ff07adc8976890fd8dac65835c.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">haris </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-20"><time datetime="2012-10-05T02:54:54+00:00">October 5, 2012 at 02:54</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>hi. nice blog to see.  i am using ov7690 with stm32f4. i have manage to read write register settings.<br>
+i am using hardware sync.<br>
+but the problem is with image data output. I am receiving continuously 0×02.<br>
+what can be the problem? it may be clk polarity settings of vsync,hsync, pclk or what?<br>
+thanks</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=20#respond" onclick='return addComment.moveForm("comment-20", "20", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment odd alt depth-2" id="li-comment-21">
+		<article id="comment-21" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/5f5ee9ad5e4fce4f4e495c5b657db91c.jpg" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn"><a href="http://qrfnfgre.wordpress.com/" rel="external nofollow" class="url">desaster</a> </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-21"><time datetime="2012-10-05T08:48:21+00:00">October 5, 2012 at 08:48</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>I’m not sure how to help you here. How are you reading the image 
+data? Do you have the same non-FIFO model of the camera as I do?</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=21#respond" onclick='return addComment.moveForm("comment-21", "21", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li>
+</ol>
+</li>
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-22">
+		<article id="comment-22" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/83a541ff07adc8976890fd8dac65835c.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">haris </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-22"><time datetime="2012-10-05T16:45:36+00:00">October 5, 2012 at 16:45</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>there is dedicated data register in STM32F4 i.e DCMI_DR and dedicated pins for digital output DATA from camera.<br>
+I can read and write register settings of camera.and SCCB works fine.</p>
+<p>I am continously transmitting the DCMI_DR register every after some 
+micro seconds through USART to PC.  (i know i would lost lot of data by 
+this method and I have to use DMA… but the for checking purposes I am 
+directly transmitting the DCMI_DR)</p>
+<p>I have checked by manually pull-up and pull-down the different  data 
+PINS at STM32F4 . and I got the correct results on my serial. and I got 
+the change in run-time.</p>
+<p>but when I connect these PINS to data output of camera, it contnously gives 0×02 on my serial. </p>
+<p>may be i am setting the camera register incorrectly OR there is 
+difference between clock polarity settings (vsync,hsync, pclk) of camera
+ and STM32F4?</p>
+<p>even if am not setting the register correctly, i think there should 
+be some DATA at least variable DATA on data output PORT of the camera. 
+not only constant 0×02.</p>
+<p>=&gt; stm32F4 has bulit-in FIFO.<br>
+=&gt; (if i would use DMA ) DMA picks up data from DCMI_DR in STM32F4.</p>
+<p>thanks. help required. </p>
+<p>if u say i can send main routines of my code.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=22#respond" onclick='return addComment.moveForm("comment-22", "22", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment odd alt depth-2" id="li-comment-25">
+		<article id="comment-25" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/5f5ee9ad5e4fce4f4e495c5b657db91c.jpg" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn"><a href="http://qrfnfgre.wordpress.com/" rel="external nofollow" class="url">desaster</a> </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-25"><time datetime="2012-10-09T14:01:10+00:00">October 9, 2012 at 14:01</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>I don’t have a STM32F4, and I’m not exactly sure what you are doing, but I would be very interested in seeing your code.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=25#respond" onclick='return addComment.moveForm("comment-25", "25", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li>
+</ol>
+</li>
+	<li class="comment even thread-even depth-1" id="li-comment-26">
+		<article id="comment-26" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/9b76b1227bced2d856847afb44f33252.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">JS </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-26"><time datetime="2012-10-10T07:18:20+00:00">October 10, 2012 at 07:18</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Hey thanks for the reply. COM6 is not the port I want to read the
+ values from. Instead, its COM4. Hence, i change your camview.py code at
+ line 108 to    self.serial = SerialPort(self.ov7670, 3, reactor, 
+baudrate=921600)       as I realised that it will always +1 to the 
+number i put in the line of the code and open the corresponding port. 
+Eg: I put in 3 it will open port 4 which is (3+1). Having successfully 
+open my desired port of which the uart serial usb cable is connected to,
+ I am however still unable to get any image. I am not sure what I miss 
+out, Perhaps asking python to read another port requires more changes to
+ the code than just that line? All it shows is a blank/black pygame 
+screen. You can go to this link to view the pictorial image of what I 
+see.</p>
+<p><a href="https://docs.google.com/document/d/1htmgQO7R7Ofnz7y8e_Dm-VtTWBKdlKjJUCyPvKx6RB8/edit?pli=1" rel="nofollow">https://docs.google.com/document/d/1htmgQO7R7Ofnz7y8e_Dm-VtTWBKdlKjJUCyPvKx6RB8/edit?pli=1</a></p>
+<p>I am not sure what could be the problem now, as I have gotten the camtest successful stage as seen in the pic in the link above.</p>
+<p>For my uart transfer, I am using a FT232R chip of which I only two 
+connections beside the usb cable to my laptop:  I connect TXD of the 
+chip to RXD0/P0.3/(J6-22) of the lpc1769 and RXD of the chip to 
+TXD0/P0.2/(J6-21) of the lpc1769.</p>
+<p>I got a feeling my uart0 is not transmitting, hence receiving a blank
+ image. Maybe I miss out on something. Appreciate your help if you can 
+help me spot any obvious errors or let me know what might have gone 
+wrong.</p>
+<p>Thank you so much!</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=26#respond" onclick='return addComment.moveForm("comment-26", "26", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment odd alt depth-2" id="li-comment-27">
+		<article id="comment-27" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/5f5ee9ad5e4fce4f4e495c5b657db91c.jpg" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn"><a href="http://qrfnfgre.wordpress.com/" rel="external nofollow" class="url">desaster</a> </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-27"><time datetime="2012-10-10T13:30:06+00:00">October 10, 2012 at 13:30</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Not sure if it matters, but I ran my lpc1769 at 120mhz, while 
+yours seems to be running at 100mhz. Search google for how to change the
+ clock speed, IIRC it requires a small change to system_LPC17xx.c.</p>
+<p>Anyways, before even touching the python script, you should verify 
+that the UART communication is working properly by using a serial 
+console manually. Study main.c to learn how the commands work (getimage,
+ getline, regr, regw).</p>
+<p>Also, it sounds wrong that your serial chip only has two connections – GND should be connected too!</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=27#respond" onclick='return addComment.moveForm("comment-27", "27", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment even depth-3" id="li-comment-39">
+		<article id="comment-39" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/9b76b1227bced2d856847afb44f33252.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">JS </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-39"><time datetime="2012-10-27T18:34:30+00:00">October 27, 2012 at 18:34</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Heyy thanks for all your help!! I managed to get the image on the
+ pygame display and I have been studying the source code and lpc1769 for
+ the past week to help me understand more about how it works. My camera 
+is getting a new image every 2-3 seconds and I was wondering if you are 
+able to advise if there is any way to increase the frame rate to lets 
+say maybe to the extent of like when you are watching a video/less than 
+1second per frame? Just wondering if that is possible as I am with 
+limited knowledge and was thinking about whether this is possible or 
+not. Thanks again!!</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=39#respond" onclick='return addComment.moveForm("comment-39", "39", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment odd alt depth-4" id="li-comment-40">
+		<article id="comment-40" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/5f5ee9ad5e4fce4f4e495c5b657db91c.jpg" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn"><a href="http://qrfnfgre.wordpress.com/" rel="external nofollow" class="url">desaster</a> </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-40"><time datetime="2012-10-30T10:45:19+00:00">October 30, 2012 at 10:45</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Well, I increased the FPS by bumping up the UART speed, however at some point you are bound to hit a limit on that.</p>
+<p>Generally UART is not the best way to transfer video, though, and 
+I’ve only used it for testing purposes. For a real life application 
+you’d want to use some high speed interface.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=40#respond" onclick='return addComment.moveForm("comment-40", "40", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-28">
+		<article id="comment-28" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/83a541ff07adc8976890fd8dac65835c.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">haris </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-28"><time datetime="2012-10-11T20:09:31+00:00">October 11, 2012 at 20:09</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>hi:<br>
+      how can I display image receive on hyper terminal?</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=28#respond" onclick='return addComment.moveForm("comment-28", "28", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li>
+	<li class="comment odd alt thread-even depth-1" id="li-comment-29">
+		<article id="comment-29" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/8c958dd8222a65467dc25ea47055bbb2.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">Peter </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-29"><time datetime="2012-10-15T15:54:40+00:00">October 15, 2012 at 15:54</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Hi. nice blog to see. I am using OV7670 moudle(AL422 FIFO witj LD0) with Arduino Mega2560 </p>
+<p>I just want my camera taken photo and save in registers</p>
+<p>I search from net from very long time I can’t found the ans i wanted</p>
+<p>Could you help me to solve my problem</p>
+<p>THX</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=29#respond" onclick='return addComment.moveForm("comment-29", "29", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment even depth-2" id="li-comment-30">
+		<article id="comment-30" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/5f5ee9ad5e4fce4f4e495c5b657db91c.jpg" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn"><a href="http://qrfnfgre.wordpress.com/" rel="external nofollow" class="url">desaster</a> </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-30"><time datetime="2012-10-15T16:27:39+00:00">October 15, 2012 at 16:27</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Hi Peter,</p>
+<p>I now have a FIFO version too, but unfortunately I haven’t gotten around to trying it yet.</p>
+<p>Maybe sometime in future I will try it and write a small blog entry 
+about it.. these cameras seem to have gotten really popular lately.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=30#respond" onclick='return addComment.moveForm("comment-30", "30", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li>
+	<li class="comment odd alt depth-2" id="li-comment-38">
+		<article id="comment-38" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/5f5ee9ad5e4fce4f4e495c5b657db91c.jpg" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn"><a href="http://qrfnfgre.wordpress.com/" rel="external nofollow" class="url">desaster</a> </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-38"><time datetime="2012-10-20T19:19:55+00:00">October 20, 2012 at 19:19</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Wrote something on the FIFO version now:</p>
+<p><a href="http://qrfnfgre.wordpress.com/2012/10/20/ov7670-fifo-msp430-launchpad/" rel="nofollow">http://qrfnfgre.wordpress.com/2012/10/20/ov7670-fifo-msp430-launchpad/</a></p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=38#respond" onclick='return addComment.moveForm("comment-38", "38", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li>
+</ol>
+</li>
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-31">
+		<article id="comment-31" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/8c958dd8222a65467dc25ea47055bbb2.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">Peter </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-31"><time datetime="2012-10-15T16:40:14+00:00">October 15, 2012 at 16:40</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>THX for ur ans  i very grateful</p>
+<p>if my camera like yours how should i do </p>
+<p>do u know hw to do that</p>
+<p>THX</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=31#respond" onclick='return addComment.moveForm("comment-31", "31", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment odd alt depth-2" id="li-comment-32">
+		<article id="comment-32" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/5f5ee9ad5e4fce4f4e495c5b657db91c.jpg" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn"><a href="http://qrfnfgre.wordpress.com/" rel="external nofollow" class="url">desaster</a> </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-32"><time datetime="2012-10-15T16:47:00+00:00">October 15, 2012 at 16:47</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>For camera like mine, I don’t think any atmega will run fast 
+enough to be able to process the signals. However, I’m not sure how slow
+ the camera clock can be driven..</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=32#respond" onclick='return addComment.moveForm("comment-32", "32", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li>
+</ol>
+</li>
+	<li class="comment even thread-even depth-1" id="li-comment-33">
+		<article id="comment-33" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/8c958dd8222a65467dc25ea47055bbb2.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">Peter </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-33"><time datetime="2012-10-15T17:34:34+00:00">October 15, 2012 at 17:34</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Here i had the code and data from who sell the camera</p>
+<p>could u like to see it</p>
+<p><a href="http://www.mediafire.com/?8yr9tgetjabr3ls" rel="nofollow">http://www.mediafire.com/?8yr9tgetjabr3ls</a></p>
+<p>THX</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=33#respond" onclick='return addComment.moveForm("comment-33", "33", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li>
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-34">
+		<article id="comment-34" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/c32d2dbc3582059a481743e609a849c1.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">ycmoh </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-34"><time datetime="2012-10-15T17:59:37+00:00">October 15, 2012 at 17:59</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Hi. I’m YC and I’m from spain.</p>
+<p>I was inspired by your blog and I went ahead to purchase one from 
+ebay to try it out with the lpc1769 that I have lying around. 
+Fortunately (unfortunately), the version I bought came with the FIFO. 
+(Whats the difference btw the FIFO and non-FIFO version? What is the 
+FIFO used for??????????) </p>
+<p>I shall try to figure it out too. Looking forward to your future post!</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=34#respond" onclick='return addComment.moveForm("comment-34", "34", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment even depth-2" id="li-comment-37">
+		<article id="comment-37" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/5f5ee9ad5e4fce4f4e495c5b657db91c.jpg" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn"><a href="http://qrfnfgre.wordpress.com/" rel="external nofollow" class="url">desaster</a> </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-37"><time datetime="2012-10-20T19:19:29+00:00">October 20, 2012 at 19:19</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Wrote something on the FIFO version now:</p>
+<p><a href="http://qrfnfgre.wordpress.com/2012/10/20/ov7670-fifo-msp430-launchpad/" rel="nofollow">http://qrfnfgre.wordpress.com/2012/10/20/ov7670-fifo-msp430-launchpad/</a></p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=37#respond" onclick='return addComment.moveForm("comment-37", "37", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li>
+</ol>
+</li>
+	<li class="comment odd alt thread-even depth-1" id="li-comment-35">
+		<article id="comment-35" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/8c958dd8222a65467dc25ea47055bbb2.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">Peter </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-35"><time datetime="2012-10-17T13:18:24+00:00">October 17, 2012 at 13:18</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>hi there did you found the way to conquer the question  ,yet </p>
+<p>if you found the way to solved the question please must be that us know</p>
+<p>I really desperate to konw</p>
+<p>THX for the helping </p>
+<p>I will very greatful</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=35#respond" onclick='return addComment.moveForm("comment-35", "35", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li>
+	<li class="pingback even thread-odd thread-alt depth-1" id="comment-36">
+		<p>Pingback: <a href="http://qrfnfgre.wordpress.com/2012/10/20/ov7670-fifo-msp430-launchpad/" rel="external nofollow" class="url">OV7670-FIFO + MSP430 Launchpad | qrfnfgre'f oybt</a> </p>
+	</li>
+	<li class="comment odd alt thread-even depth-1" id="li-comment-41">
+		<article id="comment-41" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/18f561515180f5d70583da0735fcdab8.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">tml </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-41"><time datetime="2012-12-28T19:52:35+00:00">December 28, 2012 at 19:52</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Hello, I have used your project on my lpc1769 board (no eeprom).However, when I run the program it stops at<br>
+while (I2CEngine () == I2CSTATE_SLA_NACK). .I did follow the instructions as above add pull-up resistors on but it still fails?<br>
+This error is due to non-eeprom?<br>
+Please help me solve this problem<br>
+thanks.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=41#respond" onclick='return addComment.moveForm("comment-41", "41", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment even depth-2" id="li-comment-42">
+		<article id="comment-42" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/5f5ee9ad5e4fce4f4e495c5b657db91c.jpg" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn"><a href="http://qrfnfgre.wordpress.com/" rel="external nofollow" class="url">desaster</a> </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-42"><time datetime="2012-12-28T20:02:24+00:00">December 28, 2012 at 20:02</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Hi, the EEPROM I only used as a certainly working i2c example, to
+ rule out other problems with the camera module. Sounds like this would 
+be a great idea in  your case as well :)</p>
+<p>Unfortunately without a full schematic or illustration of your setup, it’s hard for me to make guesses on what might be wrong…</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=42#respond" onclick='return addComment.moveForm("comment-42", "42", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li>
+</ol>
+</li>
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-43">
+		<article id="comment-43" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/18f561515180f5d70583da0735fcdab8.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">tml </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-43"><time datetime="2012-12-29T08:18:59+00:00">December 29, 2012 at 08:18</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Thank you for your reply<br>
+I used this camera ov7670 module .<br>
+<a href="http://banlinhkien.vn/goods-1091-camera-ov7670-no-fifo.html" rel="nofollow">http://banlinhkien.vn/goods-1091-camera-ov7670-no-fifo.html</a>.<br>
+The schematic of my setup similar to your project I just change the uart speed = 115200 and<br>
+ it is up FLASH MAGIC TERMINAL to check when I checked it out up   “Initializing ov7670 … reset …settings ”     then it stops<br>
+it stops at ” while (I2CMasterState &lt; 0×100)" in I2CEngine.<br>
+THANKS.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=43#respond" onclick='return addComment.moveForm("comment-43", "43", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li>
+	<li class="comment even thread-even depth-1" id="li-comment-44">
+		<article id="comment-44" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/0ee3e5fee09cac4a931e67fe9cac6c5e.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">M. YILDIRIM </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-44"><time datetime="2013-01-16T14:53:12+00:00">January 16, 2013 at 14:53</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Congrats :) It is a real annoying challenge to get this camera 
+work. Actually I ruined a camera before communicating over I2C :) Your 
+article is quite beneficial for those who are confronted by ov7670.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=44#respond" onclick='return addComment.moveForm("comment-44", "44", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li>
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-45">
+		<article id="comment-45" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/1256817d35b4a212740a7c15001e4f42.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">Fahad </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-45"><time datetime="2013-01-20T09:28:50+00:00">January 20, 2013 at 09:28</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Hi, good job dude,</p>
+<p>What was U4 exactly (X_24MHZ)?<br>
+Was it a crystal or an IC?</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=45#respond" onclick='return addComment.moveForm("comment-45", "45", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment even depth-2" id="li-comment-46">
+		<article id="comment-46" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/5f5ee9ad5e4fce4f4e495c5b657db91c.jpg" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn"><a href="http://qrfnfgre.wordpress.com/" rel="external nofollow" class="url">desaster</a> </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-46"><time datetime="2013-01-20T12:29:57+00:00">January 20, 2013 at 12:29</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Sorry, what X_24MHZ are you referring to?</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=46#respond" onclick='return addComment.moveForm("comment-46", "46", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li>
+</ol>
+</li>
+	<li class="comment odd alt thread-even depth-1" id="li-comment-47">
+		<article id="comment-47" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/e31ac20c3d4f63ff5b2a561e4618280d.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">sharethl </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-47"><time datetime="2013-01-27T04:19:39+00:00">January 27, 2013 at 04:19</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Nice job, I have the same problem also, didn’t connect XCLK pin. Now let me try your code.<br>
+Thanks.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=47#respond" onclick='return addComment.moveForm("comment-47", "47", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li>
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-48">
+		<article id="comment-48" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/e31ac20c3d4f63ff5b2a561e4618280d.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">sharethl </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-48"><time datetime="2013-01-27T04:57:32+00:00">January 27, 2013 at 04:57</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>A question here, It seems those 8 data pins are not used?<br>
+Only I2C communication?</p>
+<p>/* use these to check if pin is high */<br>
+#define ST_D0 (LPC_GPIO2-&gt;FIOPIN &amp; (1 &lt;FIOPIN &amp; (1 
+&lt;FIOPIN &amp; (1 &lt;FIOPIN &amp; (1 &lt;FIOPIN &amp; (1 &lt;FIOPIN 
+&amp; (1 &lt;FIOPIN &amp; (1 &lt;FIOPIN &amp; (1 &lt;&lt; 7))</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=48#respond" onclick='return addComment.moveForm("comment-48", "48", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment odd alt depth-2" id="li-comment-50">
+		<article id="comment-50" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/5f5ee9ad5e4fce4f4e495c5b657db91c.jpg" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn"><a href="http://qrfnfgre.wordpress.com/" rel="external nofollow" class="url">desaster</a> </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-50"><time datetime="2013-01-27T11:08:04+00:00">January 27, 2013 at 11:08</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Those definitions may not be used in the code, but the data is 
+certainly read from the GPIO2 port, but it’s done in one single command:</p>
+<p>qqvgaframe1[i] = LPC_GPIO2-&gt;FIOPIN;</p>
+<p>Since qqvgaframe1 is uint8_t (8 bits), only the first 8 pins from 
+FIOPIN will be saved. This is faster than individually reading each pin,
+ and speed is quite important when trying to keep up with the frames.</p>
+<p>That said, there may more ways to optimize the reading part, but I 
+didn’t tweak the code much after I got the basic functionality working.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=50#respond" onclick='return addComment.moveForm("comment-50", "50", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li>
+</ol>
+</li>
+	<li class="comment even thread-even depth-1" id="li-comment-49">
+		<article id="comment-49" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/e31ac20c3d4f63ff5b2a561e4618280d.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">sharethl </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-49"><time datetime="2013-01-27T05:00:47+00:00">January 27, 2013 at 05:00</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Cannot edit my comment, is I2C used to setup camera, DataPins for image?<br>
+Why not just use I2C or data pins?</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=49#respond" onclick='return addComment.moveForm("comment-49", "49", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li>
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-51">
+		<article id="comment-51" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/e46bbd8d40ecfa9e9cb42392cb07f708.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">Karl </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-51"><time datetime="2013-02-04T19:26:55+00:00">February 4, 2013 at 19:26</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Could you please help me wiring the OV7670 Camera Module to my MCU ?<br>
+By now, I have taken the information from your text<br>
+<a href="http://s14.directupload.net/images/130204/xjwrrge2.png" rel="nofollow">http://s14.directupload.net/images/130204/xjwrrge2.png</a><br>
+I have no idea where (on which Pin of the OV7670) *the date arrives* ?<br>
+Does everything work with 3.3 volts, because the V_in pin is labelled 
+3v3 or is there an other voltage to supply to the data pins?</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=51#respond" onclick='return addComment.moveForm("comment-51", "51", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment even depth-2" id="li-comment-52">
+		<article id="comment-52" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/5f5ee9ad5e4fce4f4e495c5b657db91c.jpg" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn"><a href="http://qrfnfgre.wordpress.com/" rel="external nofollow" class="url">desaster</a> </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-52"><time datetime="2013-02-04T19:41:26+00:00">February 4, 2013 at 19:41</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>The image data arrives in parallel from the data pins (D0..D7), clocked by the pixel clock (PCLK). See <a href="http://www.eleparts.co.kr/data/design/product_file/Board/OV7670_CMOS.pdf" rel="nofollow">ov7670 datasheet</a>, Figure 11 for example.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=52#respond" onclick='return addComment.moveForm("comment-52", "52", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment odd alt depth-3" id="li-comment-53">
+		<article id="comment-53" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/e46bbd8d40ecfa9e9cb42392cb07f708.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">karl </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-53"><time datetime="2013-02-04T22:40:39+00:00">February 4, 2013 at 22:40</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Hello, thank you for the reply.<br>
+However, I think my MCU (ATmega328) is not able to create such a high frequency clock (10MHz, T=100ns)<br>
+For the clock I am thinking of some procedure like<br>
+- set high<br>
+- wait 100ns<br>
+- set low<br>
+- wait 100ns<br>
+-<br>
+There is XCLK (system clock input) ,CLK , and PCLK – are the frequencies the same?<br>
+How can I create such a high frequency clock signal? Datasheet page 6 states 10MHz minimum!</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=53#respond" onclick='return addComment.moveForm("comment-53", "53", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment even depth-4" id="li-comment-54">
+		<article id="comment-54" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/5f5ee9ad5e4fce4f4e495c5b657db91c.jpg" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn"><a href="http://qrfnfgre.wordpress.com/" rel="external nofollow" class="url">desaster</a> </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-54"><time datetime="2013-02-04T22:49:04+00:00">February 4, 2013 at 22:49</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>On an AVR, I would probably look into using the CKOUT fuse for generating a fast clock.</p>
+<p>However, with a low speed MCU like an atmega, I think you might have some bigger problems.</p>
+<p>I was using a pretty powerful MCU at 120mhz, and still keeping up with the data wasn’t easy.</p>
+<p>Another issue, where will you store the image data? AFAIK atmegas don’t have a whole lot of memory.</p>
+<p>If I were you, I would probably try using one of the FIFO equipped 
+versions of the ov7670 module instead. I’ve written another blog entry 
+on those here: <a href="http://www.rpg.fi/desaster/blog/2012/10/20/ov7670-fifo-msp430-launchpad/" rel="nofollow">http://www.rpg.fi/desaster/blog/2012/10/20/ov7670-fifo-msp430-launchpad/</a></p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=54#respond" onclick='return addComment.moveForm("comment-54", "54", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li>
+</ol>
+</li>
+	<li class="comment odd alt depth-3" id="li-comment-55">
+		<article id="comment-55" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/e46bbd8d40ecfa9e9cb42392cb07f708.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">karl </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-55"><time datetime="2013-02-04T22:55:12+00:00">February 4, 2013 at 22:55</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Thank you for your help!<br>
+ok, I haven’t thought about that issue yet<br>
+now I found a way: Using assembler NOP (=&gt; 1 clock cycle on 16mhz = 6.25ns) So I would repeat that 16 times (16*6.25ns=100ns)<br>
+Maybe it isn’t even possible with an AVR because of small buffer and relatively low clock speed.<br>
+And how do I TRIGGER the camera, I think it is either supplying voltage to some trigger pin or sending some code on an input.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=55#respond" onclick='return addComment.moveForm("comment-55", "55", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li>
+</ol>
+</li>
+</ol>
+</li>
+	<li class="comment even thread-even depth-1" id="li-comment-56">
+		<article id="comment-56" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/b6cdc0a9d75693ba27658a194cc54e14.png" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn">ALfian Fortrandyka </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-56"><time datetime="2013-02-16T09:14:18+00:00">February 16, 2013 at 09:14</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>hello, i need help<br>
+how configuration ATmega128 microcontroller OV7670 to be displayed to the PC<br>
+Do you have his AVR coding?<br>
+please help me</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=56#respond" onclick='return addComment.moveForm("comment-56", "56", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment odd alt depth-2" id="li-comment-57">
+		<article id="comment-57" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/5f5ee9ad5e4fce4f4e495c5b657db91c.jpg" class="avatar avatar-44 photo" width="44" height="44"><cite class="fn"><a href="http://qrfnfgre.wordpress.com/" rel="external nofollow" class="url">desaster</a> </cite><a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-57"><time datetime="2013-02-17T13:41:19+00:00">February 17, 2013 at 13:41</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Sorry, I don’t have AVR code for you. However, the basic 
+principles are the same for all microcontrollers; initialize the camera 
+with i2c commands, then handle signals with gpio or interrupts.</p>
+<p>For AVR, you will probably want to use the FIFO buffered version. See my blog entry here <a href="http://www.rpg.fi/desaster/blog/2012/10/20/ov7670-fifo-msp430-launchpad/" rel="nofollow">http://www.rpg.fi/desaster/blog/2012/10/20/ov7670-fifo-msp430-launchpad/</a></p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/?replytocom=57#respond" onclick='return addComment.moveForm("comment-57", "57", "respond", "40")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li>
+</ol>
+</li>
+	<li class="pingback even thread-odd thread-alt depth-1" id="comment-66">
+		<p>Pingback: <a href="http://www.rpg.fi/desaster/blog/2012/10/20/ov7670-fifo-msp430-launchpad/" rel="external nofollow" class="url">OV7670-FIFO + MSP430 Launchpad | desaster's blog</a> </p>
+	</li>
+		</ol><!-- .commentlist -->
+
+		
+		
+	
+									<div id="respond">
+				<h3 id="reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#respond" style="display:none;">Cancel reply</a></small></h3>
+									<form action="http://www.rpg.fi/desaster/blog/wp-comments-post.php" method="post" id="commentform">
+																			<p class="comment-notes">Your email address will not be published. Required fields are marked <span class="required">*</span></p>							<p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" size="30" aria-required="true" type="text"></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" size="30" aria-required="true" type="text"></p>
+<p class="comment-form-url"><label for="url">Website</label><input id="url" name="url" size="30" type="text"></p>
+												<p class="comment-form-comment"><label for="comment">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>						<p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a
+ href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; 
+&lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del 
+datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;strike&gt; 
+&lt;strong&gt; </code></p>						<p class="form-submit">
+							<input name="submit" id="submit" value="Post Comment" type="submit">
+							<input name="comment_post_ID" value="40" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+						</p>
+						<p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="8ca0bd36cf" type="hidden"></p>					</form>
+							</div><!-- #respond -->
+						
+</div><!-- #comments .comments-area -->
+			
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+
+			<div id="secondary" class="widget-area" role="complementary">
+			<aside id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" action="http://www.rpg.fi/desaster/blog/">
+	<div><label class="screen-reader-text" for="s">Search for:</label>
+	<input name="s" id="s" type="text">
+	<input id="searchsubmit" value="Search" type="submit">
+	</div>
+	</form></aside>		<aside id="recent-posts-2" class="widget widget_recent_entries">		<h3 class="widget-title">Recent Posts</h3>		<ul>
+					<li>
+				<a href="http://www.rpg.fi/desaster/blog/2013/04/05/kippo-0-8-released/" title="Kippo 0.8 released">Kippo 0.8 released</a>
+						</li>
+					<li>
+				<a href="http://www.rpg.fi/desaster/blog/2013/04/05/moving-blog-to-my-own-server/" title="Moving the blog to my own server">Moving the blog to my own server</a>
+						</li>
+					<li>
+				<a href="http://www.rpg.fi/desaster/blog/2012/10/20/ov7670-fifo-msp430-launchpad/" title="OV7670-FIFO + MSP430 Launchpad">OV7670-FIFO + MSP430 Launchpad</a>
+						</li>
+				</ul>
+		</aside><aside id="recent-comments-2" class="widget widget_recent_comments"><h3 class="widget-title">Recent Comments</h3><ul id="recentcomments"><li class="recentcomments"><a href="http://www.rpg.fi/desaster/blog/2012/10/20/ov7670-fifo-msp430-launchpad/" rel="external nofollow" class="url">OV7670-FIFO + MSP430 Launchpad | desaster's blog</a> on <a href="http://www.rpg.fi/desaster/blog/2012/05/07/ov7670-camera-sensor-success/#comment-66">ov7670 camera sensor success!</a></li><li class="recentcomments"><a href="http://qrfnfgre.wordpress.com/" rel="external nofollow" class="url">desaster</a> on <a href="http://www.rpg.fi/desaster/blog/2012/10/20/ov7670-fifo-msp430-launchpad/#comment-61">OV7670-FIFO + MSP430 Launchpad</a></li><li class="recentcomments">Kelsie on <a href="http://www.rpg.fi/desaster/blog/2012/10/20/ov7670-fifo-msp430-launchpad/#comment-60">OV7670-FIFO + MSP430 Launchpad</a></li></ul></aside>
+<style type="text/css">
+/*
+	This is a basic set of rules designed to work well with
+	the Twenty Ten theme provided as part of WordPress 3.0.
+*/
+#main .widget-area ul.hl_recent_tweets {
+	clear: both;
+	list-style: none;
+	margin: 0;
+	padding: 6px 0 0;
+}
+
+.hl_recent_tweets li {
+		background-repeat: no-repeat;
+	background-position: 0 3px;
+	min-height: 48px;
+	height: auto !important;
+	height: 48px;
+	padding-left: 54px;
+		margin-bottom: 6px;
+}
+.hl_recent_tweets p {
+	margin-bottom: 0;
+}
+.hl_recent_tweets span {
+	display: block;
+	font-size: 10px;
+}
+.hl_recent_tweets_none {
+	margin-bottom: 0;
+}
+.hl_recent_tweets_meta {
+	font-size: 10px;
+	color: #999;
+	font-style: italic;
+}
+</style>
+
+
+<aside id="hl_twitter_widget-2" class="widget widget_hl_twitter_widget">
+
+<h3 class="widget-title">	tweets</h3>
+
+
+	<ul class="hl_recent_tweets">
+					<li style="background-image:url(http://a0.twimg.com/profile_images/1345064760/tawny_frogmouth_normal.jpg)">
+				<p>
+					kippo 0.8 released - <a href="http://t.co/mggefBYqh2">http://t.co/mggefBYqh2</a>					<span class="meta">
+						<a href="http://twitter.com/vihapuu/status/320179006035083264">
+							4 days ago
+						</a>
+					</span>
+				</p>
+			</li>
+					<li style="background-image:url(http://a0.twimg.com/profile_images/1345064760/tawny_frogmouth_normal.jpg)">
+				<p>
+					transitioning the grabber to a pcb finally shows results <a href="http://t.co/aQRqzAyNsD">http://t.co/aQRqzAyNsD</a>					<span class="meta">
+						<a href="http://twitter.com/vihapuu/status/316874912017022977">
+							2 weeks ago
+						</a>
+					</span>
+				</p>
+			</li>
+					<li style="background-image:url(http://a0.twimg.com/profile_images/1345064760/tawny_frogmouth_normal.jpg)">
+				<p>
+					Hello World! <a href="http://t.co/QG3VZbNY57">http://t.co/QG3VZbNY57</a>					<span class="meta">
+						<a href="http://twitter.com/vihapuu/status/315447855630389251">
+							2 weeks ago
+						</a>
+					</span>
+				</p>
+			</li>
+			</ul>
+
+
+
+	<p class="hl_recent_tweets_meta">
+		<a href="http://www.rpg.fi/desaster/blog/hl-twitter/vihapuu">View more tweets</a>					</p>
+
+
+</aside><aside id="text-2" class="widget widget_text"><h3 class="widget-title">Amazon Wishlist</h3>			<div class="textwidget">Like my work?<br>
+<a href="http://amzn.com/w/3BDPD6WX7GOA0">You can buy me a book!</a><br>
+<i>(but you don't have to)</i></div>
+		</aside><aside id="archives-2" class="widget widget_archive"><h3 class="widget-title">Archives</h3>		<ul>
+			<li><a href="http://www.rpg.fi/desaster/blog/2013/04/" title="April 2013">April 2013</a></li>
+	<li><a href="http://www.rpg.fi/desaster/blog/2012/10/" title="October 2012">October 2012</a></li>
+	<li><a href="http://www.rpg.fi/desaster/blog/2012/05/" title="May 2012">May 2012</a></li>
+	<li><a href="http://www.rpg.fi/desaster/blog/2012/04/" title="April 2012">April 2012</a></li>
+	<li><a href="http://www.rpg.fi/desaster/blog/2012/03/" title="March 2012">March 2012</a></li>
+		</ul>
+</aside><aside id="categories-2" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul>
+	<li class="cat-item cat-item-2"><a href="http://www.rpg.fi/desaster/blog/category/electronics/" title="View all posts filed under electronics">electronics</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://www.rpg.fi/desaster/blog/category/junk/" title="View all posts filed under Junk">Junk</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://www.rpg.fi/desaster/blog/category/netsec/" title="View all posts filed under netsec">netsec</a>
+</li>
+		</ul>
+</aside><aside id="meta-2" class="widget widget_meta"><h3 class="widget-title">Meta</h3>			<ul>
+			<li><a href="http://www.rpg.fi/desaster/blog/wp-login.php?action=register">Register</a></li>			<li><a href="http://www.rpg.fi/desaster/blog/wp-login.php">Log in</a></li>
+			<li><a href="http://www.rpg.fi/desaster/blog/feed/" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://www.rpg.fi/desaster/blog/comments/feed/" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>
+						</ul>
+</aside>		</div><!-- #secondary -->
+		</div><!-- #main .wrapper -->
+	<footer id="colophon" role="contentinfo">
+		<div class="site-info">
+						<a href="http://wordpress.org/" title="Semantic Personal Publishing Platform">Proudly powered by WordPress</a>
+		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+
+<!-- Simple Social Buttons plugin -->
+<script type="text/javascript">
+//<![CDATA[
+// google plus
+window.___gcfg = {lang: 'en'};
+(function() {
+   var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+   po.src = 'https://apis.google.com/js/plusone.js';
+   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+})();
+// facebook 
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+// twitter 
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+// ]]>
+</script>
+<!-- /End of Simple Social Buttons -->
+
+<script type="text/javascript" src="ov7670%20camera%20sensor%20success%21%20_%20desaster%27s%20blog_files/navigation.js"></script>
+
+</body></html>
