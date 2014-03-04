@@ -1,5 +1,3 @@
-#include <Servo.h> 
-
 int servo1_pin = 0;
 int servo2_pin = 1;
 int servo3_pin = 2;

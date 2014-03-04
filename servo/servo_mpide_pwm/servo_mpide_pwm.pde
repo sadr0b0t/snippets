@@ -1,5 +1,3 @@
-#include <Servo.h> 
-
 // подключаем мотор к 8му пину
 int servo1_pin = 8; 
 void setup() 
