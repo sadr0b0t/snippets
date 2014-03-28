@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Android USB Accessory Client</string>
+    <string name="action_connect_to_accessory">Подключиться к аксессуару</string>
+    
+    <string name="connected_to_accessory">Аксессуар подключен</string>
+    <string name="no_accessory">Аксессуар не подключен</string>
+    <string name="cmd_ledon">Включить лампочку (команда \'ledon\')</string>
+    <string name="cmd_ledoff">Выключить лампочку (команда\'ledoff\')</string>
+
+</resources>

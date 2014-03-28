@@ -1,0 +1,6 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_connect_to_accessory"
+        android:title="@string/action_connect_to_accessory"/>
+</menu>
