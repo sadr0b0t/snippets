@@ -37,9 +37,9 @@ public class USBClientActivity extends Activity {
 
 	public static final String CMD_LEDON = "ledon";
 	public static final String CMD_LEDOFF = "ledoff";
-	public static final String CMD_DISCONNECT = "letmego";
+	public static final String CMD_LETMEGO = "letmego";
 
-	public static final String REPLY_DISCONNECT = "getout";
+	public static final String REPLY_GETOUT = "getout";
 
 	private UsbManager usbManager;
 	private UsbAccessory usbAccessory;
@@ -134,7 +134,7 @@ public class USBClientActivity extends Activity {
 			if (fileDescriptor != null) {
 				// ask accessory to disconnect (have to do this
 				// to correctly finish input reader thread)
-				sendCommand(CMD_DISCONNECT);
+				sendCommand(CMD_LETMEGO);
 
 				fileDescriptor.close();
 
@@ -224,6 +224,14 @@ public class USBClientActivity extends Activity {
 			final UsbAccessory accessory = (accessories == null ? null
 					: accessories[0]);
 			connectToAccessory(accessory);
+			updateViews();
+
+			return true;
+		case R.id.action_disconnect_from_accessory:
+
+			// disconnect from current accessory if connected
+			disconnectFromAccessory();
+			updateViews();
 
 			return true;
 		default:
@@ -240,7 +248,6 @@ public class USBClientActivity extends Activity {
 	@Override
 	public void onResume() {
 		super.onResume();
-		debug("onResume: has accessory=" + (usbAccessory != null));
 
 		// Try to connect to available accessory if it is attached.
 		if (usbAccessory == null) {
@@ -285,17 +292,17 @@ public class USBClientActivity extends Activity {
 								}
 							});
 							// This will unblock only when accessory will send
-							// some bytes or will be disconnected; closing
-							// IntputStream, FileDescriptor, Accessory or
-							// whatever anything else from Java will not help
+							// some bytes or will be disconnected physically;
+							// closing IntputStream, FileDescriptor, Accessory
+							// or whatever anything else from Java will not help
 							// (see discussion here:
 							// http://code.google.com/p/android/issues/detail?id=20545
 							// ).
 							readBytes = accessoryInput.read(buffer);
 							final String reply = new String(buffer);
 
-							final String postMessage = "Got intput: "
-									+ "num bytes=" + readBytes + ", value="
+							final String postMessage = "Read: " + "num bytes="
+									+ readBytes + ", value="
 									+ new String(buffer);
 
 							handler.post(new Runnable() {
@@ -304,15 +311,15 @@ public class USBClientActivity extends Activity {
 									debug(postMessage);
 
 									Toast.makeText(USBClientActivity.this,
-											postMessage, Toast.LENGTH_LONG)
+											postMessage, Toast.LENGTH_SHORT)
 											.show();
 								}
 							});
 
-							// So we need a special "disconnect" command with
-							// "disconnect" reply from accessory to exit this
+							// So we need a special "letmego" command with
+							// "getout" reply from accessory to exit this
 							// thread.
-							if (REPLY_DISCONNECT.equals(reply)) {
+							if (REPLY_GETOUT.equals(reply)) {
 								break;
 							}
 						} catch (final Exception e) {
@@ -331,6 +338,8 @@ public class USBClientActivity extends Activity {
 						@Override
 						public void run() {
 							debug("Input reader thread finish");
+
+							updateViews();
 						}
 					});
 				}
@@ -354,12 +363,12 @@ public class USBClientActivity extends Activity {
 	public void sendCommand(String command) {
 		if (accessoryOutput != null) {
 			try {
-				debug("sendCommand: " + command);
+				debug("Write: " + command);
 
 				accessoryOutput.write(command.getBytes());
 				accessoryOutput.flush();
 			} catch (IOException e) {
-				debug("Send command error: " + e.getMessage());
+				debug("Write error: " + e.getMessage());
 				e.printStackTrace();
 			}
 		}

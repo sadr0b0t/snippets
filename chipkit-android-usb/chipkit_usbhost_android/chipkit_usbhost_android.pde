@@ -128,18 +128,12 @@ ANDROID_ACCESSORY_INFORMATION myDeviceInfo = {
 // Команды, принимаемые от Android-устройства
 #define CMD_LEDON "ledon"
 #define CMD_LEDOFF "ledoff"
-#define CMD_DISCONNECT "letmego"
+#define CMD_LETMEGO "letmego"
 
 // Ответы для Android-устройства
 #define REPLY_OK "ok"
-#define REPLY_DISCONNECT "getout"
-#define REPLY_UNKNOWN_CMD "dontundestand"
-
-// Коды ответов
-#define _REPLY_NONE 0
-#define _REPLY_OK 1
-#define _REPLY_DISCONNECT 2
-#define _REPLY_UNKNOWN_CMD 3
+#define REPLY_GETOUT "getout"
+#define REPLY_UNKNOWN_CMD "dontunderstand"
 
 // Пин для тестовой лампочки
 #define LED_PIN 13
@@ -148,9 +142,10 @@ ANDROID_ACCESSORY_INFORMATION myDeviceInfo = {
 BOOL deviceAttached = FALSE;
 static void* deviceHandle = NULL;
 
-int write_cmd;
 static char read_buffer[128];
 static char write_buffer[128];
+int write_size;
+BOOL writeInProgress = FALSE;
 
 BOOL USBEventHandlerApplication( uint8_t address, USB_EVENT event, void *data, DWORD size ) {
     BOOL fRet = FALSE;
@@ -182,35 +177,49 @@ BOOL USBEventHandlerApplication( uint8_t address, USB_EVENT event, void *data, D
 
 
 /**
- * Process input - parse string, execute command, return reply code.
+ * Process input - parse string, execute command, 
+ * @return size of reply in bytes (0 for no reply).
  */
-int processInput(char* buffer, int size) {
-    int replyCode = _REPLY_NONE;
-    Serial.print("Process input: ");
+int processInput(char* buffer, int size, char* reply_buffer) {
+    int replySize = 0;
+    reply_buffer[0] = 0;
+    Serial.print("Read: ");
     Serial.println(buffer);
     // Включить лампочку по команде "ledon", выключить по команде "ledoff"
     if(strcmp(buffer, CMD_LEDON) == 0) {
-        Serial.println("Command: ledon - turn light on");
+        Serial.println("Command 'ledon': turn light on");
+        
+        // Выполнить команду
         digitalWrite(LED_PIN, HIGH);
         
-        replyCode = _REPLY_OK;
+        // Подготовить ответ
+        strcpy(reply_buffer, REPLY_OK);
+        replySize = strlen(write_buffer) + 1;
     } else if (strcmp(buffer, CMD_LEDOFF) == 0) {
-        Serial.println("Command: ledoff - turn light off");
+        Serial.println("Command 'ledoff': turn light off");
+        
+        // Выполнить команду
         digitalWrite(LED_PIN, LOW);
         
-        replyCode = _REPLY_OK;
-    } else if (strcmp(buffer, CMD_DISCONNECT) == 0) {
-        Serial.println("Command: disconnect - send disconnect reply");
+        // Подготовить ответ
+        strcpy(reply_buffer, REPLY_OK);
+        replySize = strlen(write_buffer) + 1;
+    } else if (strcmp(buffer, CMD_LETMEGO) == 0) {
+        Serial.println("Command 'letmego': send 'getout' reply");
         
-        replyCode = _REPLY_DISCONNECT;
+        // Подготовить ответ
+        strcpy(reply_buffer, REPLY_GETOUT);
+        replySize = strlen(write_buffer) + 1;
     } else {      
         Serial.print("Unknown command: ");
         Serial.println(buffer);
         
-        replyCode = _REPLY_UNKNOWN_CMD;
+        // Подготовить ответ
+        strcpy(reply_buffer, REPLY_UNKNOWN_CMD);
+        replySize = strlen(write_buffer) + 1;
     }
     
-    return replyCode;
+    return replySize;
 }
 
 void printErrorCode(uint8_t errorCode) {
@@ -332,6 +341,33 @@ void USBHostSimpleWrite(void* device_handle) {
     }
 }
 
+void USBHostAndroidSimpleWrite(void* device_handle) {
+    DWORD writeSize;
+    BOOL writeComplete;
+  
+    ANDROID_DEVICE_DATA* device = (ANDROID_DEVICE_DATA*)device_handle;
+    uint8_t errorCode = USBAndroidHost.AppWrite(device_handle, (uint8_t*)&write_buf_test, sizeof(write_buf_test));
+                                          
+    Serial.print("USBAndroidHost.AppWrite: ");
+    printErrorCode(errorCode);
+    Serial.println();
+    
+    writeComplete = FALSE;
+    
+    while(!writeComplete) {
+        USBTasks();
+        //writeComplete = USBHostTransferIsComplete(device->address, device->OUTEndpointNum, &errorCode, &writeSize);
+        writeComplete = USBAndroidHost.AppIsWriteComplete(device_handle, &errorCode, &writeSize);
+        Serial.print("USBAndroidHost.AppIsWriteComplete: ");
+        Serial.print(writeComplete, DEC);
+        Serial.print(", writeSize=");
+        Serial.print(writeSize, DEC);
+        Serial.print(", errorCode=");
+        printErrorCode(errorCode);
+        Serial.println();
+    }
+}
+
 void setup() {
     // Отладочные сообщения через последовательный порт:
     Serial.begin(9600);
@@ -351,7 +387,6 @@ void loop() {
     DWORD readSize;
     BOOL readyToRead = TRUE;
     DWORD writeSize;
-    BOOL writeInProgress = FALSE;
     uint8_t errorCode;
     
     // Запускаем периодические задачи для поддержания стека USB в живом и корректном состоянии.
@@ -377,19 +412,21 @@ void loop() {
                 // Считали порцию данных - добавим завершающий ноль
                 read_buffer[readSize] = 0;
                 
-                // и можно выполнить команду
-                int replyCode = processInput(read_buffer, readSize);
+                // и можно выполнить команду, ответ попадет в write_buffer
+                writeSize = processInput(read_buffer, readSize, write_buffer);
                 
                 // Разрешим читать следующую команду
                 readyToRead = TRUE;
                 readSize = 0;
-
-                // Отправим назад подтверждение - инициируем процедуру записи
-                // для следующей итерации цикла
-                //write_cmd =  replyCode;
-                printDeviceInfo(deviceHandle);
-                USBHostSimpleWrite(deviceHandle);
-                printDeviceInfo(deviceHandle);
+                
+                // Если writeSize не 0, отправим назад ответ - инициируем 
+                // процедуру записи для следующей итерации цикла (данные уже внутри write_buffer)
+                write_size = writeSize;
+                
+                //printDeviceInfo(deviceHandle);
+                //USBHostSimpleWrite(deviceHandle);
+                //USBHostAndroidSimpleWrite(deviceHandle);
+                //printDeviceInfo(deviceHandle);
             } else {
                 Serial.print("Error trying to complete read: ");
                 printErrorCode(errorCode);
@@ -398,19 +435,13 @@ void loop() {
         }
         
         // Отправка данных на устройство Android
-        if(write_cmd != _REPLY_NONE && !writeInProgress) {
-            // запишем нужную команду в буфер для отправки
-            if(write_cmd == _REPLY_OK) {
-                strcpy(write_buffer, REPLY_OK);
-                writeSize = strlen(write_buffer) + 1;
-            } else if (write_cmd == _REPLY_DISCONNECT) {
-                strcpy(write_buffer, REPLY_DISCONNECT);
-                writeSize = strlen(write_buffer) + 1;
-            }  else if (write_cmd == _REPLY_UNKNOWN_CMD) {
-                strcpy(write_buffer, REPLY_UNKNOWN_CMD);
-                writeSize = strlen(write_buffer) + 1;
-            }
-
+        if(write_size > 0 && !writeInProgress) {
+            Serial.print("Write: ");
+            Serial.print(write_buffer);
+            Serial.println();
+          
+            writeSize = write_size;
+            // Нужная команда уже в буфере для отправки
             // Вызов не блокируется - проверка завершения чтения через AndroidAppIsWriteComplete
             errorCode = USBAndroidHost.AppWrite(deviceHandle, (uint8_t*)&write_buffer, writeSize);
                         
@@ -421,7 +452,7 @@ void loop() {
                 printErrorCode(errorCode);
                 Serial.println();
                 
-                write_cmd = _REPLY_NONE;
+                write_size = 0;
             }
         }
         
@@ -429,7 +460,7 @@ void loop() {
             // Проверим, завершена ли запись
             if(USBAndroidHost.AppIsWriteComplete(deviceHandle, &errorCode, &writeSize)) {
                 writeInProgress = FALSE;
-                write_cmd = _REPLY_NONE;
+                write_size = 0;
     
                 if(errorCode != USB_SUCCESS) {
                     Serial.print("Error trying to complete write: ");

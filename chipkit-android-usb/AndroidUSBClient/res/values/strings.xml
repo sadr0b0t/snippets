@@ -2,11 +2,12 @@
 <resources>
 
     <string name="app_name">Android USB accessory client demo</string>
-    <string name="action_connect_to_accessory">Connect to accessory</string>
-    
+        
     <string name="connected_to_accessory">Connected to accessory</string>
     <string name="no_accessory">No accessory</string>
     <string name="cmd_ledon">Turn light on (command \'ledon\')</string>
-    <string name="cmd_ledoff">Rurn light off (command \'ledoff\')</string>
-
+    <string name="cmd_ledoff">Turn light off (command \'ledoff\')</string>
+    
+    <string name="action_connect_to_accessory">Connect to accessory</string>
+    <string name="action_disconnect_from_accessory">Disconnect from accessory</string>
 </resources>
