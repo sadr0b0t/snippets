@@ -29,9 +29,8 @@ import android.widget.Toast;
  * 
  */
 public class USBClientActivity extends Activity {
-	// Yes, this system action name by some reason is not defined
-	// as string constant in UsbManager class by android developers,
-	// so let's do this here for them.
+	// Да, имя этого системного акшена не определено в виде строковой константы
+	// в UsbManager разработчиками андроида, сделаем это за них:
 	private static final String ACTION_USB_PERMISSION = "com.google.android.DemoKit.action.USB_PERMISSION";
 	private final static int READ_BUFFER_SIZE = 128;
 
@@ -89,11 +88,12 @@ public class USBClientActivity extends Activity {
 	};
 
 	/**
-	 * Try to connect to provided accessory. Opens communication channel if all
-	 * ok, asks permission if required.
+	 * Пробует подключиться к указанному аксессуару. Открывает канал
+	 * коммуникации, если все хорошо, при необходимости запрашивает разрешение
+	 * пользователя.
 	 * 
 	 * @param accessory
-	 *            accessory to connect to
+	 *            аксессуар для подключения
 	 */
 	private void connectToAccessory(UsbAccessory accessory) {
 		if (accessory != null) {
@@ -103,8 +103,7 @@ public class USBClientActivity extends Activity {
 			} else {
 				if (!requestingPermission) {
 					debug("connectToAccessory: no permission => requestPermission");
-					// No permission to open accessory, but the user did not
-					// forbid it yet - try to request it
+					// Нет разрешения открыть аксессуар, запросим у пользователя
 					requestingPermission = true;
 					usbManager.requestPermission(accessory, permissionIntent);
 				} else {
@@ -117,7 +116,7 @@ public class USBClientActivity extends Activity {
 	}
 
 	/**
-	 * Debug messages.
+	 * Отладочные сообщения.
 	 * 
 	 * @param msg
 	 */
@@ -127,13 +126,13 @@ public class USBClientActivity extends Activity {
 	}
 
 	/**
-	 * Close communication channel with accessory.
+	 * Закрыть канал коммуникации с аксессуаром.
 	 */
 	private void disconnectFromAccessory() {
 		try {
 			if (fileDescriptor != null) {
-				// ask accessory to disconnect (have to do this
-				// to correctly finish input reader thread)
+				// Попросить аксессуар отключиться (требуется для корректного
+				// завершения потока, читающего входящие сообщения)
 				sendCommand(CMD_LETMEGO);
 
 				fileDescriptor.close();
@@ -154,23 +153,22 @@ public class USBClientActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_usbclient);
 
-		// Setup some system staff
+		// Системные штуки
 		usbManager = (UsbManager) getSystemService(Context.USB_SERVICE);
 		permissionIntent = PendingIntent.getBroadcast(this, 0, new Intent(
 				ACTION_USB_PERMISSION), 0);
 
 		final IntentFilter filter = new IntentFilter(ACTION_USB_PERMISSION);
 		filter.addAction(UsbManager.ACTION_USB_ACCESSORY_DETACHED);
-		// It seems that Android does not allow to receive notifications
-		// about ACTION_USB_ACCESSORY_ATTACHED event in this way,
-		// so we will have to use "Connect accessory" menu option instead
-		// which looks quite ugly, but this how its done. Another way would be
-		// just to exit this activity each time accessory is disconnected and
-		// reopen it after accessory is again connected.
+		// Судя по всему Android не позволяет принимать сообщения о событии
+		// ACTION_USB_ACCESSORY_ATTACHED при помощи BroadcastReceiver,
+		// поэтому будем использовать меню "Подключить аксессуар". Другой
+		// вариант - закрывать активити каждый раз, когда аксессуар отключен и
+		// открывать заново, когда подключен снова.
 		// filter.addAction(UsbManager.ACTION_USB_ACCESSORY_ATTACHED);
 		registerReceiver(usbReceiver, filter);
 
-		// Init ui
+		// Интерфейс
 		txtStatus = (TextView) findViewById(R.id.txt_status);
 		txtDebug = (TextView) findViewById(R.id.txt_debug);
 
@@ -194,7 +192,6 @@ public class USBClientActivity extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.menu_usbclient, menu);
 
 		return super.onCreateOptionsMenu(menu);
@@ -208,19 +205,17 @@ public class USBClientActivity extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle item selection
 		switch (item.getItemId()) {
 		case R.id.action_connect_to_accessory:
 
-			// first, disconnect from current accessory if connected
+			// сначала закроем текущее подключение, если оно активно
 			disconnectFromAccessory();
 
-			// Try to connect to available accessory if it is attached.
-			// Get list of all available accessories from system.
+			// Попробуем подключиться к аксессуару, если он подсоединен.
+			// Получить список доступных аксессуаров из истемы.
 			final UsbAccessory[] accessories = usbManager.getAccessoryList();
-			// Maximum number or connected accessories with current OS
-			// implementation is 1, so taking 1st element if it exists is
-			// ok.
+			// Максимальное число подключенных аксессуаров в текущей реализации
+			// Android - 1, поэтому можем просто брать 1й элемент, если он есть.
 			final UsbAccessory accessory = (accessories == null ? null
 					: accessories[0]);
 			connectToAccessory(accessory);
@@ -229,7 +224,7 @@ public class USBClientActivity extends Activity {
 			return true;
 		case R.id.action_disconnect_from_accessory:
 
-			// disconnect from current accessory if connected
+			// Отключиться от аксессуара
 			disconnectFromAccessory();
 			updateViews();
 
@@ -249,12 +244,12 @@ public class USBClientActivity extends Activity {
 	public void onResume() {
 		super.onResume();
 
-		// Try to connect to available accessory if it is attached.
+		// Попробуем подключиться к аксессуару, если он подсоединен.
 		if (usbAccessory == null) {
-			// Get list of all available accessories from system.
+			// Получить список доступных аксессуаров из истемы.
 			final UsbAccessory[] accessories = usbManager.getAccessoryList();
-			// Maximum number or connected accessories with current OS
-			// implementation is 1, so taking 1st element if it exists is ok.
+			// Максимальное число подключенных аксессуаров в текущей реализации
+			// Android - 1, поэтому можем просто брать 1й элемент, если он есть.
 			final UsbAccessory accessory = (accessories == null ? null
 					: accessories[0]);
 			connectToAccessory(accessory);
@@ -264,10 +259,10 @@ public class USBClientActivity extends Activity {
 	}
 
 	/**
-	 * Open communication channel with provided accessory.
+	 * Открыть канал коммуникации с указанным аксессуаром.
 	 * 
 	 * @param accessory
-	 *            accessory to open
+	 *            аксессуар для подключения
 	 */
 	private void openAccessory(UsbAccessory accessory) {
 		fileDescriptor = usbManager.openAccessory(accessory);
@@ -291,11 +286,12 @@ public class USBClientActivity extends Activity {
 									debug("read bytes...");
 								}
 							});
-							// This will unblock only when accessory will send
-							// some bytes or will be disconnected physically;
-							// closing IntputStream, FileDescriptor, Accessory
-							// or whatever anything else from Java will not help
-							// (see discussion here:
+							// Этот вызов разблокируется только тогда, когда
+							// аксессуар пришлет какие-то данные или когда
+							// он будет отсоединен физически.
+							// Закрывать IntputStream, FileDescriptor, Accessory
+							// и что угодно еще из Java не поможет
+							// (см обсуждение здесь:
 							// http://code.google.com/p/android/issues/detail?id=20545
 							// ).
 							readBytes = accessoryInput.read(buffer);
@@ -316,9 +312,9 @@ public class USBClientActivity extends Activity {
 								}
 							});
 
-							// So we need a special "letmego" command with
-							// "getout" reply from accessory to exit this
-							// thread.
+							// Поэтому нам нужна специальная команда "letmego",
+							// на которую аксессуар пришлет ответ "getout"
+							// и этот поток сможет завершиться.
 							if (REPLY_GETOUT.equals(reply)) {
 								break;
 							}
@@ -355,10 +351,10 @@ public class USBClientActivity extends Activity {
 	}
 
 	/**
-	 * Send command to connected accessory.
+	 * Отправить команду подключенному аксессуару.
 	 * 
 	 * @param command
-	 *            command to send
+	 *            команда для отправки
 	 */
 	public void sendCommand(String command) {
 		if (accessoryOutput != null) {
@@ -375,7 +371,7 @@ public class USBClientActivity extends Activity {
 	}
 
 	/**
-	 * Update views depending on current application state.
+	 * Обновить элементы управления в зависимости от текущего состояния.
 	 */
 	private void updateViews() {
 		final boolean accessoryConnected = usbAccessory != null;
