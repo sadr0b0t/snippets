@@ -35,7 +35,19 @@ DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
 
 // Created by the Microchip USBConfig Utility, Version 0.0.12.0, 3/28/2008, 8:58:18
 
-#include "Compiler.h"
+#ifndef _usb_config_h_
+#define _usb_config_h_
+
+#if defined(__PIC24F__)
+    #include <p24fxxxx.h>
+#elif defined(__18CXX)
+    #include <p18cxxx.h>
+#elif defined(__PIC32MX__)
+    #include <p32xxxx.h>
+    #include "plib.h"
+#else
+    #error No processor header file.
+#endif
 
 #define _USB_CONFIG_VERSION_MAJOR 0
 #define _USB_CONFIG_VERSION_MINOR 0
@@ -76,4 +88,6 @@ DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
     {                               \
         USBHostInit(x);             \
     }
+
+#endif
 
