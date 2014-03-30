@@ -70,8 +70,8 @@ BOOL USBEventHandlerApplication( uint8_t address, USB_EVENT event, void *data, D
 
 
 /**
- * Process input - parse string, execute command.
- * @return size of reply in bytes (0 for no reply).
+ * Обработать входные данные - разобрать строку, выполнить команду.
+ * @return размер ответа в байтах (0, чтобы не отправлять ответ).
  */
 int processInput(char* buffer, int size, char* reply_buffer) {
     int replySize = 0;
