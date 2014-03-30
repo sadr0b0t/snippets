@@ -1,7 +1,7 @@
 #include <chipKITUSBHost.h>
 #include <chipKITUSBAndroidHost.h>
 
-// Информация о текущем устройстве
+// Current accessory device info
 static char manufacturer[] = "NNTU";
 static char model[] = "Android accessory basic demo";
 static char description[] = "Android accessory basic demo: accepts 'ledon' and 'ledoff' commands, sends back 'ok' as reply";
@@ -18,20 +18,20 @@ ANDROID_ACCESSORY_INFORMATION myDeviceInfo = {
     serial, sizeof(serial)
 };
 
-// Команды, принимаемые от Android-устройства
+// Commands from Android device
 #define CMD_LEDON "ledon"
 #define CMD_LEDOFF "ledoff"
 #define CMD_LETMEGO "letmego"
 
-// Ответы для Android-устройства
+// Replyes for Android device
 #define REPLY_OK "ok"
 #define REPLY_GETOUT "getout"
 #define REPLY_UNKNOWN_CMD "dontunderstand"
 
-// Пин для тестовой лампочки
+// Test LED pin
 #define LED_PIN 13
 
-// Локальные переменные
+// Local variables
 BOOL deviceAttached = FALSE;
 static void* deviceHandle = NULL;
 
@@ -43,9 +43,9 @@ BOOL writeInProgress = FALSE;
 BOOL USBEventHandlerApplication( uint8_t address, USB_EVENT event, void *data, DWORD size ) {
     BOOL fRet = FALSE;
 
-    // Вызываем обработчик событий для базового хост-контроллера
-    // (это важно сделать, т.к. он также включает и выключает питание на ножках контроллера
-    // по событиям EVENT_VBUS_REQUEST_POWER и EVENT_VBUS_RELEASE_POWER)
+    // Call event handler from base host controller
+    // (this is important to be done, because it also turns on and off  power on microcontroller 
+    // pins on events EVENT_VBUS_REQUEST_POWER и EVENT_VBUS_RELEASE_POWER)
     fRet = USBHost.DefaultEventHandler(address, event, data, size);
   
     switch( event ) {
@@ -78,36 +78,36 @@ int processInput(char* buffer, int size, char* reply_buffer) {
     reply_buffer[0] = 0;
     Serial.print("Read: ");
     Serial.println(buffer);
-    // Включить лампочку по команде "ledon", выключить по команде "ledoff"
+    // Turn led on on command "ledon", turn off on command "ledoff"
     if(strcmp(buffer, CMD_LEDON) == 0) {
         Serial.println("Command 'ledon': turn light on");
         
-        // Выполнить команду
+        // Execute command
         digitalWrite(LED_PIN, HIGH);
         
-        // Подготовить ответ
+        // Prepare reply
         strcpy(reply_buffer, REPLY_OK);
         replySize = strlen(write_buffer) + 1;
     } else if (strcmp(buffer, CMD_LEDOFF) == 0) {
         Serial.println("Command 'ledoff': turn light off");
         
-        // Выполнить команду
+        // Execute command
         digitalWrite(LED_PIN, LOW);
         
-        // Подготовить ответ
+        // Prepare reply
         strcpy(reply_buffer, REPLY_OK);
         replySize = strlen(write_buffer) + 1;
     } else if (strcmp(buffer, CMD_LETMEGO) == 0) {
         Serial.println("Command 'letmego': send 'getout' reply");
         
-        // Подготовить ответ
+        // Prepare reply
         strcpy(reply_buffer, REPLY_GETOUT);
         replySize = strlen(write_buffer) + 1;
     } else {      
         Serial.print("Unknown command: ");
         Serial.println(buffer);
         
-        // Подготовить ответ
+        // Prepare reply
         strcpy(reply_buffer, REPLY_UNKNOWN_CMD);
         replySize = strlen(write_buffer) + 1;
     }
@@ -116,17 +116,17 @@ int processInput(char* buffer, int size, char* reply_buffer) {
 }
 
 void setup() {
-    // Отладочные сообщения через последовательный порт:
+    // Debug messages on serial port:
     Serial.begin(9600);
     Serial.println("Start android accessory demo");
   
-    // Инициализируем контроллер USB HOST:
-    // Передаем ссылку на обработчик событий
+    // Init USB Host controller:
+    // Pass the instance for event handler
     USBHost.Begin(USBEventHandlerApplication);
-    // Передаем информацию об устройстве драйверу Android
+    // Send info about device to Android driver
     USBAndroidHost.AppStart(&myDeviceInfo);
 
-    // Лампочка для тестов
+    // Pin for tests
     pinMode(LED_PIN, OUTPUT);
 }
 
@@ -136,38 +136,37 @@ void loop() {
     DWORD writeSize;
     uint8_t errorCode;
     
-    // Запускаем периодические задачи для поддержания стека USB в живом и корректном состоянии.
-    // Следует выполнять их хотябы один раз внутри цикла или в момент, когда нужно
-    // обновить внутреннее состояние контроллера USB хоста.
+    // Run periodic tasks to keep USB stack alive and healthy.
+    // Run at least once per cycle or when you need to update inner state of USB host controller.
     USBTasks();
 
     if(deviceAttached) {      
-        // Чтение данных с устройства Android - ждем команду
+        // Read data from Android device - wait for a command
         if(readyToRead) {
-            // Вызов не блокируется - проверка завершения чтения через AndroidAppIsReadComplete
+            // Call is not blocked - will check if read is complete with AndroidAppIsReadComplete
             errorCode = USBAndroidHost.AppRead(deviceHandle, (uint8_t*)&read_buffer, (DWORD)sizeof(read_buffer));
             if(errorCode == USB_SUCCESS) {
-                // Дождались команду - новую читать не будем, пока не придут все данные,
-                // проверять завершение операции будем в следующих итерациях цикла
+                // Received command - will not read the next one until all data is received,
+                // will check for that in next loop iterations.
                 readyToRead = FALSE;
             }
         }
 
-        // Проверим, завершилось ли чтение
+        // Let's check if read is complete
         if(USBAndroidHost.AppIsReadComplete(deviceHandle, &errorCode, &readSize)) {
             if(errorCode == USB_SUCCESS) {
-                // Считали порцию данных - добавим завершающий ноль
+                // Data portion is read, let's add finishing zero to make it zero-terminated string.
                 read_buffer[readSize] = 0;
                 
-                // и можно выполнить команду, ответ попадет в write_buffer
+                // and we can execute the command now, reply will go to write_buffer
                 writeSize = processInput(read_buffer, readSize, write_buffer);
                 
-                // Разрешим читать следующую команду
+                // Allow to read next command
                 readyToRead = TRUE;
                 readSize = 0;
                 
-                // Если writeSize не 0, отправим назад ответ - инициируем 
-                // процедуру записи для следующей итерации цикла (данные уже внутри write_buffer)
+                // If writeSize is not 0, send back reply - init write procedure 
+                // for the next loop iteration (data is already inside write_buffer)
                 write_size = writeSize;
             } else {
                 Serial.print("Error trying to complete read: errorCode=");
@@ -175,15 +174,15 @@ void loop() {
             }
         }
         
-        // Отправка данных на устройство Android
+        // Send data to Android device
         if(write_size > 0 && !writeInProgress) {
             Serial.print("Write: ");
             Serial.print(write_buffer);
             Serial.println();
           
             writeSize = write_size;
-            // Нужная команда уже в буфере для отправки
-            // Вызов не блокируется - проверка завершения чтения через AndroidAppIsWriteComplete
+            // Require command is already in the buffer to be sent.
+            // Call is not blocked - will check if write is complete with AndroidAppIsWriteComplete
             errorCode = USBAndroidHost.AppWrite(deviceHandle, (uint8_t*)&write_buffer, writeSize);
                         
             if(errorCode == USB_SUCCESS) {
@@ -197,7 +196,7 @@ void loop() {
         }
         
         if(writeInProgress) {
-            // Проверим, завершена ли запись
+            // Let's check if write is complete
             if(USBAndroidHost.AppIsWriteComplete(deviceHandle, &errorCode, &writeSize)) {
                 writeInProgress = FALSE;
                 write_size = 0;
