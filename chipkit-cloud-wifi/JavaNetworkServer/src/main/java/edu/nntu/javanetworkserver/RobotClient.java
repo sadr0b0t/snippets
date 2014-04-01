@@ -21,7 +21,8 @@ public class RobotClient {
     public static final String REPLY_OK = "ok";
     public static final String REPLY_DONTUNDERSTAND = "dontunderstand";
 
-    public static final String DEFAULT_SERVER_HOST = "robotc.lasto4ka.su";
+    //public static final String DEFAULT_SERVER_HOST = "robotc.lasto4ka.su";
+    public static final String DEFAULT_SERVER_HOST = "localhost";
     public static final int DEFAULT_SERVER_PORT = 1117;
     
     private String serverHost;
@@ -42,16 +43,14 @@ public class RobotClient {
             System.out.println("Command 'ledon': turn light on");
             
             // Здесь мы могли бы включить лампочку, если бы она была
-            // http://www.fileformat.info/info/unicode/char/1f506/index.htm
-            System.out.println("\uD83D\uDD06");
+            System.out.println("]*");
             
             reply = REPLY_OK;
         } else if(CMD_LEDOFF.equals(cmd)) {
             System.out.println("Command 'ledoff': turn light off");
             
             // Здесь мы могли бы выключить лампочку, если бы она была
-            // http://www.fileformat.info/info/unicode/char/1f505/index.htm
-            System.out.println("\uD83D\uDD05");
+            System.out.println("]o");
             
             reply = REPLY_OK;
         } else {

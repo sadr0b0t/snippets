@@ -16,6 +16,10 @@ import java.util.logging.Logger;
  */
 public class RobotServer1 {
 
+    // Локальные команды для сервера
+    public static final String SCMD_KICK = "kick";
+
+    // Команды для далёкого клиента (робота)
     public static final String CMD_LEDON = "ledon";
     public static final String CMD_LEDOFF = "ledoff";
 
@@ -33,7 +37,12 @@ public class RobotServer1 {
     }
 
     /**
-     * Запускает сервер слушать входящие подключения на указанном порте.
+     * Запускает сервер слушать входящие подключения на указанном порте serverPort.
+     *
+     * Простой однопоточный сервер - ждет ввод от пользователя, отправляет
+     * введенную команду клиенту, ждет ответ и дальше по кругу.
+     *
+     * Сбросить подключенного клиента - ввести локальную команду 'kick'.
      *
      * @throws java.io.IOException
      */
@@ -41,30 +50,53 @@ public class RobotServer1 {
         System.out.println("Starting server on port " + serverPort + "...");
         serverSocket = new ServerSocket(serverPort);
 
-        System.out.println("Waiting for client...");
-        Socket socket = serverSocket.accept();
-        System.out.println("Client accepted: " + socket.getInetAddress().getHostAddress());
+        while (true) {
 
-        // Ввод/вывод сокета для общения с подключившимся клиентом (роботом) 
-        final InputStream clientIn = socket.getInputStream();
-        final BufferedReader clientInputReader = new BufferedReader(new InputStreamReader(clientIn));
-        final OutputStream clientOut = socket.getOutputStream();
+            try {
+                System.out.println("Waiting for client...");
+                Socket clientSocket = serverSocket.accept();
+                System.out.println("Client accepted: " + clientSocket.getInetAddress().getHostAddress());
 
-        // Ввод команд из консоли пользователем
-        final BufferedReader userInputReader = new BufferedReader(new InputStreamReader(System.in));
-        String userLine;
-        System.out.print("enter command: ");
-        while ((userLine = userInputReader.readLine()) != null) {
-            System.out.println("Write: " + userLine);
-            clientOut.write((userLine + "\n").getBytes());
-            clientOut.flush();
-            
-            final String clientLine = clientInputReader.readLine();
-            if(clientLine != null) {
-                System.out.println("Read: " + clientLine);
+                // Ввод/вывод сокета для общения с подключившимся клиентом (роботом) 
+                final InputStream clientIn = clientSocket.getInputStream();
+                final BufferedReader clientInputReader = new BufferedReader(new InputStreamReader(clientIn));
+                final OutputStream clientOut = clientSocket.getOutputStream();
+
+                // Ввод команд из консоли пользователем
+                final BufferedReader userInputReader = new BufferedReader(new InputStreamReader(System.in));
+                String userLine;
+                System.out.print("enter command: ");
+                while (!clientSocket.isClosed() && (userLine = userInputReader.readLine()) != null) {
+                    if (SCMD_KICK.equals(userLine)) {
+                        // отключить клиента
+                        clientIn.close();
+                        clientOut.close();
+                        clientSocket.close();
+
+                        System.out.print("Client disconnected");
+                    } else {
+                        // отправить команду клиенту
+                        System.out.println("Write: " + userLine);
+                        clientOut.write((userLine + "\n").getBytes());
+                        clientOut.flush();
+
+                        final String clientLine = clientInputReader.readLine();
+                        if (clientLine != null) {
+                            System.out.println("Read: " + clientLine);
+                        }
+
+                        // приглашение для ввода следующей команды
+                        System.out.print("enter command: ");
+                    }
+                }
+            } catch (IOException ex) {
+                // Попадем сюда только после того, как клиент отключится и сервер
+                // попробует отправить ему любую команду 
+                // (в более правильной реализации можно добавить в протокол 
+                // команду проверки статуса клиента 'isalive' и отправлять её 
+                // клиенту с некоторой периодичностью).
+                System.out.println("Client disconnected");
             }
-            
-            System.out.print("enter command: ");
         }
     }
 
