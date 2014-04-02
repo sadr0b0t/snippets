@@ -180,7 +180,7 @@ BOOL USBEventHandlerApplication( uint8_t address, USB_EVENT event, void *data, D
  * Process input - parse string, execute command, 
  * @return size of reply in bytes (0 for no reply).
  */
-int processInput(char* buffer, int size, char* reply_buffer) {
+int handleInput(char* buffer, int size, char* reply_buffer) {
     int replySize = 0;
     reply_buffer[0] = 0;
     Serial.print("Read: ");
@@ -413,7 +413,7 @@ void loop() {
                 read_buffer[readSize] = 0;
                 
                 // и можно выполнить команду, ответ попадет в write_buffer
-                writeSize = processInput(read_buffer, readSize, write_buffer);
+                writeSize = handleInput(read_buffer, readSize, write_buffer);
                 
                 // Разрешим читать следующую команду
                 readyToRead = TRUE;
