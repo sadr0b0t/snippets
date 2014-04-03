@@ -2,8 +2,7 @@
 #include <chipKITUSBAndroidHost.h>
 
 // from usb_host_android.c
-typedef enum
-{
+typedef enum {
     //NO_DEVICE needs to be 0 so that the memset in the init function
     //  clears this to the right value
     NO_DEVICE = 0,
@@ -31,8 +30,7 @@ typedef enum
 
 } ANDROID_DEVICE_STATUS;
 
-typedef struct
-{
+typedef struct {
     uint8_t address;
     uint8_t clientDriverID;
     uint8_t OUTEndpointNum;
@@ -43,15 +41,13 @@ typedef struct
     WORD countDown;
     WORD protocol;
 
-    struct
-    {
+    struct {
         uint8_t TXBusy :1;
         uint8_t RXBusy :1;
         uint8_t EP0TransferPending :1;
     } status;
 
-    struct
-    {
+    struct {
         uint8_t* data;
         uint8_t  length;
         uint8_t  offset;
@@ -111,18 +107,12 @@ static char uri[] = "https://github.com/1i7/snippets";
 static char serial[] = "N/A";
 
 ANDROID_ACCESSORY_INFORMATION myDeviceInfo = {
-    manufacturer,
-    sizeof(manufacturer),
-    model,
-    sizeof(model),
-    description,
-    sizeof(description),
-    version,
-    sizeof(version),
-    uri,
-    sizeof(uri),
-    serial,
-    sizeof(serial)
+    manufacturer, sizeof(manufacturer),
+    model, sizeof(model),
+    description, sizeof(description),
+    version, sizeof(version),
+    uri, sizeof(uri),
+    serial, sizeof(serial)
 };
 
 // Команды, принимаемые от Android-устройства
@@ -142,10 +132,13 @@ ANDROID_ACCESSORY_INFORMATION myDeviceInfo = {
 BOOL deviceAttached = FALSE;
 static void* deviceHandle = NULL;
 
+BOOL readInProgress = FALSE;
+BOOL writeInProgress = FALSE;
+
 static char read_buffer[128];
 static char write_buffer[128];
 int write_size;
-BOOL writeInProgress = FALSE;
+
 
 BOOL USBEventHandlerApplication( uint8_t address, USB_EVENT event, void *data, DWORD size ) {
     BOOL fRet = FALSE;
@@ -385,7 +378,6 @@ void setup() {
 
 void loop() {
     DWORD readSize;
-    BOOL readyToRead = TRUE;
     DWORD writeSize;
     uint8_t errorCode;
     
@@ -396,29 +388,32 @@ void loop() {
 
     if(deviceAttached) {      
         // Чтение данных с устройства Android - ждем команду
-        if(readyToRead) {
+        if(!readInProgress) {
             // Вызов не блокируется - проверка завершения чтения через AndroidAppIsReadComplete
             errorCode = USBAndroidHost.AppRead(deviceHandle, (uint8_t*)&read_buffer, (DWORD)sizeof(read_buffer));
             if(errorCode == USB_SUCCESS) {
                 // Дождались команду - новую читать не будем, пока не придут все данные,
                 // проверять завершение операции будем в следующих итерациях цикла
-                readyToRead = FALSE;
+                readInProgress = TRUE;
+            } else {
+                Serial.print("Error trying to read: errorCode=");
+                printErrorCode(errorCode);
+                Serial.println();
             }
         }
 
         // Проверим, завершилось ли чтение
         if(USBAndroidHost.AppIsReadComplete(deviceHandle, &errorCode, &readSize)) {
+            // Разрешим читать следующую команду
+            readInProgress = FALSE;
+                
             if(errorCode == USB_SUCCESS) {
                 // Считали порцию данных - добавим завершающий ноль
                 read_buffer[readSize] = 0;
                 
                 // и можно выполнить команду, ответ попадет в write_buffer
                 writeSize = handleInput(read_buffer, readSize, write_buffer);
-                
-                // Разрешим читать следующую команду
-                readyToRead = TRUE;
-                readSize = 0;
-                
+                                
                 // Если writeSize не 0, отправим назад ответ - инициируем 
                 // процедуру записи для следующей итерации цикла (данные уже внутри write_buffer)
                 write_size = writeSize;
