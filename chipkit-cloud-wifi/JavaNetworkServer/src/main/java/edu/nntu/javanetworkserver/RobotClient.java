@@ -43,14 +43,14 @@ public class RobotClient {
             System.out.println("Command 'ledon': turn light on");
             
             // Здесь мы могли бы включить лампочку, если бы она была
-            System.out.println("]*");
+            System.out.println("*");
             
             reply = REPLY_OK;
         } else if(CMD_LEDOFF.equals(cmd)) {
             System.out.println("Command 'ledoff': turn light off");
             
             // Здесь мы могли бы выключить лампочку, если бы она была
-            System.out.println("]o");
+            System.out.println("o");
             
             reply = REPLY_OK;
         } else {
