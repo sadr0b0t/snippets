@@ -30,7 +30,6 @@ const int robot_server_port = 1117;
 const char* wifi_ssid = "lasto4ka";
 const char* wifi_wpa2_passphrase = "robotguest";
 
-bool connectedToServer = false;
 int conectionId = DWIFIcK::INVALID_CONNECTION_ID;
 TcpClient tcpClient;
 
@@ -90,6 +89,18 @@ void printNetworkStatus() {
         Serial.println();
     } else {
         Serial.println("Subnet mask not assigned");
+    }
+}
+
+void printTcpClientStatus() {
+    IPEndPoint remoteEndPoint;
+    if(tcpClient.getRemoteEndPoint(&remoteEndPoint)) {
+        Serial.print("Remote host: ");
+        printIPAddress(&remoteEndPoint.ip);
+        Serial.print(":");
+        Serial.println(remoteEndPoint.port);
+    } else {
+        Serial.println("TCP client not connected");
     }
 }
 
@@ -342,14 +353,17 @@ void loop() {
     int writeSize;
         
     if(!DWIFIcK::isConnected(conectionId)) {
+        // Подключимся к сети WiFi
+        
         bool connectedToWifi = false;
+        
         Serial.println("Connecting wifi...");
         conectionId = connectWifi(&networkStatus);
   
         if(conectionId != DWIFIcK::INVALID_CONNECTION_ID) {
             // На этом этапе подключение будет создано, даже если указанная 
             // сеть Wifi недоступна или для нее задан неправильный пароль
-            Serial.print("Connection created, ConID = ");
+            Serial.print("Connection created, connection id=");
             Serial.println(conectionId, DEC);
 
             Serial.print("Initializing IP stack...");
@@ -369,27 +383,26 @@ void loop() {
                 // ошибка, isInitialized просто вернет FALSE без кода ошибки, при необходимости
                 // можно вызвать его повторно до успеха или ошибки.
                 if(DNETcK::isInitialized(&networkStatus)) {
-                    Serial.println();
-                    Serial.println("IP stack initialized");
+                    // Стек IP инициализирован
+                    connectedToWifi = true;
                     
                     initializing = false;
-                    
-                    connectedToWifi = true;
-                    printNetworkStatus();
                 } else if(DNETcK::isStatusAnError(networkStatus)) {
-                    Serial.println();
-                    Serial.print("Error in initializing, status: ");
-                    //Serial.println(networkStatus, DEC);
-                    printStatus(networkStatus);
-                    Serial.println();
-                    
+                    // Стек IP не инициализирован из-за ошибки,
+                    // в этом месте больше не пробуем                  
                     initializing = false;
                 }
             }
+            Serial.println();
         }
-          
-        if(!connectedToWifi) {
-            Serial.print("Unable to connect, status: ");
+        
+        if(connectedToWifi) {
+            // Подключились к Wifi
+            Serial.println("Connected to wifi");
+            printNetworkStatus();
+        } else {
+            // Так и не получилось подключиться
+            Serial.print("Failed to connect wifi, status: ");
             //Serial.print(networkStatus, DEC);
             printStatus(networkStatus);
             Serial.println();
@@ -400,14 +413,53 @@ void loop() {
             DWIFIcK::disconnect(conectionId);
             conectionId = DWIFIcK::INVALID_CONNECTION_ID;
             
+            // Немного подождем и попробуем переподключиться на следующей итерации
             Serial.println("Retry after 4 seconds...");
             delay(4000);
         }
-    } else if(!connectedToServer) {
+    } else if(!tcpClient.isConnected()) {
+        // Подключимся к Серверу Роботов
+        
+        bool connectedToServer = false;
+        
         Serial.print("Connecting to Robot Server...");
-        // Подключиться к Серверу Роботов
         tcpClient.connect(robot_server_host, robot_server_port);
-        connectedToServer = true;
+        // Сокет для подключения назначен, подождем, чем завершится процесс подключения
+        bool connecting = true;
+        while(connecting) {
+            Serial.print(".");
+            if(tcpClient.isConnected(&networkStatus)) {
+                // Подключились к сереверу
+                connectedToServer = true;
+                                    
+                connecting = false;
+            } else if(DNETcK::isStatusAnError(networkStatus)) {
+                // Не смогли подключиться к серверу из-за ошибки,
+                // в этом месте больше не пробуем
+                connecting = false;                    
+            }
+        }
+        Serial.println();
+        
+        if(connectedToServer) {
+            // Подключились к Серверу Роботов
+            Serial.println("Connected to Robot Server");
+            
+            printTcpClientStatus();
+        } else {
+            // Так и не получилось подключиться
+            Serial.print("Failed to connect Robot Server, status: ");
+            //Serial.print(networkStatus, DEC);
+            printStatus(networkStatus);
+            Serial.println();
+            
+            // Вернем TCP-клиента в исходное состояние
+            tcpClient.close();
+            
+            // Немного подождем и попробуем переподключиться на следующей итерации
+            Serial.println("Retry after 4 seconds...");
+            delay(4000);
+        }
     } else {
         // Подключены к серверу - читаем команды, отправляем ответы
         
