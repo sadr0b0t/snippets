@@ -10,8 +10,8 @@
 #define CMD_LEDOFF "ledoff"
 
 // Ответы для Сервера Роботов
-#define REPLY_OK "ok"
-#define REPLY_DONTUNDERSTAND "dontunderstand"
+#define REPLY_OK "ok\n"
+#define REPLY_DONTUNDERSTAND "dontunderstand\n"
 
 // Пин для тестовой лампочки
 #define LED_PIN 13
