@@ -60,8 +60,6 @@ public class RobotServer1 {
                 System.out.println("Client accepted: " + clientSocket.getInetAddress().getHostAddress());
                 
                 // Ввод/вывод сокета для общения с подключившимся клиентом (роботом)
-                // Установить таймаут для чтения ответа на команды
-                clientSocket.setSoTimeout(5000);
                 final InputStream clientIn = clientSocket.getInputStream();
                 final BufferedReader clientInputReader = new BufferedReader(new InputStreamReader(clientIn));
                 final OutputStream clientOut = clientSocket.getOutputStream();
@@ -92,15 +90,6 @@ public class RobotServer1 {
                         // приглашение для ввода следующей команды
                         System.out.print("enter command: ");
                     }
-                }
-            } catch (SocketTimeoutException ex1) {
-                // Попадем сюда, если клиент не отправит ответ во-время -
-                // это не значит, что соединение нарушено (он может просто решил 
-                // не отвечать), но все равно отключим такого клиента, чтобы он
-                // не блокировал сервер.
-                System.out.println("Client reply timeout, disconnect");
-                if(clientSocket != null) {
-                    clientSocket.close();
                 }
             } catch (IOException ex2) {
                 // Попадем сюда только после того, как клиент отключится и сервер
