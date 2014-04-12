@@ -39,13 +39,25 @@
 #include <WProgram.h> 
 #include <inttypes.h>
 
-//define timer priority
-#define TIMER4 0 // timer4 is the first timer used
-#define TIMER5 1
-#define TIMER3 2
+// define timer ids
+#define TIMER3 0
+#define TIMER4 1
+#define TIMER5 2
 
 
-void initISR(int timer);
-void handle_interrupts(int timer, volatile unsigned int *TMRn, volatile unsigned int* PR);
+// Define timer prescalar values: 3 bits in TxCON<6:4> register 
+// give 8 different values for prescalar:
+#define TIMER_PRESCALAR_1_1   0x0000
+#define TIMER_PRESCALAR_1_2   0x0010
+#define TIMER_PRESCALAR_1_4   0x0020
+#define TIMER_PRESCALAR_1_8   0x0030
+#define TIMER_PRESCALAR_1_16  0x0040
+#define TIMER_PRESCALAR_1_32  0x0050
+#define TIMER_PRESCALAR_1_64  0x0060
+#define TIMER_PRESCALAR_1_256 0x0070
+
+
+void initTimerISR(int timer, int prescalar, int period);
+void handle_interrupts(int timer);
 
 #endif

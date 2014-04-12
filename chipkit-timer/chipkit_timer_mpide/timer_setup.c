@@ -40,7 +40,7 @@
 #include <sys/attribs.h>
 #include <pins_arduino.h>
 
-#include "int.h"
+#include "timer_setup.h"
 
 // M00BUG: This is hard coded for specific registers for interrupt priority
 //	flag bits and enable bits. This code happens to work correctly for all
@@ -48,80 +48,88 @@
 //	more generic.
 
 void __attribute__((interrupt(),nomips16)) T3_IntHandler (void){
- 	handle_interrupts(TIMER3, &TMR3, &PR3); 
+ 	handle_interrupts(TIMER3); 
 	IFS0CLR = 0x1000; // Clear timer interrupt status flag
 }
 
 
 void __attribute__((interrupt(),nomips16)) T4_IntHandler (void){
- 	handle_interrupts(TIMER4, &TMR4, &PR4); 
+ 	handle_interrupts(TIMER4); 
 	IFS0CLR = 0x10000; // Clear timer interrupt status flag
 }
 
 void __attribute__((interrupt(),nomips16)) T5_IntHandler (void){
- 	handle_interrupts(TIMER5, &TMR5, &PR5); 
+ 	handle_interrupts(TIMER5); 
 	IFS0CLR = 0x100000; // Clear timer interrupt status flag
 }
 
-
-void initISR(int timer)
-{  
-    
-    if(timer == TIMER3)
-    {
+/**
+ * Init ISR (Interrupt service routine) for the timer.
+ * 
+ * @param timer 
+ *         system timer id: use TIMER3, TIMER4 or TIMER5
+ * @param prescalar 
+ *         timer prescalar (1, 2, 4, 8, 16, 32, 64, 256),
+ *         use constants: PRESCALAR_1, PRESCALAR_2, PRESCALAR_8,
+ *         PRESCALAR_16, PRESCALAR_32, PRESCALAR_64, PRESCALAR_256
+ * @param period
+ *         timer period - adjustment divider after timer prescaled.
+ * 
+ * Example: to set timer clock period to 20ms (50 operations per second)
+ * use prescalar 1:64 (0x0060) and period=0x61A8:
+ * 80000000/64/50=25000=0x61A8
+ *
+ */
+void initTimerISR(int timer, int prescalar, int period) {
+    if(timer == TIMER3) {
 
         // set the vector up
         setIntVector(_TIMER_3_VECTOR, T3_IntHandler);
 
-         //timer 3 set clock period 20ms 
-        T3CON = 0x0060; // set prescalar 1:64
+        // set timer 3 clock period 
+        T3CON = prescalar; // set prescalar
         TMR3 = 0;
-        PR3 = 0x61A8;        
+        PR3 = period;
            
-	    IFS0CLR = 0x1000;// Clear the T3 interrupt flag 
-	    IEC0SET = 0x1000;// Enable T3 interrupt 
+        IFS0CLR = 0x1000;// Clear the T3 interrupt flag 
+        IEC0SET = 0x1000;// Enable T3 interrupt 
      
-		IPC3CLR = 0x0000001F;
-	    IPC3SET = (_T3_IPL_IPC << 2) | _T3_SPL_IPC;
+        IPC3CLR = 0x0000001F;
+        IPC3SET = (_T3_IPL_IPC << 2) | _T3_SPL_IPC;
        
-	    T3CONSET = 0x8000;// Enable Timer3
-    }
-    if(timer == TIMER4)
-    {
+        T3CONSET = 0x8000;// Enable Timer3
+    } else if(timer == TIMER4) {
         // set the vector up
         setIntVector(_TIMER_4_VECTOR, T4_IntHandler);
  
-        //timer 4 set clock period 20ms 
-        T4CON = 0x0060; // set prescalar 1:64
+        // set timer 4 clock period 
+        T4CON = prescalar; // set prescalar
         TMR4 = 0;
-        PR4 = 0x61A8;        
+        PR4 = period;        
            
-	    IFS0CLR = 0x10000;// Clear the T4 interrupt flag 
-	    IEC0SET = 0x10000;// Enable T4 interrupt 
+        IFS0CLR = 0x10000;// Clear the T4 interrupt flag 
+        IEC0SET = 0x10000;// Enable T4 interrupt 
      
-		IPC4CLR = 0x0000001F;
-	    IPC4SET = (_T4_IPL_IPC << 2) | _T4_SPL_IPC;   
+        IPC4CLR = 0x0000001F;
+        IPC4SET = (_T4_IPL_IPC << 2) | _T4_SPL_IPC;   
        
-	    T4CONSET = 0x8000;// Enable Timer4	 
-    }
-    if(timer == TIMER5)
-    {
+        T4CONSET = 0x8000;// Enable Timer4	 
+    } else if(timer == TIMER5) {
         // set the vector up
         setIntVector(_TIMER_5_VECTOR, T5_IntHandler);
 
-        //timer 5 set clock period 20ms 
-        T5CON = 0x0060; // set prescalar 1:64
+        // set timer 5 clock period
+        T5CON = prescalar; // set prescalar
         TMR5 = 0;
-        PR5 = 0x61A8;        
+        PR5 = period;        
            
-	    IFS0CLR = 0x100000;// Clear the T5 interrupt flag 
-	    IEC0SET = 0x100000;// Enable T5 interrupt 
+        IFS0CLR = 0x100000;// Clear the T5 interrupt flag 
+        IEC0SET = 0x100000;// Enable T5 interrupt 
      
-		IPC5CLR = 0x0000001F;
-	    IPC5SET = (_T5_IPL_IPC << 2) | _T5_SPL_IPC;
+        IPC5CLR = 0x0000001F;
+        IPC5SET = (_T5_IPL_IPC << 2) | _T5_SPL_IPC;
        
-	    T5CONSET = 0x8000;// Enable Timer5
-    }
-    
+        T5CONSET = 0x8000;// Enable Timer5
+    }  
 } 
 
