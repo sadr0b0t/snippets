@@ -131,5 +131,17 @@ void initTimerISR(int timer, int prescalar, int period) {
        
         T5CONSET = 0x8000;// Enable Timer5
     }  
-} 
+}
+
+void stopTimerISR(int timer) {
+    //disable use of the given timer
+    if (timer == TIMER3) {
+        IEC0CLR = 0x1000;		// disable T3 interrupt 
+    } else if (timer == TIMER4) {
+        IEC0CLR = 0x10000;		// disable T4 interrupt 
+    } else if (timer == TIMER5) {
+        IEC0CLR = 0x100000;		// disable T5 interrupt 
+    }
+}
+
 

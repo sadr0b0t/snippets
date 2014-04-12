@@ -58,6 +58,7 @@
 
 
 void initTimerISR(int timer, int prescalar, int period);
+void stopTimerISR(int timer);
 void handle_interrupts(int timer);
 
 #endif

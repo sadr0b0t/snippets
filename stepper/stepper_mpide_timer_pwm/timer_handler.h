@@ -16,4 +16,12 @@ void prepare_motor1_steps(int step_count, int step_delay);
  */
 void start_stepper_cycle();
 
+/**
+ * Текущий статус цикла:
+ * true - в процессе выполнения,
+ * false - ожидает.
+ */
+bool is_cycle_running();
+
+int get_motor1_step_count();
 

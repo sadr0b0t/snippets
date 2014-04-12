@@ -36,7 +36,10 @@ int motor1_step_counter;
 int motor1_step_timer;
 
 // Частота таймера, мкс
-int timer_freq_us = 10; 
+int timer_freq_us = 10;
+
+// Текущий статус цикла
+bool cycle_running = false;
 
 /**
  * Задать настройки подключения для мотора1.
@@ -71,9 +74,19 @@ void prepare_motor1_steps(int step_count, int step_delay) {
  * отрабатывать подготовленную программу.
  */
 void start_stepper_cycle() {
+    cycle_running = true;
+    
     // Запустим таймер с периодом 10 микросекунд (100тыс операций в секунду):
     // 80000000/8/100000=100=0x64
     initTimerISR(TIMER3, TIMER_PRESCALAR_1_8, 0x64);
+}
+
+bool is_cycle_running() {
+    return cycle_running;
+}
+
+int get_motor1_step_count() {
+    return motor1_step_count - motor1_step_counter;
 }
 
 void handle_interrupts(int timer) {
@@ -92,6 +105,8 @@ void handle_interrupts(int timer) {
         }
     } else {
         // все шаги сделали, цикл завершился, остановим таймер.
+        stopTimerISR(TIMER3);
+        cycle_running = false;
     }
     
     motor1_step_timer -= timer_freq_us;
