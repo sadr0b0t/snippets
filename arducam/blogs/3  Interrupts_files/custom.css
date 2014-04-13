@@ -1,0 +1,24 @@
+.custom #header {
+height:120px;
+padding-top:0;
+padding-bottom:0;
+background:url('http://umassamherstm5.org/wp-content/uploads/2012/01/umassamherstm5banner4.png')
+center left no-repeat; 
+}
+
+
+.custom .menu {
+    width: 100%;
+}
+
+.custom #header #logo { display:none; }
+
+.custom #header #tagline { display:none; }
+
+//.custom .no_sidebars #content { width: 51.4em; }
+//.custom.one_sidebar #container { width: 100em; }
+//.custom.one_sidebar #sidebars { width: 21.7em; }
+
+
+//.custom .sidebar ul.sidebar_list {position: relative;}
+//.custom #header_widget_1 ul.sidebar_list li.widget {position: absolute; display: block; top:0px; left:477px; width:468px; }

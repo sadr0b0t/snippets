@@ -1,0 +1,39 @@
+/*
+Default CSS Styles for the advanced recent post widget plug-in
+Version 3.0.0
+*/
+.advanced_recent_posts_widget * {
+	margin:0;
+	padding:0;
+}
+.advanced_recent_posts_widget {
+	font-size: 12px;	
+	line-height: 18px;
+}
+.advanced_recent_posts_widget .post-title{
+	font-size: 12px;	
+	font-weight:bold;
+}
+.advanced_recent_posts_widget .post-date{
+	font-style:italic;
+}
+
+.advanced_recent_posts_widget img{
+	float:left;
+	margin-right:10px;
+	margin-top:5px;
+}
+.advanced_recent_posts_widget ul li{
+	list-style: none;
+	list-style-type: none;
+	margin: 3px 0;
+	padding: 3px 0;
+	border-bottom:1px solid #ccc;
+}
+.advanced_recent_posts_widget .more-link{
+	display:inline;
+}
+.advanced_recent_posts_widget .post-entry{ 
+   padding:0 0 5px 0;
+   overflow:hidden;
+}
