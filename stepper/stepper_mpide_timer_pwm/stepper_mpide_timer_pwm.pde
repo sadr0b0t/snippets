@@ -17,16 +17,19 @@ void setup() {
     
     // задать нужное направление
     digitalWrite(m1_pin_dir, HIGH); // туда
-//    digitalWrite(motor1_pin_dir, LOW); // обратно
+//    digitalWrite(m1_pin_dir, LOW); // обратно
 
     // Передать информацию о подключенном моторе
     init_motor1(m1_pin_pulse, m1_pin_dir, m1_pin_en, 500);
     
     // Подготовить цикл:
     // пройдем 20000 шагов с максимальной скоростью
-    prepare_motor1_steps(20000, 0);
+//    prepare_motor1_steps(20000, 0);
     // по шагу в секунду:
 //    prepare_motor1_steps(20000, 1000000);
+    // проверим неровные числа - таймер должен все равно шагать
+    // с определенной погрешностью:
+    prepare_motor1_steps(20000, 13);
     
     // Запускаем мотор шагать
     Serial.println("Start stepper cycle...");

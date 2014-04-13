@@ -78,7 +78,13 @@ void start_stepper_cycle() {
     
     // Запустим таймер с периодом 10 микросекунд (100тыс операций в секунду):
     // 80000000/8/100000=100=0x64
+    timer_freq_us = 10;
     initTimerISR(TIMER3, TIMER_PRESCALAR_1_8, 0x64);
+    
+    // для частоты 1 микросекунда (1млн операций в секунду):
+    // 80000000/8/1000000=10=0xA
+//    timer_freq_us = 1;
+//    initTimerISR(TIMER3, TIMER_PRESCALAR_1_8, 0xA);
 }
 
 bool is_cycle_running() {
@@ -91,11 +97,13 @@ int get_motor1_step_count() {
 
 void handle_interrupts(int timer) {
     if(motor1_step_counter > 0) {
-        if(motor1_step_timer == motor1_pulse_delay) {
+        if(motor1_step_timer < motor1_pulse_delay + timer_freq_us && motor1_step_timer >= motor1_pulse_delay) {
+            // motor1_step_timer ~ motor1_pulse_delay с учетом погрешности таймера timer_freq_us =>
             // импульс1 - готовим шаг
             digitalWrite(motor1_pin_pulse, HIGH);
-        } else if(motor1_step_timer == 0) {
-            // импусль2 (спустя motor1_pulse_delay микросекунд после импульса1) - завершаем шаг
+        } else if(motor1_step_timer < timer_freq_us) {
+            // motor1_step_timer ~ 0 с учетом погрешности таймера (timer_freq_us) =>
+            // импульс2 (спустя motor1_pulse_delay микросекунд после импульса1) - завершаем шаг
             digitalWrite(motor1_pin_pulse, LOW);
             
             // переустановим таймер
@@ -103,12 +111,12 @@ void handle_interrupts(int timer) {
             // посчитаем шаг
             motor1_step_counter--;
         }
+        
+        motor1_step_timer -= timer_freq_us;
     } else {
         // все шаги сделали, цикл завершился, остановим таймер.
         stopTimerISR(TIMER3);
         cycle_running = false;
     }
-    
-    motor1_step_timer -= timer_freq_us;
 }
 
