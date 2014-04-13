@@ -28,7 +28,7 @@ public class RobotServer1 {
 
     private int serverPort;
     private ServerSocket serverSocket;
-
+    
     public RobotServer1() {
         this(DEFAULT_SERVER_PORT);
     }
@@ -61,7 +61,6 @@ public class RobotServer1 {
                 
                 // Ввод/вывод сокета для общения с подключившимся клиентом (роботом)
                 final InputStream clientIn = clientSocket.getInputStream();
-                final BufferedReader clientInputReader = new BufferedReader(new InputStreamReader(clientIn));
                 final OutputStream clientOut = clientSocket.getOutputStream();
 
                 // Ввод команд из консоли пользователем
@@ -79,11 +78,14 @@ public class RobotServer1 {
                     } else {
                         // отправить команду клиенту
                         System.out.println("Write: " + userLine);
-                        clientOut.write((userLine + "\n").getBytes());
+                        clientOut.write((userLine).getBytes());
                         clientOut.flush();
 
-                        final String clientLine = clientInputReader.readLine();
-                        if (clientLine != null) {
+                        final byte[] readBuffer = new byte[256];
+                        final int readSize = clientIn.read(readBuffer);
+                        if (readSize != -1) {
+                            final String clientLine = 
+                                    new String(readBuffer, 0, readSize);
                             System.out.println("Read: " + clientLine);
                         }
 

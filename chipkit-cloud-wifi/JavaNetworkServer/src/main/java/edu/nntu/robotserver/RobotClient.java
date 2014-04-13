@@ -17,71 +17,75 @@ public class RobotClient {
 
     public static final String CMD_LEDON = "ledon";
     public static final String CMD_LEDOFF = "ledoff";
-    
+
     public static final String REPLY_OK = "ok";
     public static final String REPLY_DONTUNDERSTAND = "dontunderstand";
 
-    //public static final String DEFAULT_SERVER_HOST = "robotc.lasto4ka.su";
-    public static final String DEFAULT_SERVER_HOST = "localhost";
+    public static final String DEFAULT_SERVER_HOST = "robotc.lasto4ka.su";
+//    public static final String DEFAULT_SERVER_HOST = "localhost";
     public static final int DEFAULT_SERVER_PORT = 1117;
-    
+
     private String serverHost;
     private int serverPort;
-    
+
     public RobotClient() {
         this(DEFAULT_SERVER_HOST, DEFAULT_SERVER_PORT);
     }
-    
+
     public RobotClient(final String serverHost, final int serverPort) {
         this.serverHost = serverHost;
         this.serverPort = serverPort;
     }
-    
-    private String processInput(String cmd) {        
+
+    private String processInput(String cmd) {
         final String reply;
-        if(CMD_LEDON.equals(cmd)) {
+        if (CMD_LEDON.equals(cmd)) {
             System.out.println("Command 'ledon': turn light on");
-            
+
             // Здесь мы могли бы включить лампочку, если бы она была
             System.out.println("*");
-            
+
             reply = REPLY_OK;
-        } else if(CMD_LEDOFF.equals(cmd)) {
+        } else if (CMD_LEDOFF.equals(cmd)) {
             System.out.println("Command 'ledoff': turn light off");
-            
+
             // Здесь мы могли бы выключить лампочку, если бы она была
             System.out.println("o");
-            
+
             reply = REPLY_OK;
         } else {
             System.out.println("Unknown command: " + cmd);
-            
+
             reply = REPLY_DONTUNDERSTAND;
         }
         return reply;
     }
-    
+
     public void startClient() throws IOException {
         final Socket socket = new Socket(serverHost, serverPort);
         System.out.println("Connected to server");
-        
+
         final OutputStream out = socket.getOutputStream();
         final InputStream in = socket.getInputStream();
-        final BufferedReader inputReader = new BufferedReader(new InputStreamReader(in));
-        
+
+        final byte[] readBuffer = new byte[256];
+        int readSize;
+
         String inputLine;
         String reply;
-        while ((inputLine = inputReader.readLine()) != null) {
+
+        while ((readSize = in.read(readBuffer)) != -1) {
+            inputLine = new String(readBuffer, 0, readSize);
             System.out.println("Read: " + inputLine);
             reply = processInput(inputLine);
-            if(reply != null && reply.length() > 0) {
-               System.out.println("Write: " + reply);
-               out.write((reply + "\n").getBytes());
-               out.flush();
+            if (reply != null && reply.length() > 0) {
+                System.out.println("Write: " + reply);
+                out.write((reply).getBytes());
+                out.flush();
             }
         }
     }
-    
+
     public static void main(String args[]) {
         final RobotClient client = new RobotClient();
         try {
