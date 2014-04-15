@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.SocketTimeoutException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -49,17 +48,19 @@ public class RobotServer1 {
      */
     public void startServer() throws IOException {
         System.out.println("Starting server on port " + serverPort + "...");
+        // Открыли сокет
         serverSocket = new ServerSocket(serverPort);
 
-        Socket clientSocket = null;
+        Socket clientSocket;
         while (true) {
-
             try {
                 System.out.println("Waiting for client...");
+                // Ждём подключения клиента (робота)
                 clientSocket = serverSocket.accept();
                 System.out.println("Client accepted: " + clientSocket.getInetAddress().getHostAddress());
                 
-                // Ввод/вывод сокета для общения с подключившимся клиентом (роботом)
+                // Клиент подключился - получаем доступ к потокам
+                // ввода/вывода сокета для общения с подключившимся клиентом (роботом)
                 final InputStream clientIn = clientSocket.getInputStream();
                 final OutputStream clientOut = clientSocket.getOutputStream();
 
@@ -94,7 +95,7 @@ public class RobotServer1 {
                     }
                 }
             } catch (IOException ex2) {
-                // Попадем сюда только после того, как клиент отключится и сервер
+                // Попадём сюда только после того, как клиент отключится и сервер
                 // попробует отправить ему любую команду 
                 // (в более правильной реализации можно добавить в протокол 
                 // команду проверки статуса клиента 'isalive' и отправлять её 

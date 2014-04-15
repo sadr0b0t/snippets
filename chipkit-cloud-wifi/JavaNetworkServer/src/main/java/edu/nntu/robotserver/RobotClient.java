@@ -1,9 +1,7 @@
 package edu.nntu.robotserver;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.util.logging.Level;
@@ -37,7 +35,7 @@ public class RobotClient {
         this.serverPort = serverPort;
     }
 
-    private String processInput(String cmd) {
+    private String handleInput(String cmd) {
         final String reply;
         if (CMD_LEDON.equals(cmd)) {
             System.out.println("Command 'ledon': turn light on");
@@ -62,11 +60,13 @@ public class RobotClient {
     }
 
     public void startClient() throws IOException {
+        // Открываем сокет
         final Socket socket = new Socket(serverHost, serverPort);
         System.out.println("Connected to server");
 
-        final OutputStream out = socket.getOutputStream();
-        final InputStream in = socket.getInputStream();
+        // Получаем доступ к потокам ввода-вывода
+        final OutputStream serverOut = socket.getOutputStream();
+        final InputStream serverIn = socket.getInputStream();
 
         final byte[] readBuffer = new byte[256];
         int readSize;
@@ -74,14 +74,18 @@ public class RobotClient {
         String inputLine;
         String reply;
 
-        while ((readSize = in.read(readBuffer)) != -1) {
+        // Запускаем бесконечный цикл ожидания/чтения данные с сервера
+        while ((readSize = serverIn.read(readBuffer)) != -1) {
+            // Превратим байты в строку
             inputLine = new String(readBuffer, 0, readSize);
             System.out.println("Read: " + inputLine);
-            reply = processInput(inputLine);
+            // Попробуем выполнить команду
+            reply = handleInput(inputLine);
+            // Отправим ответ
             if (reply != null && reply.length() > 0) {
                 System.out.println("Write: " + reply);
-                out.write((reply).getBytes());
-                out.flush();
+                serverOut.write((reply).getBytes());
+                serverOut.flush();
             }
         }
     }
