@@ -186,7 +186,7 @@ int handleInput(char* buffer, int size, char* reply_buffer) {
         
         // Подготовить ответ
         strcpy(reply_buffer, REPLY_OK);
-        replySize = strlen(write_buffer) + 1;
+        replySize = strlen(reply_buffer) + 1;
     } else if (strcmp(buffer, CMD_LEDOFF) == 0) {
         Serial.println("Command 'ledoff': turn light off");
         
@@ -195,20 +195,20 @@ int handleInput(char* buffer, int size, char* reply_buffer) {
         
         // Подготовить ответ
         strcpy(reply_buffer, REPLY_OK);
-        replySize = strlen(write_buffer) + 1;
+        replySize = strlen(reply_buffer) + 1;
     } else if (strcmp(buffer, CMD_LETMEGO) == 0) {
         Serial.println("Command 'letmego': send 'getout' reply");
         
         // Подготовить ответ
         strcpy(reply_buffer, REPLY_GETOUT);
-        replySize = strlen(write_buffer) + 1;
+        replySize = strlen(reply_buffer) + 1;
     } else {      
         Serial.print("Unknown command: ");
         Serial.println(buffer);
         
         // Подготовить ответ
         strcpy(reply_buffer, REPLY_UNKNOWN_CMD);
-        replySize = strlen(write_buffer) + 1;
+        replySize = strlen(reply_buffer) + 1;
     }
     
     return replySize;
