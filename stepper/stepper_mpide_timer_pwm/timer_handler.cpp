@@ -14,7 +14,7 @@ extern "C"{
 int motor1_pin_pulse;
 // Направление (1 - в одну сторону, 0 - в другую)
 int motor1_pin_dir;
-// Вкл (1)/выкл (0) мотор
+// Вкл (0)/выкл (1) мотор
 int motor1_pin_en;
 
 // задержка между импульсами для мотора, мкс
@@ -97,10 +97,12 @@ int get_motor1_step_count() {
 
 void handle_interrupts(int timer) {
     if(motor1_step_counter > 0) {
+//        if(motor1_step_timer == motor1_pulse_delay) {
         if(motor1_step_timer < motor1_pulse_delay + timer_freq_us && motor1_step_timer >= motor1_pulse_delay) {
             // motor1_step_timer ~ motor1_pulse_delay с учетом погрешности таймера timer_freq_us =>
             // импульс1 - готовим шаг
             digitalWrite(motor1_pin_pulse, HIGH);
+//        } else if(motor1_step_timer == 0) {
         } else if(motor1_step_timer < timer_freq_us) {
             // motor1_step_timer ~ 0 с учетом погрешности таймера (timer_freq_us) =>
             // импульс2 (спустя motor1_pulse_delay микросекунд после импульса1) - завершаем шаг

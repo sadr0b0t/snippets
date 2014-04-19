@@ -16,7 +16,7 @@ int motor2_pin_pulse;
 // Направление (1 - в одну сторону, 0 - в другую)
 int motor1_pin_dir;
 int motor2_pin_dir;
-// Вкл (1)/выкл (0) мотор
+// Вкл (0)/выкл (1) мотор
 int motor1_pin_en;
 int motor2_pin_en;
 
@@ -62,6 +62,14 @@ void init_motor1(int pin_pulse, int pin_dir, int pin_en, int pulse_delay) {
     motor1_step_counter = 0;
     motor1_step_delay = 0;
     motor1_step_timer = 0;
+    
+    // задать настройки пинов
+    pinMode(motor1_pin_pulse, OUTPUT);
+    pinMode(motor1_pin_dir, OUTPUT);
+    pinMode(motor1_pin_en, OUTPUT);
+    
+    // пока выключить мотор
+    digitalWrite(motor1_pin_en, HIGH);
 }
 
 /**
@@ -77,6 +85,14 @@ void init_motor2(int pin_pulse, int pin_dir, int pin_en, int pulse_delay) {
     motor2_step_counter = 0;
     motor2_step_delay = 0;
     motor2_step_timer = 0;
+    
+    // задать настройки пинов
+    pinMode(motor2_pin_pulse, OUTPUT);
+    pinMode(motor2_pin_dir, OUTPUT);
+    pinMode(motor2_pin_en, OUTPUT);
+    
+    // пока выключить мотор
+    digitalWrite(motor2_pin_en, HIGH);
 }
 
 /**
@@ -84,6 +100,15 @@ void init_motor2(int pin_pulse, int pin_dir, int pin_en, int pulse_delay) {
  * шагами для регулирования скорости (0 для максимальной скорости).
  */
 void prepare_motor1_steps(int step_count, int step_delay) {
+    // задать направление
+    if(step_count > 0) {
+        digitalWrite(motor1_pin_dir, HIGH); // туда
+    } else {
+        digitalWrite(motor1_pin_dir, LOW); // обратно
+    }
+    // сделать step_count положительным
+    step_count = step_count > 0 ? step_count : -step_count;
+  
     motor1_step_count = step_count;
     motor1_step_delay = step_delay;
   
@@ -97,6 +122,15 @@ void prepare_motor1_steps(int step_count, int step_delay) {
  * шагами для регулирования скорости (0 для максимальной скорости).
  */
 void prepare_motor2_steps(int step_count, int step_delay) {
+    // задать направление
+    if(step_count > 0) {
+        digitalWrite(motor2_pin_dir, HIGH); // туда
+    } else {
+        digitalWrite(motor2_pin_dir, LOW); // обратно
+    }
+    // сделать step_count положительным
+    step_count = step_count >= 0 ? step_count : -step_count;
+    
     motor2_step_count = step_count;
     motor2_step_delay = step_delay;
   
@@ -111,6 +145,10 @@ void prepare_motor2_steps(int step_count, int step_delay) {
  */
 void start_stepper_cycle() {
     cycle_running = true;
+    
+    // включить моторы
+    digitalWrite(motor1_pin_en, LOW);
+    digitalWrite(motor2_pin_en, LOW);
     
     // Запустим таймер с периодом 10 микросекунд (100тыс операций в секунду):
     // 80000000/8/100000=100=0x64
@@ -129,6 +167,10 @@ bool is_cycle_running() {
 
 int get_motor1_step_count() {
     return motor1_step_count - motor1_step_counter;
+}
+
+int get_motor2_step_count() {
+    return motor2_step_count - motor2_step_counter;
 }
 
 void handle_interrupts(int timer) {
@@ -167,12 +209,16 @@ void handle_interrupts(int timer) {
             motor2_step_counter--;
         }
         motor2_step_timer -= timer_freq_us;
-    } 
+    }
     
     if(motor1_step_counter == 0 && motor2_step_counter == 0) {
         // оба мотора сделали все шаги, цикл завершился, остановим таймер.
         stopTimerISR(TIMER3);
         cycle_running = false;
+        
+        // выключить моторы
+        digitalWrite(motor1_pin_en, HIGH);
+        digitalWrite(motor2_pin_en, HIGH);
     }
 }
 
