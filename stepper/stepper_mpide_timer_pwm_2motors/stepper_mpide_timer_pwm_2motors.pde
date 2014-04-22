@@ -12,8 +12,8 @@ int current_line = 0;
 
 void prepare_line1() {
     // пройдем 20000 шагов с максимальной скоростью
-    prepare_motor1_steps(20000, 0);
-    prepare_motor2_steps(20000, 0);
+    prepare_motor1_steps(-2000, 0);
+    prepare_motor2_steps(-2000, 0);
 }
 
 void prepare_line2() {
@@ -25,13 +25,15 @@ void prepare_line2() {
 void prepare_line3() {
     // проверим неровные числа - таймер должен все равно шагать
     // с определенной погрешностью:
-    prepare_motor1_steps(20000, 13);
-    prepare_motor2_steps(20000, 13);
+    prepare_motor1_steps(2000, 13);
+    prepare_motor2_steps(2000, 13);
 }
 
 void prepare_line4() {
-    prepare_motor1_steps(10000, 1000);
-    prepare_motor2_steps(20000, 0);
+    // time=(1000+1000)*1000=2000
+    prepare_motor1_steps(-1000, 1000);
+    // 2000*1000=2000
+    prepare_motor2_steps(-2000, 0);
 }
 
 void setup() {
