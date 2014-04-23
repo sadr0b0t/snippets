@@ -19,21 +19,21 @@ ANDROID_ACCESSORY_INFORMATION myDeviceInfo = {
 };
 
 // Команды, принимаемые от Android-устройства
-const char* CMD_LEDON = "ledon";
-const char* CMD_LEDOFF = "ledoff";
-const char* CMD_LETMEGO = "letmego";
+static char* CMD_LEDON = "ledon";
+static char* CMD_LEDOFF = "ledoff";
+static char* CMD_LETMEGO = "letmego";
 
 // Ответы для Android-устройства
-const char* REPLY_OK = "ok";
-const char* REPLY_GETOUT = "getout";
-const char* REPLY_UNKNOWN_CMD = "dontunderstand";
+static char* REPLY_OK = "ok";
+static char* REPLY_GETOUT = "getout";
+static char* REPLY_UNKNOWN_CMD = "dontunderstand";
 
 // Пин для тестовой лампочки
 #define LED_PIN 13
 
 // Локальные переменные
 BOOL deviceAttached = FALSE;
-static void* deviceHandle = NULL;
+void* deviceHandle = NULL;
 
 BOOL readInProgress = FALSE;
 BOOL writeInProgress = FALSE;
