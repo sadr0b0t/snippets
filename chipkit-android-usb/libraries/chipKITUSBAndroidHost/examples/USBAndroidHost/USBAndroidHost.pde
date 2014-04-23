@@ -19,14 +19,14 @@ ANDROID_ACCESSORY_INFORMATION myDeviceInfo = {
 };
 
 // Commands from Android device
-#define CMD_LEDON "ledon"
-#define CMD_LEDOFF "ledoff"
-#define CMD_LETMEGO "letmego"
+const char* CMD_LEDON = "ledon";
+const char* CMD_LEDOFF = "ledoff";
+const char* CMD_LETMEGO = "letmego";
 
 // Replyes for Android device
-#define REPLY_OK "ok"
-#define REPLY_GETOUT "getout"
-#define REPLY_UNKNOWN_CMD "dontunderstand"
+const char* REPLY_OK = "ok";
+const char* REPLY_GETOUT = "getout";
+const char* REPLY_UNKNOWN_CMD = "dontunderstand";
 
 // Test LED pin
 #define LED_PIN 13

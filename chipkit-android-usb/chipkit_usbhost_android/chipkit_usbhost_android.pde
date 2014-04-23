@@ -19,14 +19,14 @@ ANDROID_ACCESSORY_INFORMATION myDeviceInfo = {
 };
 
 // Команды, принимаемые от Android-устройства
-#define CMD_LEDON "ledon"
-#define CMD_LEDOFF "ledoff"
-#define CMD_LETMEGO "letmego"
+const char* CMD_LEDON = "ledon";
+const char* CMD_LEDOFF = "ledoff";
+const char* CMD_LETMEGO = "letmego";
 
 // Ответы для Android-устройства
-#define REPLY_OK "ok"
-#define REPLY_GETOUT "getout"
-#define REPLY_UNKNOWN_CMD "dontunderstand"
+const char* REPLY_OK = "ok";
+const char* REPLY_GETOUT = "getout";
+const char* REPLY_UNKNOWN_CMD = "dontunderstand";
 
 // Пин для тестовой лампочки
 #define LED_PIN 13
