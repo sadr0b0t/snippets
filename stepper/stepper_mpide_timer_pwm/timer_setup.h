@@ -32,8 +32,8 @@
 //*	Sep  5,	2011	<GeneA> moved include of p32xxxx.h and plib.h from here
 //************************************************************************
 
-#ifndef int_h
-#define int_h
+#ifndef TIMER_SETUP_H
+#define TIMER_SETUP_H
 
 
 #include <WProgram.h> 
@@ -62,3 +62,4 @@ void stopTimerISR(int timer);
 void handle_interrupts(int timer);
 
 #endif
+

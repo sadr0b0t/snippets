@@ -1,6 +1,5 @@
-#ifndef WProgram_h
-    #include "WProgram.h"
-#endif
+
+#include "WProgram.h"
 
 extern "C"{
     #include "timer_setup.h"
