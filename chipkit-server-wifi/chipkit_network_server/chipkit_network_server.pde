@@ -41,7 +41,6 @@ int clientIdleStart = 0;
 
 static char read_buffer[128];
 static char write_buffer[128];
-int read_size;
 int write_size;
 
 void printIPAddress(IPv4 *ipAddress) {
@@ -498,7 +497,7 @@ void loop() {
             Serial.println(read_buffer);
  
             // и можно выполнить команду, ответ попадет в write_buffer
-            writeSize = handleInput(read_buffer, read_size, write_buffer);
+            writeSize = handleInput(read_buffer, readSize, write_buffer);
             write_size = writeSize;
             
             // сбросим счетчик неактивности
