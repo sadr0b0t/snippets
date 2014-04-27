@@ -174,6 +174,8 @@ int get_motor2_step_count() {
 
 void handle_interrupts(int timer) {
     if(motor1_step_counter > 0) {
+        motor1_step_timer -= timer_freq_us;
+        
         if(motor1_step_timer < motor1_pulse_delay + timer_freq_us && motor1_step_timer >= motor1_pulse_delay) {
             // motor1_step_timer ~ motor1_pulse_delay с учетом погрешности таймера timer_freq_us =>
             // импульс1 - готовим шаг
@@ -184,15 +186,15 @@ void handle_interrupts(int timer) {
             digitalWrite(motor1_pin_pulse, LOW);
             
             // переустановим таймер
-            motor1_step_timer = motor1_step_delay + motor1_pulse_delay * 2 + timer_freq_us;            
+            motor1_step_timer = motor1_pulse_delay * 2 + motor1_step_delay;            
             // посчитаем шаг
             motor1_step_counter--;
         }
-        
-        motor1_step_timer -= timer_freq_us;
     }
     
     if(motor2_step_counter > 0) {
+        motor2_step_timer -= timer_freq_us;
+        
         if(motor2_step_timer < motor2_pulse_delay + timer_freq_us && motor2_step_timer >= motor1_pulse_delay) {
             // motor2_step_timer ~ motor2_pulse_delay с учетом погрешности таймера timer_freq_us =>
             // импульс1 - готовим шаг
@@ -201,13 +203,19 @@ void handle_interrupts(int timer) {
             // motor1_step_timer ~ 0 с учетом погрешности таймера (timer_freq_us) =>
             // импульс2 (спустя motor1_pulse_delay микросекунд после импульса1) - завершаем шаг
             digitalWrite(motor2_pin_pulse, LOW);
-            
-            // переустановим таймер
-            motor2_step_timer = motor2_step_delay + motor2_pulse_delay * 2 + timer_freq_us;            
+                       
             // посчитаем шаг
             motor2_step_counter--;
+            
+            // сделали последний шаг
+            if(motor1_step_counter == 0) {
+                Serial.print("Finished motor1:");
+                Serial.println(millis(), DEC);
+            }
+            
+            // переустановим таймер
+            motor2_step_timer = motor2_pulse_delay * 2 + motor2_step_delay; 
         }
-        motor2_step_timer -= timer_freq_us;
     }
     
     if(motor1_step_counter == 0 && motor2_step_counter == 0) {
