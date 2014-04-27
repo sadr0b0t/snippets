@@ -24,10 +24,11 @@ const char* wifi_wpa2_passphrase = "robotguest";
 
 // статический IP-адрес для текущего хоста - попросим у 
 // точки Wifi (иначе Пульт не узнает, куда подключаться)
-IPv4 host_ip = {192,168,117,117};
+//IPv4 host_ip = {192,168,117,117};
+IPv4 host_ip = {192,168,43,117};
 
 // Порт для tcp-сервера
-const int tcp_server_port = DNETcK::iPersonalPorts44 + 116;
+const int tcp_server_port = DNETcK::iPersonalPorts44 + 114;
 
 int conectionId = DWIFIcK::INVALID_CONNECTION_ID;
 
@@ -284,7 +285,7 @@ int connectWifiOpen(const char* ssid, DNETcK::STATUS *netStatus) {
     Serial.print("SSID: ");
     Serial.println(ssid);
   
-    return DWIFIcK::connect(wifi_ssid, netStatus);   
+    return DWIFIcK::connect(ssid, netStatus);   
 }
 
 /**
@@ -521,5 +522,8 @@ void loop() {
             tcpClient.close();
         }
     }
+    
+    // Держим Tcp-стек в живом состоянии
+    DNETcK::periodicTasks();
 }
 

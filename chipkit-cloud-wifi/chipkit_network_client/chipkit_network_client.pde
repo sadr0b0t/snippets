@@ -6,21 +6,17 @@
 // Протокол общения с Robot Server (Сервер Роботов)
 
 // Команды, принимаемые от Сервера Роботов
-#define CMD_LEDON "ledon"
-#define CMD_LEDOFF "ledoff"
+const char* CMD_LEDON = "ledon";
+const char* CMD_LEDOFF = "ledoff";
 
 // Ответы для Сервера Роботов
-#define REPLY_OK "ok\n"
-#define REPLY_DONTUNDERSTAND "dontunderstand\n"
+const char* REPLY_OK = "ok";
+const char* REPLY_DONTUNDERSTAND = "dontunderstand";
 
 // Пин для тестовой лампочки
 #define LED_PIN 13
 
 // Значения для подключений
-
-// Пины статуса подключений
-#define STATUS_WIFI_PIN 6
-#define STATUS_ROBOT_SERVER_PIN 7
 
 // Сервер Роботов
 const char* robot_server_host = "robotc.lasto4ka.su";
@@ -273,7 +269,7 @@ int connectWifiOpen(const char* ssid, DNETcK::STATUS *netStatus) {
     Serial.print("SSID: ");
     Serial.println(ssid);
   
-    return DWIFIcK::connect(wifi_ssid, netStatus);   
+    return DWIFIcK::connect(ssid, netStatus);   
 }
 
 /**
@@ -307,8 +303,7 @@ int connectWifi(DNETcK::STATUS *netStatus) {
 int handleInput(char* buffer, int size, char* reply_buffer) {
     int replySize = 0;
     reply_buffer[0] = 0;
-    Serial.print("Read: ");
-    Serial.println(buffer);
+    
     // Включить лампочку по команде "ledon", выключить по команде "ledoff"
     if(strcmp(buffer, CMD_LEDON) == 0) {
         Serial.println("Command 'ledon': turn light on");
@@ -318,7 +313,7 @@ int handleInput(char* buffer, int size, char* reply_buffer) {
         
         // Подготовить ответ
         strcpy(reply_buffer, REPLY_OK);
-        replySize = strlen(write_buffer) + 1;
+        replySize = strlen(reply_buffer) + 1;
     } else if (strcmp(buffer, CMD_LEDOFF) == 0) {
         Serial.println("Command 'ledoff': turn light off");
         
@@ -327,14 +322,14 @@ int handleInput(char* buffer, int size, char* reply_buffer) {
         
         // Подготовить ответ
         strcpy(reply_buffer, REPLY_OK);
-        replySize = strlen(write_buffer) + 1;
+        replySize = strlen(reply_buffer) + 1;
     } else {      
         Serial.print("Unknown command: ");
         Serial.println(buffer);
         
         // Подготовить ответ
         strcpy(reply_buffer, REPLY_DONTUNDERSTAND);
-        replySize = strlen(write_buffer) + 1;
+        replySize = strlen(reply_buffer) + 1;
     }
     
     return replySize;
@@ -463,10 +458,16 @@ void loop() {
     } else {
         // Подключены к серверу - читаем команды, отправляем ответы
         
-        // see if we got anything to read
+        // есть что почитать?
         if((readSize = tcpClient.available()) > 0) {
             readSize = readSize < sizeof(read_buffer) ? readSize : sizeof(read_buffer);
             readSize = tcpClient.readStream((byte*)read_buffer, readSize);
+            
+            // Считали порцию данных - добавим завершающий ноль
+            read_buffer[readSize] = 0;
+            
+            Serial.print("Read: ");
+            Serial.println(read_buffer);
  
             // и можно выполнить команду, ответ попадет в write_buffer
             writeSize = handleInput(read_buffer, read_size, write_buffer);
@@ -474,8 +475,16 @@ void loop() {
         }
             
         if(write_size > 0) {
+            Serial.print("Write: ");
+            Serial.print(write_buffer);
+            Serial.println();
+            
             tcpClient.writeStream((const byte*)write_buffer, write_size);
+            write_size = 0;
         }
     }
+    
+    // Держим Tcp-стек в живом состоянии
+    DNETcK::periodicTasks();
 }
 
