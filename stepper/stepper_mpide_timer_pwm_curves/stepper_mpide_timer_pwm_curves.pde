@@ -58,8 +58,8 @@ void prepare_line(float dx, float dy, float dt) {
     Serial.print(steps_y, DEC);
     Serial.println();
     
-    step_delay_x = dt * 1000000 / mod_steps_x - m1_pulse_delay;    
-    step_delay_y = dt * 1000000 / mod_steps_y - m2_pulse_delay;
+    step_delay_x = dt * 1000000 / mod_steps_x - m1_pulse_delay * 2;    
+    step_delay_y = dt * 1000000 / mod_steps_y - m2_pulse_delay * 2;
     
     Serial.print("step_delay_x(1)=");
     Serial.print(step_delay_x, DEC);
@@ -82,7 +82,7 @@ void prepare_line(float dx, float dy, float dt) {
 
 void prepare_line1() {
     // возвращаемся
-    prepare_line(-100, -100, 40);
+    prepare_line(-140, -50, 40);
 //    prepare_line(0, 0, 0);
 }
 

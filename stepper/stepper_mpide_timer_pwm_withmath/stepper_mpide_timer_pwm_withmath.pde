@@ -58,8 +58,8 @@ void prepare_line(float dx, float dy, float dt) {
     Serial.print(steps_y, DEC);
     Serial.println();
     
-    step_delay_x = dt * 1000000 / mod_steps_x - m1_pulse_delay;    
-    step_delay_y = dt * 1000000 / mod_steps_y - m2_pulse_delay;
+    step_delay_x = dt * 1000000 / mod_steps_x - m1_pulse_delay*2;    
+    step_delay_y = dt * 1000000 / mod_steps_y - m2_pulse_delay*2;
     
     Serial.print("step_delay_x(1)=");
     Serial.print(step_delay_x, DEC);
@@ -81,28 +81,41 @@ void prepare_line(float dx, float dy, float dt) {
 }
 
 void prepare_line1() {
-      prepare_line(-100, 0, 0);
+//    prepare_line(-100, 0, 0);
 //    prepare_line(0, 50, 0);
     
-    prepare_line(-30, 20, 8);
+    //prepare line: dx=30.0000000000, dy=20.0000000000, dt=8.0000000000
+    //steps_x=4000, steps_y=2666
+    //step_delay_x(1)=1000, step_delay_y(1)=2000
+    //step_delay_x=1000, step_delay_y=2000
+    //Start stepper cycle...
+    //Motor1 step count: 1191
+    //Motor2 step count: 816
+    //Motor1 step count: 2419
+    //Motor2 step count: 1637
+    //Motor1 step count: 3649
+    //Motor2 step count: 2459
+    //Finished motor2:3718
+    //Finished motor1:3745
+    prepare_line(30, 20, 8);
 }
 
 void prepare_line2() {
 //    prepare_line(50, 0, 0);
 
-    prepare_line(30, 20, 8);
+    prepare_line(-30, 20, 8);
 }
 
 void prepare_line3() {
 //    prepare_line(-50, -25, 10);
 
-    prepare_line(30, -20, 8);
+    prepare_line(-30, -20, 8);
 }
 
 void prepare_line4() {
 //    prepare_line(0, -25, 10);
 
-    prepare_line(-30, -20, 8);
+    prepare_line(30, -20, 8);
 }
 
 void setup() {
