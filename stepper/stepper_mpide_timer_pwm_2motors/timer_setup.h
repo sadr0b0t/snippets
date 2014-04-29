@@ -45,16 +45,16 @@
 #define TIMER5 2
 
 
-// Define timer prescalar values: 3 bits in TxCON<6:4> register 
+// Define timer prescaler values: 3 bits in TxCON<6:4> register 
 // give 8 different values for prescalar:
-#define TIMER_PRESCALAR_1_1   0x0000
-#define TIMER_PRESCALAR_1_2   0x0010
-#define TIMER_PRESCALAR_1_4   0x0020
-#define TIMER_PRESCALAR_1_8   0x0030
-#define TIMER_PRESCALAR_1_16  0x0040
-#define TIMER_PRESCALAR_1_32  0x0050
-#define TIMER_PRESCALAR_1_64  0x0060
-#define TIMER_PRESCALAR_1_256 0x0070
+#define TIMER_PRESCALER_1_1   0x0000
+#define TIMER_PRESCALER_1_2   0x0010
+#define TIMER_PRESCALER_1_4   0x0020
+#define TIMER_PRESCALER_1_8   0x0030
+#define TIMER_PRESCALER_1_16  0x0040
+#define TIMER_PRESCALER_1_32  0x0050
+#define TIMER_PRESCALER_1_64  0x0060
+#define TIMER_PRESCALER_1_256 0x0070
 
 
 void initTimerISR(int timer, int prescalar, int period);
@@ -62,3 +62,4 @@ void stopTimerISR(int timer);
 void handle_interrupts(int timer);
 
 #endif
+

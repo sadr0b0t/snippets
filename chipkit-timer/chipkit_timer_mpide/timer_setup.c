@@ -68,26 +68,25 @@ void __attribute__((interrupt(),nomips16)) T5_IntHandler (void){
  * 
  * @param timer 
  *         system timer id: use TIMER3, TIMER4 or TIMER5
- * @param prescalar 
- *         timer prescalar (1, 2, 4, 8, 16, 32, 64, 256),
- *         use constants: PRESCALAR_1, PRESCALAR_2, PRESCALAR_8,
- *         PRESCALAR_16, PRESCALAR_32, PRESCALAR_64, PRESCALAR_256
+ * @param prescaler 
+ *         timer prescaler (1, 2, 4, 8, 16, 32, 64, 256),
+ *         use constants: PRESCALER_1, PRESCALER_2, PRESCALER_8,
+ *         PRESCALER_16, PRESCALER_32, PRESCALER_64, PRESCALER_256
  * @param period
  *         timer period - adjustment divider after timer prescaled.
  * 
  * Example: to set timer clock period to 20ms (50 operations per second)
- * use prescalar 1:64 (0x0060) and period=0x61A8:
+ * use prescaler 1:64 (0x0060) and period=0x61A8:
  * 80000000/64/50=25000=0x61A8
- *
  */
-void initTimerISR(int timer, int prescalar, int period) {
+void initTimerISR(int timer, int prescaler, int period) {
     if(timer == TIMER3) {
 
         // set the vector up
         setIntVector(_TIMER_3_VECTOR, T3_IntHandler);
 
         // set timer 3 clock period 
-        T3CON = prescalar; // set prescalar
+        T3CON = prescaler; // set prescaler
         TMR3 = 0;
         PR3 = period;
            
@@ -103,7 +102,7 @@ void initTimerISR(int timer, int prescalar, int period) {
         setIntVector(_TIMER_4_VECTOR, T4_IntHandler);
  
         // set timer 4 clock period 
-        T4CON = prescalar; // set prescalar
+        T4CON = prescaler; // set prescaler
         TMR4 = 0;
         PR4 = period;        
            
@@ -119,7 +118,7 @@ void initTimerISR(int timer, int prescalar, int period) {
         setIntVector(_TIMER_5_VECTOR, T5_IntHandler);
 
         // set timer 5 clock period
-        T5CON = prescalar; // set prescalar
+        T5CON = prescaler; // set prescaler
         TMR5 = 0;
         PR5 = period;        
            

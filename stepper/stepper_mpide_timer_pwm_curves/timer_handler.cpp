@@ -160,17 +160,17 @@ void start_stepper_cycle() {
     // 80000000/8/1000000=10=0xA
     // (уже подкглючивает)
 //    timer_freq_us = 1;
-//    initTimerISR(TIMER3, TIMER_PRESCALAR_1_8, 0xA);
+//    initTimerISR(TIMER3, TIMER_PRESCALER_1_8, 0xA);
     
     // для частоты 5 микросекунд (500000 операций в секунду):
     // 80000000/8/500000=20
 //    timer_freq_us = 5;
-//    initTimerISR(TIMER3, TIMER_PRESCALAR_1_8, 20);
+//    initTimerISR(TIMER3, TIMER_PRESCALER_1_8, 20);
     
     // Запустим таймер с периодом 10 микросекунд (100тыс операций в секунду):
     // 80000000/8/100000=100=0x64
     timer_freq_us = 10;
-    initTimerISR(TIMER3, TIMER_PRESCALAR_1_8, 0x64);
+    initTimerISR(TIMER3, TIMER_PRESCALER_1_8, 0x64);
 }
 
 bool is_cycle_running() {
