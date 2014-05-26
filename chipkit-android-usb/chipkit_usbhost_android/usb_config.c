@@ -72,8 +72,6 @@ USB_TPL usbTPL[NUM_TPL_ENTRIES] =
     ---------------------------------------------------------------------
                 [1]                      [2][3] [4]
     ---------------------------------------------------------------------*/
-    { INIT_VID_PID( 0x18D1ul, 0x2D00ul ), 0, 1, {0} }, // Android accessory
-    { INIT_VID_PID( 0x18D1ul, 0x2D01ul ), 0, 1, {0} }, // Android accessory
     { INIT_VID_PID( 0xFFFFul, 0xFFFFul ), 0, 0, {0} }, // Enumerates everything
 };
 
