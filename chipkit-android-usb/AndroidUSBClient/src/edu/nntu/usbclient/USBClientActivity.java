@@ -46,8 +46,6 @@ public class USBClientActivity extends Activity {
     private FileInputStream accessoryInput;
     private FileOutputStream accessoryOutput;
 
-    private PendingIntent permissionIntent;
-
     private TextView txtStatus;
     private Button btnCmdLedOn;
     private Button btnCmdLedOff;
@@ -105,7 +103,9 @@ public class USBClientActivity extends Activity {
                     debug("connectToAccessory: no permission => requestPermission");
                     // Нет разрешения открыть аксессуар, запросим у пользователя
                     requestingPermission = true;
-                    usbManager.requestPermission(accessory, permissionIntent);
+                    usbManager.requestPermission(accessory, PendingIntent
+                            .getBroadcast(this, 0, new Intent(
+                                    ACTION_USB_PERMISSION), 0));
                 } else {
                     debug("connectToAccessory: requesting permission => skip");
                 }
@@ -155,8 +155,6 @@ public class USBClientActivity extends Activity {
 
         // Системные штуки
         usbManager = (UsbManager) getSystemService(Context.USB_SERVICE);
-        permissionIntent = PendingIntent.getBroadcast(this, 0, new Intent(
-                ACTION_USB_PERMISSION), 0);
 
         final IntentFilter filter = new IntentFilter(ACTION_USB_PERMISSION);
         filter.addAction(UsbManager.ACTION_USB_ACCESSORY_DETACHED);
