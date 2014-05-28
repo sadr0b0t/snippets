@@ -193,7 +193,7 @@ void loop() {
             if(errorCode == USB_SUCCESS) {
                 writeInProgress = TRUE;
             } else {
-                Serial.print("Error trying to complete read: errorCode=");
+                Serial.print("Error trying to write: errorCode=");
                 Serial.println(errorCode, HEX);
                 
                 write_size = 0;
@@ -207,7 +207,7 @@ void loop() {
                 write_size = 0;
     
                 if(errorCode != USB_SUCCESS) {
-                    Serial.print("Error trying to complete read: errorCode=");
+                    Serial.print("Error trying to complete write: errorCode=");
                     Serial.println(errorCode, HEX);
                 }
             }
