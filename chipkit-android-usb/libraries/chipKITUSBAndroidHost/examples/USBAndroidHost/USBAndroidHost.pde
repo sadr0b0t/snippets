@@ -42,6 +42,81 @@ static char read_buffer[128];
 static char write_buffer[128];
 int write_size;
 
+void printUSBErrorCode(uint8_t errorCode) {
+    switch(errorCode) {
+        case USB_SUCCESS:                                 // Transfer successful
+            Serial.print("USB_SUCCESS");
+            break;
+        case USB_INVALID_STATE:                           // Operation cannot be performed in current state.
+            Serial.print("USB_INVALID_STATE");
+            break;
+        case USB_UNKNOWN_DEVICE:                          // Device not attached
+            Serial.print("USB_UNKNOWN_DEVICE");
+            break;
+            
+        case USB_ENDPOINT_BUSY:                           // Endpoint is currently processing a transaction.
+            Serial.print("USB_ENDPOINT_BUSY");
+            break;
+        case USB_ENDPOINT_STALLED:                        // Endpoint is currently stalled. User must clear the condition.
+            Serial.print("USB_ENDPOINT_STALLED");
+            break;
+        case USB_ENDPOINT_ERROR:                          // Will need more than this eventually
+            Serial.print("USB_ENDPOINT_ERROR");
+            break;
+        case USB_ENDPOINT_ERROR_ILLEGAL_PID:              // Illegal PID received.
+            Serial.print("USB_ENDPOINT_ERROR_ILLEGAL_PID");
+            break;
+        case USB_ENDPOINT_NOT_FOUND:                      // Requested endpoint does not exist on device.
+            Serial.print("USB_ENDPOINT_NOT_FOUND");
+            break;
+        case USB_ENDPOINT_ILLEGAL_DIRECTION:              // Reads must be performe on IN endpoints, writes on OUT endpoints.
+            Serial.print("USB_ENDPOINT_ILLEGAL_DIRECTION");
+            break;
+//        case USB_ENDPOINT_TRANSACTION_IN_PROGRESS:
+//            Serial.print("USB_ENDPOINT_TRANSACTION_IN_PROGRESS");
+//            break;
+        case USB_ENDPOINT_NAK_TIMEOUT:                    // Too many NAK's occurred while waiting for the current transaction.
+            Serial.print("USB_ENDPOINT_NAK_TIMEOUT");
+            break;
+        case USB_ENDPOINT_ILLEGAL_TYPE:                   // Transfer type must match endpoint description.
+            Serial.print("USB_ENDPOINT_ILLEGAL_TYPE");
+            break;
+        case USB_ENDPOINT_UNRESOLVED_STATE:               // Endpoint is in an unknown state after completing a transaction.
+            Serial.print("USB_ENDPOINT_UNRESOLVED_STATE");
+            break;
+        case USB_ENDPOINT_ERROR_BIT_STUFF:                // USB Module - Bit stuff error.
+            Serial.print("USB_ENDPOINT_ERROR_BIT_STUFF");
+            break;
+        case USB_ENDPOINT_ERROR_DMA:                      // USB Module - DMA error.
+            Serial.print("USB_ENDPOINT_ERROR_DMA");
+            break;
+        case USB_ENDPOINT_ERROR_TIMEOUT:                  // USB Module - Bus timeout.
+            Serial.print("USB_ENDPOINT_ERROR_TIMEOUT");
+            break;
+        case USB_ENDPOINT_ERROR_DATA_FIELD:               // USB Module - Data field size error.
+            Serial.print("USB_ENDPOINT_ERROR_DATA_FIELD");
+            break;
+        case USB_ENDPOINT_ERROR_CRC16:                    // USB Module - CRC16 failure.
+            Serial.print("USB_ENDPOINT_ERROR_CRC16");
+            break;
+        case USB_ENDPOINT_ERROR_END_OF_FRAME:             // USB Module - End of Frame error.
+            Serial.print("USB_ENDPOINT_ERROR_END_OF_FRAME");
+            break;
+        case USB_ENDPOINT_ERROR_PID_CHECK:                // USB Module - Illegal PID received.
+            Serial.print("USB_ENDPOINT_ERROR_PID_CHECK");
+            break;
+        case USB_ENDPOINT_ERROR_BMX:                      // USB Module - Bus Matrix error.
+            Serial.print("USB_ENDPOINT_ERROR_BMX");
+            break;
+        case USB_ERROR_INSUFFICIENT_POWER:                // Too much power was requested
+            Serial.print("USB_INSUFFICIENT_POWER");
+            break;            
+        default:
+            Serial.print("Unknown error code");
+            break;
+      }
+}
+
 BOOL USBEventHandlerApplication( uint8_t address, USB_EVENT event, void *data, DWORD size ) {
     BOOL fRet = FALSE;
 
@@ -150,7 +225,8 @@ void loop() {
                 readInProgress = TRUE;
             } else {
                 Serial.print("Error trying to read: errorCode=");
-                Serial.println(errorCode, HEX);
+                printUSBErrorCode(errorCode);
+                Serial.println();
             }
         }
 
@@ -173,8 +249,9 @@ void loop() {
                 // for the next loop iteration (data is already inside write_buffer)
                 write_size = writeSize;
             } else {
-                Serial.print("Error trying to complete read: errorCode=");
-                Serial.println(errorCode, HEX);
+                Serial.print("Error trying to complete read: ");
+                printUSBErrorCode(errorCode);
+                Serial.println();
             }
         }
         
@@ -192,8 +269,9 @@ void loop() {
             if(errorCode == USB_SUCCESS) {
                 writeInProgress = TRUE;
             } else {
-                Serial.print("Error trying to complete read: errorCode=");
-                Serial.println(errorCode, HEX);
+                Serial.print("Error trying to write: ");
+                printUSBErrorCode(errorCode);
+                Serial.println();
                 
                 write_size = 0;
             }
@@ -206,8 +284,9 @@ void loop() {
                 write_size = 0;
     
                 if(errorCode != USB_SUCCESS) {
-                    Serial.print("Error trying to complete read: errorCode=");
-                    Serial.println(errorCode, HEX);
+                    Serial.print("Error trying to complete write: ");
+                    printUSBErrorCode(errorCode);
+                    Serial.println();
                 }
             }
         }
