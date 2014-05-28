@@ -159,6 +159,10 @@ BOOL USBHostDriverEventHandler ( uint8_t address, USB_EVENT event, void *data, D
 
 } // USBHostDriverEventHandler
 
+
+
+#define MAX_ALLOWED_CURRENT             (500)         // Maximum power we can supply in mA
+
 BOOL USBHostApplicationEventHandler ( uint8_t address, USB_EVENT event, void *data, DWORD size ) {
     Serial.print("USB event Application: ");
     printUSBEvent(address, event, data, size);
@@ -172,6 +176,13 @@ BOOL USBHostApplicationEventHandler ( uint8_t address, USB_EVENT event, void *da
     // Handle specific events.
     switch ( (INT)event ) {
         case EVENT_VBUS_REQUEST_POWER:
+//            // The data pointer points to a byte that represents the amount of power
+//            // requested in mA, divided by two.  If the device wants too much power,
+//            // we reject it.
+//            if (((USB_VBUS_POWER_EVENT_DATA*)data)->current <= (MAX_ALLOWED_CURRENT / 2)) {
+//                LATBbits.LATB5 = TRUE;  // turn on the power to the USB port
+//                return TRUE;
+//            }
             return TRUE;
             break;
         case EVENT_VBUS_RELEASE_POWER:
@@ -324,7 +335,10 @@ void printUSBEvent ( uint8_t address, USB_EVENT event, void *data, DWORD size ) 
             Serial.print( "VBUS OVERCURRENT" );
             break;
         case EVENT_VBUS_REQUEST_POWER:
-            Serial.print( "VBUS REQUEST POWER" );
+            Serial.print( "VBUS REQUEST POWER: current=" );
+            Serial.print( ((USB_VBUS_POWER_EVENT_DATA*)data)->current * 2, DEC );
+            Serial.print( ", max current=" );
+            Serial.print( MAX_ALLOWED_CURRENT, DEC );
             break;
         case EVENT_VBUS_RELEASE_POWER:
             Serial.print( "VBUS RELEASE POWER" );
