@@ -18,22 +18,28 @@ const char* REPLY_DONTUNDERSTAND = "dontunderstand";
 
 // Значения для подключений
 
+// Точка доступа ВайФай
+const char* wifi_ssid = "lasto4ka";
+const char* wifi_wpa2_passphrase = "robotguest";
+
 // Сервер Роботов
 const char* robot_server_host = "robotc.lasto4ka.su";
 //const char* robot_server_host = "192.168.1.3";
 const int robot_server_port = 1116;
 
-// Точка доступа ВайФай
-const char* wifi_ssid = "lasto4ka";
-const char* wifi_wpa2_passphrase = "robotguest";
-
+// Подключение к WiFi
 int conectionId = DWIFIcK::INVALID_CONNECTION_ID;
+// TCP-клиент - подключение к серверу
 TcpClient tcpClient;
 
+// Буферы для обмена данными с сервером
 static char read_buffer[128];
 static char write_buffer[128];
 int write_size;
 
+/**
+ * Вывести произвольный IP-адрес
+ */
 void printIPAddress(IPv4 *ipAddress) {
     Serial.print(ipAddress->rgbIP[0], DEC);
     Serial.print(".");
@@ -44,6 +50,9 @@ void printIPAddress(IPv4 *ipAddress) {
     Serial.print(ipAddress->rgbIP[3], DEC);
 }
 
+/**
+ * Вывести текущий статус сетевого подключения.
+ */
 void printNetworkStatus() {
     IPv4 ipAddress;
     
@@ -88,6 +97,9 @@ void printNetworkStatus() {
     }
 }
 
+/**
+ * Вывести текущий статус подключения к Серверу Роботов.
+ */
 void printTcpClientStatus() {
     IPEndPoint remoteEndPoint;
     if(tcpClient.getRemoteEndPoint(&remoteEndPoint)) {
@@ -100,7 +112,10 @@ void printTcpClientStatus() {
     }
 }
 
-void printStatus(DNETcK::STATUS status) {
+/**
+ * Вывести значение статуса сетевой операции.
+ */
+void printDNETcKStatus(DNETcK::STATUS status) {
     switch(status) {
         case DNETcK::None:                           // = 0,
             Serial.print("None");
@@ -399,7 +414,7 @@ void loop() {
             // Так и не получилось подключиться
             Serial.print("Failed to connect wifi, status: ");
             //Serial.print(networkStatus, DEC);
-            printStatus(networkStatus);
+            printDNETcKStatus(networkStatus);
             Serial.println();
             
             // Нужно корректно завершить весь стек IP и Wifi, чтобы
@@ -445,7 +460,7 @@ void loop() {
             // Так и не получилось подключиться
             Serial.print("Failed to connect Robot Server, status: ");
             //Serial.print(networkStatus, DEC);
-            printStatus(networkStatus);
+            printDNETcKStatus(networkStatus);
             Serial.println();
             
             // Вернем TCP-клиента в исходное состояние
