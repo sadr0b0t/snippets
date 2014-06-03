@@ -21,7 +21,7 @@ public class RobotClient {
 
     public static final String DEFAULT_SERVER_HOST = "robotc.lasto4ka.su";
 //    public static final String DEFAULT_SERVER_HOST = "localhost";
-    public static final int DEFAULT_SERVER_PORT = 1117;
+    public static final int DEFAULT_SERVER_PORT = 1116;
 
     private String serverHost;
     private int serverPort;
@@ -74,7 +74,7 @@ public class RobotClient {
         String inputLine;
         String reply;
 
-        // Запускаем бесконечный цикл ожидания/чтения данные с сервера
+        // Запускаем бесконечный цикл ожидания/чтения данных с сервера
         while ((readSize = serverIn.read(readBuffer)) != -1) {
             // Превратим байты в строку
             inputLine = new String(readBuffer, 0, readSize);

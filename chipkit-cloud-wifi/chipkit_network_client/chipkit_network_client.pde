@@ -20,7 +20,8 @@ const char* REPLY_DONTUNDERSTAND = "dontunderstand";
 
 // Сервер Роботов
 const char* robot_server_host = "robotc.lasto4ka.su";
-const int robot_server_port = 1117;
+//const char* robot_server_host = "192.168.1.3";
+const int robot_server_port = 1116;
 
 // Точка доступа ВайФай
 const char* wifi_ssid = "lasto4ka";
