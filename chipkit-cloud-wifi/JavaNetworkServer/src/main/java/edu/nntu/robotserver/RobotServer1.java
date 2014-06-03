@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,11 +24,11 @@ public class RobotServer1 {
     public static final String CMD_LEDON = "ledon";
     public static final String CMD_LEDOFF = "ledoff";
 
-    public static final int DEFAULT_SERVER_PORT = 1117;
+    public static final int DEFAULT_SERVER_PORT = 1116;
 
     private int serverPort;
     private ServerSocket serverSocket;
-    
+
     public RobotServer1() {
         this(DEFAULT_SERVER_PORT);
     }
@@ -37,7 +38,8 @@ public class RobotServer1 {
     }
 
     /**
-     * Запускает сервер слушать входящие подключения на указанном порте serverPort.
+     * Запускает сервер слушать входящие подключения на указанном порте
+     * serverPort.
      *
      * Простой однопоточный сервер - ждет ввод от пользователя, отправляет
      * введенную команду клиенту, ждет ответ и дальше по кругу.
@@ -51,16 +53,25 @@ public class RobotServer1 {
         // Открыли сокет
         serverSocket = new ServerSocket(serverPort);
 
-        Socket clientSocket;
+        Socket clientSocket = null;
         while (true) {
             try {
                 System.out.println("Waiting for client...");
                 // Ждём подключения клиента (робота)
                 clientSocket = serverSocket.accept();
                 System.out.println("Client accepted: " + clientSocket.getInetAddress().getHostAddress());
-                
-                // Клиент подключился - получаем доступ к потокам
-                // ввода/вывода сокета для общения с подключившимся клиентом (роботом)
+
+                // Клиент подключился:
+                // Установим таймаут для чтения ответа на команды - 
+                // клиент должет прислать ответ за 5 секунд, иначе он будет
+                // считаться отключенным (в нашем случае это позволит предотвратить
+                // вероятные зависания на блокирующем read, когда например клиент
+                // отключился до того, как прислал ответ и сокет не распрознал это
+                // как разрыв связи с выбросом IOException)
+                clientSocket.setSoTimeout(5000);
+
+                // Получаем доступ к потокам ввода/вывода сокета для общения 
+                // с подключившимся клиентом (роботом)
                 final InputStream clientIn = clientSocket.getInputStream();
                 final OutputStream clientOut = clientSocket.getOutputStream();
 
@@ -76,7 +87,7 @@ public class RobotServer1 {
                         clientSocket.close();
 
                         System.out.println("Client disconnected");
-                    } else {
+                    } else if (userLine.length() > 0) {
                         // отправить команду клиенту
                         System.out.println("Write: " + userLine);
                         clientOut.write((userLine).getBytes());
@@ -85,14 +96,24 @@ public class RobotServer1 {
                         final byte[] readBuffer = new byte[256];
                         final int readSize = clientIn.read(readBuffer);
                         if (readSize != -1) {
-                            final String clientLine = 
-                                    new String(readBuffer, 0, readSize);
+                            final String clientLine
+                                    = new String(readBuffer, 0, readSize);
                             System.out.println("Read: " + clientLine);
                         }
 
                         // приглашение для ввода следующей команды
                         System.out.print("enter command: ");
                     }
+                }
+            } catch (SocketTimeoutException ex1) {
+                // Попадем сюда, если клиент не отправит ответ во-время 
+                // (установленное с clientSocket.setSoTimeout):
+                // это не значит, что соединение нарушено (он может просто решил 
+                // не отвечать), но все равно отключим такого клиента, чтобы он
+                // не блокировал сервер.
+                System.out.println("Client reply timeout, disconnect");
+                if (clientSocket != null) {
+                    clientSocket.close();
                 }
             } catch (IOException ex2) {
                 // Попадём сюда только после того, как клиент отключится и сервер
