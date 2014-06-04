@@ -86,7 +86,7 @@ public class RobotServer1 {
                         clientOut.close();
                         clientSocket.close();
 
-                        System.out.println("Client disconnected");
+                        System.out.println("Client disconnected: KICK");
                     } else if (userLine.length() > 0) {
                         // отправить команду клиенту
                         System.out.println("Write: " + userLine);
@@ -99,6 +99,13 @@ public class RobotServer1 {
                             final String clientLine
                                     = new String(readBuffer, 0, readSize);
                             System.out.println("Read: " + clientLine);
+                        } else {
+                            // Такая ситуация проявляется например при связи
+                            // Server:OpenJDK - Client:Android - клиент отключается,
+                            // но сервер это не распознаёт: запись write завершается
+                            // без исключений, чтение read возвращается не дожидаясь
+                            // таймаута без исключения, но при этом возвращает -1.
+                            throw new IOException("End of stream");
                         }
 
                         // приглашение для ввода следующей команды
@@ -111,7 +118,7 @@ public class RobotServer1 {
                 // это не значит, что соединение нарушено (он может просто решил 
                 // не отвечать), но все равно отключим такого клиента, чтобы он
                 // не блокировал сервер.
-                System.out.println("Client reply timeout, disconnect");
+                System.out.println("Client disconnected: " + ex1.getMessage());
                 if (clientSocket != null) {
                     clientSocket.close();
                 }
@@ -121,7 +128,7 @@ public class RobotServer1 {
                 // (в более правильной реализации можно добавить в протокол 
                 // команду проверки статуса клиента 'isalive' и отправлять её 
                 // клиенту с некоторой периодичностью).
-                System.out.println("Client disconnected");
+                System.out.println("Client disconnected: " + ex2.getMessage());
             }
         }
     }
