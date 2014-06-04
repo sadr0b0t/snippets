@@ -121,7 +121,12 @@ public class USBClientActivity extends Activity {
      * @param msg
      */
     private void debug(final String msg) {
-        txtDebug.append(msg + "\n");
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                txtDebug.append(msg + "\n");
+            }
+        });
         System.out.println(msg);
     }
 
@@ -278,12 +283,7 @@ public class USBClientActivity extends Activity {
                     int readBytes = 0;
                     while (readBytes >= 0) {
                         try {
-                            handler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    debug("read bytes...");
-                                }
-                            });
+                            debug("read bytes...");
                             // Этот вызов разблокируется только тогда, когда
                             // аксессуар пришлет какие-то данные или когда
                             // он будет отсоединен физически.
@@ -299,11 +299,10 @@ public class USBClientActivity extends Activity {
                                     + readBytes + ", value="
                                     + new String(buffer);
 
+                            debug(postMessage);
                             handler.post(new Runnable() {
                                 @Override
                                 public void run() {
-                                    debug(postMessage);
-
                                     Toast.makeText(USBClientActivity.this,
                                             postMessage, Toast.LENGTH_SHORT)
                                             .show();
@@ -317,22 +316,15 @@ public class USBClientActivity extends Activity {
                                 break;
                             }
                         } catch (final Exception e) {
-                            handler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    debug("Accessory read error: "
-                                            + e.getMessage());
-                                }
-                            });
+                            debug("Accessory read error: " + e.getMessage());
                             e.printStackTrace();
                             break;
                         }
                     }
+                    debug("Input reader thread finish");
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
-                            debug("Input reader thread finish");
-
                             updateViews();
                         }
                     });
