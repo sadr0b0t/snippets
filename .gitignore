@@ -1,7 +1,9 @@
-/chipkit-cloud-wifi/JavaNetworkServer/target/
-/chipkit-cloud-wifi/AndroidNetworkClient/bin/
-/chipkit-cloud-wifi/AndroidNetworkClient/gen/
+/chipkit-cloud-wifi/JavaTcpServerMaster/target/
+/chipkit-cloud-wifi/AndroidTcpClientSlave/bin/
+/chipkit-cloud-wifi/AndroidTcpClientSlave/gen/
+/chipkit-server-wifi/AndroidTcpClientMaster/bin/
+/chipkit-server-wifi/AndroidTcpClientMaster/gen/
 /chipkit-android-usb/AndroidUSBClient/bin/
 /chipkit-android-usb/AndroidUSBClient/gen/
-/chipkit-cloud-wifi/JavaNetworkServerMaster/target/
-/chipkit-cloud-wifi/JavaTcpServerMaster/target/
+
+

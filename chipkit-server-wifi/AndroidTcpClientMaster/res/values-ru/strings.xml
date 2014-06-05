@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+     <string name="app_name">Пульт для Робота</string>
+    <string name="action_settings">Настройки</string>
+    
+    <string name="status_disconnected">Отключен</string>
+    <string name="status_connecting">Подключаем...</string>
+    <string name="status_connected">Подключен</string>
+    <string name="status_error">Ошибка</string>
+    
+    <string name="connect">Подключиться</string>
+    
+    <string name="cmd_ledon">Включить лампочку (команда \'ledon\')</string>
+    <string name="cmd_ledoff">Выключить лампочку (команда\'ledoff\')</string>
+
+</resources>

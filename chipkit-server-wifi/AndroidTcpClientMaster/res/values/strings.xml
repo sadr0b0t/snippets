@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Robot Pult</string>
+    <string name="action_settings">Settings</string>
+    
+    <string name="status_disconnected">Disconnected</string>
+    <string name="status_connecting">Connecting...</string>
+    <string name="status_connected">Connected</string>
+    <string name="status_error">Error</string>
+    
+    <string name="connect">Connect</string>
+    
+    <string name="cmd_ledon">Turn light on (command \'ledon\')</string>
+    <string name="cmd_ledoff">Turn light off (command \'ledoff\')</string>
+
+</resources>
