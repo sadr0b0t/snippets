@@ -8,6 +8,7 @@
 // Команды, принимаемые от Пульта
 const char* CMD_LEDON = "ledon";
 const char* CMD_LEDOFF = "ledoff";
+const char* CMD_PING = "ping";
 
 // Ответы для Пульта
 const char* REPLY_OK = "ok";
@@ -358,6 +359,12 @@ int handleInput(char* buffer, int size, char* reply_buffer) {
         // Подготовить ответ
         strcpy(reply_buffer, REPLY_OK);
         replySize = strlen(reply_buffer);
+    } else if (strcmp(buffer, CMD_PING) == 0) {
+        Serial.println("Command 'ping': reply ok");
+                
+        // Подготовить ответ
+        strcpy(reply_buffer, REPLY_OK);
+        replySize = strlen(reply_buffer);
     } else {      
         Serial.print("Unknown command: ");
         Serial.println(buffer);
@@ -541,7 +548,7 @@ void loop() {
         }
         
         if( (millis() - clientIdleStart) > CLIENT_IDLE_TIMEOUT ) {
-            Serial.print("Close connection on timeout");
+            Serial.println("Close connection on timeout");
             tcpClient.close();
         }
     }
