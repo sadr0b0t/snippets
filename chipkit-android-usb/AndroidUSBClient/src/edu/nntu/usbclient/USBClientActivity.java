@@ -275,7 +275,7 @@ public class USBClientActivity extends Activity {
 
             accessoryInput = new FileInputStream(fd);
             accessoryOutput = new FileOutputStream(fd);
-            final Thread inputThread = new Thread(new Runnable() {
+            new Thread(new Runnable() {
 
                 @Override
                 public void run() {
@@ -329,8 +329,7 @@ public class USBClientActivity extends Activity {
                         }
                     });
                 }
-            });
-            inputThread.start();
+            }).start();
 
             debug("openAccessory: connected accessory: manufacturer="
                     + usbAccessory.getManufacturer() + ", model="
