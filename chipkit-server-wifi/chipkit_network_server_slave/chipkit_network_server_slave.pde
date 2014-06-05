@@ -410,6 +410,10 @@ void loop() {
             // Подключились к Wifi
             Serial.println("Connected to wifi");
             printNetworkStatus();
+            
+            // Вернем TCP-сервер в исходное состояние, если он уже запускался 
+            // ранее за эту сессию
+            tcpServer.close();
         } else {
             // Так и не получилось подключиться
             Serial.print("Failed to connect wifi, status: ");
@@ -427,7 +431,7 @@ void loop() {
             delay(4000);
         }
     } else if(!tcpServer.isListening()) {
-        // Подключимся к сети Wifi
+        // Запустим TCP-сервер слушать подключения
         
         bool startedListening = false;
         
