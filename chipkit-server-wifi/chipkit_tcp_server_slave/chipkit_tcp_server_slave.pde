@@ -30,19 +30,27 @@ IPv4 host_ip = {192,168,43,117};
 // Порт для tcp-сервера
 const int tcp_server_port = DNETcK::iPersonalPorts44 + 114;
 
+// Подключение к WiFi
 int conectionId = DWIFIcK::INVALID_CONNECTION_ID;
 
+// Tcp-сервер (запущен на плате)
 TcpServer tcpServer;
+//  и Tcp-клиент (входящее подключение)
 TcpClient tcpClient;
 
-// Таймаут неактивности подключенного клиента, миллисекунды
+// Неактивного клиента отключаем через заданное таймаутом 
+// количество миллисекунд
 int CLIENT_IDLE_TIMEOUT = 10000;
 int clientIdleStart = 0;
 
+// Буферы для обмена данными с клиентом
 static char read_buffer[128];
 static char write_buffer[128];
 int write_size;
 
+/**
+ * Вывести произвольный IP-адрес
+ */
 void printIPAddress(IPv4 *ipAddress) {
     Serial.print(ipAddress->rgbIP[0], DEC);
     Serial.print(".");
@@ -53,6 +61,9 @@ void printIPAddress(IPv4 *ipAddress) {
     Serial.print(ipAddress->rgbIP[3], DEC);
 }
 
+/**
+ * Вывести текущий статус сетевого подключения.
+ */
 void printNetworkStatus() {
     IPv4 ipAddress;
     
@@ -97,12 +108,18 @@ void printNetworkStatus() {
     }
 }
 
+/**
+ * Вывести текущий статус Tcp-сервера.
+ */
 void printTcpServerStatus() {
     printIPAddress(&host_ip);
     Serial.print(":");
     Serial.println(tcp_server_port);
 }
 
+/**
+ * Вывести текущий статус Tcp-клиента.
+ */
 void printTcpClientStatus() {
     IPEndPoint remoteEndPoint;
     if(tcpClient.getRemoteEndPoint(&remoteEndPoint)) {
@@ -115,7 +132,10 @@ void printTcpClientStatus() {
     }
 }
 
-void printStatus(DNETcK::STATUS status) {
+/**
+ * Вывести значение статуса сетевой операции.
+ */
+void printDNETcKStatus(DNETcK::STATUS status) {
     switch(status) {
         case DNETcK::None:                           // = 0,
             Serial.print("None");
@@ -417,7 +437,7 @@ void loop() {
         } else {
             // Так и не получилось подключиться
             Serial.print("Failed to connect wifi, status: ");
-            printStatus(networkStatus);
+            printDNETcKStatus(networkStatus);
             Serial.println();
             
             // Нужно корректно завершить весь стек IP и Wifi, чтобы
@@ -461,7 +481,7 @@ void loop() {
         } else {
             // Так и не получилось начать слушать подключения
             Serial.print("Failed to start listening, status: ");
-            printStatus(networkStatus);
+            printDNETcKStatus(networkStatus);
             Serial.println();
             
             // Вернем TCP-сервер в исходное состояние
