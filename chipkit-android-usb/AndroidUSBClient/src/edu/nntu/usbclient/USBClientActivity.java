@@ -175,7 +175,7 @@ public class USBClientActivity extends Activity {
         txtStatus = (TextView) findViewById(R.id.txt_status);
         txtDebug = (TextView) findViewById(R.id.txt_debug);
 
-        btnCmdLedOn = (Button) findViewById(R.id.btn_cmd_on);
+        btnCmdLedOn = (Button) findViewById(R.id.btn_cmd_ledon);
         btnCmdLedOn.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -183,7 +183,7 @@ public class USBClientActivity extends Activity {
                 sendCommand(CMD_LEDON);
             }
         });
-        btnCmdLedOff = (Button) findViewById(R.id.btn_cmd_off);
+        btnCmdLedOff = (Button) findViewById(R.id.btn_cmd_ledoff);
         btnCmdLedOff.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -279,9 +279,9 @@ public class USBClientActivity extends Activity {
 
                 @Override
                 public void run() {
-                    byte[] buffer = new byte[READ_BUFFER_SIZE];
-                    int readBytes = 0;
-                    while (readBytes >= 0) {
+                    byte[] readBuffer = new byte[READ_BUFFER_SIZE];
+                    int readSize = 0;
+                    while (readSize >= 0) {
                         try {
                             debug("read bytes...");
                             // Этот вызов разблокируется только тогда, когда
@@ -292,12 +292,12 @@ public class USBClientActivity extends Activity {
                             // (см обсуждение здесь:
                             // http://code.google.com/p/android/issues/detail?id=20545
                             // ).
-                            readBytes = accessoryInput.read(buffer);
-                            final String reply = new String(buffer);
+                            readSize = accessoryInput.read(readBuffer);
+                            final String reply = new String(readBuffer);
 
                             final String postMessage = "Read: " + "num bytes="
-                                    + readBytes + ", value="
-                                    + new String(buffer);
+                                    + readSize + ", value="
+                                    + new String(readBuffer);
 
                             debug(postMessage);
                             handler.post(new Runnable() {
@@ -376,7 +376,7 @@ public class USBClientActivity extends Activity {
             btnCmdLedOn.setEnabled(true);
             btnCmdLedOff.setEnabled(true);
         } else {
-            txtStatus.setText(getString(R.string.no_accessory));
+            txtStatus.setText(R.string.no_accessory);
             btnCmdLedOn.setEnabled(false);
             btnCmdLedOff.setEnabled(false);
         }

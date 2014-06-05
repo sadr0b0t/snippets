@@ -22,14 +22,14 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <Button
-            android:id="@+id/btn_cmd_on"
+            android:id="@+id/btn_cmd_ledon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/cmd_ledon" />
 
         <Button
-            android:id="@+id/btn_cmd_off"
+            android:id="@+id/btn_cmd_ledoff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"

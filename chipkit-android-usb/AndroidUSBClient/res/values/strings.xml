@@ -5,6 +5,7 @@
         
     <string name="connected_to_accessory">Connected to accessory</string>
     <string name="no_accessory">No accessory</string>
+    
     <string name="cmd_ledon">Turn light on (command \'ledon\')</string>
     <string name="cmd_ledoff">Turn light off (command \'ledoff\')</string>
     
