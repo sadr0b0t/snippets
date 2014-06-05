@@ -348,7 +348,7 @@ int handleInput(char* buffer, int size, char* reply_buffer) {
         
         // Подготовить ответ
         strcpy(reply_buffer, REPLY_OK);
-        replySize = strlen(reply_buffer) + 1;
+        replySize = strlen(reply_buffer);
     } else if (strcmp(buffer, CMD_LEDOFF) == 0) {
         Serial.println("Command 'ledoff': turn light off");
         
@@ -357,14 +357,14 @@ int handleInput(char* buffer, int size, char* reply_buffer) {
         
         // Подготовить ответ
         strcpy(reply_buffer, REPLY_OK);
-        replySize = strlen(reply_buffer) + 1;
+        replySize = strlen(reply_buffer);
     } else {      
         Serial.print("Unknown command: ");
         Serial.println(buffer);
         
         // Подготовить ответ
         strcpy(reply_buffer, REPLY_DONTUNDERSTAND);
-        replySize = strlen(reply_buffer) + 1;
+        replySize = strlen(reply_buffer);
     }
     
     return replySize;
