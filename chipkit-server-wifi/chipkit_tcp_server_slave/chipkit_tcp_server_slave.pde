@@ -379,7 +379,7 @@ int handleInput(char* buffer, int size, char* reply_buffer) {
 
 void setup() {
     Serial.begin(9600);
-    Serial.println("Start wifi network server demo");
+    Serial.println("Start WiFi network and Tcp server demo");
 
     pinMode(LED_PIN, OUTPUT);
 }
