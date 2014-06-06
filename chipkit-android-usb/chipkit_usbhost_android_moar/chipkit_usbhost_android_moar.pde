@@ -214,7 +214,7 @@ int handleInput(char* buffer, int size, char* reply_buffer) {
     return replySize;
 }
 
-void printErrorCode(uint8_t errorCode) {
+void printUSBErrorCode(uint8_t errorCode) {
     switch(errorCode) {
         case USB_SUCCESS:                                 // Transfer successful
             Serial.print("USB_SUCCESS");
@@ -315,7 +315,7 @@ void USBHostSimpleWrite(void* device_handle) {
                                           (uint8_t*)write_buf_test, sizeof(write_buf_test) );
                                           
     Serial.print("USBHostWrite: ");
-    printErrorCode(errorCode);
+    printUSBErrorCode(errorCode);
     Serial.println();
     
     writeComplete = FALSE;
@@ -328,7 +328,7 @@ void USBHostSimpleWrite(void* device_handle) {
         Serial.print(", writeSize=");
         Serial.print(writeSize, DEC);
         Serial.print(", errorCode=");
-        printErrorCode(errorCode);
+        printUSBErrorCode(errorCode);
         Serial.println();
     }
 }
@@ -341,7 +341,7 @@ void USBHostAndroidSimpleWrite(void* device_handle) {
     uint8_t errorCode = USBAndroidHost.AppWrite(device_handle, (uint8_t*)&write_buf_test, sizeof(write_buf_test));
                                           
     Serial.print("USBAndroidHost.AppWrite: ");
-    printErrorCode(errorCode);
+    printUSBErrorCode(errorCode);
     Serial.println();
     
     writeComplete = FALSE;
@@ -355,7 +355,7 @@ void USBHostAndroidSimpleWrite(void* device_handle) {
         Serial.print(", writeSize=");
         Serial.print(writeSize, DEC);
         Serial.print(", errorCode=");
-        printErrorCode(errorCode);
+        printUSBErrorCode(errorCode);
         Serial.println();
     }
 }
@@ -396,7 +396,7 @@ void loop() {
                 readInProgress = TRUE;
             } else {
                 Serial.print("Error trying to read: errorCode=");
-                printErrorCode(errorCode);
+                printUSBErrorCode(errorCode);
                 Serial.println();
             }
         }
@@ -426,7 +426,7 @@ void loop() {
                 //printDeviceInfo(deviceHandle);
             } else {
                 Serial.print("Error trying to complete read: ");
-                printErrorCode(errorCode);
+                printUSBErrorCode(errorCode);
                 Serial.println();
             }
         }
@@ -446,7 +446,7 @@ void loop() {
                 writeInProgress = TRUE;
             } else {
                 Serial.print("Error trying to write: ");
-                printErrorCode(errorCode);
+                printUSBErrorCode(errorCode);
                 Serial.println();
                 
                 write_size = 0;
@@ -461,7 +461,7 @@ void loop() {
     
                 if(errorCode != USB_SUCCESS) {
                     Serial.print("Error trying to complete write: ");
-                    printErrorCode(errorCode);
+                    printUSBErrorCode(errorCode);
                     Serial.println();
                 }
             }
