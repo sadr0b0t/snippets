@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+     <string name="app_name">Робот Tpc-Клиент</string>
+    <string name="action_settings">Настройки</string>
+    
+    <string name="status_disconnected">Отключен</string>
+    <string name="status_connecting">Подключаем...</string>
+    <string name="status_connected">Подключен</string>
+    <string name="status_error">Ошибка</string>
+    
+    <string name="connect">Подключиться</string>
+
+</resources>
