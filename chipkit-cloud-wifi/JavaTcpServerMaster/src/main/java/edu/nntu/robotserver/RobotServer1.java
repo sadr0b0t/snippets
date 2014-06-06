@@ -25,6 +25,12 @@ public class RobotServer1 {
     public static final String CMD_LEDOFF = "ledoff";
 
     public static final int DEFAULT_SERVER_PORT = 1116;
+    
+    /**
+     * Таймаут для чтения ответа на команды - клиент должет прислать ответ за 
+     * 5 секунд, иначе он будет считаться отключенным.
+     */
+    private static final int CLIENT_SO_TIMEOUT = 5000;
 
     private int serverPort;
     private ServerSocket serverSocket;
@@ -68,7 +74,7 @@ public class RobotServer1 {
                 // вероятные зависания на блокирующем read, когда например клиент
                 // отключился до того, как прислал ответ и сокет не распрознал это
                 // как разрыв связи с выбросом IOException)
-                clientSocket.setSoTimeout(5000);
+                clientSocket.setSoTimeout(CLIENT_SO_TIMEOUT);
 
                 // Получаем доступ к потокам ввода/вывода сокета для общения 
                 // с подключившимся клиентом (роботом)
@@ -93,6 +99,7 @@ public class RobotServer1 {
                         clientOut.write((userLine).getBytes());
                         clientOut.flush();
 
+                        // и сразу прочитать ответ
                         final byte[] readBuffer = new byte[256];
                         final int readSize = clientIn.read(readBuffer);
                         if (readSize != -1) {
