@@ -3,9 +3,6 @@
 #include <DNETcK.h>
 #include <DWIFIcK.h>
 
-// Пин для лампочки статуса WiFi
-#define WIFI_STATUS_PIN 13
-
 // Значения для подключений
 
 // Точка доступа ВайФай
@@ -21,6 +18,10 @@ IPv4 host_ip = {192,168,43,117};
 
 // Подключение к WiFi
 int conectionId = DWIFIcK::INVALID_CONNECTION_ID;
+
+
+// Пин для лампочки статуса WiFi
+#define WIFI_STATUS_PIN 13
 
 /**
  * Вывести произвольный IP-адрес
@@ -289,6 +290,9 @@ void setup() {
     
 void loop() {
     DNETcK::STATUS networkStatus;
+    
+    // Держим Tcp-стек в живом состоянии
+    DNETcK::periodicTasks();
         
     if(!DWIFIcK::isConnected(conectionId)) {
         // Не подключены к WiFi - выключим лампочку
@@ -370,8 +374,5 @@ void loop() {
         Serial.println("WiFi is ON, do something with network");
         delay(5000);
     }
-    
-    // Держим Tcp-стек в живом состоянии
-    DNETcK::periodicTasks();
 }
 
