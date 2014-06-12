@@ -298,10 +298,11 @@ void loop() {
         // Не подключены к WiFi - выключим лампочку
         digitalWrite(WIFI_STATUS_PIN, LOW);
       
-        // Подключимся к сети Wifi
+        // Подключимся к сети Wifi        
+        Serial.println("Connecting wifi...");
+        
         bool connectedToWifi = false;
         
-        Serial.println("Connecting wifi...");
         // сначала получим доступ к оборудованию
         conectionId = connectWifi(&networkStatus);
   
@@ -311,8 +312,10 @@ void loop() {
             Serial.print("Connection created, connection id=");
             Serial.println(conectionId, DEC);
 
-            Serial.print("Initializing IP stack...");
+
             // Теперь попробуем подключиться к самой точке доступа - инициализируем Ip-стек
+            Serial.print("Initializing IP stack...");
+            
             if(USE_STATIC_ADDRESS) {
                 // подключимся со статическим ip-адресом
                 DNETcK::begin(host_ip);
