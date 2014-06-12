@@ -297,12 +297,12 @@ void loop() {
     if(!DWIFIcK::isConnected(conectionId)) {
         // Не подключены к WiFi - выключим лампочку
         digitalWrite(WIFI_STATUS_PIN, LOW);
+        
+        bool connectedToWifi = false;
       
         // Подключимся к сети Wifi        
         Serial.println("Connecting wifi...");
-        
-        bool connectedToWifi = false;
-        
+                
         // сначала получим доступ к оборудованию
         conectionId = connectWifi(&networkStatus);
   
