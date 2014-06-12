@@ -6,14 +6,13 @@
 // Значения для подключений
 
 // Точка доступа ВайФай
+boolean USE_SECURITY_OPEN = false;
 const char* wifi_ssid = "lasto4ka";
 const char* wifi_wpa2_passphrase = "robotguest";
 
 boolean USE_STATIC_ADDRESS = true;
-
 // статический IP-адрес для текущего хоста - если включен режим
 // USE_STATIC_ADDRESS = true, то попросим у точки Wifi дать его нам
-//IPv4 host_ip = {192,168,117,117};
 IPv4 host_ip = {192,168,43,117};
 
 // Подключение к WiFi
@@ -248,39 +247,6 @@ void printDNETcKStatus(DNETcK::STATUS status) {
     }
 }
 
-/**
- * Подключиться к открытой сети WiFi.
- */
-int connectWifiOpen(const char* ssid, DNETcK::STATUS *netStatus) {
-    Serial.print("SSID: ");
-    Serial.println(ssid);
-  
-    return DWIFIcK::connect(ssid, netStatus);   
-}
-
-/**
- * Подключиться к сети WiFi, защищенной WPA2 с паролем.
- */
-int connectWifiWPA2Passphrase(const char* ssid, const char* passphrase, DNETcK::STATUS *netStatus) {
-    Serial.print("SSID: ");
-    Serial.print(ssid);
-    Serial.print(", WPA2 passphrase: ");
-    Serial.println(passphrase);
-    
-    return DWIFIcK::connect(ssid, passphrase, netStatus);
-}
-
-/**
- * Подлключиться к сети WiFi.
- */
-int connectWifi(DNETcK::STATUS *netStatus) {
-    int conId = DWIFIcK::INVALID_CONNECTION_ID;
-    // Выбрать способ подключения (открытый или с паролем) - раскомментировать нужную строку.    
-//    conId = connectWifiOpen(wifi_ssid, netStatus);
-    conId = connectWifiWPA2Passphrase(wifi_ssid, wifi_wpa2_passphrase, netStatus);
-    return conId;
-}
-
 void setup() {
     Serial.begin(9600);
     Serial.println("Start wifi network connection demo");
@@ -303,8 +269,23 @@ void loop() {
         // Подключимся к сети Wifi        
         Serial.println("Connecting wifi...");
                 
-        // сначала получим доступ к оборудованию
-        connectionId = connectWifi(&networkStatus);
+        // Сначала получим доступ к оборудованию:
+        // выбрать способ подключения (открытый или с паролем)
+        if(USE_SECURITY_OPEN) {
+            // Подключиться к открытой сети WiFi.
+            Serial.print("SSID: ");
+            Serial.println(wifi_ssid);
+            
+            connectionId = DWIFIcK::connect(wifi_ssid, &networkStatus);
+        } else {
+            // Подключиться к сети WiFi, защищенной WPA2 с паролем.
+            Serial.print("SSID: ");
+            Serial.print(wifi_ssid);
+            Serial.print(", WPA2 passphrase: ");
+            Serial.println(wifi_wpa2_passphrase);
+          
+            connectionId = DWIFIcK::connect(wifi_ssid, wifi_wpa2_passphrase, &networkStatus);
+        }
   
         if(connectionId != DWIFIcK::INVALID_CONNECTION_ID) {
             // На этом этапе подключение будет создано, даже если указанная 
