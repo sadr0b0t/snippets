@@ -17,7 +17,7 @@ boolean USE_STATIC_ADDRESS = true;
 IPv4 host_ip = {192,168,43,117};
 
 // Подключение к WiFi
-int conectionId = DWIFIcK::INVALID_CONNECTION_ID;
+int connectionId = DWIFIcK::INVALID_CONNECTION_ID;
 
 
 // Пин для лампочки статуса WiFi
@@ -294,7 +294,7 @@ void loop() {
     // Держим Tcp-стек в живом состоянии
     DNETcK::periodicTasks();
         
-    if(!DWIFIcK::isConnected(conectionId)) {
+    if(!DWIFIcK::isConnected(connectionId)) {
         // Не подключены к WiFi - выключим лампочку
         digitalWrite(WIFI_STATUS_PIN, LOW);
         
@@ -304,13 +304,13 @@ void loop() {
         Serial.println("Connecting wifi...");
                 
         // сначала получим доступ к оборудованию
-        conectionId = connectWifi(&networkStatus);
+        connectionId = connectWifi(&networkStatus);
   
-        if(conectionId != DWIFIcK::INVALID_CONNECTION_ID) {
+        if(connectionId != DWIFIcK::INVALID_CONNECTION_ID) {
             // На этом этапе подключение будет создано, даже если указанная 
             // сеть Wifi недоступна или для нее задан неправильный пароль
             Serial.print("Connection created, connection id=");
-            Serial.println(conectionId, DEC);
+            Serial.println(connectionId, DEC);
 
 
             // Теперь попробуем подключиться к самой точке доступа - инициализируем Ip-стек
@@ -365,8 +365,8 @@ void loop() {
             // Нужно корректно завершить весь стек IP и Wifi, чтобы
             // иметь возможность переподключиться на следующей итерации
             DNETcK::end();
-            DWIFIcK::disconnect(conectionId);
-            conectionId = DWIFIcK::INVALID_CONNECTION_ID;
+            DWIFIcK::disconnect(connectionId);
+            connectionId = DWIFIcK::INVALID_CONNECTION_ID;
             
             // Немного подождем и попробуем переподключиться на следующей итерации
             Serial.println("Retry after 4 seconds...");
