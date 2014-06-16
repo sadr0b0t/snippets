@@ -361,6 +361,9 @@ void loop() {
     DNETcK::STATUS networkStatus;
     int readSize;
     int writeSize;
+    
+    // Держим Tcp-стек в живом состоянии
+    DNETcK::periodicTasks();
         
     if(!DWIFIcK::isConnected(conectionId)) {
         // Подключимся к сети WiFi
@@ -498,8 +501,5 @@ void loop() {
             write_size = 0;
         }
     }
-    
-    // Держим Tcp-стек в живом состоянии
-    DNETcK::periodicTasks();
 }
 
