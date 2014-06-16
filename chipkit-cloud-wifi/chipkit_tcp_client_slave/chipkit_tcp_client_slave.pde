@@ -476,7 +476,7 @@ void loop() {
     } else {
         // Подключены к серверу - читаем команды, отправляем ответы
         
-        // есть что почитать?
+        // есть чо почитать?
         if((readSize = tcpClient.available()) > 0) {
             readSize = readSize < sizeof(read_buffer) ? readSize : sizeof(read_buffer);
             readSize = tcpClient.readStream((byte*)read_buffer, readSize);
