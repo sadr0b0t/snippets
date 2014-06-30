@@ -213,7 +213,15 @@ public class RobotClientActivity extends Activity {
 
     /**
      * Включить или выключить светодиод (лампочку). Клипарты светодиодов:
+     * http://openclipart.org/search/?query=led+rounded+h
+     * http://openclipart.org/detail/28085/led-rounded-h-yellow-by-anonymous
+     * http://openclipart.org/detail/28084/led-rounded-h-red-by-anonymous
+     * http://openclipart.org/detail/28083/led-rounded-h-purple-by-anonymous
+     * http://openclipart.org/detail/28082/led-rounded-h-orange-by-anonymous
      * http://openclipart.org/detail/28081/led-rounded-h-grey-by-anonymous
+     * http://openclipart.org/detail/28080/led-rounded-h-green-by-anonymous
+     * http://openclipart.org/detail/28079/led-rounded-h-blue-by-anonymous
+     * http://openclipart.org/detail/28078/led-rounded-h-black-by-anonymous
      * 
      * @param on
      */
