@@ -28,11 +28,12 @@ const char* wifi_wpa2_passphrase = "robotguest";
 //IPv4 host_ip = {192,168,117,117};
 IPv4 host_ip = {192,168,43,117};
 
-// Порт для tcp-сервера
-const int tcp_server_port = DNETcK::iPersonalPorts44 + 114;
-
 // Подключение к WiFi
 int conectionId = DWIFIcK::INVALID_CONNECTION_ID;
+
+
+// Порт для tcp-сервера
+const int tcp_server_port = DNETcK::iPersonalPorts44 + 114;
 
 // Tcp-сервер (запущен на плате)
 TcpServer tcpServer;
