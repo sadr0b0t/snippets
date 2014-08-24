@@ -12,6 +12,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Простой однопоточный сервер. Работает одновременно с одним подключенным
+ * роботом. Читает команды от пользователя из консоли, отправляет команду
+ * подключившемуся роботу, показывает результат.
  *
  * @author benderamp
  */
@@ -20,15 +23,11 @@ public class RobotServer1 {
     // Локальные команды для сервера
     public static final String SCMD_KICK = "kick";
 
-    // Команды для далёкого клиента (робота)
-    public static final String CMD_LEDON = "ledon";
-    public static final String CMD_LEDOFF = "ledoff";
-
     public static final int DEFAULT_SERVER_PORT = 1116;
-    
+
     /**
-     * Таймаут для чтения ответа на команды - клиент должет прислать ответ за 
-     * 5 секунд, иначе он будет считаться отключенным.
+     * Таймаут для чтения ответа на команды - клиент должет прислать ответ за 5
+     * секунд, иначе он будет считаться отключенным.
      */
     private static final int CLIENT_SO_TIMEOUT = 5000;
 
@@ -60,6 +59,8 @@ public class RobotServer1 {
         serverSocket = new ServerSocket(serverPort);
 
         Socket clientSocket = null;
+        InputStream clientIn = null;
+        OutputStream clientOut = null;
         while (true) {
             try {
                 System.out.println("Waiting for client...");
@@ -78,8 +79,8 @@ public class RobotServer1 {
 
                 // Получаем доступ к потокам ввода/вывода сокета для общения 
                 // с подключившимся клиентом (роботом)
-                final InputStream clientIn = clientSocket.getInputStream();
-                final OutputStream clientOut = clientSocket.getOutputStream();
+                clientIn = clientSocket.getInputStream();
+                clientOut = clientSocket.getOutputStream();
 
                 // Ввод команд из консоли пользователем
                 final BufferedReader userInputReader = new BufferedReader(new InputStreamReader(System.in));
@@ -126,16 +127,24 @@ public class RobotServer1 {
                 // не отвечать), но все равно отключим такого клиента, чтобы он
                 // не блокировал сервер.
                 System.out.println("Client disconnected: " + ex1.getMessage());
-                if (clientSocket != null) {
-                    clientSocket.close();
-                }
             } catch (IOException ex2) {
                 // Попадём сюда только после того, как клиент отключится и сервер
                 // попробует отправить ему любую команду 
                 // (в более правильной реализации можно добавить в протокол 
-                // команду проверки статуса клиента 'isalive' и отправлять её 
+                // команду проверки статуса клиента 'isalive' ('ping') и отправлять её 
                 // клиенту с некоторой периодичностью).
                 System.out.println("Client disconnected: " + ex2.getMessage());
+            } finally {
+                // закрыть неактуальный сокет
+                if (clientIn != null) {
+                    clientIn.close();
+                }
+                if (clientOut != null) {
+                    clientOut.close();
+                }
+                if (clientSocket != null) {
+                    clientSocket.close();
+                }
             }
         }
     }
