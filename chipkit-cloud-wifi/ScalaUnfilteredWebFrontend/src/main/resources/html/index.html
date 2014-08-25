@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Сервер Роботов: управление лампочкой</title>
+        <meta charset="UTF-8"/>
+        <script type="text/javascript">
+            function sendServerRequest(url, requestHandler) {
+                var req = new XMLHttpRequest();
+                req.onreadystatechange = function() {
+                    if (req.readyState === 4) { // only if req is "loaded"
+                        if (req.status === 200) { // only if "OK"
+                            requestHandler(req.responseText);
+                        } else {
+                            // error
+                        }
+                    }
+                };
+                // can't use GET method here as it would quickly 
+                // exceede max length limitation
+                req.open("POST", url, true);
+
+                //Send the proper header information along with the request
+                req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                req.send();
+            }
+
+            /**
+             * Отправить роботу команду ping
+             * @returns {undefined}
+             */
+            function cmd_ping() {
+                sendServerRequest("/cmd/ping", function(responseText) {
+                    if (responseText === "disconnected") {
+                        document.getElementById("robot_status").innerHTML = "отключен";
+                        document.getElementById("led_status").
+                            setAttribute("src", "/img/led_none.png");
+                    } else {
+                        document.getElementById("robot_status").innerHTML = "подключен";
+                    }
+                });
+            }
+
+            /**
+             * Отправить роботу команду ledon - включить лампочку
+             * @returns {undefined}
+             */
+            function cmd_ledon() {
+                document.getElementById("debug_console").innerHTML +=
+                        "\nExecute: " + "/cmd/ledon";
+                sendServerRequest("/cmd/ledon", function(responseText) {
+                    document.getElementById("debug_console").innerHTML +=
+                            "\nRead: " + responseText;
+                    document.getElementById("led_status").
+                            setAttribute("src", "/img/led2_on.png");
+                });
+            }
+
+            /**
+             * Отправить роботу команду ledoff - выключить лампочку
+             * @returns {undefined}
+             */
+            function cmd_ledoff() {
+                document.getElementById("debug_console").innerHTML +=
+                        "\nExecute: " + "/cmd/ledoff";
+                sendServerRequest("/cmd/ledoff", function(responseText) {
+                    document.getElementById("debug_console").innerHTML +=
+                            "\nRead: " + responseText;
+                    document.getElementById("led_status").
+                            setAttribute("src", "/img/led_off.png");
+                });
+            }
+
+            /**
+             * Разные настройки при загрузке страницы
+             * @returns {undefined}
+             */
+            function onLoad() {
+                // Для отображения актуального статуса будем отправлять роботу 
+                // команду ping каждые 5 секунд
+                setInterval(cmd_ping, 5000);
+                // первую команду отправим сразу не дожидаясь таймера
+                cmd_ping();
+            }
+        </script>
+    </head>
+    <body onload="onLoad()">
+        <p> 
+            Сервер Роботов: управляем платой ChipKIT WF32 из облака — включаем и выключаем лампочку.
+        </p>
+        <p>
+            Статус робота: <span id="robot_status" style="font-style: italic">отключен</span> 
+        </p>
+        <p>
+            <a href="javascript:cmd_ledon()">Включить лампочку (команда 'ledon')</a>, 
+            <a href="javascript:cmd_ledoff()">Выключить лампочку (команда 'ledoff')</a>
+        </p>
+        <img id="led_status" width="100" src="/img/led_none.png" alt="led"/>
+        <p>
+            Результат:<br/>
+        </p>
+        <pre id="debug_console" style="font-style: italic"></pre>
+    </body>
+</html>
