@@ -1,9 +1,7 @@
 package edu.nntu.robotserver;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -152,7 +150,7 @@ public class RobotServer2 {
                 int readSize;
                 String inputLine;
 
-                // Команды от управляющего интерфейса              
+                // Ждем команду от управляющего интерфейса              
                 while ((readSize = frontendIn.read(readBuffer)) != -1) {
                     // Ответ управляющему интерфейсу
                     String reply = "";
@@ -163,7 +161,7 @@ public class RobotServer2 {
 
                     if (robotIsConnected) {
                         // Робот подключен - выполняем команду
-                        
+
                         if (SCMD_KICK.equals(inputLine)) {
                             // Локальная команда - отключить робота
                             robotIsConnected = false;
@@ -194,7 +192,7 @@ public class RobotServer2 {
                                     throw new IOException("End of stream");
                                 }
                             } catch (IOException e) {
-                            // в процессе обмена данными с роботом что-то пошло не так,
+                                // в процессе обмена данными с роботом что-то пошло не так,
                                 // будем ждать следующего робота
                                 robotIsConnected = false;
                                 reply = SREPLY_DISCONNECTED;
