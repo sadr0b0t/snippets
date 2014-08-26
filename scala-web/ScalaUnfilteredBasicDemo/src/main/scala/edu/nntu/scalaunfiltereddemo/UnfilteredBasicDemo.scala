@@ -149,11 +149,11 @@ object UnfilteredBasicDemo {
   }
 
   def main(args: Array[String]) {
-    println("Starting Jetty http server demo...")
-    println("Resources dir: " + getClass.getResource("/public"))
+    println("Starting Scala Unfiltered web framework demo on Jetty http server...")
 
     // Запустить контейнер веб-приложенией Jetty
     unfiltered.jetty.Http.apply(8080).plan(handlePath).run()
+    //    println("Resources dir: " + getClass.getResource("/public"))
     //    unfiltered.jetty.Http.apply(8080).resources(getClass.getResource("/public")).plan(handlePath).run()
 
     // Запустить контейнер веб-приложенией Netty
