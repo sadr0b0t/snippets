@@ -21,9 +21,8 @@ import unfiltered.response.Html
  */
 object UnfilteredBasicDemo {
   /**
-   * Перекодировщик URL
-   * Отсюда:
-   * http://stackoverflow.com/questions/18083311/url-decoding-with-unfiltered
+   * Перекодировщик URL для нормальной работы с UTF-8
+   * Отсюда: http://stackoverflow.com/questions/18083311/url-decoding-with-unfiltered
    */
   object Decode {
     import java.net.URLDecoder
@@ -57,9 +56,9 @@ object UnfilteredBasicDemo {
     // простой текст
     case Path(Seg("plain_text" :: Nil)) =>
       // PlainTextContent добавит заголовок Content-Type с UTF-8:
-      Ok ~> PlainTextContent ~> ResponseString("Это текст от сервера")
+      Ok ~> PlainTextContent ~> ResponseString("Это простой текст от сервера")
     // Можно и так, но тогда браузер не распознает UTF-8 строки:
-    // Ok ~> ResponseString("Это текст от сервера" )
+    // Ok ~> ResponseString("Это простой текст от сервера" )
 
     // демо html-страницы, встроенной в код scala
     case Path(Seg("inline_html" :: Nil)) =>
@@ -82,6 +81,11 @@ object UnfilteredBasicDemo {
       Ok ~> HtmlContent ~> ResponseString(
         scala.io.Source.fromInputStream(getClass.getResourceAsStream("/html/static_html.html"), "UTF-8").mkString)
 
+    /**************************/
+    // Ниже для интереса попробуем отдавать вручную разные ресурсы (css, картинки),
+    // но лучше для них использовать возможности контейнеров Jetty/Netty или
+    // внешний веб-сервер для раздачи статического контента типа nginx
+     
     // css-файл со стилем страницы, загружается из ресурсов
     case Path(Seg("site.css" :: Nil)) =>
       Ok ~> CssContent ~> ResponseString(
@@ -142,7 +146,8 @@ object UnfilteredBasicDemo {
 
       Ok ~> PngImageContent ~> ResponseBytes(bytes)
 
-    // работа с сегментами напрямую (убрать при работе с врнешними ресурсами,
+    /**************************/
+    // работа с сегментами напрямую (убрать при работе с внешними ресурсами,
     // подробности: https://groups.google.com/forum/#!topic/unfiltered-scala/czRtn5Vnoug)
     case Path(Decode.utf8(Seg(path :: Nil))) =>
       Ok ~> PlainTextContent ~> ResponseString("Ваш сегмент: " + path)
