@@ -92,6 +92,7 @@ object UnfilteredBasicDemo {
       
       // так в некоторых случаях может не сработать - за один раз будет считан 
       // не весь файл, а только часть, поэтому придется через ByteArrayOutputStream
+      // (подробности: https://groups.google.com/forum/#!topic/unfiltered-scala/czRtn5Vnoug)
 //      val bytes = new Array[Byte](in.available)
 //      in.read(bytes)     
             
@@ -118,6 +119,7 @@ object UnfilteredBasicDemo {
       
       // так в некоторых случаях может не сработать - за один раз будет считан 
       // не весь файл, а только часть, поэтому придется через ByteArrayOutputStream
+      // (подробности: https://groups.google.com/forum/#!topic/unfiltered-scala/czRtn5Vnoug)
 //      val bytes = new Array[Byte](in.available)
 //      in.read(bytes)     
             
@@ -138,9 +140,10 @@ object UnfilteredBasicDemo {
       
       Ok ~> PngImageContent ~> ResponseBytes(bytes)
       
-    // работа с сегментами напрямую
-//    case Path(Decode.utf8(Seg(path :: Nil))) =>
-//      Ok ~> PlainTextContent ~> ResponseString("Ваш сегмент: " + path)
+    // работа с сегментами напрямую (убрать при работе с врнешними ресурсами,
+    // подробности: https://groups.google.com/forum/#!topic/unfiltered-scala/czRtn5Vnoug)
+    case Path(Decode.utf8(Seg(path :: Nil))) =>
+      Ok ~> PlainTextContent ~> ResponseString("Ваш сегмент: " + path)
   }
 
   def main(args: Array[String]) {
