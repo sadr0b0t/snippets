@@ -42,23 +42,25 @@ object UnfilteredBasicDemo {
 
   // Для контейнера веб-приложений jetty
   val handlePath = unfiltered.filter.Planify {
-  // Для контейнера веб-приложений netty
-//  val handlePath = unfiltered.netty.cycle.Planify {
+    // Для контейнера веб-приложений netty
+    //  val handlePath = unfiltered.netty.cycle.Planify {
 
     // список определений доступных XXXContent:
     // https://github.com/unfiltered/unfiltered/blob/master/library/src/main/scala/response/types.scala
-    
-    // начальная страница
+
+    // начальная страница (корень сайта)
     case Path(Seg(Nil)) =>
-      Ok ~> PlainTextContent ~> ResponseString("Демонстрация работы фреймворка Unfiltered для языка Scala")
-      
+      Ok ~> PlainTextContent ~> ResponseString("Демонстрация работы фреймворка "
+        + "Unfiltered для языка Scala, попробуйте сегменты в строке адреса: "
+        + "plain_text, inline_html, static_html, site.css, lasto4ka.png, buggy.png")
+
     // простой текст
     case Path(Seg("plain_text" :: Nil)) =>
       // PlainTextContent добавит заголовок Content-Type с UTF-8:
       Ok ~> PlainTextContent ~> ResponseString("Это текст от сервера")
-      // Можно и так, но тогда браузер не распознает UTF-8 строки:
-      // Ok ~> ResponseString("Это текст от сервера" )
-      
+    // Можно и так, но тогда браузер не распознает UTF-8 строки:
+    // Ok ~> ResponseString("Это текст от сервера" )
+
     // демо html-страницы, встроенной в код scala
     case Path(Seg("inline_html" :: Nil)) =>
       Ok ~> HtmlContent ~> Html(
@@ -74,28 +76,28 @@ object UnfilteredBasicDemo {
             </div>
           </body>
         </html>)
-      
+
     // статическая html-страница, загружается из ресурсов
     case Path(Seg("static_html" :: Nil)) =>
       Ok ~> HtmlContent ~> ResponseString(
         scala.io.Source.fromInputStream(getClass.getResourceAsStream("/html/static_html.html"), "UTF-8").mkString)
-      
+
     // css-файл со стилем страницы, загружается из ресурсов
     case Path(Seg("site.css" :: Nil)) =>
       Ok ~> CssContent ~> ResponseString(
         scala.io.Source.fromInputStream(
           getClass.getResourceAsStream("/public/site.css"), "UTF-8").mkString)
-      
+
     // картинка, загружается из ресурсов
     case Path(Seg("lasto4ka.png" :: Nil)) =>
       val in = getClass.getResourceAsStream("/public/lasto4ka.png")
-      
+
       // так в некоторых случаях может не сработать - за один раз будет считан 
       // не весь файл, а только часть, поэтому придется через ByteArrayOutputStream
       // (подробности: https://groups.google.com/forum/#!topic/unfiltered-scala/czRtn5Vnoug)
-//      val bytes = new Array[Byte](in.available)
-//      in.read(bytes)     
-            
+      //      val bytes = new Array[Byte](in.available)
+      //      in.read(bytes)     
+
       val buffer = new java.io.ByteArrayOutputStream()
       val data = new Array[Byte](16384)
       var nRead = in.read(data, 0, data.length)
@@ -110,19 +112,19 @@ object UnfilteredBasicDemo {
       // поставке не нашлось, добавим свои:
       object JpegImageContent extends ContentType("image/jpeg")
       object PngImageContent extends ContentType("image/png")
-      
+
       Ok ~> PngImageContent ~> ResponseBytes(bytes)
-      
+
     // другая картинка, загружается из ресурсов
     case Path(Seg("buggy.png" :: Nil)) =>
       val in = getClass.getResourceAsStream("/public/buggy.png")
-      
+
       // так в некоторых случаях может не сработать - за один раз будет считан 
       // не весь файл, а только часть, поэтому придется через ByteArrayOutputStream
       // (подробности: https://groups.google.com/forum/#!topic/unfiltered-scala/czRtn5Vnoug)
-//      val bytes = new Array[Byte](in.available)
-//      in.read(bytes)     
-            
+      //      val bytes = new Array[Byte](in.available)
+      //      in.read(bytes)     
+
       val buffer = new java.io.ByteArrayOutputStream()
       val data = new Array[Byte](16384)
       var nRead = in.read(data, 0, data.length)
@@ -132,14 +134,14 @@ object UnfilteredBasicDemo {
       }
       buffer.flush()
       val bytes = buffer.toByteArray();
-      
+
       // Предопределенных классов Content для картинок в стандартной 
       // поставке не нашлось, добавим свои:
       object JpegImageContent extends ContentType("image/jpeg")
       object PngImageContent extends ContentType("image/png")
-      
+
       Ok ~> PngImageContent ~> ResponseBytes(bytes)
-      
+
     // работа с сегментами напрямую (убрать при работе с врнешними ресурсами,
     // подробности: https://groups.google.com/forum/#!topic/unfiltered-scala/czRtn5Vnoug)
     case Path(Decode.utf8(Seg(path :: Nil))) =>
@@ -149,12 +151,12 @@ object UnfilteredBasicDemo {
   def main(args: Array[String]) {
     println("Starting Jetty http server demo...")
     println("Resources dir: " + getClass.getResource("/public"))
-    
+
     // Запустить контейнер веб-приложенией Jetty
     unfiltered.jetty.Http.apply(8080).plan(handlePath).run()
-//    unfiltered.jetty.Http.apply(8080).resources(getClass.getResource("/public")).plan(handlePath).run()
-    
+    //    unfiltered.jetty.Http.apply(8080).resources(getClass.getResource("/public")).plan(handlePath).run()
+
     // Запустить контейнер веб-приложенией Netty
-//    unfiltered.netty.Http(8080).plan(handlePath).run()
+    //    unfiltered.netty.Http(8080).plan(handlePath).run()
   }
 }

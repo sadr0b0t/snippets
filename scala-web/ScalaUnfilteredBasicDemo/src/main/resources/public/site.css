@@ -1,5 +1,8 @@
+body {
+    padding-left: 50px;
+    padding-right: 50px;
+}
 p.content {
-    padding: 50px;
     font-style: italic;
-    font-size: 32pt;
+    font-size: 26pt;
 }
