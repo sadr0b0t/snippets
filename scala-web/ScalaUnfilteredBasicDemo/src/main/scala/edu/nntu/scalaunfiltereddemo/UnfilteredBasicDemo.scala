@@ -40,7 +40,11 @@ object UnfilteredBasicDemo {
     }
   }
 
+  // Для контейнера веб-приложений jetty
   val handlePath = unfiltered.filter.Planify {
+  // Для контейнера веб-приложений netty
+//  val handlePath = unfiltered.netty.cycle.Planify {
+
     // список определений доступных XXXContent:
     // https://github.com/unfiltered/unfiltered/blob/master/library/src/main/scala/response/types.scala
     
@@ -85,8 +89,21 @@ object UnfilteredBasicDemo {
     // картинка, загружается из ресурсов
     case Path(Seg("lasto4ka.png" :: Nil)) =>
       val in = getClass.getResourceAsStream("/public/lasto4ka.png")
-      val bytes = new Array[Byte](in.available)
-      in.read(bytes)
+      
+      // так в некоторых случаях может не сработать - за один раз будет считан 
+      // не весь файл, а только часть, поэтому придется через ByteArrayOutputStream
+//      val bytes = new Array[Byte](in.available)
+//      in.read(bytes)     
+            
+      val buffer = new java.io.ByteArrayOutputStream()
+      val data = new Array[Byte](16384)
+      var nRead = in.read(data, 0, data.length)
+      while (nRead != -1) {
+        buffer.write(data, 0, nRead)
+        nRead = in.read(data, 0, data.length)
+      }
+      buffer.flush()
+      val bytes = buffer.toByteArray();
 
       // Предопределенных классов Content для картинок в стандартной 
       // поставке не нашлось, добавим свои:
@@ -96,11 +113,24 @@ object UnfilteredBasicDemo {
       Ok ~> PngImageContent ~> ResponseBytes(bytes)
       
     // другая картинка, загружается из ресурсов
-    case Path(Seg("led6_on.png" :: Nil)) =>
-      val in = getClass.getResourceAsStream("/public/led6_on.png")
-      val bytes = new Array[Byte](in.available)
-      in.read(bytes)
-
+    case Path(Seg("buggy.png" :: Nil)) =>
+      val in = getClass.getResourceAsStream("/public/buggy.png")
+      
+      // так в некоторых случаях может не сработать - за один раз будет считан 
+      // не весь файл, а только часть, поэтому придется через ByteArrayOutputStream
+//      val bytes = new Array[Byte](in.available)
+//      in.read(bytes)     
+            
+      val buffer = new java.io.ByteArrayOutputStream()
+      val data = new Array[Byte](16384)
+      var nRead = in.read(data, 0, data.length)
+      while (nRead != -1) {
+        buffer.write(data, 0, nRead)
+        nRead = in.read(data, 0, data.length)
+      }
+      buffer.flush()
+      val bytes = buffer.toByteArray();
+      
       // Предопределенных классов Content для картинок в стандартной 
       // поставке не нашлось, добавим свои:
       object JpegImageContent extends ContentType("image/jpeg")
@@ -109,14 +139,19 @@ object UnfilteredBasicDemo {
       Ok ~> PngImageContent ~> ResponseBytes(bytes)
       
     // работа с сегментами напрямую
-    case Path(Decode.utf8(Seg(path :: Nil))) =>
-      Ok ~> PlainTextContent ~> ResponseString("Ваш сегмент: " + path)
+//    case Path(Decode.utf8(Seg(path :: Nil))) =>
+//      Ok ~> PlainTextContent ~> ResponseString("Ваш сегмент: " + path)
   }
 
   def main(args: Array[String]) {
-    println("Starting jetty http server demo...")
-
-    // Запустить веб-сервер
-    unfiltered.jetty.Http.apply(8080).filter(handlePath).run()
+    println("Starting Jetty http server demo...")
+    println("Resources dir: " + getClass.getResource("/public"))
+    
+    // Запустить контейнер веб-приложенией Jetty
+    unfiltered.jetty.Http.apply(8080).plan(handlePath).run()
+//    unfiltered.jetty.Http.apply(8080).resources(getClass.getResource("/public")).plan(handlePath).run()
+    
+    // Запустить контейнер веб-приложенией Netty
+//    unfiltered.netty.Http(8080).plan(handlePath).run()
   }
 }
