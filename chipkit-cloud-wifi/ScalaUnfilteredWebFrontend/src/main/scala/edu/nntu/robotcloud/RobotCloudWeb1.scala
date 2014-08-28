@@ -53,27 +53,6 @@ object RobotCloudWeb1 {
       Ok ~> HtmlContent ~> ResponseString(
         scala.io.Source.fromInputStream(getClass.getResourceAsStream("/html/index.html"), "UTF-8").mkString)
 
-    // Ресурсы: картинки, CSS и JS
-    // css-файл со стилем страницы, загружается из ресурсов
-    case Path(Seg("css" :: "site.css" :: Nil)) =>
-      Ok ~> CssContent ~> ResponseString(
-        scala.io.Source.fromInputStream(getClass.getResourceAsStream("/public/css/site.css"), "UTF-8").mkString)
-      
-    // картинки, загружаются из ресурсов из каталога /public/img
-    case Path(Seg("img" :: imgFile :: Nil)) =>
-      val in = getClass.getResourceAsStream("/public/img/" + imgFile)
-      val bytes = new Array[Byte](in.available)
-      in.read(bytes)
-      
-      if(imgFile.toLowerCase.endsWith(".png")) {
-        Ok ~> PngImageContent ~> ResponseBytes(bytes)
-      } else if(imgFile.toLowerCase.endsWith(".jpg") || imgFile.toLowerCase.endsWith(".jpeg")) {
-        Ok ~> JpegImageContent ~> ResponseBytes(bytes)
-      } else {
-        Pass
-      }
-      
-
     // Запросы к сервису: команды для Сервера Роботов
     case Path(Seg("cmd" :: command :: Nil)) =>
       // подключимся к серверу роботов как управляющий интерфейс
@@ -84,7 +63,7 @@ object RobotCloudWeb1 {
       // отправим команду
       out.write(command.getBytes)
       out.flush
-      println("Write: " + command)
+      //println("Write: " + command)
 
       // прочитаем ответ
       // так красиво не получится - mkString зависнет до тех пор,
@@ -97,7 +76,7 @@ object RobotCloudWeb1 {
       if (readSize != -1) {
         reply = new String(readBuffer, 0, readSize);
       }
-      println("Read: " + reply)
+      //println("Read: " + reply)
 
       // закроем подключение
       socket.close
@@ -107,9 +86,10 @@ object RobotCloudWeb1 {
   }
 
   def main(args: Array[String]) {
-    println("Starting jetty http server demo...")
+    println("Starting Robot Cloud web frontend (on jetty http server)...")
+    println("Resources dir: " + getClass.getResource("/public"))
 
     // Запустить веб-сервер
-    unfiltered.jetty.Http.apply(8080).filter(handlePath).run()
+    unfiltered.jetty.Http.apply(8080).resources(getClass.getResource("/public")).filter(handlePath).run()
   }
 }

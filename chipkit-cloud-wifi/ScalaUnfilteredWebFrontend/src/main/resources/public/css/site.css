@@ -1,4 +1,220 @@
-div.content1 {
-    font-style: italic;
-    font-size: 32pt;
+/* Немного CSS отсюда http://brandonmathis.com/projects/fancy-buttons/ */
+
+html {
+    height: 100%;
+    /* генератор полосок для фона: http://www.stripegenerator.com/ */
+    background-image: url('/img/bg-stripes.png');
+}
+
+body {
+    /* для нормальной горизонтальной прокрутки при большом масштабе */
+    min-width: 900px;
+
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    font-family: Verdana, sans-serif;
+}
+
+.header {
+    padding: 25px;
+
+    background-color:#1c1c1c;
+}
+
+.robot_server {
+    color: #CCC;
+    font-weight: bold;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    letter-spacing: -1px;
+    font-size: 48px;
+}
+
+.caption_content {
+    width: 840px;
+    /* выравниваем блок по центру */
+    margin-left: auto;
+    margin-right: auto;
+
+    color:#AAA;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    letter-spacing: -1px;
+    font-size: 24px;
+}
+
+.logo {
+    height: 80px;
+    width: 110px;
+    
+    position: absolute;
+    top: 20px;
+    right:20px;
+    
+    background-image: url('/img/buggy-grey.png');
+    background-repeat: no-repeat;
+}
+
+.logo:hover {
+    background-image: url('/img/buggy-yellow.png');
+}
+
+#page {
+    /* чтобы тень от дочернего элемента не налезала 
+       за верхнюю и нижнюю границы */
+    overflow: hidden;
+    border-top: 14px solid #444;
+}
+
+.page_content {
+    width: 800px;
+    /* выравниваем блок по центру */
+    margin-left: auto;
+    margin-right: auto;
+    
+    margin-top: 0;
+    margin-bottom: 10px;
+    padding: 25px 30px;
+
+    background-color: #fff;
+    box-shadow: #ccc 0 0 10px 0;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+h3 {
+    margin-top: 40px;
+    margin-bottom: 10px;
+    color: #444;
+    font-weight: 700;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    letter-spacing: -1px;
+    font-size: 24px;
+}
+
+#robot_status {
+    font-style: normal; 
+    font-weight: bold;
+}
+
+.robot_status_connected {
+    /* зеленый */
+    color: #336800;
+}
+
+.robot_status_disconnected {
+    /* красный */
+    color: #c00000;
+}
+
+#led_status {
+    padding: 10px;
+}
+
+#debug_console {
+    min-height: 260px;
+    margin: 5px 0 15px;
+    color: #ccc;
+    font-family: monospace;
+    font-size: 13px;
+    background: #222;
+    line-height: 1.5em;
+    border: #aaa 1px solid;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 15px 20px
+}
+
+/* Красивые кнопочки */
+/* http://webdesignerwall.com/tutorials/css3-gradient-buttons */
+/* button 
+---------------------------------------------- */
+.button {
+    display: inline-block;
+    zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
+    *display: inline;
+    vertical-align: baseline;
+    margin: 0 2px;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font: 26px/100% Arial, Helvetica, sans-serif;
+    padding: .5em 2em .55em;
+    text-shadow: 0 1px 1px rgba(0,0,0,.3);
+    -webkit-border-radius: .5em; 
+    -moz-border-radius: .5em;
+    border-radius: .5em;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+.button:hover {
+    text-decoration: none;
+}
+.button:active {
+    position: relative;
+    top: 1px;
+}
+
+.bigrounded {
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em;
+}
+.medium {
+    font-size: 12px;
+    padding: .4em 1.5em .42em;
+}
+.small {
+    font-size: 11px;
+    padding: .2em 1em .275em;
+}
+
+/* color styles 
+---------------------------------------------- */
+
+/* orange */
+.orange {
+    color: #fef4e9;
+    border: solid 1px #da7c0c;
+    background: #f78d1d;
+    background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
+    background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+}
+.orange:hover {
+    background: #f47c20;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
+    background: -moz-linear-gradient(top,  #f88e11,  #f06015);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
+}
+.orange:active {
+    color: #fcd3a5;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f47a20), to(#faa51a));
+    background: -moz-linear-gradient(top,  #f47a20,  #faa51a);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
+}
+
+/* blue */
+.blue {
+    color: #d9eef7;
+    border: solid 1px #0076a3;
+    background: #0095cd;
+    background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+    background: -moz-linear-gradient(top,  #00adee,  #0078a5);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#00adee', endColorstr='#0078a5');
+}
+.blue:hover {
+    background: #007ead;
+    background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
+    background: -moz-linear-gradient(top,  #0095cc,  #00678e);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#0095cc', endColorstr='#00678e');
+}
+.blue:active {
+    color: #80bed6;
+    background: -webkit-gradient(linear, left top, left bottom, from(#0078a5), to(#00adee));
+    background: -moz-linear-gradient(top,  #0078a5,  #00adee);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#0078a5', endColorstr='#00adee');
 }

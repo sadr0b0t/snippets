@@ -3,6 +3,8 @@
     <head>
         <title>Сервер Роботов: управление лампочкой</title>
         <meta charset="UTF-8"/>
+        <link href="/css/site.css" rel="STYLESHEET" type="text/css"/>
+
         <script type="text/javascript">
             function sendServerRequest(url, requestHandler) {
                 var req = new XMLHttpRequest();
@@ -25,17 +27,33 @@
             }
 
             /**
-             * Отправить роботу команду ping
+             * Отправить роботу команду ledstatus - узнать текущий статус лампочки
+             * и заодно узнать, подключена ли плата вообще
              * @returns {undefined}
              */
-            function cmd_ping() {
-                sendServerRequest("/cmd/ping", function(responseText) {
+            function cmd_ledstatus() {
+                sendServerRequest("/cmd/ledstatus", function(responseText) {
                     if (responseText === "disconnected") {
-                        document.getElementById("robot_status").innerHTML = "отключен";
+                        // статус подключения
+                        document.getElementById("robot_status").innerHTML = "ОТКЛЮЧЕН";
+                        document.getElementById("robot_status").className = "robot_status_disconnected";
+
+                        // обновим статус лампочки
                         document.getElementById("led_status").
-                            setAttribute("src", "/img/led_none.png");
+                                setAttribute("src", "/img/led_none.png");
                     } else {
-                        document.getElementById("robot_status").innerHTML = "подключен";
+                        // статус подключения
+                        document.getElementById("robot_status").innerHTML = "ПОДКЛЮЧЕН";
+                        document.getElementById("robot_status").className = "robot_status_connected";
+
+                        // обновим статус лампочки
+                        if (responseText === "on") {
+                            document.getElementById("led_status").
+                                    setAttribute("src", "/img/led2_on.png");
+                        } else if (responseText === "off") {
+                            document.getElementById("led_status").
+                                    setAttribute("src", "/img/led_off.png");
+                        }
                     }
                 });
             }
@@ -48,10 +66,15 @@
                 document.getElementById("debug_console").innerHTML +=
                         "\nExecute: " + "/cmd/ledon";
                 sendServerRequest("/cmd/ledon", function(responseText) {
+                    // обновим статус лампочки
+                    if (responseText === "ok") {
+                        document.getElementById("led_status").
+                                setAttribute("src", "/img/led2_on.png");
+                    }
+
+                    // отладочное сообщение
                     document.getElementById("debug_console").innerHTML +=
                             "\nRead: " + responseText;
-                    document.getElementById("led_status").
-                            setAttribute("src", "/img/led2_on.png");
                 });
             }
 
@@ -63,10 +86,15 @@
                 document.getElementById("debug_console").innerHTML +=
                         "\nExecute: " + "/cmd/ledoff";
                 sendServerRequest("/cmd/ledoff", function(responseText) {
+                    // обновим статус лампочки
+                    if (responseText === "ok") {
+                        document.getElementById("led_status").
+                                setAttribute("src", "/img/led_off.png");
+                    }
+
+                    // отладочное сообщение
                     document.getElementById("debug_console").innerHTML +=
                             "\nRead: " + responseText;
-                    document.getElementById("led_status").
-                            setAttribute("src", "/img/led_off.png");
                 });
             }
 
@@ -75,29 +103,59 @@
              * @returns {undefined}
              */
             function onLoad() {
-                // Для отображения актуального статуса будем отправлять роботу 
-                // команду ping каждые 5 секунд
-                setInterval(cmd_ping, 5000);
+                // Для отображения актуального статуса подключения будем 
+                // отправлять роботу команду ledstatus каждые 5 секунд
+                setInterval(cmd_ledstatus, 5000);
                 // первую команду отправим сразу не дожидаясь таймера
-                cmd_ping();
+                cmd_ledstatus();
             }
         </script>
     </head>
     <body onload="onLoad()">
-        <p> 
-            Сервер Роботов: управляем платой ChipKIT WF32 из облака — включаем и выключаем лампочку.
-        </p>
-        <p>
-            Статус робота: <span id="robot_status" style="font-style: italic">отключен</span> 
-        </p>
-        <p>
-            <a href="javascript:cmd_ledon()">Включить лампочку (команда 'ledon')</a>, 
-            <a href="javascript:cmd_ledoff()">Выключить лампочку (команда 'ledoff')</a>
-        </p>
-        <img id="led_status" width="100" src="/img/led_none.png" alt="led"/>
-        <p>
-            Результат:<br/>
-        </p>
-        <pre id="debug_console" style="font-style: italic"></pre>
+        <div class="header">
+            <div class="robot_server"> 
+                Сервер Роботов
+            </div>
+            <div class="caption_content">
+                управляем роботом-с-лампочкой из облака: включаем и выключаем лампочку
+            </div>
+            <div class="logo"></div>
+        </div>
+        <div id="page">
+            <div class ="page_content">
+                <div style="text-align: right; font-style: italic">
+                    статус робота: <span id="robot_status" class="robot_status_disconnected">ОТКЛЮЧЕН</span> 
+                </div>
+
+                <div style="text-align: center">
+                    <!--Клипарты светодиодов:
+* http://openclipart.org/search/?query=led+rounded+h
+* http://openclipart.org/detail/28085/led-rounded-h-yellow-by-anonymous
+* http://openclipart.org/detail/28084/led-rounded-h-red-by-anonymous
+* http://openclipart.org/detail/28083/led-rounded-h-purple-by-anonymous
+* http://openclipart.org/detail/28082/led-rounded-h-orange-by-anonymous
+* http://openclipart.org/detail/28081/led-rounded-h-grey-by-anonymous
+* http://openclipart.org/detail/28080/led-rounded-h-green-by-anonymous
+* http://openclipart.org/detail/28079/led-rounded-h-blue-by-anonymous
+* http://openclipart.org/detail/28078/led-rounded-h-black-by-anonymous
+                    -->
+                    <div style="margin: 30px">
+                        <img id="led_status" width="150" src="/img/led_none.png" alt="led"/>
+                    </div>
+                    <div style="margin: 30px">
+                        <a class="button orange" href="javascript:cmd_ledon()">Включить лампочку (команда 'ledon')</a>
+                    </div>
+                    <div style="margin: 30px">
+                        <a class="button blue" href="javascript:cmd_ledoff()">Выключить лампочку (команда 'ledoff')</a>
+                    </div>
+                </div>
+                <h3>
+                    Беседа с роботом:
+                </h3>
+                <pre id="debug_console"></pre>
+            </div>
+        </div>
+
+
     </body>
 </html>
