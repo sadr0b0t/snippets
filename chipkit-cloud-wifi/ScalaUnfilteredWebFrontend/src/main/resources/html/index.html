@@ -64,7 +64,7 @@
              */
             function cmd_ledon() {
                 document.getElementById("debug_console").innerHTML +=
-                        "\nExecute: " + "/cmd/ledon";
+                        "\nЯ: " + "ledon";
                 sendServerRequest("/cmd/ledon", function(responseText) {
                     // обновим статус лампочки
                     if (responseText === "ok") {
@@ -74,7 +74,7 @@
 
                     // отладочное сообщение
                     document.getElementById("debug_console").innerHTML +=
-                            "\nRead: " + responseText;
+                            "\nРобот: " + responseText;
                 });
             }
 
@@ -84,7 +84,7 @@
              */
             function cmd_ledoff() {
                 document.getElementById("debug_console").innerHTML +=
-                        "\nExecute: " + "/cmd/ledoff";
+                        "\nЯ: " + "ledoff";
                 sendServerRequest("/cmd/ledoff", function(responseText) {
                     // обновим статус лампочки
                     if (responseText === "ok") {
@@ -94,7 +94,7 @@
 
                     // отладочное сообщение
                     document.getElementById("debug_console").innerHTML +=
-                            "\nRead: " + responseText;
+                            "\nРобот: " + responseText;
                 });
             }
 
