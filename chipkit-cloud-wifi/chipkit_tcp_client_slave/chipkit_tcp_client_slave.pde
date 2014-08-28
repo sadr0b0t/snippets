@@ -1,3 +1,5 @@
+// Управление платой с Сервера Роботов: включение и выключение лампочки.
+
 #include <WiFiShieldOrPmodWiFi_G.h>
 
 #include <DNETcK.h>
@@ -352,7 +354,7 @@ int handleInput(char* buffer, int size, char* reply_buffer) {
 
 void setup() {
     Serial.begin(9600);
-    Serial.println("Start wifi network client demo");
+    Serial.println("Start WiFi network and Tcp client slave demo");
 
     pinMode(LED_PIN, OUTPUT);
 }
