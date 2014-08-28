@@ -1,3 +1,5 @@
+// Управление платой напрямую через WiFi: включение и выключение лампочки.
+
 #include <WiFiShieldOrPmodWiFi_G.h>
 
 #include <DNETcK.h>
@@ -380,7 +382,7 @@ int handleInput(char* buffer, int size, char* reply_buffer) {
 
 void setup() {
     Serial.begin(9600);
-    Serial.println("Start WiFi network and Tcp server demo");
+    Serial.println("Start WiFi network and Tcp server slave demo");
 
     pinMode(LED_PIN, OUTPUT);
 }
