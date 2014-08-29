@@ -19,14 +19,23 @@ public class RobotClientActivity extends Activity {
         DISCONNECTED, CONNECTING, CONNECTED, ERROR
     }
 
+    private enum LedStatus {
+        ON, OFF
+    }
+
     public static final String CMD_LEDON = "ledon";
     public static final String CMD_LEDOFF = "ledoff";
+    public static final String CMD_PING = "ping";
+
+    public static final String CMD_LEDSTATUS = "ledstatus";
     public static final String REPLY_OK = "ok";
     public static final String REPLY_DONTUNDERSTAND = "dontunderstand";
+    public static final String REPLY_LEDON = "on";
 
+    public static final String REPLY_LEDOFF = "off";
     public static final String DEFAULT_SERVER_HOST = "robotc.lasto4ka.su";
-    public static final int DEFAULT_SERVER_PORT = 1116;
 
+    public static final int DEFAULT_SERVER_PORT = 1116;
     private TextView txtStatus;
     private TextView txtLed1;
     private ImageView imgLed1;
@@ -34,6 +43,11 @@ public class RobotClientActivity extends Activity {
     private TextView txtDebug;
 
     private final Handler handler = new Handler();
+
+    /**
+     * Статус условной лампочки: включена или выключена
+     */
+    private LedStatus ledStatus = LedStatus.OFF;
 
     private Socket socket;
     private OutputStream serverOut;
@@ -157,6 +171,18 @@ public class RobotClientActivity extends Activity {
             });
 
             reply = REPLY_OK;
+        } else if (CMD_PING.equals(cmd)) {
+            System.out.println("Command 'ping': reply ok");
+
+            reply = REPLY_OK;
+        } else if (CMD_LEDSTATUS.equals(cmd)) {
+            System.out.println("Command 'ledstatus': return led status");
+
+            if (ledStatus == LedStatus.ON) {
+                reply = REPLY_LEDON;
+            } else {
+                reply = REPLY_LEDOFF;
+            }
         } else {
             debug("Unknown command: " + cmd);
 
@@ -230,10 +256,12 @@ public class RobotClientActivity extends Activity {
             // зажечь лампочку
             txtLed1.setText("led: ON");
             imgLed1.setImageResource(R.drawable.led1_on);
+            ledStatus = LedStatus.ON;
         } else {
             // потушить лампочку
             txtLed1.setText("led: OFF");
             imgLed1.setImageResource(R.drawable.led1_off);
+            ledStatus = LedStatus.OFF;
         }
     }
 
