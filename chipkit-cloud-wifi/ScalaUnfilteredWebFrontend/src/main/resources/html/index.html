@@ -55,6 +55,7 @@
                         // статус подключения
                         document.getElementById("robot_status").innerHTML = "ОТКЛЮЧЕН";
                         document.getElementById("robot_status").className = "robot_status_disconnected";
+                        document.getElementById("kick").style.visibility = "hidden";
 
                         // обновим статус лампочки
                         document.getElementById("led_status").
@@ -63,6 +64,7 @@
                         // статус подключения
                         document.getElementById("robot_status").innerHTML = "ПОДКЛЮЧЕН";
                         document.getElementById("robot_status").className = "robot_status_connected";
+                        document.getElementById("kick").style.visibility = "visible";
 
                         // обновим статус лампочки
                         if (responseText === "on") {
@@ -134,8 +136,8 @@
              */
             function onLoad() {
                 // Для отображения актуального статуса подключения будем 
-                // отправлять роботу команду ledstatus каждые 5 секунд
-                setInterval(cmd_ledstatus, 5000);
+                // отправлять роботу команду ledstatus каждую секунду
+                setInterval(cmd_ledstatus, 1000);
                 // первую команду отправим сразу не дожидаясь таймера
                 cmd_ledstatus();
             }
@@ -153,9 +155,9 @@
         </div>
         <div id="page">
             <div class ="page_content">
-                <div style="text-align: right; font-style: italic">
+                <div id="robot_status_block">
                     статус робота: <span id="robot_status" class="robot_status_disconnected">ОТКЛЮЧЕН</span><br>
-                    <a href="javascript:cmd_kick()">отключить</a>
+                    <a id="kick" href="javascript:cmd_kick()">(отключить)</a>
                 </div>
 
                 <div style="text-align: center">

@@ -20,11 +20,11 @@ body {
 .header {
     padding: 25px;
 
-    background-color:#1c1c1c;
+    background-color: #1c1c1c;
 }
 
 .robot_server {
-    color: #CCC;
+    color: #ccc;
     font-weight: bold;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     letter-spacing: -1px;
@@ -46,11 +46,11 @@ body {
 .logo {
     height: 80px;
     width: 110px;
-    
+
     position: absolute;
     top: 20px;
     right:20px;
-    
+
     background-image: url('/img/buggy-grey.png');
     background-repeat: no-repeat;
 }
@@ -71,7 +71,7 @@ body {
     /* выравниваем блок по центру */
     margin-left: auto;
     margin-right: auto;
-    
+
     margin-top: 0;
     margin-bottom: 10px;
     padding: 25px 30px;
@@ -94,19 +94,36 @@ h3 {
     font-size: 24px;
 }
 
+#robot_status_block {
+    text-align: right; 
+    font-style: italic; 
+}
+
 #robot_status {
-    font-style: normal; 
+    font-style: normal;
     font-weight: bold;
 }
 
 .robot_status_connected {
     /* зеленый */
     color: #336800;
+    font-size: 18pt;
 }
 
 .robot_status_disconnected {
     /* красный */
     color: #c00000;
+    font-size: 18pt;
+}
+
+#kick {
+    /* по умолчанию спрятано */
+    visibility: hidden;
+       
+    color: #ccc;
+    font-style: normal;
+    text-decoration: none; 
+    font-size: 12pt;
 }
 
 #led_status {
