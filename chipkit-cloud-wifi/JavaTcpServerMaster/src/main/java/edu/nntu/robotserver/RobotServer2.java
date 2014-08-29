@@ -19,8 +19,8 @@ public class RobotServer2 {
     public static final String SCMD_KICK = "kick";
 
     // Ответы от сервера управляющему интерфейсу
-    public static final String SREPLY_OK = "ok";
-    public static final String SREPLY_DISCONNECTED = "disconnected";
+    public static final String SREPLY_OK = "rs:ok";
+    public static final String SREPLY_DISCONNECTED = "rs:disconnected";
 
     public static final int DEFAULT_SERVER_PORT = 1116;
     public static final int DEFAULT_FRONTEND_PORT = 1117;

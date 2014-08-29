@@ -26,6 +26,24 @@
                 req.send();
             }
 
+            function printResponseMessage(responseText) {
+                var message;
+
+                if (responseText === "ok") {
+                    message = "Робот: хорошо (ok)";
+                } else if (responseText === "dontunderstand") {
+                    message = "Робот: простите, не понял (dontunderstand)"
+                } else if (responseText === "rs:disconnected") {
+                    message = "Сервер Роботов: робот не подключен (rs:disconnected)"
+                } else if (responseText === "rc:notstarted") {
+                    message = "Облако Роботов: не запущен Сервер Роботов (rc:notstarted)"
+                } else {
+                    message = responseText;
+                }
+                document.getElementById("debug_console").innerHTML +=
+                        "\n" + message;
+            }
+
             /**
              * Отправить роботу команду ledstatus - узнать текущий статус лампочки
              * и заодно узнать, подключена ли плата вообще
@@ -33,7 +51,7 @@
              */
             function cmd_ledstatus() {
                 sendServerRequest("/cmd/ledstatus", function(responseText) {
-                    if (responseText === "disconnected") {
+                    if (responseText === "rs:disconnected" || responseText === "rc:notstarted") {
                         // статус подключения
                         document.getElementById("robot_status").innerHTML = "ОТКЛЮЧЕН";
                         document.getElementById("robot_status").className = "robot_status_disconnected";
@@ -49,7 +67,7 @@
                         // обновим статус лампочки
                         if (responseText === "on") {
                             document.getElementById("led_status").
-                                    setAttribute("src", "/img/led2_on.png");
+                                    setAttribute("src", "/img/led1_on.png");
                         } else if (responseText === "off") {
                             document.getElementById("led_status").
                                     setAttribute("src", "/img/led_off.png");
@@ -64,17 +82,16 @@
              */
             function cmd_ledon() {
                 document.getElementById("debug_console").innerHTML +=
-                        "\nЯ: " + "ledon";
+                        "\nЯ: " + "Робот, включи, пожалуйста, лампочку (ledon)";
                 sendServerRequest("/cmd/ledon", function(responseText) {
                     // обновим статус лампочки
                     if (responseText === "ok") {
                         document.getElementById("led_status").
-                                setAttribute("src", "/img/led2_on.png");
+                                setAttribute("src", "/img/led1_on.png");
                     }
 
                     // отладочное сообщение
-                    document.getElementById("debug_console").innerHTML +=
-                            "\nРобот: " + responseText;
+                    printResponseMessage(responseText);
                 });
             }
 
@@ -84,7 +101,7 @@
              */
             function cmd_ledoff() {
                 document.getElementById("debug_console").innerHTML +=
-                        "\nЯ: " + "ledoff";
+                        "\nЯ: " + "Робот, выключи, пожалуйста, лампочку (ledoff)";
                 sendServerRequest("/cmd/ledoff", function(responseText) {
                     // обновим статус лампочки
                     if (responseText === "ok") {
@@ -93,11 +110,24 @@
                     }
 
                     // отладочное сообщение
-                    document.getElementById("debug_console").innerHTML +=
-                            "\nРобот: " + responseText;
+                    printResponseMessage(responseText);
                 });
             }
-
+            
+            /**
+             * Отправить Серверу Роботов команду kick - оборвать соединение с 
+             * подключенным роботом
+             * @returns {undefined}
+             */
+            function cmd_kick() {
+                document.getElementById("debug_console").innerHTML +=
+                        "\nЯ: " + "Сервер Роботов, отпусти Робота погулять (kick)";
+                sendServerRequest("/cmd/kick", function(responseText) {
+                    // отладочное сообщение
+                    printResponseMessage(responseText);
+                });
+            }
+            
             /**
              * Разные настройки при загрузке страницы
              * @returns {undefined}
@@ -124,7 +154,8 @@
         <div id="page">
             <div class ="page_content">
                 <div style="text-align: right; font-style: italic">
-                    статус робота: <span id="robot_status" class="robot_status_disconnected">ОТКЛЮЧЕН</span> 
+                    статус робота: <span id="robot_status" class="robot_status_disconnected">ОТКЛЮЧЕН</span><br>
+                    <a href="javascript:cmd_kick()">отключить</a>
                 </div>
 
                 <div style="text-align: center">

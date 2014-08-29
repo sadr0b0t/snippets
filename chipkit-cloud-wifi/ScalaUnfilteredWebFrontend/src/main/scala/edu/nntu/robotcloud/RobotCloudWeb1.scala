@@ -55,31 +55,38 @@ object RobotCloudWeb1 {
 
     // Запросы к сервису: команды для Сервера Роботов
     case Path(Seg("cmd" :: command :: Nil)) =>
-      // подключимся к серверу роботов как управляющий интерфейс
-      val socket = new java.net.Socket("localhost", 1117)
-      val out = socket.getOutputStream()
-      val in = socket.getInputStream()
+      var reply = ""
+      try {
+        // подключимся к серверу роботов как управляющий интерфейс
+        val socket = new java.net.Socket("localhost", 1117)
+        val out = socket.getOutputStream()
+        val in = socket.getInputStream()
 
-      // отправим команду
-      out.write(command.getBytes)
-      out.flush
-      //println("Write: " + command)
+        // отправим команду
+        out.write(command.getBytes)
+        out.flush
+//        println("Write: " + command)
 
-      // прочитаем ответ
-      // так красиво не получится - mkString зависнет до тех пор,
-      // пока не будет закрыт сокет
-      //      var src = scala.io.Source.fromInputStream(in)
-      //      reply = src.mkString
-      var reply = "no reply"
-      val readBuffer = new Array[Byte](256);
-      val readSize = in.read(readBuffer);
-      if (readSize != -1) {
-        reply = new String(readBuffer, 0, readSize);
+        // прочитаем ответ
+        // так красиво не получится - mkString зависнет до тех пор,
+        // пока не будет закрыт сокет
+        //      var src = scala.io.Source.fromInputStream(in)
+        //      reply = src.mkString
+
+        val readBuffer = new Array[Byte](256);
+        val readSize = in.read(readBuffer);
+        if (readSize != -1) {
+          reply = new String(readBuffer, 0, readSize);
+        }
+//        println("Read: " + reply)
+
+        // закроем подключение
+        socket.close
+      } catch {
+        case e: Exception =>
+          reply = "rc:notstarted"
+//          e.printStackTrace()
       }
-      //println("Read: " + reply)
-
-      // закроем подключение
-      socket.close
 
       // покажем ответ
       Ok ~> PlainTextContent ~> ResponseString(reply)
