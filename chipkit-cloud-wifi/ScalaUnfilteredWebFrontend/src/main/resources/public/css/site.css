@@ -126,10 +126,6 @@ h3 {
     font-size: 12pt;
 }
 
-#led_status {
-    padding: 10px;
-}
-
 #debug_console {
     min-height: 260px;
     margin: 5px 0 15px;
