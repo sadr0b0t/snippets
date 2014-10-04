@@ -53,7 +53,7 @@ public class RobotPultActivity extends Activity {
      * отправлял команды на сервер роботу 5 секунд, приложение само отправит
      * команду ping, чтобы держать подключение открытым.
      */
-    private final long MAX_IDLE_TIMEOUT = 5000;
+    private static final long MAX_IDLE_TIMEOUT = 5000;
 
     private TextView txtStatus;
     private Button btnConnect;
