@@ -78,7 +78,7 @@ public class RobotPultActivity extends Activity {
     private CommandListener nextCommandListener;
 
     /**
-     * Подлключиться к серверу и запустить процесс чтения данных.
+     * Подлключиться к серверу и запустить процесс отправки команд.
      */
     private void connectToServer(final String serverHost, final int serverPort) {
         // Все сетевые операции нужно делать в фоновом потоке, чтобы не
