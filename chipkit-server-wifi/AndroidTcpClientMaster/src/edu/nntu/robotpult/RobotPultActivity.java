@@ -279,6 +279,11 @@ public class RobotPultActivity extends Activity {
         }
     }
 
+    /**
+     * Установить статус подключения.
+     * 
+     * @param status
+     */
     private void setConnectionStatus(final ConnectionStatus status) {
         this.connectionStatus = status;
         handler.post(new Runnable() {
