@@ -28,8 +28,10 @@ int led_status;
 // Значения для подключений
 
 // Точка доступа ВайФай
-const char* wifi_ssid = "lasto4ka";
-const char* wifi_wpa2_passphrase = "robotguest";
+//const char* wifi_ssid = "lasto4ka";
+//const char* wifi_wpa2_passphrase = "robotguest";
+const char* wifi_ssid = "helen";
+const char* wifi_wpa2_passphrase = "13april1987";
 
 // Сервер Роботов
 const char* robot_server_host = "robotc.lasto4ka.su";
@@ -42,8 +44,8 @@ int conectionId = DWIFIcK::INVALID_CONNECTION_ID;
 TcpClient tcpClient;
 
 // Буферы для обмена данными с сервером
-static char read_buffer[128];
-static char write_buffer[128];
+char read_buffer[128];
+char write_buffer[128];
 int write_size;
 
 /**

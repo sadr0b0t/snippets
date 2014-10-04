@@ -19,14 +19,14 @@ ANDROID_ACCESSORY_INFORMATION myDeviceInfo = {
 };
 
 // Команды, принимаемые от Android-устройства
-static char* CMD_LEDON = "ledon";
-static char* CMD_LEDOFF = "ledoff";
-static char* CMD_LETMEGO = "letmego";
+const char* CMD_LEDON = "ledon";
+const char* CMD_LEDOFF = "ledoff";
+const char* CMD_LETMEGO = "letmego";
 
 // Ответы для Android-устройства
-static char* REPLY_OK = "ok";
-static char* REPLY_GETOUT = "getout";
-static char* REPLY_UNKNOWN_CMD = "dontunderstand";
+const char* REPLY_OK = "ok";
+const char* REPLY_GETOUT = "getout";
+const char* REPLY_UNKNOWN_CMD = "dontunderstand";
 
 // Пин для тестовой лампочки
 #define LED_PIN 13
@@ -38,8 +38,8 @@ void* deviceHandle = NULL;
 BOOL readInProgress = FALSE;
 BOOL writeInProgress = FALSE;
 
-static char read_buffer[128];
-static char write_buffer[128];
+char read_buffer[128];
+char write_buffer[128];
 int write_size;
 
 BOOL USBEventHandlerApplication( uint8_t address, USB_EVENT event, void *data, DWORD size ) {
