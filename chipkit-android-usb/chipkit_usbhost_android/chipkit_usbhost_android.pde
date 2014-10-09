@@ -75,9 +75,15 @@ BOOL USBEventHandlerApplication( uint8_t address, USB_EVENT event, void *data, D
  * Обработать входные данные - разобрать строку, выполнить команду.
  * @return размер ответа в байтах (0, чтобы не отправлять ответ).
  */
-int handleInput(char* buffer, int size, char* reply_buffer) {
+int handleInput(char* buffer, int buffer_size, char* reply_buffer) {
+    // добавим к входным данным завершающий ноль, 
+    // чтобы рассматривать их как корректную строку
+    read_buffer[buffer_size] = 0;
+    
+    // ответ
     int replySize = 0;
-    reply_buffer[0] = 0;    
+    reply_buffer[0] = 0;
+    
     // Включить лампочку по команде "ledon", выключить по команде "ledoff"
     if(strcmp(buffer, CMD_LEDON) == 0) {
         Serial.println("Command 'ledon': turn light on");
@@ -161,9 +167,7 @@ void loop() {
             readInProgress = FALSE;
             
             if(errorCode == USB_SUCCESS) {
-                // Считали порцию данных - добавим завершающий ноль
-                read_buffer[readSize] = 0;
-                
+                // Считали порцию данных
                 Serial.print("Read: ");
                 Serial.println(read_buffer);
                 

@@ -173,7 +173,12 @@ BOOL USBEventHandlerApplication( uint8_t address, USB_EVENT event, void *data, D
  * Process input - parse string, execute command, 
  * @return size of reply in bytes (0 for no reply).
  */
-int handleInput(char* buffer, int size, char* reply_buffer) {
+int handleInput(char* buffer, int buffer_size, char* reply_buffer) {
+    // добавим к входным данным завершающий ноль, 
+    // чтобы рассматривать их как корректную строку
+    read_buffer[buffer_size] = 0;
+    
+    // ответ
     int replySize = 0;
     reply_buffer[0] = 0;
     
@@ -407,9 +412,7 @@ void loop() {
             readInProgress = FALSE;
                 
             if(errorCode == USB_SUCCESS) {
-                // Считали порцию данных - добавим завершающий ноль
-                read_buffer[readSize] = 0;
-                
+                // Считали порцию данных                
                 Serial.print("Read: ");
                 Serial.println(read_buffer);
                 

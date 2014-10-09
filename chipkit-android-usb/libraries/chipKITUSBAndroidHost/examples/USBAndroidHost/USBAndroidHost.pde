@@ -19,14 +19,14 @@ ANDROID_ACCESSORY_INFORMATION myDeviceInfo = {
 };
 
 // Commands from Android device
-static char* CMD_LEDON = "ledon";
-static char* CMD_LEDOFF = "ledoff";
-static char* CMD_LETMEGO = "letmego";
+const char* CMD_LEDON = "ledon";
+const char* CMD_LEDOFF = "ledoff";
+const char* CMD_LETMEGO = "letmego";
 
 // Replyes for Android device
-static char* REPLY_OK = "ok";
-static char* REPLY_GETOUT = "getout";
-static char* REPLY_UNKNOWN_CMD = "dontunderstand";
+const char* REPLY_OK = "ok";
+const char* REPLY_GETOUT = "getout";
+const char* REPLY_UNKNOWN_CMD = "dontunderstand";
 
 // Test LED pin
 #define LED_PIN 13
@@ -38,8 +38,8 @@ void* deviceHandle = NULL;
 BOOL readInProgress = FALSE;
 BOOL writeInProgress = FALSE;
 
-static char read_buffer[128];
-static char write_buffer[128];
+char read_buffer[128];
+char write_buffer[128];
 int write_size;
 
 void printUSBErrorCode(uint8_t errorCode) {
@@ -150,7 +150,11 @@ BOOL USBEventHandlerApplication( uint8_t address, USB_EVENT event, void *data, D
 * Process input - parse string, execute command.
 * @return size of reply in bytes (0 for no reply).
 */
-int handleInput(char* buffer, int size, char* reply_buffer) {
+int handleInput(char* buffer, int buffer_size, char* reply_buffer) {
+    // make input buffer valid zero-terminated string
+    read_buffer[buffer_size] = 0;
+    
+    // reply
     int replySize = 0;
     reply_buffer[0] = 0;
     // Turn led on on command "ledon", turn off on command "ledoff"
@@ -236,9 +240,7 @@ void loop() {
             readInProgress = FALSE;
             
             if(errorCode == USB_SUCCESS) {
-                // Data portion is read, let's add finishing zero to make it zero-terminated string.
-                read_buffer[readSize] = 0;
-                
+                // Data portion is read
                 Serial.print("Read: ");
                 Serial.println(read_buffer);
                 
