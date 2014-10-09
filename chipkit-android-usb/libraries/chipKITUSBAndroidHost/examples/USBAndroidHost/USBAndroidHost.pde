@@ -152,7 +152,7 @@ BOOL USBEventHandlerApplication( uint8_t address, USB_EVENT event, void *data, D
 */
 int handleInput(char* buffer, int buffer_size, char* reply_buffer) {
     // make input buffer valid zero-terminated string
-    read_buffer[buffer_size] = 0;
+    buffer[buffer_size] = 0;
     
     // reply
     int replySize = 0;
