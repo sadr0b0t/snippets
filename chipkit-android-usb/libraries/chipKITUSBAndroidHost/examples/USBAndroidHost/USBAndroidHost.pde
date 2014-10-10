@@ -151,12 +151,10 @@ BOOL USBEventHandlerApplication( uint8_t address, USB_EVENT event, void *data, D
 * @return size of reply in bytes (0 for no reply).
 */
 int handleInput(char* buffer, int buffer_size, char* reply_buffer) {
-    // make input buffer valid zero-terminated string
-    buffer[buffer_size] = 0;
-    
     // reply
     int replySize = 0;
     reply_buffer[0] = 0;
+    
     // Turn led on on command "ledon", turn off on command "ledoff"
     if(strcmp(buffer, CMD_LEDON) == 0) {
         Serial.println("Command 'ledon': turn light on");
@@ -240,7 +238,10 @@ void loop() {
             readInProgress = FALSE;
             
             if(errorCode == USB_SUCCESS) {
-                // Data portion is read
+                // Data portion is read,
+                // make input buffer valid zero-terminated string
+                read_buffer[readSize] = 0;
+    
                 Serial.print("Read: ");
                 Serial.println(read_buffer);
                 
