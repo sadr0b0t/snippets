@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Scala Unfiltered framework basic demo</title>
+        <meta charset="UTF-8"/>
+        <script type="text/javascript">
+            function readServerString(elemRenderer, url) {
+                var req = new XMLHttpRequest();
+                req.onreadystatechange = function() {
+                    if (req.readyState === 4) { // only if req is "loaded"
+                        if (req.status === 200) { // only if "OK"
+                            document.getElementById(elemRenderer).innerHTML = req.responseText;
+                        } else {
+                            // error
+                        }
+                    }
+                };
+                // can't use GET method here as it would quickly 
+                // exceede max length limitation
+                req.open("POST", url, true);
+
+                //Send the proper header information along with the request
+                req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                req.send();
+            }
+
+            function call1() {
+                readServerString("call_res", "/call1");
+            }
+
+            function call2() {
+                readServerString("call_res", "/call2");
+            }
+
+        </script>
+    </head>
+    <body>
+        <p> Демонстрация работы фреймворка Unfiltered для языка Scala:
+            это HTML-страница с демонстрацией Ajax.
+        </p>
+        <p>
+            <a href="javascript:call1()">Прочитать с сервера значение 1</a>, 
+            <a href="javascript:call2()">прочитать с сервера значение 2</a>
+        </p>
+        <p>
+            Результат: <span id="call_res" style="font-style: italic"></span> 
+        </p>
+    </body>
+</html>
