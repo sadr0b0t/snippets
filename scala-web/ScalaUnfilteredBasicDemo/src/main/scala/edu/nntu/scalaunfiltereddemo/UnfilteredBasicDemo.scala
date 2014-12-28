@@ -9,7 +9,6 @@ import unfiltered.response.HtmlContent
 import unfiltered.response.PlainTextContent
 import unfiltered.response.ResponseBytes
 import unfiltered.response.ResponseString
-import unfiltered.response.ResponseWriter
 import unfiltered.response.Html
 
 /**
