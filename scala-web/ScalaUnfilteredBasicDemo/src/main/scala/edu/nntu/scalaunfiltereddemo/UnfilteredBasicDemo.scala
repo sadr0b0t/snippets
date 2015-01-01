@@ -12,13 +12,13 @@ import unfiltered.response.ResponseString
 import unfiltered.response.Html
 
 /**
- * Базовый пример Http-сервера с Unfiltered
+ * Базовый пример веб-приложения с Unfiltered
  * http://unfiltered.databinder.net/Try+Unfiltered.html
  *
- * с нормально поддержкой UTF-8 в строке запроса и в теле ответа.
+ * с нормальной поддержкой UTF-8 в строке запроса и в теле ответа.
  *
  */
-object UnfilteredBasicDemo {
+object UnfilteredWebappDemo {
   /**
    * Перекодировщик URL для нормальной работы с UTF-8
    * Отсюда: http://stackoverflow.com/questions/18083311/url-decoding-with-unfiltered

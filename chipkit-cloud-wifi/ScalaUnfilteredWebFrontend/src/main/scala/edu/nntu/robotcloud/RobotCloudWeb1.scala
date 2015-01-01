@@ -3,48 +3,19 @@ package edu.nntu.robotcloud
 import unfiltered.request.Path
 import unfiltered.request.Seg
 import unfiltered.response.Ok
-import unfiltered.response.Pass
 import unfiltered.response.ContentType
-import unfiltered.response.CssContent
 import unfiltered.response.HtmlContent
 import unfiltered.response.PlainTextContent
-import unfiltered.response.ResponseBytes
 import unfiltered.response.ResponseString
-import unfiltered.response.ResponseWriter
-import unfiltered.response.Html
 
 /**
- * Базовый пример Http-сервера с Unfiltered
+ * Веб-интерфейс для Сервера Роботов на Scala+Unfiltered
  * http://unfiltered.databinder.net/Try+Unfiltered.html
  *
- * с нормально поддержкой UTF-8 в строке запроса и в теле ответа.
+ * с нормальной поддержкой UTF-8 в строке запроса и в теле ответа.
  *
  */
 object RobotCloudWeb1 {
-  // Предопределенных классов Content для картинок в стандартной 
-  // поставке не нашлось, добавим свои:
-  object JpegImageContent extends ContentType("image/jpeg")
-  object PngImageContent extends ContentType("image/png")
-
-  /**
-   * Перекодировщик URL
-   * Отсюда:
-   * http://stackoverflow.com/questions/18083311/url-decoding-with-unfiltered
-   */
-  object Decode {
-    import java.net.URLDecoder
-    import java.nio.charset.Charset
-
-    trait Extract {
-      def charset: Charset
-      def unapply(raw: String) =
-        scala.util.Try(URLDecoder.decode(raw, charset.name())).toOption
-    }
-
-    object utf8 extends Extract {
-      val charset = Charset.forName("utf8")
-    }
-  }
 
   val handlePath = unfiltered.filter.Planify {
     // HTML-страницы

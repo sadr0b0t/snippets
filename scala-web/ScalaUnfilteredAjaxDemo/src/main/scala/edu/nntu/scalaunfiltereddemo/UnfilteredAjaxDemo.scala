@@ -9,10 +9,10 @@ import unfiltered.response.ResponseString
 import unfiltered.response.Html
 
 /**
- * Базовый пример Http-сервера с Unfiltered
+ * Базовый пример веб-приложения с AJAX с Unfiltered
  * http://unfiltered.databinder.net/Try+Unfiltered.html
  *
- * с нормально поддержкой UTF-8 в строке запроса и в теле ответа.
+ * с нормальной поддержкой UTF-8 в строке запроса и в теле ответа.
  *
  */
 object UnfilteredAjaxDemo {
