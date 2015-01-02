@@ -6,7 +6,6 @@ import unfiltered.response.Ok
 import unfiltered.response.HtmlContent
 import unfiltered.response.PlainTextContent
 import unfiltered.response.ResponseString
-import unfiltered.response.Html
 
 /**
  * Базовый пример веб-приложения с AJAX с Unfiltered

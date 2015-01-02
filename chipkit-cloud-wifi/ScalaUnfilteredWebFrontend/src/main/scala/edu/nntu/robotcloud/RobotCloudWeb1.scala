@@ -3,7 +3,6 @@ package edu.nntu.robotcloud
 import unfiltered.request.Path
 import unfiltered.request.Seg
 import unfiltered.response.Ok
-import unfiltered.response.ContentType
 import unfiltered.response.HtmlContent
 import unfiltered.response.PlainTextContent
 import unfiltered.response.ResponseString
