@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Веб-приложение на Scala+Unfiltered</title>
+        <meta charset="UTF-8"/>
+        <link href="/css/site.css" rel="STYLESHEET" type="text/css"/>
+
+        <script type="text/javascript">
+            function readServerString(elemRenderer, url) {
+                var req = new XMLHttpRequest();
+                req.onreadystatechange = function() {
+                    if (req.readyState === 4) { // only if req is "loaded"
+                        if (req.status === 200) { // only if "OK"
+                            document.getElementById(elemRenderer).innerHTML = req.responseText;
+                        } else {
+                            // error
+                        }
+                    }
+                };
+                // can't use GET method here as it would quickly 
+                // exceede max length limitation
+                req.open("POST", url, true);
+
+                //Send the proper header information along with the request
+                req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                req.send();
+            }
+
+            function call1() {
+                readServerString("call_res", "/call1");
+            }
+
+            function call2() {
+                readServerString("call_res", "/call2");
+            }
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <div class="caption">
+                Веб-приложение на Scala+Unfiltered
+            </div>
+            <div class="caption_content">
+                это веб-приложение написано на Scala с фреймворком Unfiltered
+            </div>
+            <a class="logo" href="http://1i7.livejournal.com" target="_blank"></a>
+        </div>
+        <div id="page">
+            <div class ="page_content">
+                <p class="content"> Демонстрация работы фреймворка Unfiltered для языка Scala:
+                    это HTML-страница с демонстрацией AJAX.
+                </p>
+                <p class="content"> 
+                    нажимайте кнопочки, чтобы прочитать значение с сервера:
+                </p>
+                
+                <p class="content" style="text-align: center">
+                    <a class="button green medium" href="javascript:call1()">Зима!.. Крестьянин, торжествуя,</a>
+                    <a class="button rosy medium" href="javascript:call2()">Его лошадка, снег почуя,</a>
+                </p>
+                <p class="content">
+                    Результат: <span id="call_res" style="font-style: italic"></span> 
+                </p>
+                
+                <hr>
+                
+                <p class="content" style="text-align: right">
+                    <a href="http://webdesignerwall.com/tutorials/css3-gradient-buttons">красивые кнопочки отсюда</a>
+                    <a href="/">на главную</a>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
