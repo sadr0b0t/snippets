@@ -216,7 +216,7 @@
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
                             <classpathLayoutType>simple</classpathLayoutType>
-                            <mainClass>edu.nntu.scalaunfilteredmavendemo.UnfilteredWebTest</mainClass>
+                            <mainClass>edu.nntu.scalaunfiltereddemo.UnfilteredWebTest</mainClass>
                         </manifest>
                         <manifestEntries>
                             <Version>${buildNumber}</Version>
