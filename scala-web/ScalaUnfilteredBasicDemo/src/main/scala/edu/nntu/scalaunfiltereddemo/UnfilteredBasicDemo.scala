@@ -18,7 +18,7 @@ import unfiltered.response.Html
  * с нормальной поддержкой UTF-8 в строке запроса и в теле ответа.
  *
  */
-object UnfilteredWebappDemo {
+object UnfilteredBasicDemo {
   /**
    * Перекодировщик URL для нормальной работы с UTF-8
    * Отсюда: http://stackoverflow.com/questions/18083311/url-decoding-with-unfiltered
