@@ -17,19 +17,6 @@
         <unfiltered.scala.version>2.11</unfiltered.scala.version>
         <unfiltered.version>0.8.3</unfiltered.version>
     </properties>
-    
-    <repositories>
-        <repository>
-            <id>scala-tools.org</id>
-            <name>Scala-tools Maven2 Repository</name>
-            <url>https://oss.sonatype.org/content/repositories/releases/</url>
-        </repository>
-        <repository>
-            <id>net.databinder</id>
-            <name>Unfiltered framework repository</name>
-            <url>https://oss.sonatype.org/content/repositories/releases/</url>
-        </repository>
-    </repositories>
 
     <dependencies>
         <dependency>
