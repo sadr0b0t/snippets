@@ -15,6 +15,7 @@
         <scala.version>2.11.2</scala.version>
         <scala.tools.version>2.11</scala.tools.version>
         <unfiltered.scala.version>2.11</unfiltered.scala.version>
+        <unfiltered.version>0.8.3</unfiltered.version>
     </properties>
     
     <repositories>
@@ -61,57 +62,57 @@
         <dependency>
             <groupId>net.databinder</groupId>
             <artifactId>unfiltered_${unfiltered.scala.version}</artifactId>
-            <version>0.8.1</version>
+            <version>${unfiltered.version}</version>
         </dependency>
         <dependency>
             <groupId>net.databinder</groupId>
             <artifactId>unfiltered-filter_${unfiltered.scala.version}</artifactId>
-            <version>0.8.1</version>
+            <version>${unfiltered.version}</version>
         </dependency>
         <dependency>
             <groupId>net.databinder</groupId>
             <artifactId>unfiltered-filter-async_${unfiltered.scala.version}</artifactId>
-            <version>0.8.1</version>
+            <version>${unfiltered.version}</version>
         </dependency>
         <dependency>
             <groupId>net.databinder</groupId>
             <artifactId>unfiltered-netty_${unfiltered.scala.version}</artifactId>
-            <version>0.8.1</version>
+            <version>${unfiltered.version}</version>
         </dependency>
         <dependency>
             <groupId>net.databinder</groupId>
             <artifactId>unfiltered-netty-websockets_${unfiltered.scala.version}</artifactId>
-            <version>0.8.1</version>
+            <version>${unfiltered.version}</version>
         </dependency>
         <dependency>
             <groupId>net.databinder</groupId>
             <artifactId>unfiltered-jetty_${unfiltered.scala.version}</artifactId>
-            <version>0.8.1</version>
+            <version>${unfiltered.version}</version>
         </dependency>
         <dependency>
             <groupId>net.databinder</groupId>
             <artifactId>unfiltered-jetty-ajp_${unfiltered.scala.version}</artifactId>
-            <version>0.8.1</version>
+            <version>${unfiltered.version}</version>
         </dependency>
         <dependency>
             <groupId>net.databinder</groupId>
             <artifactId>unfiltered-netty-server_${unfiltered.scala.version}</artifactId>
-            <version>0.8.1</version>
+            <version>${unfiltered.version}</version>
         </dependency>
         <dependency>
             <groupId>net.databinder</groupId>
             <artifactId>unfiltered-uploads_${unfiltered.scala.version}</artifactId>
-            <version>0.8.1</version>
+            <version>${unfiltered.version}</version>
         </dependency>
         <dependency>
             <groupId>net.databinder</groupId>
             <artifactId>unfiltered-util_${unfiltered.scala.version}</artifactId>
-            <version>0.8.1</version>
+            <version>${unfiltered.version}</version>
         </dependency>
         <dependency>
             <groupId>net.databinder</groupId>
             <artifactId>unfiltered-specs2_${unfiltered.scala.version}</artifactId>
-            <version>0.8.1</version>
+            <version>${unfiltered.version}</version>
         </dependency>
         <!--
         <dependency>
@@ -128,7 +129,7 @@
         <dependency>
             <groupId>net.databinder</groupId>
             <artifactId>unfiltered-oauth_${unfiltered.scala.version}</artifactId>
-            <version>0.8.1</version>
+            <version>${unfiltered.version}</version>
         </dependency>
     </dependencies>
 
