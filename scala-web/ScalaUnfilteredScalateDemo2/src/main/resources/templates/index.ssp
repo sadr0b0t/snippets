@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+
+<% import unfiltered.request._ %>
+<% import unfiltered.scalate.UnfilteredRenderContext._ %>
+
 <html>
     <head>
         <title>Scala Unfiltered-scalate demo</title>
@@ -6,7 +10,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
-        <%=15%>
+        <h1>Scalate Unfiltered demo: current HttpRequest accessed from ssp page</h1>
+        <div>Page params:</div>
+<!--    request object instance here is unfiltered.request.HttpRequest and 
+        it comes from unfiltered.scalate.UnfilteredRenderContext-->
+        <%=request match {
+          case Params(params) => params
+          case _ => "No params"
+        }%>
+        
+        <div><a href="?Humpty=Dumpty&sat=on a wall">click for params<a></div
     </body>
 </html>

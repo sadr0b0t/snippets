@@ -16,7 +16,7 @@ object Scalate {
                   attributes:(String,Any)*)
   ( implicit
     engine: TemplateEngine = defaultEngine,
-    contextBuilder: ToRenderContext = defaultRenderContext,
+    contextBuilder: ToRenderContext[A] = defaultRenderContext,
     bindings: List[Binding] = Nil,
     additionalAttributes: Seq[(String, Any)] = Nil
   ) = new ResponseWriter {
@@ -24,7 +24,7 @@ object Scalate {
       val printWriter = new PrintWriter(writer)
       try {
         val scalateTemplate = engine.load(template, bindings)
-        val context = contextBuilder(Path(request), printWriter, engine)
+        val context = contextBuilder(request, Path(request), printWriter, engine)
         (additionalAttributes ++ attributes) foreach {
           case (k,v) => context.attributes(k) = v
         }
@@ -38,13 +38,41 @@ object Scalate {
   }
 
   /* Function to construct a RenderContext. */
-  type ToRenderContext =
-    (String, PrintWriter, TemplateEngine) => RenderContext
+  type ToRenderContext[A] =
+    (HttpRequest[A], String, PrintWriter, TemplateEngine) => RenderContext
 
   private val defaultTemplateDirs = 
     new File("src/main/resources/templates") :: Nil
   private val defaultEngine = new TemplateEngine(defaultTemplateDirs)
-  private val defaultRenderContext: ToRenderContext =
-    (path, writer, engine) =>
-      new DefaultRenderContext(path, engine, writer)
+  private val defaultRenderContext: ToRenderContext[javax.servlet.http.HttpServletRequest] =
+    (request, path, writer, engine) =>
+  new UnfilteredRenderContext(request, path, engine, writer)
+}
+
+/**
+ * A template context for use in Unfiltered-based ssp-pages.
+ *
+ */
+class UnfilteredRenderContext (
+  val request: HttpRequest[javax.servlet.http.HttpServletRequest], 
+  path: String, engine: TemplateEngine, writer: PrintWriter)
+extends DefaultRenderContext(path, engine, writer)
+
+/**
+ * Easy access to servlet request state.
+ *
+ * If you add the following code to your program
+ * <code>import unfiltered.scalate.UnfilteredRenderContext._</code>
+ * then you can access the current renderContext, request
+ */
+object UnfilteredRenderContext {
+  /**
+   * Returns the currently active render context in this thread
+   * @throws IllegalArgumentException if there is no suitable render context available in this thread
+   */
+  def renderContext: UnfilteredRenderContext = RenderContext() match {
+    case s: UnfilteredRenderContext => s
+    case n => throw new IllegalArgumentException("This threads RenderContext is not a UnfilteredRenderContext as it is: " + n)
+  }
+  def request: HttpRequest[javax.servlet.http.HttpServletRequest] = renderContext.request
 }

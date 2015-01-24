@@ -25,6 +25,6 @@ object UnfilteredScalateDemo {
     println("Starting jetty http server demo...")
 
     // Запустить веб-сервер
-    unfiltered.jetty.Http.apply(8080).filter(handlePath).run()
+    unfiltered.jetty.Server.http(8080).plan(handlePath).run()
   }
 }
