@@ -12,11 +12,9 @@ import unfiltered.response.PlainTextContent
 import unfiltered.response.HtmlContent
 import unfiltered.response.Unauthorized
 import unfiltered.response.WWWAuthenticate
-import unfiltered.Cycle
-import unfiltered.scalate.Scalate
 
 /**
- * Базовая авторизация HTTP BasicAuth - браузер показывает диалог с запросом
+ * Базовая аутентификация HTTP BasicAuth - браузер показывает диалог с запросом
  * имени пользователя и пароля
  * http://unfiltered.databinder.net/Who’s+Who.html
  * http://www.gerd-riesselmann.net/development/authentication-using-unfiltered-scala/
@@ -103,6 +101,6 @@ object UnfilteredBasicAuthDemo {
     println("Starting jetty http server demo...")
 
     // Запустить веб-сервер
-    unfiltered.jetty.Http.apply(8080).filter(echoAuth).filter(handlePath).run()
+    unfiltered.jetty.Server.http(8080).plan(echoAuth).plan(handlePath).run()
   }
 }
