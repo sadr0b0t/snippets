@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<% import edu.nntu.scalaunfiltereddemo.UnfilteredFormAuthDemo._ %>
+<% import unfiltered.scalate.UnfilteredRenderContext._ %>
+
+<html>
+    <head>
+        <title>Scala Unfiltered Form Auth demo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>This is another unprotected page</h1>
+
+        current user: <%
+        val user = securityCheck.remoteUser(request)
+        if(user.isEmpty) {
+        %>
+        none
+        <%
+        } else {
+        %>
+        ${user.get.name} (<a href="/logout">logout</a>)
+        <%
+        }
+        %>
+
+
+        <p>
+            <a href="/admin">Go to admin area</a> (admin:adminpw), 
+            <a href="/profile">go to user profile area</a> (user1:user1pw or user2:user2pw), 
+            <a href="/">go home</a>
+        </p>        
+    </body>
+</html>
