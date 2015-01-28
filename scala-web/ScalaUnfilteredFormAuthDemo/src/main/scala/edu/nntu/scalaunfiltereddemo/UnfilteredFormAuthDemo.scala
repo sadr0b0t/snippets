@@ -46,10 +46,8 @@ object UnfilteredFormAuthDemo {
       }}, 
     (req : HttpRequest[javax.servlet.http.HttpServletRequest]) => {
       req match {
-        case Path(Seg("admin" :: Nil)) => Some(Set("admin"))
-        case Path(Seg("admin" :: "manage" :: Nil)) => Some(Set("admin"))
-        case Path(Seg("profile" :: Nil)) => Some(Set("admin", "user"))
-        case Path(Seg("profile" :: "photo" :: Nil)) => Some(Set("admin", "user"))
+        case Path(Seg("admin" :: _)) => Some(Set("admin"))
+        case Path(Seg("profile" :: _)) => Some(Set("admin", "user"))
         case _ => None
       }
     },

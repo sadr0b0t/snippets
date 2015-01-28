@@ -7,7 +7,7 @@
     </head>
     <body>
         <h1>Login</h1>
-        <form method="POST" action="j_security_check">
+        <form method="POST" action="/j_security_check">
             <label for="username">login:</label>
             <input id="username" type="text" name="j_username" size="25" value=""/>
             <label for="password">password:</label>

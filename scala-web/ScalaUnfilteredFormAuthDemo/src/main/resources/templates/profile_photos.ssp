@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1>This user profile photos page, you are logged in as user or admin if you see this</h1>
+        <h1>This is user profile photos page, you are logged in as user or admin if you see this</h1>
 
         current user: <%
         val user = securityCheck.remoteUser(request)

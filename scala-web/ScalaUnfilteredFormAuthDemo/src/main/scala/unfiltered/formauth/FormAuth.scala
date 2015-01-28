@@ -60,7 +60,7 @@ trait Users {
  * forbidden (user is authenticated, but not authorized to view requested resource). 
  * Normally, this should be HTML page with corresponding message. 
  * For login and error event this page should also contain login info submit form
- * with method="POST" and action="j_security_check" parameters and at least two input text
+ * with method="POST" and action="/j_security_check" parameters and at least two input text
  * fields with name="j_username" parameter for user name field and 
  * name="j_password" and type="password" parameters for password field.
  * Simple implementation with inline HTML is provided by default.
@@ -80,7 +80,7 @@ case class JSecurityCheck (
               </head>
               <body>
                 <h1>Login</h1>
-                <form method="POST" action="j_security_check">
+                <form method="POST" action="/j_security_check">
                   <label for="username">login:</label>
                   <input id="username" type="text" name="j_username" size="25" value=""/>
                   <label for="password">password:</label>
@@ -100,7 +100,7 @@ case class JSecurityCheck (
               </head>
               <body>
                 <h1>Login error</h1>
-                <form method="POST" action="j_security_check">
+                <form method="POST" action="/j_security_check">
                   <label for="username">login:</label> 
                   <input id="username" type="text" name="j_username" size="25" value=""/>
                   <label for="password">password:</label>
