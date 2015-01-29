@@ -52,14 +52,29 @@ trait Users {
 }
   
 /**
- * @param users registered users.
- * @param authRoles returns list of user roles, authorized to access given resource, 
- * or None if given resource is not protected.
+ * Workflow for form-based user authentication and authorization.
+ * 
+ * Post to /j_security_check j_username and j_password to authenticate.
+ * Request (either GET or POST) /logout to logout.
+ * 
+ * Authentication info is stored in session, so application container should
+ * support session management.
+ * 
+ * Authorization is based on user role.
+ * 
+ * Authenticated user for the given request session can be accessed with 
+ * <code>remoteUser</code> inside application code.
+ *
+ * @param users registered users for authentication.
+ * 
+ * @param authRoles returns list (as Option[Set[String]]) of user roles, 
+ * authorized to access given resource, or None, if given resource is not protected.
+ * 
  * @param authEvents returns corresponging HttpResponse for the provided authentication event:
  * login (user is not authenticated), error (error during authentication) or 
  * forbidden (user is authenticated, but not authorized to view requested resource). 
  * Normally, this should be HTML page with corresponding message. 
- * For login and error event this page should also contain login info submit form
+ * For login and error events this page should also contain login info submit form
  * with method="POST" and action="/j_security_check" parameters and at least two input text
  * fields with name="j_username" parameter for user name field and 
  * name="j_password" and type="password" parameters for password field.
@@ -153,9 +168,9 @@ case class JSecurityCheck (
             authRequests -= sessionId.get
             Redirect( path )
           } else {
-            // redirect to site root if requested protected page is not found 
+            // redirect to site root, if requested protected page is not found 
             // (actually, most likey this will never happen, cause if sessions 
-            // are not supporte, authenticatication will not work too)
+            // are not supported, authenticatication will not work too)
             Redirect("/")
           }
         } else
