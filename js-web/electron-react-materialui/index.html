@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Electron+React+Material-UI setup</title>
+    
+    <script type="text/babel">
+        // install babel hooks in the renderer process
+        // необходимо для поддержки расширенного синтаксиса JSX 
+        // на основе конфигураций babel es2015/react/stage-1
+        // (прописаны в настройках babelrc или package.json)
+        // см здесь https://github.com/electron/electron/issues/1611
+        // и здесь https://github.com/b52/electron-es6-react
+        require('babel-register');
+        
+        // Needed for onTouchTap (warning to go away)
+        // Убираем предупреждение про недостающее свойство onTouchTap
+        import injectTapEventPlugin from 'react-tap-event-plugin';
+        injectTapEventPlugin();
+    
+        // компоненты, использующие расширенный синтаксис JSX на основе 
+        // конфигураций babel es2015/react/stage-1, нужно загружать
+        // через вызов require. Если загружать через тег script, то
+        // среда исполнения будет показывать ошибки синтаксиса,
+        // хотя для других скриптов, которые используют обычный синтаксис 
+        // JavaScript, подойдут оба варианта
+        require('./widgets/hello-react.js');
+        require('./widgets/hello-material.js');
+        require('./widgets/hello-material-dropdown.js');
+    </script>
+    
+    <!-- Для поддержки тегов script с параметром type="text/babel" -->
+    <script src="https://unpkg.com/babel-core@5.8.38/browser.min.js"></script>
+    
+    <!-- 
+    // Здесь загружаем скрипты при помощи require выше, чтобы правильно работали
+    // расширения babel. 
+    // Скрипты hello-react.js и hello-material.js заработают в обоих случаях.
+    // Скрипт hello-material-dropdown.js заработает только через require,
+    // при загрузке тегом script он покажет ошибки синтаксиса.
+    <script type="text/babel" src="babbler-widgets/hello-react.js"></script>
+    <script type="text/babel" src="babbler-widgets/hello-material.js"></script>
+    <script type="text/babel" src="babbler-widgets/hello-material-dropdown.js"></script>
+    -->
+    
+  </head>
+  <body>
+
+    <div id="hello-react"></div>
+    <div id="hello-material"></div>
+    <div id="hello-material-dropdown"></div>
+
+  </body>
+</html>
+

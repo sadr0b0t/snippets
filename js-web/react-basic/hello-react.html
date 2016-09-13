@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <!-- Для поддержки тегов script с параметром type="text/babel" -->
+    <script src="https://unpkg.com/babel-core@5.8.38/browser.min.js"></script>
+    <!-- Для ReactDOM.render -->
+    <script src="script/react/react.js"></script>
+    <script src="script/react/react-dom.js"></script>
+  </head>
+  <body>
+    <div id="hello-react"></div>
+    <script type="text/babel">
+      ReactDOM.render(
+        <h1>Hello, world from React!</h1>,
+        document.getElementById('hello-react')
+      );
+    </script>
+    <div>
+      Работает на чистом <a href="https://facebook.github.io/react/docs/getting-started.html">React starter pack</a>
+    </div>
+  </body>
+</html>
+
