@@ -24,7 +24,6 @@ export default class DropDownMenuSimpleExample extends React.Component {
 
   render() {
     return (
-      <MuiThemeProvider muiTheme={getMuiTheme()}>
       <div>
         <DropDownMenu value={this.state.value} onChange={this.handleChange}>
           <MenuItem value={1} primaryText="Never" />
@@ -47,14 +46,15 @@ export default class DropDownMenuSimpleExample extends React.Component {
           <MenuItem value={5} primaryText="Weekly" />
         </DropDownMenu>
       </div>
-      </MuiThemeProvider>
     );
   }
 }
 
 window.onload = function() {
     ReactDOM.render(
-        <DropDownMenuSimpleExample/>,
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
+        <DropDownMenuSimpleExample/>
+      </MuiThemeProvider>,
         document.getElementById('hello-material-dropdown')
     );
 }
