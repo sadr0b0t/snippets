@@ -50,12 +50,12 @@ export default class DropDownMenuSimpleExample extends React.Component {
   }
 }
 
-window.onload = function() {
+//window.onload = function() {
     ReactDOM.render(
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <DropDownMenuSimpleExample/>
       </MuiThemeProvider>,
         document.getElementById('hello-material-dropdown')
     );
-}
+//}
 
