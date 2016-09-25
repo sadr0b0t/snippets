@@ -1,3 +1,3 @@
 #!/bin/sh
-electron .
+./node_modules/electron-prebuilt/dist/electron .
 
