@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "inherits": "^2.0.3",
+    "node-event-emitter": "0.0.1"
+  }
+}
