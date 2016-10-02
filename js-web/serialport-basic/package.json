@@ -1,0 +1,17 @@
+{
+  "name"    : "serialport-basic",
+  "version" : "0.1.0",
+  "main"    : "serialport-basic.js",
+  "dependencies": {
+    "serialport": "^4.0.1"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.14.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  }
+}
+
