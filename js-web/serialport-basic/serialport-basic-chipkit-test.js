@@ -13,7 +13,8 @@ port = new SerialPort("/dev/ttyUSB0", {
     lock: true
 });
 
-function writeData(data) {
+function writeData() {
+    data = "ping";
     console.log("write: " + data);
     port.write(data,
         function(err) {
@@ -40,8 +41,32 @@ function writeData(data) {
 port.on('open', function () {
     console.log("open");
     
-    // теперь будем слать команду каждые 2 секунды
-    setInterval(function() {writeData("ping");}, 2000);
+    // Weird behaviour when send packets just after port is open 
+    // (this is only ChipKIT Uno32 old bootloader specific bug)
+    // 
+    // http://chipkit.net/forum/viewtopic.php?f=19&t=3731
+    
+    // Arduino sketch will start to work after the 
+    // last writeData is executed
+    // Скетч Ардуино начнет работать только после того,
+    // как отработает последний вызов writeData
+    //writeData();
+    /*setTimeout(writeData, 3000);
+    setTimeout(writeData, 6000);
+    setTimeout(writeData, 9000);
+    setTimeout(writeData, 12000);
+    */
+    
+    // Arduino sketch will never start to work this way
+    // так скетч Ардуино никогда не загрузится
+    setInterval(writeData, 2000);
+    
+    // the only way to make Arduino sketch to work
+    // единственный способ дать прошивке Ардуины загрузиться до конца - 
+    // отправлять первое сообщение не раньше, чем через 5 секунд
+    // после открытия порта платы (точнее, между двумя отправками сообщения
+    // до загрузки скетча должно пройти как минимум 5 секунд)
+    //setInterval(writeData, 5000);
 });
 
 // пришли данные
@@ -65,7 +90,7 @@ port.open(function(err) {
         console.log("Error opening: " + err);
     } else {
         console.log("Open OK");
-        //setInterval(function() {writeData("ping");}, 1000);
+        //setInterval(writeData, 1000);
     }
 });
 
