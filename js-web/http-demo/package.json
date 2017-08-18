@@ -1,0 +1,8 @@
+{
+  "name": "http-demo",
+  "version": "0.1.0",
+  "main": "http-hello.js",
+  "dependencies": {
+    "http": "0.0.0"
+  }
+}
