@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>EventEmitter demo</title>
+    <script src="node_modules/node-event-emitter/index.js"></script>
+    <script src="node_modules/inherits/inherits_browser.js"></script>
+  </head>
+  <body>
+    <div id="hello-react"></div>
+    <script type="text/javascript">
+        // https://nodejs.org/api/events.html
+        // https://www.npmjs.com/package/node-event-emitter
+
+        // наследование без ES6
+        // https://www.npmjs.com/package/inherits
+
+        // пример EventEmitter+CommonJS
+        // http://stackoverflow.com/a/14020832/3466540
+
+        // для базовой ноды
+        //const EventEmitter = require('events');
+        //var inherits = require('util').inherits
+
+        // для браузера - порт без зависимостей.
+        // всё бы хорошо, но require не доступна в браузере
+        // https://stackoverflow.com/questions/19059580/client-on-node-uncaught-referenceerror-require-is-not-defined
+        //const EventEmitter = require('node-event-emitter');
+        //var inherits = require('inherits');
+
+        var MyEmitter = function() {}
+        inherits(MyEmitter, EventEmitter);
+
+        const myEmitter = new MyEmitter();
+        myEmitter.on('event', () => {
+            console.log('an event occurred!');
+        });
+        myEmitter.emit('event');
+    </script>
+    <div>
+        демо EventEmitter в браузере.
+        <div>
+        <i>К сожалению, пока не работает, т.к. вариант</i>
+        <pre>
+        const EventEmitter = require('node-event-emitter');
+        var inherits = require('inherits');
+        </pre>
+        <div>
+        в браузере работать не будет из-за того, что в браузере
+        <a href="https://stackoverflow.com/questions/19059580/client-on-node-uncaught-referenceerror-require-is-not-defined">не определен require</a>.
+        </div>
+        <div>
+        А вариант подключить модули напрямую через тег script
+        </div>
+        <pre>
+        &lt;script src="node_modules/node-event-emitter/index.js"&gt;&lt;/script&gt;
+        &lt;script src="node_modules/inherits/inherits_browser.js"&gt;&lt;/script&gt;
+        </pre>
+        <div>
+        как есть тоже не годится, т.к. внутри этих модулей всё равно присутствует
+        Node-спуцифический код типа module.exports, который тоже не нравится браузеру.
+        Судя по всему, без каких-то промежуточных компиляций
+        типа browserify или других похожих костылей не обойтись.
+        </div>
+        </div>
+    </div>
+  </body>
+</html>
+
