@@ -36,9 +36,6 @@
 #define TIMER_SETUP_H
 
 
-#include <WProgram.h> 
-#include <inttypes.h>
-
 // define timer ids
 #define TIMER3 0
 #define TIMER4 1
@@ -47,14 +44,14 @@
 
 // Define timer prescaler values: 3 bits in TxCON<6:4> register 
 // give 8 different values for prescalar:
-#define TIMER_PRESCALER_1_1   0x0000
-#define TIMER_PRESCALER_1_2   0x0010
-#define TIMER_PRESCALER_1_4   0x0020
-#define TIMER_PRESCALER_1_8   0x0030
-#define TIMER_PRESCALER_1_16  0x0040
-#define TIMER_PRESCALER_1_32  0x0050
-#define TIMER_PRESCALER_1_64  0x0060
-#define TIMER_PRESCALER_1_256 0x0070
+#define TIMER_PRESCALER_1_1   0x0000 // 0000 0000
+#define TIMER_PRESCALER_1_2   0x0010 // 0001 0000
+#define TIMER_PRESCALER_1_4   0x0020 // 0010 0000
+#define TIMER_PRESCALER_1_8   0x0030 // 0010 0000
+#define TIMER_PRESCALER_1_16  0x0040 // 0100 0000
+#define TIMER_PRESCALER_1_32  0x0050 // 0101 0000
+#define TIMER_PRESCALER_1_64  0x0060 // 0110 0000
+#define TIMER_PRESCALER_1_256 0x0070 // 0111 0000
 
 
 void initTimerISR(int timer, int prescaler, int period);
