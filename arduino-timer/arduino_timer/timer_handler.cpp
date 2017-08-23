@@ -12,8 +12,8 @@ void init_handler() {
     // 4. Divide result through the desired frequency (62500 / 2Hz = 31250)
     // 5. Verify the result against the maximum timer counter value (31250 < 65536 success) if fail, choose bigger prescaler.
     
-    // Настроим и запустим таймер с периодом 20миллисекунд (50 срабатываний в секунду):
-    // prescaler=1:64, period=0x61A8:
+    // Настроим и запустим таймер с периодом 20 миллисекунд (50 срабатываний в секунду == 50Гц):
+    // prescaler=1:8, period=40000:
     // 16000000/8/50=40000 (50Hz - срабатывает 50 раз в секунду, т.е. каждые 20мс)
     // Обработчик прерывания от таймера - функция handle_interrupts 
     // (с заданными настройками будет вызываться каждые 20мс).
@@ -34,7 +34,7 @@ void handle_interrupts(int timer) {
     prev_time = _time;
 
     if(count == 50) {
-        Serial.print("good by from timer: ");
+        Serial.print("goodbye from timer: ");
         Serial.println(diff, DEC);
 
         digitalWrite(13, led_val);

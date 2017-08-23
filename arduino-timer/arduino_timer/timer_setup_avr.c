@@ -2,7 +2,9 @@
 // https://github.com/arduino/Arduino/blob/ide-1.5.x/libraries/Servo/src/avr/Servo.cpp
 // https://github.com/arduino/Arduino/blob/ide-1.5.x/libraries/Servo/src/avr/ServoTimers.h
 
-// + http://www.robotshop.com/letsmakerobots/arduino-101-timers-and-interrupts
+// see also
+// http://www.robotshop.com/letsmakerobots/arduino-101-timers-and-interrupts
+// http://playground.arduino.cc/Code/Timer1
 
 #ifdef ARDUINO_ARCH_AVR
 
@@ -33,6 +35,13 @@
  * timer16_Sequence_t enumerates the sequence that the timers should be allocated
  * _Nbr_16timers indicates how many 16 bit timers are available.
  */
+
+
+
+#include "timer_setup.h"
+
+#include <avr/interrupt.h>
+
 
 /**
  * AVR Only definitions
@@ -76,7 +85,6 @@ const int TIMER5 = -1;
 #define _useTimer1
 typedef enum { _timer3, _timer1, _Nbr_16timers } timer16_Sequence_t;
 
-
 const int TIMER1 = _timer1;
 const int TIMER3 = _timer3;
 const int TIMER4 = -1;
@@ -92,14 +100,6 @@ const int TIMER4 = -1;
 const int TIMER5 = -1;
 
 #endif
-
-
-
-
-#include "timer_setup.h"
-
-#include <avr/interrupt.h>
-#include <Arduino.h>
 
 
 #ifndef WIRING // Wiring pre-defines signal handlers so don't define any if compiling for the Wiring platform
@@ -149,7 +149,7 @@ void Timer3Service()
 #endif
 
 
-void initTimerISR(int timer, int prescaler, int period)
+void initTimerISR(int timer, int prescaler, int adjustment)
 {
 #if defined (_useTimer1)
   if(timer == _timer1) {
@@ -185,7 +185,7 @@ void initTimerISR(int timer, int prescaler, int period)
     TCCR1B = 0;             // timer mode:
     TCCR1B |= _BV(WGM12);   // CTC mode
     TCCR1B |= prescalerBits;// set prescaler
-    OCR1A = period;         // compare match register
+    OCR1A = adjustment;     // compare match register
     TCNT1 = 0;              // clear the timer count
 #if defined(__AVR_ATmega8__)|| defined(__AVR_ATmega128__)
     TIFR |= _BV(OCF1A);      // clear any pending interrupts;
@@ -235,7 +235,7 @@ void initTimerISR(int timer, int prescaler, int period)
     TCCR3B = 0;             // timer mode:
     TCCR3B |= _BV(WGM32);   // CTC mode
     TCCR3B |= prescalerBits;// set prescaler
-    OCR3A = period;         // compare match register
+    OCR3A = adjustment;     // compare match register
     TCNT3 = 0;              // clear the timer count
 #if defined(__AVR_ATmega128__)
     TIFR |= _BV(OCF3A);     // clear any pending interrupts;
@@ -284,7 +284,7 @@ void initTimerISR(int timer, int prescaler, int period)
     TCCR4B = 0;             // timer mode:
     TCCR4B |= _BV(WGM42);   // CTC mode
     TCCR4B |= prescalerBits;// set prescaler
-    OCR4A = period;         // compare match register
+    OCR4A = adjustment;     // compare match register
     TCNT4 = 0;              // clear the timer count
     TIFR4 = _BV(OCF4A);     // clear any pending interrupts;
     TIMSK4 =  _BV(OCIE4A) ; // enable the output compare interrupt
@@ -325,7 +325,7 @@ void initTimerISR(int timer, int prescaler, int period)
     TCCR5B = 0;             // timer mode:
     TCCR5B |= _BV(WGM52);   // CTC mode
     TCCR5B |= prescalerBits;// set prescaler
-    OCR5A = period;         // compare match register
+    OCR5A = adjustment;     // compare match register
     TCNT5 = 0;              // clear the timer count
     TIFR5 = _BV(OCF5A);     // clear any pending interrupts;
     TIMSK5 =  _BV(OCIE5A) ; // enable the output compare interrupt

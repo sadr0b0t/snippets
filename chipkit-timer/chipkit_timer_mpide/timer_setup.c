@@ -1,3 +1,11 @@
+// based on
+// https://github.com/chipKIT32/chipKIT-core/blob/master/pic32/libraries/Servo/utility/int.h
+// https://github.com/chipKIT32/chipKIT-core/blob/master/pic32/libraries/Servo/utility/int.c
+
+// see also
+// PIC32 family reference manual Section 14. Timers
+// http://umassamherstm5.org/tech-tutorials/pic32-tutorials/ubw32-tutorials/3-interrupts
+
 /************************************************************************/
 /*																		*/
 /*	int.c	--	Handles timer interrupts for PIC32      				*/
@@ -72,14 +80,14 @@ void __attribute__((interrupt(),nomips16)) T5_IntHandler (void){
  *         timer prescaler (1, 2, 4, 8, 16, 32, 64, 256),
  *         use constants: PRESCALER_1, PRESCALER_2, PRESCALER_8,
  *         PRESCALER_16, PRESCALER_32, PRESCALER_64, PRESCALER_256
- * @param period
- *         timer period - adjustment divider after timer prescaled.
+ * @param adjustment
+ *         adjustment divider after timer prescaled - timer compare match value.
  * 
  * Example: to set timer clock period to 20ms (50 operations per second)
- * use prescaler 1:64 (0x0060) and period=0x61A8:
+ * use prescaler 1:64 (0x0060) and adjustment=0x61A8:
  * 80000000/64/50=25000=0x61A8
  */
-void initTimerISR(int timer, int prescaler, int period) {
+void initTimerISR(int timer, int prescaler, int adjustment) {
     if(timer == TIMER3) {
 
         // set the vector up
@@ -88,7 +96,7 @@ void initTimerISR(int timer, int prescaler, int period) {
         // set timer 3 clock period 
         T3CON = prescaler; // set prescaler
         TMR3 = 0;
-        PR3 = period;
+        PR3 = adjustment;  // period register
            
         IFS0CLR = 0x1000;// Clear the T3 interrupt flag 
         IEC0SET = 0x1000;// Enable T3 interrupt 
@@ -104,7 +112,7 @@ void initTimerISR(int timer, int prescaler, int period) {
         // set timer 4 clock period 
         T4CON = prescaler; // set prescaler
         TMR4 = 0;
-        PR4 = period;        
+        PR4 = adjustment;  // period register
            
         IFS0CLR = 0x10000;// Clear the T4 interrupt flag 
         IEC0SET = 0x10000;// Enable T4 interrupt 
@@ -120,7 +128,7 @@ void initTimerISR(int timer, int prescaler, int period) {
         // set timer 5 clock period
         T5CON = prescaler; // set prescaler
         TMR5 = 0;
-        PR5 = period;        
+        PR5 = adjustment;  // period register
            
         IFS0CLR = 0x100000;// Clear the T5 interrupt flag 
         IEC0SET = 0x100000;// Enable T5 interrupt 
