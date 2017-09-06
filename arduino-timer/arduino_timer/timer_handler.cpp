@@ -14,10 +14,11 @@ void init_handler() {
     
     // Настроим и запустим таймер с периодом 20 миллисекунд (50 срабатываний в секунду == 50Гц):
     // prescaler=1:8, period=40000:
-    // 16000000/8/50=40000 (50Hz - срабатывает 50 раз в секунду, т.е. каждые 20мс)
+    // 16000000/8/50=40000 (50Hz - срабатывает 50 раз в секунду, т.е. каждые 20мс),
+    // минус 1, т.к. считаем от нуля.
     // Обработчик прерывания от таймера - функция handle_interrupts 
     // (с заданными настройками будет вызываться каждые 20мс).
-    initTimerISR(TIMER1, TIMER_PRESCALER_1_8, 40000);
+    initTimerISR(TIMER1, TIMER_PRESCALER_1_8, 40000-1);
 }
 
 
@@ -26,11 +27,11 @@ void init_handler() {
  */
 void handle_interrupts(int timer) {
     static int led_val = 0;
-    static long prev_time = 0;
+    static unsigned long prev_time = 0;
     static int count = 0;
 
-    long _time = micros();
-    long diff = _time-prev_time;
+    unsigned long _time = micros();
+    unsigned long diff = _time-prev_time;
     prev_time = _time;
 
     if(count == 50) {
