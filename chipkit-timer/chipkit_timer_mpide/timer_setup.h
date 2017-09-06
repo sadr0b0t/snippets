@@ -54,7 +54,7 @@
 #define TIMER_PRESCALER_1_256 0x0070 // 0111 0000
 
 
-void initTimerISR(int timer, int prescaler, int adjustment);
+void initTimerISR(int timer, int prescaler, unsigned int adjustment);
 void handle_interrupts(int timer);
 
 #endif

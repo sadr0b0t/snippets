@@ -87,7 +87,7 @@ void __attribute__((interrupt(),nomips16)) T5_IntHandler (void){
  * use prescaler 1:64 (0x0060) and adjustment=0x61A8:
  * 80000000/64/50=25000=0x61A8
  */
-void initTimerISR(int timer, int prescaler, int adjustment) {
+void initTimerISR(int timer, int prescaler, unsigned int adjustment) {
     if(timer == TIMER3) {
 
         // set the vector up

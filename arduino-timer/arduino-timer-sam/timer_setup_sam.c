@@ -101,6 +101,7 @@
 typedef enum { _timer1, _timer2, _timer3, _timer4, _timer5, _Nbr_16timers } timer16_Sequence_t ;
 
 const int TIMER1 = _timer1;
+const int TIMER2 = _timer2;
 const int TIMER3 = _timer3;
 const int TIMER4 = _timer4;
 const int TIMER5 = _timer5;
@@ -108,44 +109,45 @@ const int TIMER5 = _timer5;
 
 
 //------------------------------------------------------------------------------
-/// Interrupt handler for the TC0 channel 1.
+/// Interrupt handler for timers
 //------------------------------------------------------------------------------
+
+static void _HANDLER_FOR_TIMER(int timer, Tc *tc, uint8_t channel) {
+    // clear interrupt
+    tc->TC_CHANNEL[channel].TC_SR; // TC - timer counter
+    // reset the timer
+    tc->TC_CHANNEL[channel].TC_CCR |= TC_CCR_SWTRG;
+
+    handle_interrupts(timer);
+}
 
 #if defined (_useTimer1)
 void HANDLER_FOR_TIMER1(void) {
-    timer16_Sequence_t timer = _timer1;
-    Tc *tc = TC_FOR_TIMER1; // TC - timer counter
-    uint8_t channel = CHANNEL_FOR_TIMER1;
-
-    // clear interrupt
-    tc->TC_CHANNEL[channel].TC_SR;
-    tc->TC_CHANNEL[channel].TC_CCR |= TC_CCR_SWTRG; // reset the timer
-
-    handle_interrupts(_timer1);
+    _HANDLER_FOR_TIMER(TIMER1, TC_FOR_TIMER1, CHANNEL_FOR_TIMER1);
 }
 #endif
 #if defined (_useTimer2)
 void HANDLER_FOR_TIMER2(void) {
-    handle_interrupts(_timer2);
+    _HANDLER_FOR_TIMER(TIMER2, TC_FOR_TIMER2, CHANNEL_FOR_TIMER2);
 }
 #endif
 #if defined (_useTimer3)
 void HANDLER_FOR_TIMER3(void) {
-    handle_interrupts(_timer3);
+    _HANDLER_FOR_TIMER(TIMER3, TC_FOR_TIMER3, CHANNEL_FOR_TIMER3);
 }
 #endif
 #if defined (_useTimer4)
 void HANDLER_FOR_TIMER4(void) {
-    handle_interrupts(_timer4);
+    _HANDLER_FOR_TIMER(TIMER4, TC_FOR_TIMER4, CHANNEL_FOR_TIMER4);
 }
 #endif
 #if defined (_useTimer5)
 void HANDLER_FOR_TIMER5(void) {
-    handle_interrupts(_timer5);
+    _HANDLER_FOR_TIMER(TIMER5, TC_FOR_TIMER5, CHANNEL_FOR_TIMER5);
 }
 #endif
 
-static void _initISR(Tc *tc, uint32_t id, uint32_t channel, uint32_t tclock, uint32_t adjustment, IRQn_Type irqn) {
+static void _initISR(Tc *tc, uint32_t channel, uint32_t id, uint32_t tclock, uint32_t adjustment, IRQn_Type irqn) {
     pmc_enable_periph_clk(id);
     TC_Configure(tc, channel,
         tclock |                     // timer clock (prescaler)
@@ -164,46 +166,46 @@ static void _initISR(Tc *tc, uint32_t id, uint32_t channel, uint32_t tclock, uin
     TC_Start(tc, channel);
 }
 
-void initTimerISR(int timer, int prescaler, int adjustment) {
+void initTimerISR(int timer, int prescaler, unsigned int adjustment) {
 //static void initTimerISR(timer16_Sequence_t timer) {
 
-uint32_t tclock;
-if(prescaler == TIMER_PRESCALER_1_2) {
-    tclock = TC_CMR_TCCLKS_TIMER_CLOCK1; // MCK/32
-} else if(prescaler == TIMER_PRESCALER_1_8) {
-    tclock = TC_CMR_TCCLKS_TIMER_CLOCK2; // MCK/32
-} else if(prescaler == TIMER_PRESCALER_1_32) {
-    tclock = TC_CMR_TCCLKS_TIMER_CLOCK3; // MCK/32
-} else if(prescaler == TIMER_PRESCALER_1_128) {
-    tclock = TC_CMR_TCCLKS_TIMER_CLOCK4; // MCK/32
-} else {
-    tclock = TC_CMR_TCCLKS_TIMER_CLOCK5;
-}
+    uint32_t tclock;
+    if(prescaler == TIMER_PRESCALER_1_2) {
+        tclock = TC_CMR_TCCLKS_TIMER_CLOCK1; // MCK/2
+    } else if(prescaler == TIMER_PRESCALER_1_8) {
+        tclock = TC_CMR_TCCLKS_TIMER_CLOCK2; // MCK/8
+    } else if(prescaler == TIMER_PRESCALER_1_32) {
+        tclock = TC_CMR_TCCLKS_TIMER_CLOCK3; // MCK/32
+    } else if(prescaler == TIMER_PRESCALER_1_128) {
+        tclock = TC_CMR_TCCLKS_TIMER_CLOCK4; // MCK/128
+    } else {
+        tclock = TC_CMR_TCCLKS_TIMER_CLOCK5;
+    }
 
 #if defined (_useTimer1)
     if (timer == _timer1)
-        _initISR(TC_FOR_TIMER1, ID_TC_FOR_TIMER1, CHANNEL_FOR_TIMER1, tclock, adjustment, IRQn_FOR_TIMER1);
+        _initISR(TC_FOR_TIMER1, CHANNEL_FOR_TIMER1, ID_TC_FOR_TIMER1, tclock, adjustment, IRQn_FOR_TIMER1);
 #endif
 #if defined (_useTimer2)
     if (timer == _timer2)
-        _initISR(TC_FOR_TIMER2, ID_TC_FOR_TIMER2, CHANNEL_FOR_TIMER2, tclock, adjustment, IRQn_FOR_TIMER2);
+        _initISR(TC_FOR_TIMER2, CHANNEL_FOR_TIMER2, ID_TC_FOR_TIMER2, tclock, adjustment, IRQn_FOR_TIMER2);
 #endif
 #if defined (_useTimer3)
     if (timer == _timer3)
-        _initISR(TC_FOR_TIMER3, ID_TC_FOR_TIMER3, CHANNEL_FOR_TIMER3, tclock, adjustment, IRQn_FOR_TIMER3);
+        _initISR(TC_FOR_TIMER3, CHANNEL_FOR_TIMER3, ID_TC_FOR_TIMER3, tclock, adjustment, IRQn_FOR_TIMER3);
 #endif
 #if defined (_useTimer4)
     if (timer == _timer4)
-        _initISR(TC_FOR_TIMER4, ID_TC_FOR_TIMER4, CHANNEL_FOR_TIMER4, tclock, adjustment, IRQn_FOR_TIMER4);
+        _initISR(TC_FOR_TIMER4, CHANNEL_FOR_TIMER4, ID_TC_FOR_TIMER4, tclock, adjustment, IRQn_FOR_TIMER4);
 #endif
 #if defined (_useTimer5)
     if (timer == _timer5)
-        _initISR(TC_FOR_TIMER5, ID_TC_FOR_TIMER5, CHANNEL_FOR_TIMER5, tclock, adjustment, IRQn_FOR_TIMER5);
+        _initISR(TC_FOR_TIMER5, CHANNEL_FOR_TIMER5, ID_TC_FOR_TIMER5, tclock, adjustment, IRQn_FOR_TIMER5);
 #endif
 }
-void stopTimerISR(int timer)
-//static void stopTimerISR(timer16_Sequence_t timer)
-{
+
+void stopTimerISR(int timer) {
+//static void stopTimerISR(timer16_Sequence_t timer) {
 #if defined (_useTimer1)
     TC_Stop(TC_FOR_TIMER1, CHANNEL_FOR_TIMER1);
 #endif

@@ -149,7 +149,7 @@ void Timer3Service()
 #endif
 
 
-void initTimerISR(int timer, int prescaler, int adjustment)
+void initTimerISR(int timer, int prescaler, unsigned int adjustment)
 {
 #if defined (_useTimer1)
   if(timer == _timer1) {

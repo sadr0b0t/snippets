@@ -15,7 +15,7 @@ extern const int TIMER5;
 #define TIMER_PRESCALER_1_128  4
 
 
-void initTimerISR(int timer, int prescaler, int adjustment);
+void initTimerISR(int timer, int prescaler, unsigned int adjustment);
 void stopTimerISR(int timer);
 void handle_interrupts(int timer);
 
