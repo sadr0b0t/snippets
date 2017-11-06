@@ -16,11 +16,11 @@ http.createServer(function (request, response) {
             break;
         case "/call1":
             response.writeHead(200, {'Content-Type': 'text/plain'});
-            response.end("reply for Call1");
+            response.end("reply for /call1");
             break;
         case "/call2":
             response.writeHead(200, {'Content-Type': 'text/plain'});
-            response.end("reply for Call2");
+            response.end("reply for /call2");
             break;
         default:
             response.writeHead(404, { 'Content-Type': 'text/html' });
