@@ -1,0 +1,11 @@
+{
+  "name": "node-ajax-demo",
+  "version": "0.1.0",
+  "description": "Node web app ajax demo",
+  "main": "ajax_demo.js",
+  "dependencies": {
+    "http-server": "^0.10.0"
+  },
+  "author": "anton",
+  "license": "PD"
+}
