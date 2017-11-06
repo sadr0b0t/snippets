@@ -38,6 +38,8 @@ class App extends React.Component {
         this.readServerString('/call1', function(err, res) {
             if(!err) {
                 this.setState({reply: res});
+            } else {
+                this.setState({reply: err.toString()});
             }
         }.bind(this));
     }
@@ -46,6 +48,8 @@ class App extends React.Component {
         this.readServerString('/call2', function(err, res) {
             if(!err) {
                 this.setState({reply: res});
+            } else {
+                this.setState({reply: err.toString()});
             }
         }.bind(this));
     }
