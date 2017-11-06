@@ -3,6 +3,6 @@
   "version": "0.1.0",
   "main": "http-hello.js",
   "dependencies": {
-    "http": "0.0.0"
+      "http-server": "^0.10.0"
   }
 }
