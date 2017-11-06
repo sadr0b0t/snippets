@@ -13,17 +13,18 @@ class App extends React.Component {
         this.state = {reply: ''};
     }
     
-    readServerString(url) {
+    readServerString(url, callback) {
         var req = new XMLHttpRequest();
         req.onreadystatechange = function() {
             if (req.readyState === 4) { // only if req is "loaded"
                 if (req.status === 200) { // only if "OK"
-                    this.setState({reply: req.responseText});
+                    callback(undefined, req.responseText);
                 } else {
                     // error
+                    callback(new Error(req.status));
                 }
             }
-        }.bind(this);
+        };
         // can't use GET method here as it would quickly 
         // exceede max length limitation
         req.open("POST", url, true);
@@ -34,11 +35,19 @@ class App extends React.Component {
     }
 
     call1() {
-        this.readServerString('/call1');
+        this.readServerString('/call1', function(err, res) {
+            if(!err) {
+                this.setState({reply: res});
+            }
+        }.bind(this));
     }
     
     call2() {
-        this.readServerString('/call2');
+        this.readServerString('/call2', function(err, res) {
+            if(!err) {
+                this.setState({reply: res});
+            }
+        }.bind(this));
     }
 
     render() {
