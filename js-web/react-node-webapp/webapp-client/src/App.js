@@ -34,7 +34,7 @@ class App extends React.Component {
         req.send();
     }
 
-    call1() {
+    call1 = () => {
         this.readServerString('/call1', function(err, res) {
             if(!err) {
                 this.setState({reply: res});
@@ -44,7 +44,7 @@ class App extends React.Component {
         }.bind(this));
     }
     
-    call2() {
+    call2 = () => {
         this.readServerString('/call2', function(err, res) {
             if(!err) {
                 this.setState({reply: res});
@@ -58,8 +58,8 @@ class App extends React.Component {
         return (
             <div style={{textAlign: 'center', marginTop: 30}}>
                 <p>
-                    <span onClick={()=>{this.call1()}} style={styleBtn}>Прочитать с сервера значение 1</span>
-                    <span onClick={()=>{this.call2()}} style={styleBtn}>прочитать с сервера значение 2</span>
+                    <span onClick={this.call1} style={styleBtn}>Прочитать с сервера значение 1</span>
+                    <span onClick={this.call2} style={styleBtn}>прочитать с сервера значение 2</span>
                 </p>
                 <p style={{marginTop: 40, fontSize: 24}}>
                     Результат: <span style={{fontStyle: 'italic'}}>{this.state.reply}</span> 

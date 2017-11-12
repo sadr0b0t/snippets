@@ -32,8 +32,8 @@ http.createServer(function (req, res) {
                         '  </body>\n' + 
                         '</html>\n');
                 } else {
-                    res.writeHead(200, { 'Content-Type': 'text/html' });
-                    res.end(err);
+                    res.writeHead(500, { 'Content-Type': 'text/html' });
+                    res.end(err.message);
                     console.log(err);
                 }
             });

@@ -1,38 +1,41 @@
 var http = require('http');
 var fs = require('fs');
 
-http.createServer(function (request, response) {
-    console.log("request: " + request.url);
-    switch(request.url) {
+// request, response
+http.createServer(function (req, res) {
+    console.log("request: " + req.url);
+    switch(req.url) {
         case "/":
             fs.readFile("./ajax_demo.html", function(error, content) {
                 if(!error) {
-                    response.writeHead(200, { 'Content-Type': 'text/html' });
-                    response.end(content, 'utf-8');
+                    res.writeHead(200, { 'Content-Type': 'text/html' });
+                    res.end(content, 'utf-8');
                 } else {
+                    res.writeHead(500, { 'Content-Type': 'text/html' });
+                    res.end(error.message, 'utf-8');
                     console.log(error);
                 }
             });
             break;
         case "/call1":
-            response.writeHead(200, {'Content-Type': 'text/plain'});
-            response.end("reply for /call1");
+            res.writeHead(200, {'Content-Type': 'text/plain'});
+            res.end("reply for /call1");
             break;
         case "/call2":
-            response.writeHead(200, {'Content-Type': 'text/plain'});
-            response.end("reply for /call2");
+            res.writeHead(200, {'Content-Type': 'text/plain'});
+            res.end("reply for /call2");
             break;
         default:
-            response.writeHead(404, { 'Content-Type': 'text/html' });
-            response.write('<!DOCTYPE html>\n' +
+            res.writeHead(404, { 'Content-Type': 'text/html' });
+            res.write('<!DOCTYPE html>\n' +
                 '<html>\n' +
                 '  <head>\n' +
                 '    <meta charset=\'utf-8\'>\n' +
                 '  </head>\n' +
                 '  <body>\n'
                 );
-            response.write("404, NOT FOUND: " + request.url);
-            response.end(
+            res.write("404, NOT FOUND: " + req.url);
+            res.end(
                 '  </body>\n' + 
                 '</html>\n');
     }

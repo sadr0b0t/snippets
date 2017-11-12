@@ -4,6 +4,5 @@
   "description": "Node web app ajax demo",
   "main": "ajax_demo.js",
   "dependencies": {
-    "http-server": "^0.10.0"
   }
 }
