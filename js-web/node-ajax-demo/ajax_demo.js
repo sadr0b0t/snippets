@@ -6,27 +6,27 @@ http.createServer(function (req, res) {
     console.log("request: " + req.url);
     switch(req.url) {
         case "/":
-            fs.readFile("./ajax_demo.html", function(error, content) {
-                if(!error) {
-                    res.writeHead(200, { 'Content-Type': 'text/html' });
+            fs.readFile("./ajax_demo.html", function(err, content) {
+                if(!err) {
+                    res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
                     res.end(content, 'utf-8');
                 } else {
-                    res.writeHead(500, { 'Content-Type': 'text/html' });
-                    res.end(error.message, 'utf-8');
-                    console.log(error);
+                    res.writeHead(500, {'Content-Type': 'text/html; charset=utf-8'});
+                    res.end(err.message, 'utf-8');
+                    console.log(err);
                 }
             });
             break;
         case "/call1":
-            res.writeHead(200, {'Content-Type': 'text/plain'});
+            res.writeHead(200, {'Content-Type': 'text/plain; charset=utf-8'});
             res.end("reply for /call1");
             break;
         case "/call2":
-            res.writeHead(200, {'Content-Type': 'text/plain'});
+            res.writeHead(200, {'Content-Type': 'text/plain; charset=utf-8'});
             res.end("reply for /call2");
             break;
         default:
-            res.writeHead(404, { 'Content-Type': 'text/html' });
+            res.writeHead(404, {'Content-Type': 'text/html; charset=utf-8'});
             res.write('<!DOCTYPE html>\n' +
                 '<html>\n' +
                 '  <head>\n' +
